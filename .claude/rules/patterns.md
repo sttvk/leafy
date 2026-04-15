@@ -16,11 +16,13 @@ When implementing new functionality:
 
 ### Repository Pattern
 
-Encapsulate data access behind a consistent interface:
-- Define standard operations: findAll, findById, create, update, delete
-- Concrete implementations handle storage details (database, API, file, etc.)
-- Business logic depends on the abstract interface, not the storage mechanism
-- Enables easy swapping of data sources and simplifies testing with mocks
+Encapsulate data access behind a consistent interface. In this project the pattern is load-bearing and enforced by invariant #9:
+
+- Interfaces (`IBookRepository`, `IUserRepository`, `ICheckoutRepository`) live in `Lms.Domain` alongside the entities they expose.
+- Concrete EF-backed implementations live in `Lms.Infrastructure` and hold the `LmsDbContext` dependency.
+- Application services (`Lms.Application`) depend on the interfaces only — never on `LmsDbContext` or any EF type.
+- Repository methods model business intent, not CRUD verbs. Canonical example: `ICheckoutRepository.TryCheckoutAsync(bookId, borrowerUserId, dueAt)` performs the atomic CAS from invariant #3 and returns `false` if no copies are available.
+- Testing seam: unit-test application services with fake repositories; integration-test repositories against a real SQL Server container.
 
 ### API Response Format
 

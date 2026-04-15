@@ -29,7 +29,7 @@ Conventions for the LMS database. Target engines are SQL Server 2025 (local cont
 
 ## Check Constraints
 
-Use CHECK constraints as invariant backstops, not as business rules. Business rules live in services; the constraint is the backstop if anything races. The load-bearing example in this repo:
+Use CHECK constraints as invariant backstops, not as business rules. Business rules live in application services (`Lms.Application`) and are expressed in repository methods on `Lms.Infrastructure`; the constraint is the backstop if anything races. The load-bearing example in this repo:
 
 ```sql
 CONSTRAINT CK_Books_Copies CHECK (AvailableCopies >= 0 AND AvailableCopies <= TotalCopies)
@@ -41,11 +41,11 @@ Create indexes for actual query predicates, not defensively. Every index is a wr
 
 ## Soft Delete
 
-Books use `IsDeleted BIT NOT NULL DEFAULT 0`. Register a global query filter in EF Core so every non-admin query hides deleted rows automatically. Do not scatter `.Where(b => !b.IsDeleted)` across services.
+Books use `IsDeleted BIT NOT NULL DEFAULT 0`. Register a global query filter in `LmsDbContext` (inside `Lms.Infrastructure`) so every non-admin query hides deleted rows automatically. Do not scatter `.Where(b => !b.IsDeleted)` across repositories or application services.
 
 ## Concurrency: Compare-and-Set
 
-Checkout availability is load-bearing. The only correct implementation is a single atomic `UPDATE` with a predicate:
+Checkout availability is load-bearing. The only correct implementation is a single atomic `UPDATE` with a predicate, owned by `ICheckoutRepository.TryCheckoutAsync` in `Lms.Infrastructure`:
 
 ```sql
 UPDATE Books
@@ -53,7 +53,7 @@ SET AvailableCopies = AvailableCopies - 1
 WHERE Id = @id AND AvailableCopies > 0;
 ```
 
-Then check rows affected. Zero rows means the book is unavailable — return HTTP 409. The CHECK constraint is the backstop if anything else ever races. Do not replace this pattern with an EF read-then-write, do not add a rowversion token, do not add application-level locking.
+Then check rows affected. Zero rows means the book is unavailable — the repository returns `false`, and the application service translates that into HTTP 409. The CHECK constraint is the backstop if anything else ever races. Do not replace this pattern with an EF read-then-write, do not add a rowversion token, do not add application-level locking.
 
 ## Things Not To Do
 

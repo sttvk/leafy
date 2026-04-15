@@ -103,7 +103,7 @@ Covers FR-7.1
 
 ## How Checkout and Return Work
 
-Checkout happens inside a single EF transaction: we decrement Book.AvailableCopies and insert a Checkout row. The CHECK constraint on AvailableCopies is the safety net if two requests come in at once. Return sets ReturnedAt to now and increments Book.AvailableCopies. Status (Active, Returned, Overdue) is not stored — it's calculated when we query: if ReturnedAt is set it's Returned, if DueAt is in the past it's Overdue, otherwise Active. This avoids a stored status getting out of sync with reality.
+Checkout is an **atomic compare-and-set** (invariant #3), not a read-then-write transaction. A single `UPDATE Books SET AvailableCopies = AvailableCopies - 1 WHERE Id = @id AND AvailableCopies > 0` runs inside `ICheckoutRepository.TryCheckoutAsync` (in `Lms.Infrastructure`); if zero rows are affected the book is unavailable and the application service returns HTTP 409. On success the same repository method inserts the `Checkouts` row. The `CK_Books_Copies` CHECK constraint is the backstop if anything else ever races, not the primary mechanism. Return is the mirror: set `ReturnedAt` to now and increment `AvailableCopies`. Status (Active, Returned, Overdue) is never stored — it's computed at query time: `ReturnedAt IS NOT NULL` → Returned, `DueAt < now` → Overdue, else Active. Invariant #4 forbids adding a stored status column.
 
 ## Search
 
