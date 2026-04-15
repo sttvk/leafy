@@ -5,6 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- TODO(security): Scoped to direct deps to unblock scaffold build. Aspire.Hosting.AppHost 9.4.2
+         pulls in KubernetesClient with NU1902. Revisit when Aspire 9.5+ lands or if a transitive CVE
+         ever matters in production (invariant #8: Lms.AppHost is dev-only, exposure is laptop-only).
+         Audit manually via `dotnet list package /vulnerable /include-transitive` in security reviews. -->
     <NuGetAuditMode>direct</NuGetAuditMode>
   </PropertyGroup>
 </Project>
