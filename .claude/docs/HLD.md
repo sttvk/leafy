@@ -82,15 +82,18 @@ lms/
 ├── src/
 │   ├── Lms.AppHost/           Aspire orchestrator (dev-only)
 │   ├── Lms.ServiceDefaults/   shared OTEL + health-check config
-│   ├── Lms.Api/               Minimal API; serves wwwroot in prod
-│   │   └── {Endpoints, Services, Data, Integrations, Auth, Dtos, wwwroot}
+│   ├── Lms.Domain/            entities, value objects, repository interfaces
+│   ├── Lms.Application/       use-case services, DTOs
+│   ├── Lms.Infrastructure/    LmsDbContext, fluent configs, concrete repositories, external integrations
+│   ├── Lms.Api/               Minimal API; serves wwwroot in prod; DI composition root
+│   │   └── {Endpoints, Auth, wwwroot}
 │   └── Lms.Migrations/        EF migration runner (prod CI + local Aspire)
 ├── azure/main.bicep           Resource Group provisioning
 ├── .github/workflows/         CI/CD (single deploy.yml)
-└── Lms.sln
+└── Lms.slnx
 ```
 
-The API uses standard layered organization: `Endpoints/` defines route groups, `Services/` holds business logic (takes `LmsDbContext` directly per invariant #2), `Data/` owns the context and entities, `Integrations/` wraps Open Library + Azure OpenAI, `Dtos/` contains request/response shapes.
+The solution uses **Clean Architecture with layered projects** (invariant #9): `Lms.Domain` holds entities and repository interfaces; `Lms.Application` holds use-case services (which take `IBookRepository` / `IUserRepository` / `ICheckoutRepository` via DI); `Lms.Infrastructure` holds `LmsDbContext`, fluent configurations, concrete repositories, and external integrations (Open Library, Azure OpenAI); `Lms.Api` holds Minimal API endpoints, authentication, DI composition, and serves the compiled React SPA from `wwwroot` in production. Dependencies flow inward only — a reverse reference is an MSBuild error.
 
 ## 6. Key flows ◆
 
@@ -266,7 +269,7 @@ Observability: the Aspire Dashboard surfaces logs/traces/metrics locally over OT
 
 - **In-memory cosine similarity** (chosen) vs. `pgvector` / Azure AI Search / Pinecone (rejected). At ~100 books, in-memory is faster than any network round-trip and adds zero infra cost. Upgrade path is documented if the catalog grows.
 - **Single App Service hosts SPA + API** (chosen) vs. Static Web Apps + Container Apps split (rejected). Splitting breaks the free-tier budget and adds deploy coordination. SPA build lives in `wwwroot`.
-- **EF Core + SqlServer, no repository layer** (chosen, invariant #2) vs. Dapper or layered repos (rejected). EF is the conventional .NET take-home pattern; repos add indirection without payoff at this scale.
+- **EF Core + SqlServer + layered projects with repository pattern** (chosen, invariant #9) vs. DbContext-direct in services (originally chosen as #2, now retired) vs. Dapper (rejected). The dependency-arrow discipline is worth the indirection cost at this scale: invariant #3's atomic CAS has a natural home in `ICheckoutRepository.TryCheckoutAsync`, the Clean Architecture shape is easier to review than a folder-layered monolith, and the MSBuild project-reference graph enforces the layering for free. Dapper was rejected because EF Core's fluent configurations capture the non-trivial column types (`NVARCHAR(500)` vs default `NVARCHAR(MAX)`, `DATETIME2` vs `DATETIME`, `CK_Books_Copies`) declaratively — hand-writing that SQL is error-prone.
 - **JWT + SPA (stateless)** (chosen) vs. cookie + BFF (rejected). Simpler; secure at this scale and threat model.
 - **Dedicated `Lms.Migrations` console** (chosen, invariant #1) vs. `Database.Migrate()` at API startup (rejected). Race safety on CI/CD swap; explicit deploy step; enforced by the `pre-edit-migration-detector` hook.
 - **App Service Configuration** (chosen) vs. Azure Key Vault (rejected). Sufficient for secrets at this scale; Key Vault flagged as the production hardening step.
