@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Lms.Api/Lms.Api.csproj" />
+    <Project Path="src/Lms.AppHost/Lms.AppHost.csproj" />
+    <Project Path="src/Lms.Migrations/Lms.Migrations.csproj" />
+    <Project Path="src/Lms.ServiceDefaults/Lms.ServiceDefaults.csproj" />
+  </Folder>
+</Solution>

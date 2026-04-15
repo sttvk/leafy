@@ -1,0 +1,10 @@
+src/**
+Lms.slnx
+Directory.Build.props
+Directory.Packages.props
+global.json
+NuGet.config
+.editorconfig
+.gitignore
+.claude/scope.txt
+.claude/allow-config-edits
