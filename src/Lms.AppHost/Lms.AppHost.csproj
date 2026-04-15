@@ -9,10 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Lms.ServiceDefaults\Lms.ServiceDefaults.csproj" IsAspireProjectResource="false" />
+    <ProjectReference Include="..\Lms.Api\Lms.Api.csproj" />
+    <ProjectReference Include="..\Lms.Migrations\Lms.Migrations.csproj" />
   </ItemGroup>
 
 </Project>
