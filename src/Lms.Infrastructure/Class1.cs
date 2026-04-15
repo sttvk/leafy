@@ -1,1 +1,1 @@
-// Intentionally empty. LmsDbContext and concrete repositories arrive in a later slice.
+// Placeholder retained — sandbox blocked rm/git rm. Delete in a follow-up slice.
