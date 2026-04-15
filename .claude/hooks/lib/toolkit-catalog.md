@@ -2,7 +2,7 @@
 
 Source of truth for every skill and agent the team lead can assign to a worker.
 Maintained by hand — update when plugins are added or removed.
-Last audit: 2026-04-15 (path-flatten + rules additions; commands stay in CLAUDE.md §References)
+Last audit: 2026-04-15 (routing fix: code-architect → general-purpose on impl rows; api-contract-sync cataloged; invariant #2 ref retired)
 
 ## Deliberately excluded
 
@@ -102,6 +102,7 @@ This section exists to make design-doc work explicit. Every request to "document
 - `microsoft-extensions-dependency-injection` — AddX extension method grouping
 - `microsoft-extensions-configuration` — IOptions + validation on startup
 - `csharp-type-design-performance` — sealed classes, readonly structs, allocation
+- `api-contract-sync` — regenerate TS client from OpenAPI when DTOs/endpoints change
 
 ### Agents
 - `code-architect` — layered implementation for endpoint/service slices
@@ -116,7 +117,7 @@ This section exists to make design-doc work explicit. Every request to "document
 
 ### Design docs
 - `.claude/docs/HLD.md` §Data Access, §Repo Layout
-- Invariants #2 (no repo layer), #3 (atomic checkout), #4 (computed loan status)
+- Invariants #3 (atomic checkout), #4 (computed loan status), #9 (layered projects)
 
 ## React frontend implementation
 
