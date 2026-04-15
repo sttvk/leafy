@@ -13,6 +13,15 @@ FILE_PATH=$(printf '%s' "$INPUT" | python3 "$HOOKS_DIR/lib/extract.py" file_path
 
 [[ -z "$FILE_PATH" ]] && exit 0
 
+# Bootstrap / tooling-bump carve-out: if the marker file `.claude/allow-config-edits`
+# exists, allow the edit. The marker is a deliberate, auditable consent gesture —
+# drop it before a scaffold or SDK/linter bump, remove it when the task completes.
+# Team lead or user creates and removes it explicitly; workers should not create it.
+REPO_ROOT=$(cd "$HOOKS_DIR/.." && pwd)
+if [[ -f "$REPO_ROOT/allow-config-edits" ]]; then
+  exit 0
+fi
+
 # Deny-list covers: JS/TS tooling (eslint, prettier, tsc, biome),
 # editor baseline (.editorconfig), .NET tooling (csharpier, Directory.Build.*,
 # global.json), and Markdown linting.
