@@ -1,7 +1,6 @@
 import { Pencil } from "lucide-react"
 import type { BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface BookCardProps {
@@ -24,20 +23,19 @@ function BookCard({ book, onEdit }: BookCardProps) {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
         />
+        {isLibrarian && onEdit && (
+          <div
+            className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100"
+            onClick={onEdit}
+          >
+            <Pencil className="h-8 w-8 text-white" />
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-1.5 p-3">
-        <div className="flex items-start justify-between gap-1">
-          <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-foreground">
-            {book.title}
-          </h3>
-          {isLibrarian && (
-            <div className="flex shrink-0 items-center gap-0.5">
-              <Button variant="ghost" size="sm" className="h-6 w-6 p-0" onClick={onEdit}>
-                <Pencil className="h-3.5 w-3.5" />
-              </Button>
-            </div>
-          )}
-        </div>
+        <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-foreground">
+          {book.title}
+        </h3>
         <p className="line-clamp-1 text-xs text-muted-foreground">
           {book.author}
         </p>
