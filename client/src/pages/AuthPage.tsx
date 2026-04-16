@@ -98,7 +98,6 @@ function AuthPage() {
     }
   }
 
-  const isDark = document.documentElement.classList.contains("dark")
   const isLoginTab = activeTab === "login"
 
   return (
@@ -237,16 +236,18 @@ function AuthPage() {
                 </div>
               </div>
 
-              <div className="flex justify-center">
-                <GoogleLogin
-                  onSuccess={handleGoogleSuccess}
-                  onError={() =>
-                    setError("Google sign-in failed. Please try again.")
-                  }
-                  theme={isDark ? "filled_black" : "outline"}
-                  size="large"
-                  width="400"
-                />
+              <div className="relative w-full h-10">
+                <Button variant="outline" className="absolute inset-0 w-full pointer-events-none">
+                  Continue with Google
+                </Button>
+                <div className="absolute inset-0 cursor-pointer opacity-0">
+                  <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={() => setError("Google sign-in failed. Please try again.")}
+                    size="large"
+                    width="400"
+                  />
+                </div>
               </div>
             </>
           )}
