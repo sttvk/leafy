@@ -1,8 +1,7 @@
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query"
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { X } from "lucide-react"
 import { fetchBooks, type BookListDto, type PagedResult } from "@/api/books"
-import { checkoutBook } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
@@ -19,7 +18,7 @@ import {
 } from "@/components/ui/select"
 
 function CatalogPage() {
-  const { isAuthenticated, isLibrarian } = useAuth()
+  const { isLibrarian } = useAuth()
   const queryClient = useQueryClient()
   const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
@@ -110,23 +109,6 @@ function CatalogPage() {
     setAuthorSearch("")
   }
 
-  const handleBorrowBook = useCallback(
-    async (book: BookListDto) => {
-      try {
-        await checkoutBook(book.id)
-        await queryClient.invalidateQueries({ queryKey: ["books"] })
-        await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
-      } catch (error: unknown) {
-        const message =
-          error instanceof Error
-            ? error.message
-            : "Failed to borrow book. Please try again."
-        window.alert(message)
-      }
-    },
-    [queryClient]
-  )
-
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-8">
@@ -200,11 +182,6 @@ function CatalogPage() {
             setSelectedBook(null)
           }
         }}
-        onBorrow={
-          isAuthenticated && selectedBook
-            ? () => handleBorrowBook(selectedBook)
-            : undefined
-        }
         onEdit={
           isLibrarian && selectedBook
             ? () => {

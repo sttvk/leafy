@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { LogIn, Sun, Moon, Plus } from "lucide-react"
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
+import { CartProvider } from "@/contexts/CartContext"
 import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
 import { CartDropdown } from "@/components/CartDropdown"
@@ -113,9 +114,11 @@ function AppShell() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </CartProvider>
       </AuthProvider>
     </QueryClientProvider>
   )
