@@ -54,7 +54,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
             </div>
 
             {/* Right: details */}
-            <div className="flex h-full min-h-0 flex-1 flex-col gap-4 p-6">
+            <div className="flex min-h-0 flex-1 flex-col gap-4 p-8">
               <DialogHeader className="space-y-2 text-left">
                 <DialogTitle className="text-xl font-bold leading-tight sm:text-3xl">
                   {detail.title}
@@ -84,11 +84,9 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
               )}
 
               {/* Description */}
-              {detail.description && (
-                <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
-                  {detail.description}
-                </div>
-              )}
+              <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
+                {detail.description}
+              </div>
 
               {/* Action buttons */}
               <div className="mt-auto flex flex-col gap-3 pt-2">
