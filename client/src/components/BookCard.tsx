@@ -1,4 +1,7 @@
+import { Pencil, Trash2 } from "lucide-react"
 import type { BookListDto } from "@/api/books"
+import { useAuth } from "@/contexts/AuthContext"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface BookCardProps {
@@ -8,6 +11,7 @@ interface BookCardProps {
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
 function BookCard({ book }: BookCardProps) {
+  const { isLibrarian } = useAuth()
   const isAvailable = book.availableCopies > 0
 
   return (
@@ -21,9 +25,21 @@ function BookCard({ book }: BookCardProps) {
         />
       </div>
       <div className="flex flex-col gap-1.5 p-3">
-        <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-foreground">
-          {book.title}
-        </h3>
+        <div className="flex items-start justify-between gap-1">
+          <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-foreground">
+            {book.title}
+          </h3>
+          {isLibrarian && (
+            <div className="flex shrink-0 items-center gap-0.5">
+              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                <Pencil className="h-3.5 w-3.5" />
+              </Button>
+              <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-destructive hover:text-destructive">
+                <Trash2 className="h-3.5 w-3.5" />
+              </Button>
+            </div>
+          )}
+        </div>
         <p className="line-clamp-1 text-xs text-muted-foreground">
           {book.author}
         </p>

@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import { useMemo } from "react"
+import { Plus } from "lucide-react"
 import { fetchBooks } from "@/api/books"
+import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
 import { Button } from "@/components/ui/button"
 
 function CatalogPage() {
+  const { isLibrarian } = useAuth()
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["books"],
     queryFn: fetchBooks,
@@ -21,14 +24,24 @@ function CatalogPage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Library Catalog
-        </h1>
-        {!isLoading && !isError && (
-          <p className="mt-1 text-sm text-muted-foreground">
-            {booksWithCovers.length} books
-          </p>
-        )}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Library Catalog
+            </h1>
+            {!isLoading && !isError && (
+              <p className="mt-1 text-sm text-muted-foreground">
+                {booksWithCovers.length} books
+              </p>
+            )}
+          </div>
+          {isLibrarian && (
+            <Button>
+              <Plus className="mr-1.5 h-4 w-4" />
+              Add Book
+            </Button>
+          )}
+        </div>
       </div>
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
