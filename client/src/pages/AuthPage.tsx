@@ -102,8 +102,9 @@ function AuthPage() {
   const isLoginTab = activeTab === "login"
 
   return (
-    <PageLayout className="flex min-h-screen items-center justify-center">
-      <Card className="w-full max-w-md">
+    <PageLayout>
+      <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center">
+        <Card className="w-full max-w-md p-2">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">
             {isLoginTab ? "Login" : "Create Account"}
@@ -248,7 +249,8 @@ function AuthPage() {
             </>
           )}
         </CardContent>
-      </Card>
+        </Card>
+      </div>
     </PageLayout>
   )
 }
