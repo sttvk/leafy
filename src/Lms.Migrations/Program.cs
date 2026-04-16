@@ -2,6 +2,7 @@ using Lms.Domain.Entities;
 using Lms.Infrastructure;
 using Lms.Infrastructure.Persistence;
 using Lms.Migrations.Seeding;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,8 @@ var builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.AddLmsInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddDataProtection();
+builder.Services.AddLogging();
 
 // Relax password policy for the seed account (dev-only seeder).
 // The API project keeps the stricter policy from DependencyInjection.cs.
