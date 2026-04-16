@@ -151,7 +151,7 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto p-8">
         <DialogHeader>
           <DialogTitle>{isEditMode ? "Edit Book" : "Add New Book"}</DialogTitle>
           <DialogDescription>

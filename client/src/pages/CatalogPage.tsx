@@ -209,7 +209,6 @@ function CatalogPage() {
           isLibrarian && selectedBook
             ? () => {
                 setEditingBook(selectedBook)
-                setSelectedBook(null)
               }
             : undefined
         }
