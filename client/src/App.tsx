@@ -37,6 +37,9 @@ function NavHeader() {
                 <span className="text-sm text-muted-foreground">
                   {user?.displayName}
                 </span>
+                <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                  {user?.role}
+                </span>
                 <Button variant="ghost" size="sm" onClick={logout}>
                   Logout
                 </Button>

@@ -15,6 +15,7 @@ const TOKEN_KEY = "lms_token"
 interface AuthContextValue {
   user: AuthUser | null
   isAuthenticated: boolean
+  isLibrarian: boolean
   isLoading: boolean
   login: (email: string, password: string) => Promise<void>
   register: (
@@ -87,18 +88,20 @@ function AuthProvider({ children }: AuthProviderProps) {
   }, [])
 
   const isAuthenticated = user !== null
+  const isLibrarian = user?.role === "Librarian"
 
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
       isAuthenticated,
+      isLibrarian,
       isLoading,
       login,
       register,
       googleLogin: handleGoogleLogin,
       logout,
     }),
-    [user, isAuthenticated, isLoading, login, register, handleGoogleLogin, logout]
+    [user, isAuthenticated, isLibrarian, isLoading, login, register, handleGoogleLogin, logout]
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
