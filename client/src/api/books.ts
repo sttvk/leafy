@@ -5,8 +5,6 @@ export interface BookListDto {
   title: string
   author: string
   genre: string | null
-  availableCopies: number
-  totalCopies: number
   coverImageUrl: string | null
 }
 
@@ -19,8 +17,6 @@ export interface BookDetailDto {
   genre: string | null
   description: string | null
   coverImageUrl: string | null
-  totalCopies: number
-  availableCopies: number
   addedAt: string
 }
 
@@ -32,7 +28,6 @@ export interface CreateBookRequest {
   genre?: string
   description?: string
   coverImageUrl?: string
-  totalCopies: number
 }
 
 export type UpdateBookRequest = CreateBookRequest

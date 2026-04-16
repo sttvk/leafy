@@ -25,7 +25,6 @@ function CatalogPage() {
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
-  const [availabilityFilter, setAvailabilityFilter] = useState<string>("all")
   const [authorSearch, setAuthorSearch] = useState("")
 
   const { data, isLoading, isError, error, refetch } = useQuery({
@@ -51,7 +50,6 @@ function CatalogPage() {
 
   const hasActiveFilters =
     genreFilter !== "all" ||
-    availabilityFilter !== "all" ||
     authorSearch !== ""
 
   const filteredBooks = useMemo(() => {
@@ -59,12 +57,6 @@ function CatalogPage() {
 
     if (genreFilter !== "all") {
       result = result.filter((book) => book.genre === genreFilter)
-    }
-
-    if (availabilityFilter === "available") {
-      result = result.filter((book) => book.availableCopies > 0)
-    } else if (availabilityFilter === "checked-out") {
-      result = result.filter((book) => book.availableCopies === 0)
     }
 
     if (authorSearch !== "") {
@@ -75,11 +67,10 @@ function CatalogPage() {
     }
 
     return result
-  }, [allBooks, genreFilter, availabilityFilter, authorSearch])
+  }, [allBooks, genreFilter, authorSearch])
 
   function handleClearFilters(): void {
     setGenreFilter("all")
-    setAvailabilityFilter("all")
     setAuthorSearch("")
   }
 
@@ -139,20 +130,6 @@ function CatalogPage() {
                     {genre}
                   </SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={availabilityFilter}
-              onValueChange={setAvailabilityFilter}
-            >
-              <SelectTrigger className="w-[160px]">
-                <SelectValue placeholder="All" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="available">Available</SelectItem>
-                <SelectItem value="checked-out">Checked Out</SelectItem>
               </SelectContent>
             </Select>
 

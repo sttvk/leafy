@@ -36,7 +36,6 @@ interface FormState {
   genre: string
   description: string
   coverImageUrl: string
-  totalCopies: string
 }
 
 const INITIAL_FORM_STATE: Readonly<FormState> = {
@@ -47,7 +46,6 @@ const INITIAL_FORM_STATE: Readonly<FormState> = {
   genre: "",
   description: "",
   coverImageUrl: "",
-  totalCopies: "1",
 }
 
 function buildFormStateFromDetail(detail: BookDetailDto): FormState {
@@ -59,7 +57,6 @@ function buildFormStateFromDetail(detail: BookDetailDto): FormState {
     genre: detail.genre ?? "",
     description: detail.description ?? "",
     coverImageUrl: detail.coverImageUrl ?? "",
-    totalCopies: detail.totalCopies.toString(),
   }
 }
 
@@ -110,12 +107,6 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
       return
     }
 
-    const totalCopies = Number(form.totalCopies)
-    if (!Number.isInteger(totalCopies) || totalCopies < 1) {
-      setErrorMessage("Total Copies must be a positive whole number.")
-      return
-    }
-
     const parsedYear = form.publicationYear.trim()
       ? Number(form.publicationYear)
       : undefined
@@ -127,7 +118,6 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
     const payload: CreateBookRequest = {
       title: trimmedTitle,
       author: trimmedAuthor,
-      totalCopies,
       ...(form.isbn.trim() && { isbn: form.isbn.trim() }),
       ...(parsedYear !== undefined && { publicationYear: parsedYear }),
       ...(form.genre.trim() && { genre: form.genre.trim() }),
@@ -266,21 +256,6 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 value={form.coverImageUrl}
                 onChange={(e) => updateField("coverImageUrl", e.target.value)}
                 placeholder="https://..."
-                disabled={isFormDisabled}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor={`${idPrefix}-copies`}>
-                Total Copies <span className="text-destructive">*</span>
-              </Label>
-              <Input
-                id={`${idPrefix}-copies`}
-                type="number"
-                min={1}
-                value={form.totalCopies}
-                onChange={(e) => updateField("totalCopies", e.target.value)}
-                required
                 disabled={isFormDisabled}
               />
             </div>
