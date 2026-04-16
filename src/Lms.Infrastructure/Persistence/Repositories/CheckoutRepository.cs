@@ -106,4 +106,22 @@ internal sealed class CheckoutRepository : ICheckoutRepository
             .OrderByDescending(c => c.CheckedOutAt)
             .ToListAsync(ct);
     }
+
+    public async Task<int> CountActiveByBorrowerAsync(
+        Guid borrowerUserId,
+        CancellationToken ct)
+    {
+        return await _db.Checkouts
+            .AsNoTracking()
+            .CountAsync(c => c.BorrowerUserId == borrowerUserId && c.ReturnedAt == null, ct);
+    }
+
+    public async Task<IReadOnlyList<Checkout>> ListActiveAsync(CancellationToken ct)
+    {
+        return await _db.Checkouts
+            .AsNoTracking()
+            .Where(c => c.ReturnedAt == null)
+            .OrderByDescending(c => c.CheckedOutAt)
+            .ToListAsync(ct);
+    }
 }

@@ -11,4 +11,8 @@ public interface ICheckoutRepository
     Task<bool> TryReturnAsync(Guid checkoutId, CancellationToken ct);
 
     Task<IReadOnlyList<Checkout>> ListByBorrowerAsync(Guid borrowerUserId, CancellationToken ct);
+
+    Task<int> CountActiveByBorrowerAsync(Guid borrowerUserId, CancellationToken ct);
+
+    Task<IReadOnlyList<Checkout>> ListActiveAsync(CancellationToken ct);
 }
