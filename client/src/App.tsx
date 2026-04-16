@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
-import { LogIn, Sun, Moon } from "lucide-react"
+import { LogIn, Sun, Moon, User as UserIcon } from "lucide-react"
+import * as Popover from "@radix-ui/react-popover"
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
@@ -59,15 +60,41 @@ function NavHeader() {
             {isAuthenticated ? (
               <>
                 <CartDropdown />
-                <span className="text-sm text-muted-foreground">
-                  {user?.displayName}
-                </span>
-                <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
-                  {user?.role}
-                </span>
-                <Button variant="ghost" size="sm" onClick={logout}>
-                  Logout
-                </Button>
+                <Popover.Root>
+                  <Popover.Trigger asChild>
+                    <Button variant="ghost" size="sm" aria-label="User menu">
+                      <UserIcon className="h-5 w-5" />
+                    </Button>
+                  </Popover.Trigger>
+                  <Popover.Portal>
+                    <Popover.Content
+                      sideOffset={8}
+                      align="end"
+                      className="z-50 rounded-md border bg-popover p-4 w-64 shadow-md"
+                    >
+                      <div className="flex flex-col gap-2">
+                        <span className="text-sm font-bold text-foreground">
+                          {user?.displayName}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {user?.email}
+                        </span>
+                        <span className="w-fit rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                          {user?.role}
+                        </span>
+                        <div className="border-t my-1" />
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          className="w-full"
+                          onClick={logout}
+                        >
+                          Logout
+                        </Button>
+                      </div>
+                    </Popover.Content>
+                  </Popover.Portal>
+                </Popover.Root>
               </>
             ) : (
               <Button variant="ghost" size="sm" asChild>
