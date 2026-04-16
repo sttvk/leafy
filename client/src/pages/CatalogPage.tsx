@@ -1,14 +1,17 @@
-import { useQuery } from "@tanstack/react-query"
-import { useMemo } from "react"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useMemo, useState } from "react"
 import { Plus } from "lucide-react"
 import { fetchBooks } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
+import { AddBookModal } from "@/components/AddBookModal"
 import { Button } from "@/components/ui/button"
 
 function CatalogPage() {
   const { isLibrarian } = useAuth()
+  const queryClient = useQueryClient()
+  const [isAddBookOpen, setIsAddBookOpen] = useState(false)
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["books"],
     queryFn: fetchBooks,
@@ -36,7 +39,7 @@ function CatalogPage() {
             )}
           </div>
           {isLibrarian && (
-            <Button>
+            <Button onClick={() => setIsAddBookOpen(true)}>
               <Plus className="mr-1.5 h-4 w-4" />
               Add Book
             </Button>
@@ -63,6 +66,14 @@ function CatalogPage() {
 
         {!isLoading && !isError && <BookGrid books={booksWithCovers} />}
       </main>
+
+      {isLibrarian && (
+        <AddBookModal
+          open={isAddBookOpen}
+          onOpenChange={setIsAddBookOpen}
+          onBookAdded={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
+        />
+      )}
     </div>
   )
 }
