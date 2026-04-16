@@ -17,13 +17,16 @@ public static class BooksEndpoints
             .WithName("GetBook");
 
         group.MapPost("/", CreateBookAsync)
-            .WithName("CreateBook");
+            .WithName("CreateBook")
+            .RequireAuthorization(p => p.RequireRole("Librarian"));
 
         group.MapPut("/{id:guid}", UpdateBookAsync)
-            .WithName("UpdateBook");
+            .WithName("UpdateBook")
+            .RequireAuthorization(p => p.RequireRole("Librarian"));
 
         group.MapDelete("/{id:guid}", DeleteBookAsync)
-            .WithName("DeleteBook");
+            .WithName("DeleteBook")
+            .RequireAuthorization(p => p.RequireRole("Librarian"));
 
         return group;
     }
