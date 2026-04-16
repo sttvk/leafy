@@ -1,5 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { GoogleOAuthProvider } from "@react-oauth/google"
+import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 import { CatalogPage } from "@/pages/CatalogPage"
+import { LoginPage } from "@/pages/LoginPage"
+import { RegisterPage } from "@/pages/RegisterPage"
+import { Button } from "@/components/ui/button"
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -10,12 +18,82 @@ const queryClient = new QueryClient({
   },
 })
 
-function App() {
+function NavHeader() {
+  const { isAuthenticated, isLoading, user, logout } = useAuth()
+
+  return (
+    <header className="border-b border-border bg-background">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link
+          to="/"
+          className="text-lg font-bold tracking-tight text-foreground"
+        >
+          Library
+        </Link>
+
+        {!isLoading && (
+          <nav className="flex items-center gap-2">
+            {isAuthenticated ? (
+              <>
+                <span className="text-sm text-muted-foreground">
+                  {user?.displayName}
+                </span>
+                <Button variant="ghost" size="sm" onClick={logout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/login">Sign in</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link to="/register">Sign up</Link>
+                </Button>
+              </>
+            )}
+          </nav>
+        )}
+      </div>
+    </header>
+  )
+}
+
+function AppRoutes() {
+  return (
+    <>
+      <NavHeader />
+      <Routes>
+        <Route path="/" element={<CatalogPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </>
+  )
+}
+
+function AppShell() {
   return (
     <QueryClientProvider client={queryClient}>
-      <CatalogPage />
+      <AuthProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </AuthProvider>
     </QueryClientProvider>
   )
+}
+
+function App() {
+  if (GOOGLE_CLIENT_ID) {
+    return (
+      <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+        <AppShell />
+      </GoogleOAuthProvider>
+    )
+  }
+
+  return <AppShell />
 }
 
 export default App

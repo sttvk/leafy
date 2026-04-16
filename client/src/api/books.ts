@@ -1,3 +1,5 @@
+import { apiClient } from "@/api/client"
+
 export interface BookListDto {
   id: string
   title: string
@@ -17,13 +19,8 @@ export interface PagedResult<T> {
 
 const ALL_BOOKS_PAGE_SIZE = 750
 
-export async function fetchBooks(): Promise<PagedResult<BookListDto>> {
-  const response = await fetch(`/api/books?page=1&pageSize=${ALL_BOOKS_PAGE_SIZE}`)
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch books: ${response.status} ${response.statusText}`)
-  }
-
-  const data: unknown = await response.json()
-  return data as PagedResult<BookListDto>
+export function fetchBooks(): Promise<PagedResult<BookListDto>> {
+  return apiClient.get<PagedResult<BookListDto>>(
+    `/api/books?page=1&pageSize=${ALL_BOOKS_PAGE_SIZE}`
+  )
 }
