@@ -6,7 +6,6 @@ import { checkoutBook } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
-import { BookFormModal } from "@/components/BookFormModal"
 import { BookDetailOverlay } from "@/components/BookDetailOverlay"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,9 +18,8 @@ import {
 } from "@/components/ui/select"
 
 function CatalogPage() {
-  const { isAuthenticated, isLibrarian } = useAuth()
+  const { isAuthenticated } = useAuth()
   const queryClient = useQueryClient()
-  const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
   const [authorSearch, setAuthorSearch] = useState("")
@@ -184,7 +182,6 @@ function CatalogPage() {
           <>
             <BookGrid
               books={filteredBooks}
-              onEditBook={isLibrarian ? setEditingBook : undefined}
               onSelectBook={setSelectedBook}
             />
             <div ref={sentinelRef} className="h-10" />
@@ -206,25 +203,7 @@ function CatalogPage() {
             ? () => handleBorrowBook(selectedBook)
             : undefined
         }
-        onEdit={
-          isLibrarian && selectedBook
-            ? () => setEditingBook(selectedBook)
-            : undefined
-        }
       />
-
-      {isLibrarian && (
-        <BookFormModal
-          open={editingBook != null}
-          onOpenChange={(nextOpen) => {
-            if (!nextOpen) {
-              setEditingBook(null)
-            }
-          }}
-          onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
-          book={editingBook}
-        />
-      )}
     </div>
   )
 }

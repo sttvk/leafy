@@ -1,18 +1,13 @@
-import { Pencil } from "lucide-react"
 import type { BookListDto } from "@/api/books"
-import { useAuth } from "@/contexts/AuthContext"
 
 interface BookCardProps {
   book: BookListDto
-  onEdit?: () => void
   onSelect?: () => void
 }
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
-function BookCard({ book, onEdit, onSelect }: BookCardProps) {
-  const { isLibrarian } = useAuth()
-
+function BookCard({ book, onSelect }: BookCardProps) {
   return (
     <div
       className="group relative cursor-pointer overflow-hidden rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
@@ -51,29 +46,6 @@ function BookCard({ book, onEdit, onSelect }: BookCardProps) {
           {book.author}
         </p>
       </div>
-
-      {/* Librarian edit overlay on hover */}
-      {isLibrarian && onEdit && (
-        <div
-          className="absolute inset-0 z-20 flex cursor-pointer items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100"
-          onClick={(e) => {
-            e.stopPropagation()
-            onEdit()
-          }}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.stopPropagation()
-              e.preventDefault()
-              onEdit()
-            }
-          }}
-          aria-label={`Edit ${book.title}`}
-        >
-          <Pencil className="h-8 w-8 text-white" />
-        </div>
-      )}
 
     </div>
   )
