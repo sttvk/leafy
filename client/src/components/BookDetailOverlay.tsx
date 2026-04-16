@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { Loader2, ShoppingCart } from "lucide-react"
+import { Link } from "react-router-dom"
 import { fetchBook, type BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
@@ -90,6 +91,11 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
               {/* Action buttons */}
               <div className="mt-auto flex flex-col gap-3 pt-2">
+                {!isAuthenticated && (
+                  <p className="text-center text-sm text-muted-foreground">
+                    <Link to="/login" className="font-medium text-primary hover:underline">Sign in</Link> to read this book
+                  </p>
+                )}
                 {isAuthenticated && onBorrow && (
                   <Button
                     size="lg"
