@@ -1,10 +1,11 @@
-import { useCallback, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { fetchBook } from "@/api/books"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
 import { Button } from "@/components/ui/button"
+import { generatePage, TOTAL_PAGES } from "@/lib/lorem"
 
 function ReaderPage() {
   const { bookId } = useParams<{ bookId: string }>()
@@ -35,6 +36,15 @@ function ReaderPage() {
     (c) =>
       c.bookId === bookId &&
       (c.status === "Active" || c.status === "Overdue")
+  )
+
+  const pages = useMemo(
+    () =>
+      Array.from({ length: TOTAL_PAGES }, (_, i) => ({
+        number: i + 1,
+        paragraphs: generatePage(i + 1).split("\n\n"),
+      })),
+    []
   )
 
   const isLoading = isCheckoutsLoading || isBookLoading
@@ -125,15 +135,30 @@ function ReaderPage() {
         }`}
       >
         <div className="prose prose-lg max-w-none font-serif text-foreground">
-          {book?.description != null && book.description !== "" ? (
-            <p className="whitespace-pre-line leading-relaxed">
-              {book.description}
-            </p>
-          ) : (
-            <p className="text-center text-muted-foreground">
-              No content available for this book.
-            </p>
+          {book?.description != null && book.description !== "" && (
+            <div className="mb-8 border-b border-border pb-8">
+              <p className="whitespace-pre-line leading-relaxed italic text-muted-foreground">
+                {book.description}
+              </p>
+            </div>
           )}
+
+          {pages.map((page) => (
+            <div key={page.number}>
+              <div className="my-8 flex items-center gap-4">
+                <hr className="flex-1 border-border" />
+                <span className="text-xs font-medium tracking-wide text-muted-foreground">
+                  Page {page.number}
+                </span>
+                <hr className="flex-1 border-border" />
+              </div>
+              {page.paragraphs.map((paragraph, idx) => (
+                <p key={idx} className="mb-4 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
