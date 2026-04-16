@@ -13,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { PageLayout } from "@/components/PageLayout"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
@@ -99,11 +98,11 @@ function AuthPage() {
     }
   }
 
+  const isDark = document.documentElement.classList.contains("dark")
   const isLoginTab = activeTab === "login"
 
   return (
-    <PageLayout>
-      <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center">
+    <div className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center px-4">
         <Card className="w-full max-w-md p-2">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">
@@ -244,14 +243,16 @@ function AuthPage() {
                   onError={() =>
                     setError("Google sign-in failed. Please try again.")
                   }
+                  theme={isDark ? "filled_black" : "outline"}
+                  size="large"
+                  width="400"
                 />
               </div>
             </>
           )}
         </CardContent>
         </Card>
-      </div>
-    </PageLayout>
+    </div>
   )
 }
 
