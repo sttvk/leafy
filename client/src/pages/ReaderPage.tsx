@@ -134,6 +134,26 @@ function ReaderPage() {
             {book.genre}
           </span>
         )}
+        {activeCheckout != null && !isReturned && (() => {
+          const days = Math.ceil(
+            (new Date(activeCheckout.dueAt).getTime() - Date.now()) /
+              (1000 * 60 * 60 * 24)
+          )
+          return (
+            <>
+              <span className="text-muted-foreground">|</span>
+              {days > 0 ? (
+                <span className="text-sm text-muted-foreground">
+                  {days} {days === 1 ? "day" : "days"} remaining
+                </span>
+              ) : (
+                <span className="text-sm font-medium text-destructive">
+                  Overdue
+                </span>
+              )}
+            </>
+          )
+        })()}
         {isReturned && (
           <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-950 dark:text-green-200">
             Returned
