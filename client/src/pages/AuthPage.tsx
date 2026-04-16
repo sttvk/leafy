@@ -22,7 +22,6 @@ function AuthPage() {
   const navigate = useNavigate()
   const { login, register, googleLogin } = useAuth()
 
-  const [displayName, setDisplayName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -47,7 +46,7 @@ function AuthPage() {
       }
 
       try {
-        await register(email, password, displayName)
+        await register(email, password, email.split("@")[0])
         navigate("/", { replace: true })
       } catch (registerError: unknown) {
         const registerMessage =
@@ -101,19 +100,6 @@ function AuthPage() {
                 {error}
               </div>
             )}
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="displayName">Display name</Label>
-              <Input
-                id="displayName"
-                type="text"
-                placeholder="Jane Doe"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                required
-                autoComplete="name"
-              />
-            </div>
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="email">Email</Label>
