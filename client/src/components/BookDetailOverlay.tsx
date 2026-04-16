@@ -93,7 +93,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
               <div className="mt-auto flex flex-col gap-3 pt-2">
                 {!isAuthenticated && (
                   <p className="text-center text-sm text-muted-foreground">
-                    <Link to="/login" className="font-medium text-primary hover:underline">Sign in</Link> to read this book
+                    <Link to="/login" className="font-medium text-primary hover:underline">Login</Link> to read this book
                   </p>
                 )}
                 {isAuthenticated && onBorrow && (

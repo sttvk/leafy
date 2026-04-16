@@ -40,7 +40,7 @@ function AuthPage() {
         loginError instanceof Error ? loginError.message : ""
 
       if (!LOGIN_FAILURE_PATTERN.test(loginMessage)) {
-        setError(loginMessage || "Sign in failed. Please try again.")
+        setError(loginMessage || "Login failed. Please try again.")
         setIsSubmitting(false)
         return
       }
@@ -89,7 +89,7 @@ function AuthPage() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Sign in</CardTitle>
+          <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>Enter your credentials to continue</CardDescription>
         </CardHeader>
 

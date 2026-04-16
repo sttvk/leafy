@@ -48,7 +48,7 @@ function NavHeader() {
               </>
             ) : (
               <Button variant="ghost" size="sm" asChild>
-                <Link to="/login">Sign in</Link>
+                <Link to="/login">Login</Link>
               </Button>
             )}
           </nav>
