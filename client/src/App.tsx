@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
+import { LogIn, Sun, Moon } from "lucide-react"
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
@@ -20,6 +22,19 @@ const queryClient = new QueryClient({
 
 function NavHeader() {
   const { isAuthenticated, isLoading, user, logout } = useAuth()
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem("lms_theme") === "dark"
+  })
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem("lms_theme", "dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+      localStorage.setItem("lms_theme", "light")
+    }
+  }, [isDark])
 
   return (
     <header className="sticky top-0 z-40 bg-background">
@@ -33,6 +48,14 @@ function NavHeader() {
 
         {!isLoading && (
           <nav className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsDark((prev) => !prev)}
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
             {isAuthenticated ? (
               <>
                 <CartDropdown />
@@ -48,7 +71,9 @@ function NavHeader() {
               </>
             ) : (
               <Button variant="ghost" size="sm" asChild>
-                <Link to="/login">Login</Link>
+                <Link to="/login" aria-label="Login">
+                  <LogIn className="h-5 w-5" />
+                </Link>
               </Button>
             )}
           </nav>
