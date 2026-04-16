@@ -1,17 +1,18 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useMemo, useState } from "react"
 import { Plus } from "lucide-react"
-import { fetchBooks } from "@/api/books"
+import { fetchBooks, type BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
-import { AddBookModal } from "@/components/AddBookModal"
+import { BookFormModal } from "@/components/BookFormModal"
 import { Button } from "@/components/ui/button"
 
 function CatalogPage() {
   const { isLibrarian } = useAuth()
   const queryClient = useQueryClient()
   const [isAddBookOpen, setIsAddBookOpen] = useState(false)
+  const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["books"],
     queryFn: fetchBooks,
@@ -64,15 +65,32 @@ function CatalogPage() {
           </div>
         )}
 
-        {!isLoading && !isError && <BookGrid books={booksWithCovers} />}
+        {!isLoading && !isError && (
+          <BookGrid
+            books={booksWithCovers}
+            onEditBook={isLibrarian ? setEditingBook : undefined}
+          />
+        )}
       </main>
 
       {isLibrarian && (
-        <AddBookModal
-          open={isAddBookOpen}
-          onOpenChange={setIsAddBookOpen}
-          onBookAdded={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
-        />
+        <>
+          <BookFormModal
+            open={isAddBookOpen}
+            onOpenChange={setIsAddBookOpen}
+            onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
+          />
+          <BookFormModal
+            open={editingBook != null}
+            onOpenChange={(nextOpen) => {
+              if (!nextOpen) {
+                setEditingBook(null)
+              }
+            }}
+            onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
+            book={editingBook}
+          />
+        </>
       )}
     </div>
   )

@@ -10,6 +10,20 @@ export interface BookListDto {
   coverImageUrl: string | null
 }
 
+export interface BookDetailDto {
+  id: string
+  title: string
+  author: string
+  isbn: string | null
+  publicationYear: number | null
+  genre: string | null
+  description: string | null
+  coverImageUrl: string | null
+  totalCopies: number
+  availableCopies: number
+  addedAt: string
+}
+
 export interface CreateBookRequest {
   title: string
   author: string
@@ -20,6 +34,8 @@ export interface CreateBookRequest {
   coverImageUrl?: string
   totalCopies: number
 }
+
+export type UpdateBookRequest = CreateBookRequest
 
 export interface PagedResult<T> {
   items: T[]
@@ -36,6 +52,14 @@ export function fetchBooks(): Promise<PagedResult<BookListDto>> {
   )
 }
 
-export function createBook(data: CreateBookRequest): Promise<BookListDto> {
-  return apiClient.post<BookListDto>("/api/books", data)
+export function fetchBook(id: string): Promise<BookDetailDto> {
+  return apiClient.get<BookDetailDto>(`/api/books/${id}`)
+}
+
+export function createBook(data: CreateBookRequest): Promise<BookDetailDto> {
+  return apiClient.post<BookDetailDto>("/api/books", data)
+}
+
+export function updateBook(id: string, data: UpdateBookRequest): Promise<BookDetailDto> {
+  return apiClient.put<BookDetailDto>(`/api/books/${id}`, data)
 }
