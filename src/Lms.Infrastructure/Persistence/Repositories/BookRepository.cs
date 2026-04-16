@@ -19,6 +19,18 @@ internal sealed class BookRepository : IBookRepository
     public async Task<IReadOnlyList<Book>> ListAsync(CancellationToken ct)
         => await _db.Books.AsNoTracking().OrderBy(b => b.Title).ToListAsync(ct);
 
+    public async Task<(IReadOnlyList<Book> Items, int TotalCount)> ListAsync(
+        int page, int pageSize, CancellationToken ct)
+    {
+        var query = _db.Books.AsNoTracking().OrderBy(b => b.Title);
+        var totalCount = await query.CountAsync(ct);
+        var items = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(ct);
+        return (items, totalCount);
+    }
+
     public async Task AddAsync(Book book, CancellationToken ct)
     {
         _db.Books.Add(book);
