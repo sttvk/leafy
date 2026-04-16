@@ -201,8 +201,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    width: 1.75rem;
+    height: 1.75rem;
     border-radius: 0.25rem;
     transition: background-color 0.15s;
   }

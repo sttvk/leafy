@@ -74,7 +74,7 @@ function NavHeader() {
               onClick={() => setIsDark((prev) => !prev)}
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun fill="currentColor" className="h-5 w-5 text-amber-500" /> : <Moon fill="currentColor" className="h-5 w-5 text-[#c5bcac]" />}
+              {isDark ? <Sun fill="currentColor" className="h-5 w-5 text-amber-500" /> : <Moon fill="currentColor" className="h-5 w-5 text-[#dbd0ba]" />}
             </button>
             {isAuthenticated ? (
               <>
