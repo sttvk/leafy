@@ -7,6 +7,7 @@ import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
 import { BookDetailOverlay } from "@/components/BookDetailOverlay"
 import { BookFormModal } from "@/components/BookFormModal"
+import { PageLayout } from "@/components/PageLayout"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -111,9 +112,9 @@ function CatalogPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-8">
+      <PageLayout>
         {!isLoading && !isError && (
-          <div className="mt-0 flex flex-nowrap items-center gap-3">
+          <div className="flex flex-nowrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="All Genres" />
@@ -143,9 +144,7 @@ function CatalogPage() {
             )}
           </div>
         )}
-      </div>
 
-      <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         {isLoading && <BookGridSkeleton />}
 
         {isError && (
@@ -172,7 +171,7 @@ function CatalogPage() {
             {isFetchingNextPage && <BookGridSkeleton count={6} />}
           </>
         )}
-      </main>
+      </PageLayout>
 
       <BookDetailOverlay
         book={selectedBook}

@@ -5,6 +5,7 @@ import { fetchBook } from "@/api/books"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
 import { Button } from "@/components/ui/button"
+import { PageLayout } from "@/components/PageLayout"
 import { generatePage, TOTAL_PAGES } from "@/lib/lorem"
 
 function ReaderPage() {
@@ -80,19 +81,19 @@ function ReaderPage() {
 
   if (isLoading) {
     return (
-      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <PageLayout className="py-12">
         <div className="animate-pulse space-y-4">
           <div className="h-8 w-1/3 rounded bg-muted" />
           <div className="h-4 w-1/4 rounded bg-muted" />
           <div className="mt-8 h-96 rounded-lg bg-muted" />
         </div>
-      </main>
+      </PageLayout>
     )
   }
 
   if (isError) {
     return (
-      <main className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <PageLayout className="py-24 text-center">
         <p className="text-lg font-medium text-foreground">
           Something went wrong
         </p>
@@ -102,13 +103,13 @@ function ReaderPage() {
         <Button asChild className="mt-6">
           <Link to="/">Back to catalog</Link>
         </Button>
-      </main>
+      </PageLayout>
     )
   }
 
   if (activeCheckout == null && !isReturned) {
     return (
-      <main className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <PageLayout className="py-24 text-center">
         <p className="text-lg font-medium text-foreground">
           You don&apos;t have access to this book
         </p>
@@ -118,12 +119,12 @@ function ReaderPage() {
         <Button asChild className="mt-6">
           <Link to="/">Back to catalog</Link>
         </Button>
-      </main>
+      </PageLayout>
     )
   }
 
   return (
-    <main className="mx-auto flex h-[calc(100vh-4rem)] max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
+    <PageLayout className="flex h-[calc(100vh-4rem)] flex-col py-0">
       <section className="flex shrink-0 items-center gap-3 border-b border-border py-3">
         <h1 className="text-lg font-bold tracking-tight text-foreground">
           {book?.title}
@@ -225,7 +226,7 @@ function ReaderPage() {
           Next
         </Button>
       </nav>
-    </main>
+    </PageLayout>
   )
 }
 

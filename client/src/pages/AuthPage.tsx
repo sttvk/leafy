@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { PageLayout } from "@/components/PageLayout"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
@@ -86,7 +87,7 @@ function AuthPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
+    <PageLayout className="flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Login</CardTitle>
@@ -156,7 +157,7 @@ function AuthPage() {
           )}
         </CardContent>
       </Card>
-    </div>
+    </PageLayout>
   )
 }
 
