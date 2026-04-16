@@ -86,6 +86,7 @@ function CatalogPage() {
       try {
         await checkoutBook(book.id)
         await queryClient.invalidateQueries({ queryKey: ["books"] })
+        await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
       } catch (error: unknown) {
         const message =
           error instanceof Error

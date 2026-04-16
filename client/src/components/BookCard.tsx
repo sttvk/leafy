@@ -1,7 +1,6 @@
-import { Pencil } from "lucide-react"
+import { Pencil, ShoppingCart } from "lucide-react"
 import type { BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface BookCardProps {
@@ -33,6 +32,16 @@ function BookCard({ book, onEdit, onBorrow }: BookCardProps) {
             <Pencil className="h-8 w-8 text-white" />
           </div>
         )}
+        {isAuthenticated && onBorrow && isAvailable && (
+          <button
+            type="button"
+            onClick={onBorrow}
+            className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md transition-transform hover:scale-110"
+            aria-label={`Borrow ${book.title}`}
+          >
+            <ShoppingCart className="h-4 w-4" />
+          </button>
+        )}
       </div>
       <div className="flex flex-col gap-1.5 p-3">
         <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-foreground">
@@ -61,19 +70,6 @@ function BookCard({ book, onEdit, onBorrow }: BookCardProps) {
             </span>
           </div>
         </div>
-        {isAuthenticated && onBorrow && (
-          <div className="mt-2">
-            {isAvailable ? (
-              <Button size="sm" className="w-full" onClick={onBorrow}>
-                Borrow
-              </Button>
-            ) : (
-              <p className="text-center text-xs text-muted-foreground">
-                Unavailable
-              </p>
-            )}
-          </div>
-        )}
       </div>
     </div>
   )

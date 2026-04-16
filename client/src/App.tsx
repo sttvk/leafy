@@ -2,10 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
-import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { CatalogPage } from "@/pages/CatalogPage"
-import { MyLoansPage } from "@/pages/MyLoansPage"
 import { AuthPage } from "@/pages/AuthPage"
+import { CartDropdown } from "@/components/CartDropdown"
 import { Button } from "@/components/ui/button"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
@@ -36,9 +35,7 @@ function NavHeader() {
           <nav className="flex items-center gap-2">
             {isAuthenticated ? (
               <>
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/my-loans">My Loans</Link>
-                </Button>
+                <CartDropdown />
                 <span className="text-sm text-muted-foreground">
                   {user?.displayName}
                 </span>
@@ -67,14 +64,6 @@ function AppRoutes() {
       <NavHeader />
       <Routes>
         <Route path="/" element={<CatalogPage />} />
-        <Route
-          path="/my-loans"
-          element={
-            <ProtectedRoute>
-              <MyLoansPage />
-            </ProtectedRoute>
-          }
-        />
         <Route path="/login" element={<AuthPage />} />
       </Routes>
     </>
