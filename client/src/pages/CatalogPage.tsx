@@ -162,14 +162,14 @@ function CatalogPage() {
         )}
 
         {!isLoading && !isError && (
-          <>
+          <div className="mt-2">
             <BookGrid
               books={filteredBooks}
               onSelectBook={setSelectedBook}
             />
             <div ref={sentinelRef} className="h-10" />
             {isFetchingNextPage && <BookGridSkeleton count={6} />}
-          </>
+          </div>
         )}
       </PageLayout>
 
