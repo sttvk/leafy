@@ -22,7 +22,7 @@ function NavHeader() {
   const { isAuthenticated, isLoading, user, logout } = useAuth()
 
   return (
-    <header className="bg-background">
+    <header className="sticky top-0 z-40 bg-background">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
