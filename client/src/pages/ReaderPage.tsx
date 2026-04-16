@@ -125,7 +125,7 @@ function ReaderPage() {
 
   return (
     <PageLayout className="flex h-[calc(100vh-4rem)] flex-col py-0">
-      <section className="flex shrink-0 items-center gap-3 border-b border-border py-3">
+      <section className="flex shrink-0 items-center gap-3 py-3">
         <h1 className="text-lg font-bold tracking-tight text-foreground">
           {book?.title}
         </h1>
@@ -205,7 +205,7 @@ function ReaderPage() {
         </div>
       </section>
 
-      <nav className="flex shrink-0 items-center justify-between border-t border-border py-3">
+      <nav className="flex shrink-0 items-center justify-between py-3">
         <Button
           variant="outline"
           size="sm"
