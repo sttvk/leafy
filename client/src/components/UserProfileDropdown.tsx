@@ -29,14 +29,14 @@ function UserProfileDropdown() {
 
   return (
     <div ref={containerRef} className="relative">
-      <Button
-        variant="ghost"
-        size="sm"
+      <button
+        type="button"
+        className="icon-btn"
         aria-label="User menu"
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <User className="h-5 w-5" />
-      </Button>
+      </button>
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 z-50 w-64 rounded-md border bg-popover p-4 shadow-md">
           <div className="flex flex-col gap-2">

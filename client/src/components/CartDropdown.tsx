@@ -53,10 +53,10 @@ function CartDropdown() {
       <Popover.Trigger asChild>
         <button
           type="button"
-          className="relative inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+          className="icon-btn relative"
           aria-label="Open cart"
         >
-          <ShoppingCart className="h-4 w-4" />
+          <ShoppingCart fill="currentColor" className="h-5 w-5" />
           {itemCount > 0 && (
             <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">
               {itemCount}

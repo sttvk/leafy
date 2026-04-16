@@ -12,7 +12,7 @@ import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { CartDropdown } from "@/components/CartDropdown"
 import { UserProfileDropdown } from "@/components/UserProfileDropdown"
 import { BookFormModal } from "@/components/BookFormModal"
-import { Button } from "@/components/ui/button"
+
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
@@ -57,36 +57,34 @@ function NavHeader() {
           <nav className="flex items-center gap-2">
             {isLibrarian && (
               <>
-                <Button
-                  variant="ghost"
-                  size="sm"
+                <button
+                  type="button"
+                  className="icon-btn"
                   onClick={() => setIsAddBookOpen(true)}
                   aria-label="Add book"
                 >
                   <Plus className="h-5 w-5" />
-                </Button>
+                </button>
                 <span className="text-border">|</span>
               </>
             )}
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
+              type="button"
+              className="icon-btn"
               onClick={() => setIsDark((prev) => !prev)}
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+              {isDark ? <Sun fill="currentColor" className="h-5 w-5 text-amber-500" /> : <Moon fill="currentColor" className="h-5 w-5 text-[#c5bcac]" />}
+            </button>
             {isAuthenticated ? (
               <>
                 <CartDropdown />
                 <UserProfileDropdown />
               </>
             ) : (
-              <Button variant="ghost" size="sm" asChild>
-                <Link to="/login" aria-label="Login">
-                  <LogIn className="h-5 w-5" />
-                </Link>
-              </Button>
+              <Link to="/login" aria-label="Login" className="icon-btn">
+                <LogIn className="h-5 w-5" />
+              </Link>
             )}
           </nav>
         )}

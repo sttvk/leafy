@@ -196,6 +196,19 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s;
+  }
+  .icon-btn:hover {
+    background-color: var(--accent);
+  }
 }
 
 /* Book detail overlay flip-in entrance animation */
