@@ -1,7 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { useMemo, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { Plus, X } from "lucide-react"
 import { fetchBooks, type BookListDto } from "@/api/books"
+import { checkoutBook } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
@@ -17,7 +18,7 @@ import {
 } from "@/components/ui/select"
 
 function CatalogPage() {
-  const { isLibrarian } = useAuth()
+  const { isAuthenticated, isLibrarian } = useAuth()
   const queryClient = useQueryClient()
   const [isAddBookOpen, setIsAddBookOpen] = useState(false)
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
@@ -79,6 +80,22 @@ function CatalogPage() {
     setAvailabilityFilter("all")
     setAuthorSearch("")
   }
+
+  const handleBorrowBook = useCallback(
+    async (book: BookListDto) => {
+      try {
+        await checkoutBook(book.id)
+        await queryClient.invalidateQueries({ queryKey: ["books"] })
+      } catch (error: unknown) {
+        const message =
+          error instanceof Error
+            ? error.message
+            : "Failed to borrow book. Please try again."
+        window.alert(message)
+      }
+    },
+    [queryClient]
+  )
 
   const bookCountText = hasActiveFilters
     ? `${filteredBooks.length} of ${allBooks.length} books`
@@ -174,6 +191,7 @@ function CatalogPage() {
           <BookGrid
             books={filteredBooks}
             onEditBook={isLibrarian ? setEditingBook : undefined}
+            onBorrowBook={isAuthenticated ? handleBorrowBook : undefined}
           />
         )}
       </main>

@@ -4,9 +4,10 @@ import { BookCard } from "@/components/BookCard"
 interface BookGridProps {
   books: readonly BookListDto[]
   onEditBook?: (book: BookListDto) => void
+  onBorrowBook?: (book: BookListDto) => void
 }
 
-function BookGrid({ books, onEditBook }: BookGridProps) {
+function BookGrid({ books, onEditBook, onBorrowBook }: BookGridProps) {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6">
       {books.map((book) => (
@@ -14,6 +15,7 @@ function BookGrid({ books, onEditBook }: BookGridProps) {
           key={book.id}
           book={book}
           onEdit={onEditBook ? () => onEditBook(book) : undefined}
+          onBorrow={onBorrowBook ? () => onBorrowBook(book) : undefined}
         />
       ))}
     </div>

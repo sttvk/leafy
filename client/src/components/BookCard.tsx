@@ -1,17 +1,19 @@
 import { Pencil } from "lucide-react"
 import type { BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface BookCardProps {
   book: BookListDto
   onEdit?: () => void
+  onBorrow?: () => void
 }
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
-function BookCard({ book, onEdit }: BookCardProps) {
-  const { isLibrarian } = useAuth()
+function BookCard({ book, onEdit, onBorrow }: BookCardProps) {
+  const { isAuthenticated, isLibrarian } = useAuth()
   const isAvailable = book.availableCopies > 0
 
   return (
@@ -59,6 +61,19 @@ function BookCard({ book, onEdit }: BookCardProps) {
             </span>
           </div>
         </div>
+        {isAuthenticated && onBorrow && (
+          <div className="mt-2">
+            {isAvailable ? (
+              <Button size="sm" className="w-full" onClick={onBorrow}>
+                Borrow
+              </Button>
+            ) : (
+              <p className="text-center text-xs text-muted-foreground">
+                Unavailable
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
