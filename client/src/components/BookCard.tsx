@@ -7,70 +7,100 @@ interface BookCardProps {
   book: BookListDto
   onEdit?: () => void
   onBorrow?: () => void
+  onSelect?: () => void
 }
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
-function BookCard({ book, onEdit, onBorrow }: BookCardProps) {
+function BookCard({ book, onEdit, onBorrow, onSelect }: BookCardProps) {
   const { isAuthenticated, isLibrarian } = useAuth()
   const isAvailable = book.availableCopies > 0
 
   return (
-    <div className="group overflow-hidden rounded-lg bg-card shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02]">
-      <div className="relative aspect-[2/3] overflow-hidden">
-        <img
-          src={book.coverImageUrl ?? PLACEHOLDER_COVER}
-          alt={`Cover of ${book.title}`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
-        />
-        {isLibrarian && onEdit && (
-          <div
-            className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100"
-            onClick={onEdit}
-          >
-            <Pencil className="h-8 w-8 text-white" />
-          </div>
+    <div
+      className="group relative cursor-pointer overflow-hidden rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+      style={{ aspectRatio: "2/3" }}
+      onClick={onSelect}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          onSelect?.()
+        }
+      }}
+      aria-label={`View details for ${book.title}`}
+    >
+      <img
+        src={book.coverImageUrl ?? PLACEHOLDER_COVER}
+        alt={`Cover of ${book.title}`}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+      />
+
+      {/* Genre badge — top left */}
+      {book.genre && (
+        <span className="absolute left-2 top-2 z-10 rounded-full bg-black/50 px-2 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
+          {book.genre}
+        </span>
+      )}
+
+      {/* Availability dot — top right */}
+      <span
+        className={cn(
+          "absolute right-2 top-2 z-10 inline-block h-2.5 w-2.5 rounded-full ring-2 ring-black/20",
+          isAvailable ? "bg-green-500" : "bg-red-500"
         )}
-        {isAuthenticated && onBorrow && isAvailable && (
-          <button
-            type="button"
-            onClick={onBorrow}
-            className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md transition-transform hover:scale-110"
-            aria-label={`Borrow ${book.title}`}
-          >
-            <ShoppingCart className="h-4 w-4" />
-          </button>
-        )}
-      </div>
-      <div className="flex flex-col gap-1.5 p-3">
-        <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-foreground">
+        aria-label={isAvailable ? "Available" : "Unavailable"}
+      />
+
+      {/* Bottom gradient overlay with title and author */}
+      <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-3 pb-3 pt-10">
+        <h3 className="line-clamp-2 text-sm font-semibold leading-tight text-white">
           {book.title}
         </h3>
-        <p className="line-clamp-1 text-xs text-muted-foreground">
+        <p className="mt-0.5 line-clamp-1 text-xs text-white/70">
           {book.author}
         </p>
-        <div className="mt-1 flex items-center justify-between">
-          {book.genre ? (
-            <span className="inline-block rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-              {book.genre}
-            </span>
-          ) : (
-            <span />
-          )}
-          <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-            <span
-              className={cn(
-                "inline-block h-2 w-2 rounded-full",
-                isAvailable ? "bg-green-500" : "bg-red-500"
-              )}
-            />
-            <span>
-              {book.availableCopies} of {book.totalCopies}
-            </span>
-          </div>
-        </div>
       </div>
+
+      {/* Librarian edit overlay on hover */}
+      {isLibrarian && onEdit && (
+        <div
+          className="absolute inset-0 z-20 flex cursor-pointer items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100"
+          onClick={(e) => {
+            e.stopPropagation()
+            onEdit()
+          }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.stopPropagation()
+              e.preventDefault()
+              onEdit()
+            }
+          }}
+          aria-label={`Edit ${book.title}`}
+        >
+          <Pencil className="h-8 w-8 text-white" />
+        </div>
+      )}
+
+      {/* Borrow cart button — bottom right */}
+      {isAuthenticated && onBorrow && isAvailable && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            onBorrow()
+          }}
+          className="absolute bottom-2 right-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md transition-transform hover:scale-110"
+          aria-label={`Borrow ${book.title}`}
+        >
+          <ShoppingCart className="h-4 w-4" />
+        </button>
+      )}
     </div>
   )
 }

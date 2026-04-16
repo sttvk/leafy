@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
 import { BookGridSkeleton } from "@/components/BookCardSkeleton"
 import { BookFormModal } from "@/components/BookFormModal"
+import { BookDetailOverlay } from "@/components/BookDetailOverlay"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -22,6 +23,7 @@ function CatalogPage() {
   const queryClient = useQueryClient()
   const [isAddBookOpen, setIsAddBookOpen] = useState(false)
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
+  const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
   const [availabilityFilter, setAvailabilityFilter] = useState<string>("all")
   const [authorSearch, setAuthorSearch] = useState("")
@@ -193,9 +195,30 @@ function CatalogPage() {
             books={filteredBooks}
             onEditBook={isLibrarian ? setEditingBook : undefined}
             onBorrowBook={isAuthenticated ? handleBorrowBook : undefined}
+            onSelectBook={setSelectedBook}
           />
         )}
       </main>
+
+      <BookDetailOverlay
+        book={selectedBook}
+        open={selectedBook != null}
+        onOpenChange={(nextOpen) => {
+          if (!nextOpen) {
+            setSelectedBook(null)
+          }
+        }}
+        onBorrow={
+          isAuthenticated && selectedBook
+            ? () => handleBorrowBook(selectedBook)
+            : undefined
+        }
+        onEdit={
+          isLibrarian && selectedBook
+            ? () => setEditingBook(selectedBook)
+            : undefined
+        }
+      />
 
       {isLibrarian && (
         <>

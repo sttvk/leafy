@@ -179,3 +179,23 @@
     letter-spacing: var(--tracking-normal);
   }
 }
+
+/* Book detail overlay flip-in entrance animation */
+@keyframes book-detail-flip-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) perspective(800px) rotateY(90deg) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) perspective(800px) rotateY(-10deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) perspective(800px) rotateY(0deg) scale(1);
+  }
+}
+
+.book-detail-flip-in[data-state="open"] {
+  animation: book-detail-flip-in 0.4s ease-out;
+}
