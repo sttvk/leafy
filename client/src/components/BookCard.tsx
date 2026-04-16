@@ -1,7 +1,6 @@
 import { Pencil } from "lucide-react"
 import type { BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
-import { cn } from "@/lib/utils"
 
 interface BookCardProps {
   book: BookListDto
@@ -13,7 +12,6 @@ const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 
 function BookCard({ book, onEdit, onSelect }: BookCardProps) {
   const { isLibrarian } = useAuth()
-  const isAvailable = book.availableCopies > 0
 
   return (
     <div
@@ -43,15 +41,6 @@ function BookCard({ book, onEdit, onSelect }: BookCardProps) {
           {book.genre}
         </span>
       )}
-
-      {/* Availability dot — top right */}
-      <span
-        className={cn(
-          "absolute right-2 top-2 z-10 inline-block h-2.5 w-2.5 rounded-full ring-2 ring-black/20",
-          isAvailable ? "bg-green-500" : "bg-red-500"
-        )}
-        aria-label={isAvailable ? "Available" : "Unavailable"}
-      />
 
       {/* Bottom gradient overlay with title and author */}
       <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-3 pb-3 pt-10">
