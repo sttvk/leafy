@@ -112,7 +112,7 @@ function CatalogPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PageLayout>
+      <PageLayout className="space-y-3">
         {!isLoading && !isError && (
           <div className="flex flex-nowrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
@@ -162,7 +162,7 @@ function CatalogPage() {
         )}
 
         {!isLoading && !isError && (
-          <div className="mt-2">
+          <div>
             <BookGrid
               books={filteredBooks}
               onSelectBook={setSelectedBook}
