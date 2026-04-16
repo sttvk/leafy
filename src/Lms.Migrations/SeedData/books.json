@@ -1,0 +1,6752 @@
+[
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1813,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14348537-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1865,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10527843-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Christmas Carol",
+    "author": "Charles Dickens, Groth, Nancy Baker",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1843,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12875748-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1890,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14314858-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1846,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12818862-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1876,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8157718-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Robinson Crusoe",
+    "author": "Daniel Defoe, J. J. Grandville, Petrus Borel, Les éditions du Rey, N. C. Wyeth",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1686,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/368541-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Scarlet Letter",
+    "author": "Nathaniel Hawthorne",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5654516-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hamlet",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1603,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8281954-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Emma",
+    "author": "Jane Austen",
+    "isbn": "9781905716890",
+    "genre": "fiction",
+    "publicationYear": 1815,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9278312-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Oliver Twist",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1822,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13300802-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Frankenstein or The Modern Prometheus",
+    "author": "Mary Shelley",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1818,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12356249-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1811,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9278292-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Tale of Two Cities",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13301713-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/552443-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Treasure Island",
+    "author": "Robert Louis Stevenson",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1880,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13859660-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1848,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8775559-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Macbeth",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1508,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/872432-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Gulliver's Travels",
+    "author": "Jonathan Swift",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1726,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12717083-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Call of the Wild",
+    "author": "Jack London",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1903,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12393037-M.jpg",
+    "description": null
+  },
+  {
+    "title": "King Lear",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1608,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7420452-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12622062-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Don Quijote de la Mancha",
+    "author": "Miguel de Cervantes Saavedra",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1600,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14428305-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Madame Bovary",
+    "author": "Gustave Flaubert",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1856,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12993424-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Art of War",
+    "author": "孙武, Stephen F. Kaufman, Lionel Giles, Onésimo Colavidas",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4849549-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Midsummer Night's Dream",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1600,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7205924-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1861,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13322313-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Study in Scarlet",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1887,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13405534-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Prince",
+    "author": "Niccolò Machiavelli",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1515,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12726168-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Through the Looking-Glass",
+    "author": "Lewis Carroll",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1865,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11272464-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13335427-M.jpg",
+    "description": null
+  },
+  {
+    "title": "La Divina Commedia",
+    "author": "Dante Alighieri",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1472,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11621024-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Анна Каренина",
+    "author": "Лев Толстой",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1876,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2560652-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Hound of the Baskervilles",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8063264-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Anne of Green Gables",
+    "author": "Lucy Maud Montgomery",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14641084-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1789,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12824691-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Julius Caesar",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1656,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7901303-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Преступление и наказание",
+    "author": "Фёдор Михайлович Достоевский",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1866,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9411873-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10590366-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "isbn": "9781484160916",
+    "genre": "fiction",
+    "publicationYear": 1847,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8235363-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Time Machine",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1895,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9009316-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Walden",
+    "author": "Henry David Thoreau",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1854,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11248037-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Three Men in a Boat (to say nothing of the dog)",
+    "author": "Jerome Klapka Jérôme",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243006-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Adventures of Sherlock Holmes [12 stories]",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1892,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6717853-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1851,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10544254-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Moll Flanders",
+    "author": "Daniel Defoe",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1722,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12997559-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mansfield Park",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1814,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14618737-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Man Who Was Thursday",
+    "author": "Gilbert Keith Chesterton",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242857-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Les Trois Mousquetaires",
+    "author": "Alexandre Dumas, Auguste Maquet",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1844,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11929973-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mysterious Affair at Styles",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13699667-M.jpg",
+    "description": null
+  },
+  {
+    "title": "King Solomon's Mines",
+    "author": "H. Rider Haggard",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1880,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8665393-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ἰλιάς",
+    "author": "Όμηρος",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1505,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7083790-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Candide",
+    "author": "Voltaire",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1746,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12736044-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ὀδύσσεια",
+    "author": "Όμηρος",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1488,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9045853-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hard Times",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1854,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8236916-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Legend of Sleepy Hollow",
+    "author": "Washington Irving",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1820,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243083-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Northanger Abbey",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1818,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12567961-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ethan Frome",
+    "author": "Edith Wharton",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8303480-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dubliners",
+    "author": "James Joyce",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8216412-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Captains Courageous",
+    "author": "Rudyard Kipling",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1896,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12819857-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Railway Children",
+    "author": "Edith Nesbit",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13241123-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Romeo and Juliet",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1597,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8257991-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Moonstone",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8237041-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Sign of Four",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9247987-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Metamorphosis",
+    "author": "Franz Kafka",
+    "isbn": "9782080705105",
+    "genre": "fiction",
+    "publicationYear": 1915,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12820198-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Five Children and It",
+    "author": "Edith Nesbit",
+    "isbn": "7533923405",
+    "genre": "fiction",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/28174-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Antony and Cleopatra",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1734,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8222096-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Kim",
+    "author": "Rudyard Kipling",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1901,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1053011-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Thirty-Nine Steps",
+    "author": "John Buchan",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1915,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/93020-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Adventures of Tom Sawyer",
+    "author": "Mark Twain",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1817,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12043351-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Last of the Mohicans",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1826,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8236937-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Innocence of Father Brown (Father Brown Mystery)",
+    "author": "Gilbert Keith Chesterton",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1583,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/94081-M.jpg",
+    "description": null
+  },
+  {
+    "title": "David Copperfield",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1048892-M.jpg",
+    "description": null
+  },
+  {
+    "title": "King Richard II",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1597,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9069548-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Записки изъ подполья",
+    "author": "Фёдор Михайлович Достоевский",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1864,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10445973-M.jpg",
+    "description": null
+  },
+  {
+    "title": "My Ántonia",
+    "author": "Willa Cather",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1818,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8369013-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Old Curiosity Shop",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13119794-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Anne's House of Dreams",
+    "author": "Lucy Maud Montgomery",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1917,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14640440-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Merchant of Venice",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1600,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7182819-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Anne of Avonlea",
+    "author": "Lucy Maud Montgomery",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1909,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14638062-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Othello",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1622,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7165018-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Tempest",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1611,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8155661-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Secret Adversary",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14590159-M.jpg",
+    "description": null
+  },
+  {
+    "title": "πολιτεία",
+    "author": "Πλάτων",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1554,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14418448-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Connecticut Yankee in King Arthur's Court",
+    "author": "Mark Twain",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9168732-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Der Proceß",
+    "author": "Franz Kafka",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1825,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/997423-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Anne of the Island",
+    "author": "Lucy Maud Montgomery",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1915,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14639028-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Coriolanus",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1734,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8222112-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Cricket on the Hearth",
+    "author": "Charles Dickens",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1846,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9284868-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Portrait of the Artist as a Young Man",
+    "author": "James Joyce, James Joyce, james joyce, J Joyce",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1818,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9328410-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mill on the Floss",
+    "author": "George Eliot, Rosalyn Landor, Sue Saunders, Julius Frese",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8236884-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Richard III",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1597,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9020720-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Troilus and Cressida",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1609,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8789523-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Valley of Fear",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8350377-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Leaves of Grass",
+    "author": "Walt Whitman",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1855,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9000447-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Prince and the Pauper",
+    "author": "Mark Twain",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1881,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8221267-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Henry IV, Part 1",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1598,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/116833-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Princess and the Goblin",
+    "author": "George MacDonald",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1872,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14363454-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tess of the d'Urbervilles",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1707,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13109386-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lost World",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231444-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1897,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12216503-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le Comte de Monte Cristo",
+    "author": "Alexandre Dumas",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1830,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14566393-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Marvelous Land of Oz",
+    "author": "L. Frank Baum",
+    "isbn": "066578970X",
+    "genre": "fiction",
+    "publicationYear": 1904,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648656-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Canterbury Tales",
+    "author": "Geoffrey Chaucer, John E. Cunningham, Peter Ackroyd, Ted Stearn, V. A. Kolve, Glending Olson",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1478,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5767180-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1932,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231823-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Comedy of Errors",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1734,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5561040-M.jpg",
+    "description": null
+  },
+  {
+    "title": "All's Well That Ends Well",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1734,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7338455-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Riders of the Purple Sage",
+    "author": "Zane Grey",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1912,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/872066-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Book of Dragons",
+    "author": "Edith Nesbit",
+    "isbn": "044040696X",
+    "genre": "fiction",
+    "publicationYear": 1973,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4342323-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Decamerone",
+    "author": "Giovanni Boccaccio",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1516,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6073528-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The House of Mirth",
+    "author": "Edith Wharton",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9329539-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Room with a View",
+    "author": "E. M. Forster",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1748132-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Uncle Tom's Cabin",
+    "author": "Harriet Beecher Stowe",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1850,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12728198-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le petit prince",
+    "author": "Antoine de Saint-Exupéry",
+    "isbn": "9781512353877",
+    "genre": "fiction",
+    "publicationYear": 1943,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10708272-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Pilgrim's Progress",
+    "author": "John Bunyan",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1678,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8229224-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Autobiography of Benjamin Franklin",
+    "author": "Benjamin Franklin",
+    "isbn": "9781596254497",
+    "genre": "fiction",
+    "publicationYear": 1791,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5647361-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mayor of Casterbridge",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1260617-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Jungle",
+    "author": "Upton Sinclair",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1707,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231790-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Rainbow Valley",
+    "author": "Lucy Maud Montgomery",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14641168-M.jpg",
+    "description": null
+  },
+  {
+    "title": "As a man thinketh",
+    "author": "James Allen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1902,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6268048-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Jewel of Seven Stars",
+    "author": "Bram Stoker",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1902,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2760301-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Story of the Treasure Seekers",
+    "author": "Edith Nesbit",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13241364-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Woman in White",
+    "author": "Wilkie Collins, William Collins",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1859,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4684227-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Twelfth Night",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1734,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9119932-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tao te Ching",
+    "author": "老子",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1842,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/662232-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Animal Farm",
+    "author": "George Orwell",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1945,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11261770-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Battle of Life",
+    "author": "Charles Dickens, Edward Stirling, Shahid Akram",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1846,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9285597-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sonnets",
+    "author": "William Shakespeare",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1609,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8222090-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Man Who Knew Too Much",
+    "author": "Gilbert Keith Chesterton",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12897858-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Meditations",
+    "author": "Marcus Aurelius",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1626,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/211529-M.jpg",
+    "description": null
+  },
+  {
+    "title": "War and Peace",
+    "author": "Лев Толстой",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1864,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12621906-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Red Badge of Courage",
+    "author": "Stephen Crane",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1855,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8236915-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Du côté de chez Swann",
+    "author": "Marcel Proust",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11967344-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Emerald City of Oz",
+    "author": "L. Frank Baum",
+    "isbn": "0688115586",
+    "genre": "fiction",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1473556-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Faust",
+    "author": "Johann Wolfgang von Goethe",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6499459-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Silas Marner",
+    "author": "George Eliot, John O'Connor, Mary Anne Evans, Hugh Thomson, Julius Frese",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9286405-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Prisoner of Zenda",
+    "author": "Anthony Hope, Gary Hoppenstand, Diane Mowat, Alan Marks, Francesc Ràfols, Andrew Pugsley, Summer M. Hogan, Summer Hogan, Smidgen Press, Charles Dana Gibson, Daniel Lanza Barba, Javier Fornell Fernandez, Stephen Colbourn, Katy Jackson, James Wilby, Robinson, M.",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/105814-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dorothy and the Wizard in Oz",
+    "author": "L. Frank Baum",
+    "isbn": "0665789637",
+    "genre": "fiction",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648659-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Agnes Grey",
+    "author": "Anne Brontë",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1847,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242924-M.jpg",
+    "description": null
+  },
+  {
+    "title": "O Pioneers!",
+    "author": "Willa Cather",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1913,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242999-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ulysses",
+    "author": "James Joyce",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13136548-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Second Jungle Book",
+    "author": "Rudyard Kipling",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1887,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2140514-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Goldsmith's The vicar of Wakefield",
+    "author": "Oliver Goldsmith",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1111,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6720851-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lady Susan",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1925,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12641526-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The mystery of Edwin Drood",
+    "author": "Charles Dickens, Samuel Luke Fildes, Charles Bernard Derosne, TC, John Cuming Walters",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1870,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243336-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jo's Boys",
+    "author": "Louisa May Alcott, Success Oceo",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1886,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13166184-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Iron Heel",
+    "author": "Jack London",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243314-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Eight cousins",
+    "author": "Louisa May Alcott",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1874,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8143360-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lost Princess of Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1917,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/854819-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Scarlet Pimpernel",
+    "author": "Emma Orczy",
+    "isbn": null,
+    "genre": "fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/479102-M.jpg",
+    "description": null
+  },
+  {
+    "title": "His Last Bow [8 stories]",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1917,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243267-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Heart of Darkness",
+    "author": "Joseph Conrad",
+    "isbn": "8426401015",
+    "genre": "mystery",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12307847-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Riddle of the Sands",
+    "author": "Erskine Childers",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1903,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2293974-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Greenmantle",
+    "author": "John Buchan",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1915,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/93023-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Basil",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1852,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12968342-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Philosopher's Stone",
+    "author": "J. K. Rowling",
+    "isbn": "9757501956008",
+    "genre": "mystery",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/15155833-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Law and the Lady",
+    "author": "Wilkie Collins, Camille de Cendrey, Jenny Bourne Taylor",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1875,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6396941-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Trent's Last Case",
+    "author": "E. C. Bentley",
+    "isbn": "9789997506276",
+    "genre": "mystery",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/118583-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Prester John",
+    "author": "John Buchan",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5981967-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Whose Body?",
+    "author": "Dorothy L. Sayers",
+    "isbn": "0060808292",
+    "genre": "mystery",
+    "publicationYear": 1923,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8311819-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Black Robe",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1881,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1759983-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Murder on the Links",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1923,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14582832-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Armadale",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1866,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/780215-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Fifty Candles",
+    "author": "Earl Derr Biggers",
+    "isbn": "1587154331",
+    "genre": "mystery",
+    "publicationYear": 1926,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1956467-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Angel of Terror",
+    "author": "Edgar Wallace",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1923,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1814681-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Murder on the Orient Express",
+    "author": "Agatha Christie",
+    "isbn": "9782702436332",
+    "genre": "mystery",
+    "publicationYear": 1933,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11100465-M.jpg",
+    "description": null
+  },
+  {
+    "title": "No name",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1862,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/103261-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Amateur Cracksman",
+    "author": "E. W. Hornung",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2895793-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Murder of Roger Ackroyd",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1926,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13151356-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Poirot investigates",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13670505-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The After House",
+    "author": "Mary Roberts Rinehart",
+    "isbn": "9780554247861",
+    "genre": "mystery",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2757973-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "isbn": "9789584255181",
+    "genre": "mystery",
+    "publicationYear": 2003,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9255229-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Man in the Brown Suit",
+    "author": "Agatha Christie",
+    "isbn": "2253024236",
+    "genre": "mystery",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11153508-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The legacy of Cain",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1859,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/494040-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Death on the Nile",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1937,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14066646-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Circular Staircase",
+    "author": "Mary Roberts Rinehart",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2761207-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Paradise Mystery",
+    "author": "Joseph Smith Fletcher",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1814712-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tales of Terror and Mystery",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8311421-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The dead secret",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1857,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14305247-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lodger",
+    "author": "Marie Belloc Lowndes",
+    "isbn": "019282371X",
+    "genre": "mystery",
+    "publicationYear": 1913,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/696674-M.jpg",
+    "description": null
+  },
+  {
+    "title": "R. Holmes & Co.",
+    "author": "John Kendrick Bangs",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1906,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5716647-M.jpg",
+    "description": null
+  },
+  {
+    "title": "L'affaire Lerouge",
+    "author": "Émile Gaboriau",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4486242-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Deathly Hallows",
+    "author": "J. K. Rowling",
+    "isbn": "9788380082236",
+    "genre": "mystery",
+    "publicationYear": 2007,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/15158660-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The A.B.C. Murders",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14573514-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Queen of Hearts",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1859,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1861500-M.jpg",
+    "description": null
+  },
+  {
+    "title": "4:50 from Paddington",
+    "author": "Agatha Christie",
+    "isbn": "9024517575",
+    "genre": "mystery",
+    "publicationYear": 1957,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13151352-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The daffodil murder",
+    "author": "Edgar Wallace",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1921,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2895230-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mysterious Key And What It Opened",
+    "author": "Louisa May Alcott",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 2004,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1815112-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dead Men Tell No Tales",
+    "author": "E. W. Hornung",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2890645-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Body in the Library",
+    "author": "Agatha Christie",
+    "isbn": "7506300052",
+    "genre": "mystery",
+    "publicationYear": 1942,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12855259-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Murder at the Vicarage",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1930,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996560-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Guilty River",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1886,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5723048-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Murder Is Announced",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1950,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14578204-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mirror Crack'd from Side to Side",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1960,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10561150-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mystery of the Blue Train",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1928,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14575533-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Secret of Chimneys",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1925,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996574-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Big Four",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1927,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996529-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Evil Under the Sun",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1941,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13671433-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The house by the church-yard",
+    "author": "Sheridan Le Fanu",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1863,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3950063-M.jpg",
+    "description": null
+  },
+  {
+    "title": "In Cold Blood",
+    "author": "Truman Capote",
+    "isbn": "9784102095065",
+    "genre": "mystery",
+    "publicationYear": 1965,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/228066-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sleeping Murder",
+    "author": "Agatha Christie",
+    "isbn": "9788492966646",
+    "genre": "mystery",
+    "publicationYear": 1940,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10247294-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Talleyrand Maxim",
+    "author": "Joseph Smith Fletcher",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1845490-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Moving Finger",
+    "author": "Agatha Christie",
+    "isbn": "9788324589500",
+    "genre": "mystery",
+    "publicationYear": 1942,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13672855-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Dead Alive",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1874,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2908796-M.jpg",
+    "description": null
+  },
+  {
+    "title": "They Do It with Mirrors",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10249524-M.jpg",
+    "description": null
+  },
+  {
+    "title": "At Bertram's Hotel",
+    "author": "Agatha Christie",
+    "isbn": "2253059048",
+    "genre": "mystery",
+    "publicationYear": 1965,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6379981-M.jpg",
+    "description": null
+  },
+  {
+    "title": "After the Funeral",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1953,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996535-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lord Edgware Dies",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1933,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9492111-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Crooked House",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1949,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14570595-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Curtain",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1975,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12387503-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Appointment with Death",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1938,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14561660-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Peril at End House",
+    "author": "Agatha Christie",
+    "isbn": "0671428535",
+    "genre": "mystery",
+    "publicationYear": 1932,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996556-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Five Little Pigs",
+    "author": "Agatha Christie",
+    "isbn": "9780006126034",
+    "genre": "mystery",
+    "publicationYear": 1942,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14578138-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hercule Poirot's Christmas",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1939,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12855074-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Elephants Can Remember",
+    "author": "Agatha Christie",
+    "isbn": "9789021006031",
+    "genre": "mystery",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11165070-M.jpg",
+    "description": null
+  },
+  {
+    "title": "At the Villa Rose, in Four acts",
+    "author": "A. E. W. Mason, A. E. Mason, A. E. W. Mason",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2009344-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Curious Incident of the Dog in the Night-Time",
+    "author": "Mark Haddon",
+    "isbn": "9780385678834",
+    "genre": "mystery",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7890719-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Murder in Mesopotamia",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12855104-M.jpg",
+    "description": null
+  },
+  {
+    "title": "I Say No Or, The Love-Letter Answered And Other Stories",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2866196-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Caribbean Mystery",
+    "author": "Agatha Christie",
+    "isbn": "9788804510079",
+    "genre": "mystery",
+    "publicationYear": 1964,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14578132-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cards on the Table",
+    "author": "Agatha Christie",
+    "isbn": "2702423469",
+    "genre": "mystery",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6469172-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Hollow",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1946,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13679064-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Death in the Clouds",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1935,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11433305-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Franchise Affair (Inspector Alan Grant #3)",
+    "author": "Josephine Tey",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1948,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14104-M.jpg",
+    "description": null
+  },
+  {
+    "title": "One, Two, Buckle My Shoe",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1940,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14586349-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Evil Genius. A Domestis Story",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2739893-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Murder in Three Acts",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1934,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6874620-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Nemesis",
+    "author": "Agatha Christie",
+    "isbn": "9024513316",
+    "genre": "mystery",
+    "publicationYear": 1970,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10249139-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hallowe'en Party",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11160095-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Frozen Deep",
+    "author": "Wilkie Collins, George du Maurier, James Mahoney, Charles Dickens, Richard Brydges Beechey, John Everett Millais, J. Mahony",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/892414-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Third Girl",
+    "author": "Agatha Christie",
+    "isbn": "9782702411841",
+    "genre": "mystery",
+    "publicationYear": 1966,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14577913-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Clocks",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996554-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jezebel's Daughter",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1880,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2037140-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Four Pools Mystery",
+    "author": "Jean Webster",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2981587-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dumb Witness",
+    "author": "Agatha Christie",
+    "isbn": "7221044724",
+    "genre": "mystery",
+    "publicationYear": 1937,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14578123-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dead Man's Folly",
+    "author": "Agatha Christie",
+    "isbn": "9782846343749",
+    "genre": "mystery",
+    "publicationYear": 1956,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6985969-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cat Among the Pigeons",
+    "author": "Agatha Christie",
+    "isbn": "9024544459",
+    "genre": "mystery",
+    "publicationYear": 1959,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12852588-M.jpg",
+    "description": null
+  },
+  {
+    "title": "They Came to Baghdad",
+    "author": "Agatha Christie",
+    "isbn": "2702411541",
+    "genre": "mystery",
+    "publicationYear": 1951,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12846782-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Firm",
+    "author": "John Grisham",
+    "isbn": "4105250019",
+    "genre": "mystery",
+    "publicationYear": 1991,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9330593-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Bobbsey Twins",
+    "author": "Laura Lee Hope",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1904,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9330264-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Thirteen Problems",
+    "author": "Agatha Christie",
+    "isbn": "8427201648",
+    "genre": "mystery",
+    "publicationYear": 1932,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11163587-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Green Mile",
+    "author": "Stephen King",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1996,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9334567-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Seven Dials Mystery",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14575632-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Labours of Hercules",
+    "author": "Agatha Christie",
+    "isbn": "9789752110588",
+    "genre": "mystery",
+    "publicationYear": 1947,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10247192-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mrs. McGinty's Dead",
+    "author": "Agatha Christie",
+    "isbn": "9782702418642",
+    "genre": "mystery",
+    "publicationYear": 1951,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10249324-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The two destinies",
+    "author": "Wilkie Collins",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1876,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2037146-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Boxcar Children",
+    "author": "Gertrude Chandler Warner",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11349395-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Sittaford Mystery",
+    "author": "Agatha Christie",
+    "isbn": "9780425094716",
+    "genre": "mystery",
+    "publicationYear": 1931,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13151831-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Death Comes as the End",
+    "author": "Agatha Christie",
+    "isbn": "270247859X",
+    "genre": "mystery",
+    "publicationYear": 1944,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6486149-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sad Cypress",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1939,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6559532-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Taken at the Flood",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1948,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13670254-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Shilling for Candles (Inspector Alan Grant #2)",
+    "author": "Josephine Tey",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14357-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Devil Doctor",
+    "author": "Sax Rohmer",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1916,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2011138-M.jpg",
+    "description": null
+  },
+  {
+    "title": "By the Pricking of My Thumbs",
+    "author": "Agatha Christie",
+    "isbn": "2702400140",
+    "genre": "mystery",
+    "publicationYear": 1968,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6522833-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Partners in Crime",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1929,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14577916-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Endless Night",
+    "author": "Agatha Christie",
+    "isbn": "9782702480540",
+    "genre": "mystery",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12855084-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Runaway Jury",
+    "author": "John Grisham",
+    "isbn": "2221077970",
+    "genre": "mystery",
+    "publicationYear": 1996,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9322902-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Pelican Brief",
+    "author": "John Grisham",
+    "isbn": "2724278852",
+    "genre": "mystery",
+    "publicationYear": 1992,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10578479-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Client",
+    "author": "John Grisham",
+    "isbn": "9022981940",
+    "genre": "mystery",
+    "publicationYear": 1993,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8443273-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Destination Unknown",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1954,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6487762-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Män som hatar kvinnor",
+    "author": "Stieg Larsson",
+    "isbn": "9782742761579",
+    "genre": "mystery",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9274740-M.jpg",
+    "description": null
+  },
+  {
+    "title": "My Lady's Money",
+    "author": "Wilkie Collins, guzman agustin, Francisco Arellano Selma",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1870,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1760008-M.jpg",
+    "description": null
+  },
+  {
+    "title": "N or M?",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1941,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14589804-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss, Marc Simonetti",
+    "isbn": "9781407234724",
+    "genre": "mystery",
+    "publicationYear": 2007,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11480483-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Chamber",
+    "author": "John Grisham",
+    "isbn": "2221075900",
+    "genre": "mystery",
+    "publicationYear": 1994,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9255662-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Pale Horse",
+    "author": "Agatha Christie",
+    "isbn": "9782253046134",
+    "genre": "mystery",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996562-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Unnatural Death",
+    "author": "Dorothy L. Sayers",
+    "isbn": "9780450030185",
+    "genre": "mystery",
+    "publicationYear": 1927,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6572555-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Partner",
+    "author": "John Grisham",
+    "isbn": "4105250078",
+    "genre": "mystery",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9323420-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The New York Trilogy",
+    "author": "Paul Auster",
+    "isbn": "5699097430",
+    "genre": "mystery",
+    "publicationYear": 1987,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1013756-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The mysterious Mr Quin",
+    "author": "Agatha Christie",
+    "isbn": "0002315793",
+    "genre": "mystery",
+    "publicationYear": 1930,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14586400-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Parker Pyne Investigates",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1933,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11171205-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Nine Tailors",
+    "author": "Dorothy L. Sayers",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1934,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/482463-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tales of Chinatown",
+    "author": "Sax Rohmer",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2838553-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Along Came a Spider",
+    "author": "James Patterson",
+    "isbn": "9783548252520",
+    "genre": "mystery",
+    "publicationYear": 1993,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/189680-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Night Shift",
+    "author": "Stephen King",
+    "isbn": "5237008631",
+    "genre": "mystery",
+    "publicationYear": 1960,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14651337-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Killing Floor",
+    "author": "Lee Child",
+    "isbn": "9785699206117",
+    "genre": "mystery",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11089125-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lord Peter Views the Body",
+    "author": "Dorothy L. Sayers",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1928,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2210487-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Poirot's Early Cases",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7884978-M.jpg",
+    "description": null
+  },
+  {
+    "title": "An Unsuitable Job for a Woman",
+    "author": "P. D. James",
+    "isbn": "2253040703",
+    "genre": "mystery",
+    "publicationYear": 1972,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2010897-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Street Lawyer",
+    "author": "John Grisham",
+    "isbn": "9789022995594",
+    "genre": "mystery",
+    "publicationYear": 1989,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9323391-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Black house",
+    "author": "Stephen King, Peter Straub",
+    "isbn": "8401329280",
+    "genre": "mystery",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14652973-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Farewell, My Lovely",
+    "author": "Raymond Chandler",
+    "isbn": "0679740902",
+    "genre": "mystery",
+    "publicationYear": 1940,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6460991-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Tiger in the Smoke",
+    "author": "Margery Allingham",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/76297-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The House in Lordship Lane",
+    "author": "A. E. W. Mason",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1946,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8134660-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Miss or Mrs.?",
+    "author": "Wilkie Collins, Collins, William",
+    "isbn": null,
+    "genre": "mystery",
+    "publicationYear": 1892,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/494041-M.jpg",
+    "description": null
+  },
+  {
+    "title": "2nd Chance",
+    "author": "James Patterson, Andrew Gross",
+    "isbn": "9782253122968",
+    "genre": "mystery",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/189671-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Black Tower",
+    "author": "P. D. James",
+    "isbn": "9782738200501",
+    "genre": "mystery",
+    "publicationYear": 1975,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4483041-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Summons",
+    "author": "John Grisham",
+    "isbn": "9788483469941",
+    "genre": "mystery",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9323409-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Roseanna",
+    "author": "Maj Sjöwall, Per Wahlöö, Ona Rius Piqué, Tom Weiner, Martin Lexell, Elda García",
+    "isbn": "9022912892",
+    "genre": "mystery",
+    "publicationYear": 1967,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/420683-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Certain Justice",
+    "author": "P. D. James",
+    "isbn": "9780140996357",
+    "genre": "mystery",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5076647-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mystic river",
+    "author": "Dennis Lehane",
+    "isbn": "9785389029200",
+    "genre": "mystery",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/432349-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Shroud for a Nightingale",
+    "author": "P. D. James",
+    "isbn": "9788490703236",
+    "genre": "mystery",
+    "publicationYear": 1971,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/95080-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Skull Beneath the Skin",
+    "author": "P. D. James",
+    "isbn": "9788498726497",
+    "genre": "mystery",
+    "publicationYear": 1982,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13472030-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Flatland",
+    "author": "Edwin Abbott Abbott",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1884,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10069547-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Invisible Man",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 0,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6419199-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Nineteen Eighty-Four",
+    "author": "George Orwell",
+    "isbn": "9787201106380",
+    "genre": "science_fiction",
+    "publicationYear": 1949,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9267242-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Princess and Curdie",
+    "author": "George MacDonald",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1832,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14357835-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The War of the Worlds",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 0,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/36314-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Napoleon of Notting Hill",
+    "author": "Gilbert Keith Chesterton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1904,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6980094-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Last Man",
+    "author": "Mary Shelley",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1826,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/882662-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le Tour du Monde en Quatre-Vingts Jours",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1872,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6976035-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Vingt mille lieues sous les mers",
+    "author": "Jules Verne",
+    "isbn": "0665774982",
+    "genre": "science_fiction",
+    "publicationYear": 1870,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6573517-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "isbn": "1453090479",
+    "genre": "science_fiction",
+    "publicationYear": 1875,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/295773-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The description of a new world",
+    "author": "Margaret Cavendish, Duchess of Newcastle, Ian Randal Strock, Shailesh Kori, Erika Garcia",
+    "isbn": "9781507849323",
+    "genre": "science_fiction",
+    "publicationYear": 1666,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/103235-M.jpg",
+    "description": null
+  },
+  {
+    "title": "News from nowhere, or, An epoch of rest, being some chapters from a utopian romance",
+    "author": "William Morris",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1890,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/338173-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Poison Belt",
+    "author": "Arthur Conan Doyle",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1913,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5788361-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Machine Stops",
+    "author": "E. M. Forster",
+    "isbn": "0983532125",
+    "genre": "science_fiction",
+    "publicationYear": 1909,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7793883-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Island of Dr. Moreau",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1896,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/968312-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Gullivar of Mars",
+    "author": "Edwin Lester Linden Arnold",
+    "isbn": "0803259425",
+    "genre": "science_fiction",
+    "publicationYear": 1964,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/573770-M.jpg",
+    "description": null
+  },
+  {
+    "title": "After London",
+    "author": "Richard Jefferies",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1885,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2841895-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Coming Race",
+    "author": "Edward Bulwer Lytton, Baron Lytton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1871,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2751882-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "isbn": "7536671490",
+    "genre": "science_fiction",
+    "publicationYear": 1953,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12993656-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The wood beyond the world",
+    "author": "William Morris",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1894,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5895767-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Moon Pool",
+    "author": "A. Merritt",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9317374-M.jpg",
+    "description": null
+  },
+  {
+    "title": "At the Earth's Core",
+    "author": "Edgar Rice Burroughs",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9317372-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The king of the Golden River; or, The black brothers",
+    "author": "John Ruskin",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1839,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5884126-M.jpg",
+    "description": null
+  },
+  {
+    "title": "In the days of the comet",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1906,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5783892-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The warlord of Mars #3",
+    "author": "Edgar Rice Burroughs",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/207141-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Мы",
+    "author": "Евгений Иванович Замятин",
+    "isbn": "5270006723",
+    "genre": "science_fiction",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5484189-M.jpg",
+    "description": null
+  },
+  {
+    "title": "De la terre à la lune",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1865,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5943556-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Thuvia, Maid of Mars",
+    "author": "Edgar Rice Burroughs, Craig Trahan, Eric King, J. Allen St. John",
+    "isbn": "1576466221",
+    "genre": "science_fiction",
+    "publicationYear": 1916,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/284442-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Princess of Mars",
+    "author": "Edgar Rice Burroughs",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1917,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/207226-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Voyage au Centre de la Terre",
+    "author": "Jules Verne",
+    "isbn": "2013211457",
+    "genre": "science_fiction",
+    "publicationYear": 1867,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5890987-M.jpg",
+    "description": null
+  },
+  {
+    "title": "When the Sleeper Awakes",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/574886-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Chessmen of Mars",
+    "author": "Edgar Rice Burroughs, E. R. Burroughs",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1930755-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The food of the gods and how it came to earth",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/314687-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Beasts of Tarzan (Classic Ace SF, F-203)",
+    "author": "Edgar Rice Burroughs",
+    "isbn": "0345258320",
+    "genre": "science_fiction",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2421421-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood",
+    "isbn": "9782221203323",
+    "genre": "science_fiction",
+    "publicationYear": 1985,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231851-M.jpg",
+    "description": null
+  },
+  {
+    "title": "It Can't Happen Here",
+    "author": "Sinclair Lewis",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1935,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12719018-M.jpg",
+    "description": null
+  },
+  {
+    "title": "R.U.R. and The insect play",
+    "author": "Karel Čapek, Josef Čapek",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4291026-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "isbn": "9789862131367",
+    "genre": "science_fiction",
+    "publicationYear": 2008,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12646537-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Martian Chronicles",
+    "author": "Ray Bradbury",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1950,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9346537-M.jpg",
+    "description": null
+  },
+  {
+    "title": "When the World Shook",
+    "author": "H. Rider Haggard",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2976990-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Clockwork Orange",
+    "author": "Anthony Burgess",
+    "isbn": "9781856132664",
+    "genre": "science_fiction",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13151224-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Game of Thrones",
+    "author": "George R. R. Martin",
+    "isbn": "9789944824354",
+    "genre": "science_fiction",
+    "publicationYear": 1996,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9269962-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Slaughterhouse-Five",
+    "author": "Kurt Vonnegut",
+    "isbn": "9789731249759",
+    "genre": "science_fiction",
+    "publicationYear": 1968,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12727001-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Armageddon 2419 AD",
+    "author": "Philip Francis Nowlan",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1230950-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Hitch Hiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1979,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12986869-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1965,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11481354-M.jpg",
+    "description": null
+  },
+  {
+    "title": "On the Beach",
+    "author": "Nevil Shute",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1957,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/997896-M.jpg",
+    "description": null
+  },
+  {
+    "title": "2001",
+    "author": "Arthur C. Clarke",
+    "isbn": "2277123498",
+    "genre": "science_fiction",
+    "publicationYear": 1968,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11344400-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The First Men in the Moon",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8081288-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Catching Fire",
+    "author": "Suzanne Collins",
+    "isbn": "9788427208407",
+    "genre": "science_fiction",
+    "publicationYear": 2009,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12646539-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Charlie and the Great Glass Elevator",
+    "author": "Roald Dahl",
+    "isbn": "5353018117",
+    "genre": "science_fiction",
+    "publicationYear": 1972,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7893583-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cinq semaines en ballon",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1867,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8179189-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Little Fuzzy",
+    "author": "H. Beam Piper",
+    "isbn": "9781523332717",
+    "genre": "science_fiction",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1591936-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A strange manuscript found in a copper cylinder",
+    "author": "James De Mille",
+    "isbn": "0665037597",
+    "genre": "science_fiction",
+    "publicationYear": 1888,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5647709-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Giver",
+    "author": "Lois Lowry",
+    "isbn": "9575358155",
+    "genre": "science_fiction",
+    "publicationYear": 1993,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8352502-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The house behind the cedars",
+    "author": "Charles Waddell Chesnutt",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/605907-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Wrinkle in Time",
+    "author": "Madeleine L'Engle",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8709146-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The ship of Ishtar",
+    "author": "A. Merritt, Amelia Pérez de Villar Herranz",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7266552-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ender's Game",
+    "author": "Orson Scott Card",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1985,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12996033-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lord of the World",
+    "author": "Robert Hugh Benson, Simon Vance",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2114295-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Modern Utopia",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8232021-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mockingjay",
+    "author": "Suzanne Collins, Suzanne Collins",
+    "isbn": "9789862132166",
+    "genre": "science_fiction",
+    "publicationYear": 2010,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12646459-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+    "isbn": "9788960177567",
+    "genre": "science_fiction",
+    "publicationYear": 1951,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14612610-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Les Robots",
+    "author": "Isaac Asimov",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1950,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12385229-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The water of the Wondrous isles",
+    "author": "William Morris",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1897,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5866566-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Deception Point",
+    "author": "Dan Brown",
+    "isbn": "9789584261878",
+    "genre": "science_fiction",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14553479-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Gunslinger",
+    "author": "Stephen King",
+    "isbn": "9788960172111",
+    "genre": "science_fiction",
+    "publicationYear": 1976,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8396638-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jurassic Park",
+    "author": "Michael Crichton",
+    "isbn": "2221070224",
+    "genre": "science_fiction",
+    "publicationYear": 1990,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12882940-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Restaurant at the End of the Universe",
+    "author": "Douglas Adams",
+    "isbn": "837359423X",
+    "genre": "science_fiction",
+    "publicationYear": 1980,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12714921-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Time Traders",
+    "author": "Andre Norton",
+    "isbn": "0671318292",
+    "genre": "science_fiction",
+    "publicationYear": 1958,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8311641-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guin",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10618463-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Plague Ship",
+    "author": "Andre Norton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1956,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9839176-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Do Androids Dream of Electric Sheep?",
+    "author": "Philip K. Dick",
+    "isbn": "0345350472",
+    "genre": "science_fiction",
+    "publicationYear": 1968,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/207515-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Star Born",
+    "author": "Andre Norton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1957,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5542954-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Blind Assassin",
+    "author": "Margaret Atwood",
+    "isbn": "9782264072535",
+    "genre": "science_fiction",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11041760-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Dead Zone",
+    "author": "Stephen King",
+    "isbn": "9782709603041",
+    "genre": "science_fiction",
+    "publicationYear": 1979,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14653991-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Eragon",
+    "author": "Christopher Paolini",
+    "isbn": "9783442362912",
+    "genre": "science_fiction",
+    "publicationYear": 1998,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13921600-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Amber Spyglass",
+    "author": "Philip Pullman",
+    "isbn": "8373590676",
+    "genre": "science_fiction",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12613246-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Divergent",
+    "author": "Veronica Roth",
+    "isbn": "9789174994711",
+    "genre": "science_fiction",
+    "publicationYear": 2010,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13274634-M.jpg",
+    "description": null
+  },
+  {
+    "title": "La casa verde",
+    "author": "Mario Vargas Llosa",
+    "isbn": "0380012332",
+    "genre": "science_fiction",
+    "publicationYear": 1966,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4927546-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Junkyard Planet",
+    "author": "H. Beam Piper, H. Bean Piper",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1631,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1861004-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Wizard of Earthsea",
+    "author": "Ursula K. Le Guin",
+    "isbn": "9782253119722",
+    "genre": "science_fiction",
+    "publicationYear": 1968,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13617691-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Stand",
+    "author": "Stephen King",
+    "isbn": "8401498961",
+    "genre": "science_fiction",
+    "publicationYear": 1978,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9255992-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Adventures of Captain Underpants",
+    "author": "Dav Pilkey",
+    "isbn": "9787544249959",
+    "genre": "science_fiction",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12625278-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Man in the High Castle",
+    "author": "Philip K. Dick",
+    "isbn": "9782290082324",
+    "genre": "science_fiction",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/420452-M.jpg",
+    "description": null
+  },
+  {
+    "title": "L'Île mystérieuse",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1870,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1277096-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Illustrated Man",
+    "author": "Ray Bradbury",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1951,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9345484-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Childhood’s End",
+    "author": "Arthur C. Clarke",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/210200-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Stranger in a Strange Land",
+    "author": "Robert A. Heinlein",
+    "isbn": "9780425017562",
+    "genre": "science_fiction",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14630668-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Second Foundation",
+    "author": "Isaac Asimov",
+    "isbn": "2070416119",
+    "genre": "science_fiction",
+    "publicationYear": 1953,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9261324-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Foundation and Empire",
+    "author": "Isaac Asimov",
+    "isbn": "2070415716",
+    "genre": "science_fiction",
+    "publicationYear": 1945,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9300695-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The man who ended war",
+    "author": "Hollis Godfrey",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6379250-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Storm Over Warlock",
+    "author": "Andre Norton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1960,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9981342-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Flowers for Algernon",
+    "author": "Daniel Keyes",
+    "isbn": "8434852748",
+    "genre": "science_fiction",
+    "publicationYear": 1966,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12947700-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dragonflight",
+    "author": "Anne McCaffrey",
+    "isbn": "9788496940628",
+    "genre": "science_fiction",
+    "publicationYear": 1968,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10306696-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lost World",
+    "author": "Michael Crichton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10656102-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tales of space and time",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1899,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5813880-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Firestarter",
+    "author": "Stephen King",
+    "isbn": "9789021014166",
+    "genre": "science_fiction",
+    "publicationYear": 1980,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12015446-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Atlas Shrugged (Centennial Ed. HC)",
+    "author": "Ayn Rand, Sophie Bastide-Foltz, Ayn Rand;, Adrian Rand, Ayn Rand",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/362277-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Star Maker",
+    "author": "Olaf Stapledon",
+    "isbn": "0140035419",
+    "genre": "science_fiction",
+    "publicationYear": 1937,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/911107-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Clash of Kings",
+    "author": "George R. R. Martin",
+    "isbn": "8804510617",
+    "genre": "science_fiction",
+    "publicationYear": 1998,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231751-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Solaris",
+    "author": "Stanisław Lem",
+    "isbn": "0425033805",
+    "genre": "science_fiction",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12313764-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Dispossessed",
+    "author": "Ursula K. Le Guin",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1974,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6979680-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Válka s mloky",
+    "author": "Karel Čapek",
+    "isbn": "9781515137672",
+    "genre": "science_fiction",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4113422-M.jpg",
+    "description": null
+  },
+  {
+    "title": "So long, and thanks for all the fish",
+    "author": "Douglas Adams",
+    "isbn": "9783807702117",
+    "genre": "science_fiction",
+    "publicationYear": 1984,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11465415-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "isbn": "9788328703643",
+    "genre": "science_fiction",
+    "publicationYear": 2011,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11447888-M.jpg",
+    "description": null
+  },
+  {
+    "title": "American Gods",
+    "author": "Neil Gaiman",
+    "isbn": "9780062059888",
+    "genre": "science_fiction",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8494659-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Canticle for Leibowitz",
+    "author": "Walter M. Miller Jr., Волтер Майкл Міллер-молодший",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1959,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10221348-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Last and First Men",
+    "author": "Olaf Stapledon",
+    "isbn": "0874774713",
+    "genre": "science_fiction",
+    "publicationYear": 1930,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/911106-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Scarlet Plague",
+    "author": "Jack London",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9377992-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dune Messiah",
+    "author": "Frank Herbert",
+    "isbn": "9785237041484",
+    "genre": "science_fiction",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2421405-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Key Out of Time",
+    "author": "Andre Norton",
+    "isbn": "0839824246",
+    "genre": "science_fiction",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4437872-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Eye of the World",
+    "author": "Robert Jordan",
+    "isbn": "9782266073998",
+    "genre": "science_fiction",
+    "publicationYear": 1990,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/980232-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Feast for Crows",
+    "author": "George R. R. Martin",
+    "isbn": "9785170795895",
+    "genre": "science_fiction",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6501256-M.jpg",
+    "description": null
+  },
+  {
+    "title": "On Writing",
+    "author": "Stephen King",
+    "isbn": "2226126708",
+    "genre": "science_fiction",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9255939-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cat's Cradle",
+    "author": "Kurt Vonnegut",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12709654-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sphere",
+    "author": "Michael Crichton, Jacques Polanis",
+    "isbn": "9024525314",
+    "genre": "science_fiction",
+    "publicationYear": 1980,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9254423-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Looking Backward, 2000-1887",
+    "author": "Edward Bellamy",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1888,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8246102-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ubik",
+    "author": "Philip K. Dick",
+    "isbn": "9788371204791",
+    "genre": "science_fiction",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5018327-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Triplanetary",
+    "author": "Edward E. Smith, E. E. Smith, Edward E. Smith, E E Doc Smith, Edward Elmer  Smith",
+    "isbn": "0515028908",
+    "genre": "science_fiction",
+    "publicationYear": 1948,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4627686-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Out of the Silent Planet",
+    "author": "C. S. Lewis",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1938,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9321665-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Prey",
+    "author": "Michael Crichton",
+    "isbn": "4150411107",
+    "genre": "science_fiction",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10984324-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Galactic Derelict",
+    "author": "Andre Norton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1959,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5542553-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Life, the Universe and Everything",
+    "author": "Douglas Adams",
+    "isbn": "9781509844920",
+    "genre": "science_fiction",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8569244-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Insurgent",
+    "author": "Veronica Roth",
+    "isbn": "9787541138492",
+    "genre": "science_fiction",
+    "publicationYear": 2011,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7083755-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Neuromancer",
+    "author": "William Gibson",
+    "isbn": "0143111604",
+    "genre": "science_fiction",
+    "publicationYear": 1984,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/283860-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Timeline",
+    "author": "Michael Crichton",
+    "isbn": "2702854516",
+    "genre": "science_fiction",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12451613-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Andromeda Strain",
+    "author": "Michael Crichton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9330577-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Artemis Fowl and the Eternity Code",
+    "author": "Eoin Colfer",
+    "isbn": "9781843238454",
+    "genre": "science_fiction",
+    "publicationYear": 2003,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12636263-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Day of the Triffids",
+    "author": "John Wyndham, Marcel Battin, Cover by Andy Bridge",
+    "isbn": "9785170130658",
+    "genre": "science_fiction",
+    "publicationYear": 1951,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/535027-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Colors of Space",
+    "author": "Marion Zimmer Bradley",
+    "isbn": "0671448773",
+    "genre": "science_fiction",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2895165-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Door Through Space",
+    "author": "Marion Zimmer Bradley",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2891923-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The End of Eternity",
+    "author": "Isaac Asimov",
+    "isbn": "9787539957173",
+    "genre": "science_fiction",
+    "publicationYear": 1955,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6622699-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Llana of Gathol (Mars #10)",
+    "author": "Edgar Rice Burroughs",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1948,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12762270-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mort",
+    "author": "Terry Pratchett",
+    "isbn": "9780062225719",
+    "genre": "science_fiction",
+    "publicationYear": 1987,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14648805-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Star Hunter",
+    "author": "Andre Norton",
+    "isbn": null,
+    "genre": "science_fiction",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5542981-M.jpg",
+    "description": null
+  },
+  {
+    "title": "La planète des singes",
+    "author": "Pierre Boulle",
+    "isbn": "9782266118323",
+    "genre": "science_fiction",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1009545-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Rendezvous with Rama",
+    "author": "Arthur C. Clarke",
+    "isbn": "0345241754",
+    "genre": "science_fiction",
+    "publicationYear": 1973,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13472608-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Starship Troopers",
+    "author": "Robert A. Heinlein",
+    "isbn": "9782277115625",
+    "genre": "science_fiction",
+    "publicationYear": 1959,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14630746-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Something Wicked This Way Comes",
+    "author": "Ray Bradbury",
+    "isbn": "9780812402186",
+    "genre": "science_fiction",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9346340-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Allegiant",
+    "author": "Veronica Roth",
+    "isbn": "9783570311240",
+    "genre": "science_fiction",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7276393-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ozma of Oz",
+    "author": "L. Frank Baum",
+    "isbn": "066578967X",
+    "genre": "fantasy",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648657-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Story of the Amulet",
+    "author": "Edith Nesbit",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13241470-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Complete Life and Adventures of Santa Claus",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1902,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1979059-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Alice's Adventures in Wonderland / Through the Looking Glass",
+    "author": "Lewis Carroll",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8595966-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Road to Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1909,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243922-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Sea Fairies",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1814237-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Baum's American Fairy Tales",
+    "author": "L. Frank Baum",
+    "isbn": "0486236439",
+    "genre": "fantasy",
+    "publicationYear": 1901,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/709869-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sky Island",
+    "author": "L. Frank Baum",
+    "isbn": "0665789645",
+    "genre": "fantasy",
+    "publicationYear": 1912,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2752804-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Scarecrow of Oz",
+    "author": "L. Frank Baum",
+    "isbn": "0665789688",
+    "genre": "fantasy",
+    "publicationYear": 1915,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/431586-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Patchwork Girl of Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1913,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1473369-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Magic of Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5071176-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tik-Tok of Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243277-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Rinkitink in Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1916,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/765814-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Enchanted Castle",
+    "author": "Edith Nesbit",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6644514-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Phantastes",
+    "author": "George MacDonald",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1850,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14358814-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Tin Woodman of Oz",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1918,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/755973-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "isbn": "0395362903",
+    "genre": "fantasy",
+    "publicationYear": 1937,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14627509-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Glinda of Oz",
+    "author": "L. Frank Baum",
+    "isbn": "9780345333940",
+    "genre": "fantasy",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/758814-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Magic City",
+    "author": "Edith Nesbit",
+    "isbn": "0333290631",
+    "genre": "fantasy",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1673063-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Peter Pan",
+    "author": "J. M. Barrie",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8237052-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Phoenix and the Carpet",
+    "author": "Edith Nesbit",
+    "isbn": "014036739X",
+    "genre": "fantasy",
+    "publicationYear": 1903,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/902122-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le avventure di Pinocchio",
+    "author": "Carlo Collodi",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1883,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8597022-M.jpg",
+    "description": null
+  },
+  {
+    "title": "À rebours",
+    "author": "Joris-Karl Huysmans",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1884,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13170209-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Secret Agent",
+    "author": "Joseph Conrad",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8239401-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Puck of Pook's Hill",
+    "author": "Rudyard Kipling",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242296-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Chamber of Secrets",
+    "author": "J. K. Rowling",
+    "isbn": "0747538484",
+    "genre": "fantasy",
+    "publicationYear": 1998,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/15158664-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Fellowship of the Ring",
+    "author": "J.R.R. Tolkien",
+    "isbn": "4566020576",
+    "genre": "fantasy",
+    "publicationYear": 1954,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14627060-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Enchanted Island of Yew",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1903,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1755697-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "author": "J. K. Rowling",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10580435-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Two Towers",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9172632194",
+    "genre": "fantasy",
+    "publicationYear": 1954,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14627564-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Return of the King",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9782266070591",
+    "genre": "fantasy",
+    "publicationYear": 1950,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14627062-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Royal Book of Oz",
+    "author": "Ruth Plumly Thompson",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1921,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/709865-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jurgen",
+    "author": "James Branch Cabell",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5553063-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Order of the Phoenix",
+    "author": "J. K. Rowling",
+    "isbn": "9787020086627",
+    "genre": "fantasy",
+    "publicationYear": 2003,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/15158666-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Goblet of Fire",
+    "author": "J. K. Rowling",
+    "isbn": "8204108133",
+    "genre": "fantasy",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12059372-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Мастер и Маргарита",
+    "author": "Михаил Афанасьевич Булгаков",
+    "isbn": "9785998500695",
+    "genre": "fantasy",
+    "publicationYear": 1966,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12947486-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sylvie and Bruno",
+    "author": "Lewis Carroll",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243045-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The reluctant dragon",
+    "author": "Kenneth Grahame, Jim Weiss, Ernest H. Shepard, Michael Hague",
+    "isbn": "0744586380",
+    "genre": "fantasy",
+    "publicationYear": 1938,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6557137-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Story of Doctor Dolittle",
+    "author": "Hugh Lofting",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5262289-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Charlie and the Chocolate Factory",
+    "author": "Roald Dahl",
+    "isbn": "4566014118",
+    "genre": "fantasy",
+    "publicationYear": 1964,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12459564-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Well at the World's End",
+    "author": "William Morris, William Morris",
+    "isbn": "0330238469",
+    "genre": "fantasy",
+    "publicationYear": 1892,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2404583-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The water-babies: a fairy tale for a land-baby",
+    "author": "Charles Kingsley",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1863,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6062095-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "isbn": "0140278761",
+    "genre": "fantasy",
+    "publicationYear": 1967,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12627383-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Brood of the Witch-Queen",
+    "author": "Sax Rohmer",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2011286-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Horse and His Boy",
+    "author": "C. S. Lewis",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1954,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9184792-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Fifty-one tales",
+    "author": "Lord Dunsany",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1915,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1979061-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Harry Potter and the Half-Blood Prince",
+    "author": "J. K. Rowling",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10716273-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The little white bird, or, Adventures in Kensington gardens",
+    "author": "J. M. Barrie",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1902,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2808666-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Wet Magic",
+    "author": "Edith Nesbit",
+    "isbn": "1587170558",
+    "genre": "fantasy",
+    "publicationYear": 1937,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/854565-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Peter Pan in Kensington Gardens",
+    "author": "J. M. Barrie",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1906,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2977086-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Magician's Nephew",
+    "author": "C. S. Lewis",
+    "isbn": "9789574558674",
+    "genre": "fantasy",
+    "publicationYear": 1955,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1072931-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Master Key",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1901,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2838027-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Voyages of Doctor Dolittle",
+    "author": "Hugh Lofting",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/281218-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lion, the Witch and the Wardrobe",
+    "author": "C. S. Lewis",
+    "isbn": "8804523158",
+    "genre": "fantasy",
+    "publicationYear": 1950,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8441376-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The house of the Wolfings",
+    "author": "William Morris",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12177594-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Crock of Gold",
+    "author": "James Stephens",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1912,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5548056-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Charlotte's Web",
+    "author": "E. B. White",
+    "isbn": "0060243872",
+    "genre": "fantasy",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8461797-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Silmarillion",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9789022571194",
+    "genre": "fantasy",
+    "publicationYear": 1977,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14627042-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Northern Lights",
+    "author": "Philip Pullman",
+    "isbn": "9783453720596",
+    "genre": "fantasy",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8747028-M.jpg",
+    "description": null
+  },
+  {
+    "title": "James and the Giant Peach",
+    "author": "Roald Dahl",
+    "isbn": "9788491221296",
+    "genre": "fantasy",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8252454-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Prince Caspian",
+    "author": "C. S. Lewis",
+    "isbn": "0006739652",
+    "genre": "fantasy",
+    "publicationYear": 1951,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/45897-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Silver Chair",
+    "author": "C. S. Lewis",
+    "isbn": "4001121042",
+    "genre": "fantasy",
+    "publicationYear": 1953,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6950992-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The BFG",
+    "author": "Roald Dahl",
+    "isbn": "9188876519",
+    "genre": "fantasy",
+    "publicationYear": 1980,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9176033-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lost Horizon",
+    "author": "James Hilton",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1933,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4656607-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Where the Wild Things Are",
+    "author": "Maurice Sendak",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1963,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/50842-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Little Wizard stories of Oz",
+    "author": "L. Frank Baum",
+    "isbn": "9780688121266",
+    "genre": "fantasy",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/430876-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Morning Star",
+    "author": "H. Rider Haggard",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1979130-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Momo oder Die seltsame Geschichte von den Zeit-Dieben und von dem Kind, das den Menschen die gestohlene Zeit zurückbrachte",
+    "author": "Michael Ende",
+    "isbn": "9788805072385",
+    "genre": "fantasy",
+    "publicationYear": 1973,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8574580-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Last Battle",
+    "author": "C. S. Lewis",
+    "isbn": "4001121077",
+    "genre": "fantasy",
+    "publicationYear": 1956,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6529226-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Subtle Knife",
+    "author": "Philip Pullman",
+    "isbn": "9781407187587",
+    "genre": "fantasy",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12614549-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Bridge to Terabithia",
+    "author": "Katherine Paterson",
+    "isbn": "9785389094857",
+    "genre": "fantasy",
+    "publicationYear": 1972,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12627341-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lightning Thief",
+    "author": "Rick Riordan",
+    "isbn": "9787544812467",
+    "genre": "fantasy",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7239831-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Voyage of the Dawn Treader",
+    "author": "C. S. Lewis",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9184719-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Watership Down",
+    "author": "Richard Adams",
+    "isbn": "9789027408112",
+    "genre": "fantasy",
+    "publicationYear": 1972,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6450196-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Coraline",
+    "author": "Neil Gaiman",
+    "isbn": "9788374801171",
+    "genre": "fantasy",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14171421-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Artemis Fowl",
+    "author": "Eoin Colfer",
+    "isbn": "9781843238430",
+    "genre": "fantasy",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10212689-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Figures of Earth",
+    "author": "James Branch Cabell",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1921,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/854317-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Colour of Magic",
+    "author": "Terry Pratchett",
+    "isbn": "9788374690973",
+    "genre": "fantasy",
+    "publicationYear": 1983,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14647238-M.jpg",
+    "description": null
+  },
+  {
+    "title": "New Moon",
+    "author": "Stephenie Meyer",
+    "isbn": "8025205142",
+    "genre": "fantasy",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12643406-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The wonderful visit",
+    "author": "H. G. Wells",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1895,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5683599-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Vikram and the Vampire",
+    "author": "Richard Francis Burton, Ernest Henry Griset, Isabel Lady Burton",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1870,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1758137-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Cat in the Hat",
+    "author": "Dr. Seuss, Simon Mugford",
+    "isbn": "9788809208704",
+    "genre": "fantasy",
+    "publicationYear": 1957,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11342-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hänsel und Gretel",
+    "author": "Gebrüder Grimm [Brothers Grimm]",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2327393-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Mysterious Stranger",
+    "author": "Mark Twain",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1916,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9173884-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Magical Monarch of Mo",
+    "author": "L. Frank Baum",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1903,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4846571-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Once and Future King",
+    "author": "T. H. White",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1939,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6630521-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Prince Prigio",
+    "author": "Andrew Lang",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1755515-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Thumbelina",
+    "author": "Hans Christian Andersen, Elsa Beskow, Michael Foreman, Michael Morpurgo, Kimberley Reynolds, Catherine Babok, Susannah Mary Paull",
+    "isbn": "9780887082566",
+    "genre": "fantasy",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1357775-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The demi-gods",
+    "author": "James Stephens",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6262377-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Prisoner in Fairyland",
+    "author": "Algernon Blackwood",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1913,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2895898-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Sea of Monsters",
+    "author": "Rick Riordan",
+    "isbn": "9782013971041",
+    "genre": "fantasy",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/108909-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Nursery Alice",
+    "author": "Lewis Carroll",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8596271-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Indian Fairy Tales",
+    "author": "Joseph Jacobs, John D Batten, Gloria Cardew, Joseph JACOBS, Joseph Jacobs, Jacobs, Ed, Joseph, John Dickson Batten, Joseph Joseph Jacobs",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1892,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/767614-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Good Omens",
+    "author": "Neil Gaiman, Terry Pratchett",
+    "isbn": "9783807702476",
+    "genre": "fantasy",
+    "publicationYear": 1990,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10482258-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Eldest",
+    "author": "Christopher Paolini",
+    "isbn": "8374800046",
+    "genre": "fantasy",
+    "publicationYear": 1998,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12848701-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Chitty-Chitty-Bang-Bang, the magical car",
+    "author": "Ian Fleming",
+    "isbn": "0001711377",
+    "genre": "fantasy",
+    "publicationYear": 1964,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10579734-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Doctor Doolittle's circus",
+    "author": "Hugh Lofting",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9244269-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Wizard and Glass",
+    "author": "Stephen King",
+    "isbn": "3453138783",
+    "genre": "fantasy",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14657088-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Torre Negra",
+    "author": "Stephen King",
+    "isbn": "5237014852",
+    "genre": "fantasy",
+    "publicationYear": 1991,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8443630-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tintenherz",
+    "author": "Cornelia Funke",
+    "isbn": "9789955247852",
+    "genre": "fantasy",
+    "publicationYear": 2003,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3330314-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Nils Holgerssons underbara resa genom Sverige",
+    "author": "Selma Lagerlöf",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5267445-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Tombs of Atuan",
+    "author": "Ursula K. Le Guin",
+    "isbn": "0553273310",
+    "genre": "fantasy",
+    "publicationYear": 1971,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6633403-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Don Rodriguez",
+    "author": "Lord Dunsany",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/767591-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Doctor Dolittle's post office",
+    "author": "Hugh Lofting",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1923,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8442100-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Doctor Dolittle in the moon",
+    "author": "Hugh Lofting",
+    "isbn": "0224604449",
+    "genre": "fantasy",
+    "publicationYear": 1928,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8443596-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le chat botté",
+    "author": "Charles Perrault",
+    "isbn": "073581158X",
+    "genre": "fantasy",
+    "publicationYear": 1865,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4435421-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tarzan the Invincible (Ace Classic SF, F-189)",
+    "author": "Edgar Rice Burroughs, Casper Van Dien, Franke, Henry G., 3rd, Joe Jusko",
+    "isbn": "0345244842",
+    "genre": "fantasy",
+    "publicationYear": 1931,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/284443-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Centaur",
+    "author": "Algernon Blackwood",
+    "isbn": null,
+    "genre": "fantasy",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5562921-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Women in Love",
+    "author": "D. H. Lawrence",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1877,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13140934-M.jpg",
+    "description": null
+  },
+  {
+    "title": "She",
+    "author": "H. Rider Haggard",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1886,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/295537-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Howards End",
+    "author": "E. M. Forster",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8235207-M.jpg",
+    "description": null
+  },
+  {
+    "title": "This Side of Paradise",
+    "author": "F. Scott Fitzgerald",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243609-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cranford",
+    "author": "Elizabeth Cleghorn Gaskell",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1853,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5188445-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Portrait of a Lady",
+    "author": "Henry James",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1881,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3352367-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Under the Greenwood Tree or, The Mellstock quire",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1872,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/902186-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jude the Obscure",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1895,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12973053-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le rouge et le noir",
+    "author": "Stendhal",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1830,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231413-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Woodlanders",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243078-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The pioneers",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9000512-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lone Star Ranger",
+    "author": "Zane Grey",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1914,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4813849-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The ghost",
+    "author": "Arnold Bennett",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5877895-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Framley Parsonage",
+    "author": "Anthony Trollope",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1861,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8288051-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Age of Innocence",
+    "author": "Edith Wharton",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11196262-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Daisy Miller",
+    "author": "Henry James",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1877,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6482238-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Ambassadors",
+    "author": "Henry James",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1903,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/313610-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Washington Square",
+    "author": "Henry James",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1880,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8243278-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Return of the Native",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1878,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8162989-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Доктор Живаго",
+    "author": "Boris Leonidovich Pasternak",
+    "isbn": "9787550602526",
+    "genre": "romance",
+    "publicationYear": 1957,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1045432-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Fifty Shades of Grey",
+    "author": "E. L. James",
+    "isbn": "9782253176503",
+    "genre": "romance",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648183-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1813,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13148521-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Twilight",
+    "author": "Stephenie Meyer",
+    "isbn": "9789587045079",
+    "genre": "romance",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12641977-M.jpg",
+    "description": null
+  },
+  {
+    "title": "El amor en los tiempos del cólera",
+    "author": "Gabriel García Márquez",
+    "isbn": "8804320214",
+    "genre": "romance",
+    "publicationYear": 1985,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10096404-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Genji monogatari",
+    "author": "Murasaki Shikibu",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6614001-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Comus",
+    "author": "John Milton",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1738,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5622287-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Godfather",
+    "author": "Mario Puzo",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6507069-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Abel Sánchez",
+    "author": "Miguel de Unamuno",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1917,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4902483-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Pelham",
+    "author": "Edward Bulwer Lytton, Baron Lytton",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1828,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8974809-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Eustace diamonds",
+    "author": "Anthony Trollope",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1872,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242844-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jamaica Inn",
+    "author": "Daphne du Maurier",
+    "isbn": "9782226067517",
+    "genre": "romance",
+    "publicationYear": 1936,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8765960-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Last Chronicle of Barset",
+    "author": "Anthony Trollope",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1867,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7334887-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Eclipse",
+    "author": "Stephenie Meyer",
+    "isbn": "8934974085911",
+    "genre": "romance",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12643410-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Der Vorleser",
+    "author": "Bernhard Schlink",
+    "isbn": "9788501085412",
+    "genre": "romance",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/998445-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Les Dieux Ont Soif",
+    "author": "Anatole France",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1994527-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Fifty Shades Darker",
+    "author": "E. L. James",
+    "isbn": "9786045901182",
+    "genre": "romance",
+    "publicationYear": 2011,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14566702-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Frenchman's Creek",
+    "author": "Daphne du Maurier",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1940,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/893834-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Thorn Birds",
+    "author": "Colleen McCullough, Colleen McCullough",
+    "isbn": "5839200506",
+    "genre": "romance",
+    "publicationYear": 1977,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8293225-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "isbn": "9780804171083",
+    "genre": "romance",
+    "publicationYear": 2010,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7418786-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Fifty Shades Freed",
+    "author": "E. L. James",
+    "isbn": "9788652110537",
+    "genre": "romance",
+    "publicationYear": 2011,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14566669-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Talisman",
+    "author": "Sir Walter Scott",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8239488-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Novels (Emma / Mansfield Park / Northanger Abbey / Persuasion / Pride and Prejudice / Sense and Sensibility)",
+    "author": "Jane Austen",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1818,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9276728-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Horse Whisperer",
+    "author": "Nicholas Evans",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14621022-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Price of Salt",
+    "author": "Patricia Highsmith",
+    "isbn": "9787532771653",
+    "genre": "romance",
+    "publicationYear": 1952,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/250778-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The well-beloved",
+    "author": "Thomas Hardy",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1897,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242184-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Can you forgive her?",
+    "author": "Anthony Trollope",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8245499-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The God of Small Things",
+    "author": "Arundhati Roy",
+    "isbn": "3896670204",
+    "genre": "romance",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10513792-M.jpg",
+    "description": null
+  },
+  {
+    "title": "My Secret Life",
+    "author": "Walter, Anonymous",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1966,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6685979-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Potterism",
+    "author": "Rose Macaulay",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14830396-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Custom of the Country",
+    "author": "Edith Wharton",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9329535-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Wings of the Dove",
+    "author": "Henry James",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1902,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8241379-M.jpg",
+    "description": null
+  },
+  {
+    "title": "O mandarim",
+    "author": "Eça de Queiroz",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1889,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3221009-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Americanah",
+    "author": "Chimamanda Ngozi Adichie",
+    "isbn": "9782070468805",
+    "genre": "romance",
+    "publicationYear": 1969,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8474037-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Night Over Water",
+    "author": "Ken Follett, K. Follett",
+    "isbn": "9788804646099",
+    "genre": "romance",
+    "publicationYear": 1981,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8231779-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Minister's Wooing",
+    "author": "Harriet Beecher Stowe, Hablot Knight Browne",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1471330-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Nichts ist stärker als die Liebe",
+    "author": "Danielle Steel",
+    "isbn": "8371321007",
+    "genre": "romance",
+    "publicationYear": 1981,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3197725-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cidade e as serras",
+    "author": "Eça de Queiroz",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8097148-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Seta",
+    "author": "Alessandro Baricco",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8345075-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Notebook",
+    "author": "Nicholas Sparks",
+    "isbn": "9780974872438",
+    "genre": "romance",
+    "publicationYear": 1996,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7382153-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Vampire Lestat",
+    "author": "Anne Rice",
+    "isbn": "9782265079632",
+    "genre": "romance",
+    "publicationYear": 1986,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8579529-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Duke's Children",
+    "author": "Anthony Trollope",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1880,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8246240-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ken Ward in the Jungle",
+    "author": "Zane Grey",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1912,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6160786-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Oryx and Crake",
+    "author": "Margaret Atwood",
+    "isbn": "9789731021423",
+    "genre": "romance",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12507658-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Il était une fois l'amour",
+    "author": "Danielle Steel",
+    "isbn": "9785170873951",
+    "genre": "romance",
+    "publicationYear": 1981,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11650648-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Paper Towns",
+    "author": "John Green",
+    "isbn": "9786053436560",
+    "genre": "romance",
+    "publicationYear": 2008,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5731773-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Light a Penny Candle",
+    "author": "Maeve Binchy",
+    "isbn": "9782268028897",
+    "genre": "romance",
+    "publicationYear": 1970,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5229439-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Royal Escape",
+    "author": "Georgette Heyer",
+    "isbn": "0099416328",
+    "genre": "romance",
+    "publicationYear": 1938,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14338940-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Landfall, a channel story",
+    "author": "Nevil Shute, Rob Spence",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1940,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9406145-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Glimpses of the Moon",
+    "author": "Edith Wharton",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8277208-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mistress of Mellyn",
+    "author": "Eleanor Burford",
+    "isbn": "9783596224692",
+    "genre": "romance",
+    "publicationYear": 1960,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2310666-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Dragonfly in Amber",
+    "author": "Diana Gabaldon",
+    "isbn": "9783442361069",
+    "genre": "romance",
+    "publicationYear": 1992,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6920490-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Me Before You",
+    "author": "Jojo Moyes",
+    "isbn": "9783863658731",
+    "genre": "romance",
+    "publicationYear": 2012,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14419339-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Echoes",
+    "author": "Maeve Binchy",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1985,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3344527-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Four",
+    "author": "Veronica Roth",
+    "isbn": "9782897522773",
+    "genre": "romance",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7314248-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lie Down With Lions",
+    "author": "Ken Follett",
+    "isbn": "2253042021",
+    "genre": "romance",
+    "publicationYear": 1985,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4147865-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Thundering Herd",
+    "author": "Zane Grey",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1924,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1514198-M.jpg",
+    "description": null
+  },
+  {
+    "title": "No Loger at Ease",
+    "author": "Chinua Achebe",
+    "isbn": "0385474555",
+    "genre": "romance",
+    "publicationYear": 1960,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6627849-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Narziss und Goldmund",
+    "author": "Hermann Hesse",
+    "isbn": "3518367749",
+    "genre": "romance",
+    "publicationYear": 1930,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1016864-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Secret Woman",
+    "author": "Eleanor Burford",
+    "isbn": "9783453005600",
+    "genre": "romance",
+    "publicationYear": 1970,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7285783-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hold the dream",
+    "author": "Barbara Taylor Bradford",
+    "isbn": "5040006861",
+    "genre": "romance",
+    "publicationYear": 1625,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4195318-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Floodtide",
+    "author": "Frank Yerby",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1950,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9362782-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Sushi für Anfänger",
+    "author": "Marian Keyes, Caitriona Keyes",
+    "isbn": "0718144465",
+    "genre": "romance",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1009414-M.jpg",
+    "description": null
+  },
+  {
+    "title": "An Abundance of Katherines",
+    "author": "John Green",
+    "isbn": "9789871997060",
+    "genre": "romance",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14559681-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le premier homme",
+    "author": "Albert Camus",
+    "isbn": "8845223175",
+    "genre": "romance",
+    "publicationYear": 1994,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14434985-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Beauvallet (Beauvallet Dynasty #2)",
+    "author": "Georgette Heyer",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1929,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6920952-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Conqueror",
+    "author": "Georgette Heyer",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1931,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6921432-M.jpg",
+    "description": null
+  },
+  {
+    "title": "City of Bones",
+    "author": "Cassandra Clare",
+    "isbn": "9782266244480",
+    "genre": "romance",
+    "publicationYear": 2007,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10121449-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Destinos Errantes",
+    "author": "Danielle Steel",
+    "isbn": "2253053589",
+    "genre": "romance",
+    "publicationYear": 1986,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10835122-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The hours",
+    "author": "Michael Cunningham",
+    "isbn": "3442735378",
+    "genre": "romance",
+    "publicationYear": 1998,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/223032-M.jpg",
+    "description": null
+  },
+  {
+    "title": "At the Foot of the Rainbow",
+    "author": "Gene Stratton-Porter",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8242249-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Princess Casamassima",
+    "author": "Henry James",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1886,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7141469-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Rosie Project",
+    "author": "Graeme Simsion",
+    "isbn": "9788498385540",
+    "genre": "romance",
+    "publicationYear": 2013,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10186221-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tres novelas ejemplares y un prólogo",
+    "author": "Miguel de Unamuno",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/569618-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Time Traveler's Wife",
+    "author": "Audrey Niffenegger",
+    "isbn": "9783596163908",
+    "genre": "romance",
+    "publicationYear": 2003,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9273734-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Therese Raquin",
+    "author": "Émile Zola",
+    "isbn": "9782070371167",
+    "genre": "romance",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/979858-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Honest Illusions",
+    "author": "Nora Roberts",
+    "isbn": "9789022568736",
+    "genre": "romance",
+    "publicationYear": 1992,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1008996-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Water for Elephants",
+    "author": "Sara Gruen, David LeDoux, John Randolph Jones",
+    "isbn": "9789867759511",
+    "genre": "romance",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6690864-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Born in Fire",
+    "author": "Nora Roberts",
+    "isbn": "0451181263",
+    "genre": "romance",
+    "publicationYear": 1994,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3197486-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ladder of Years",
+    "author": "Anne Tyler",
+    "isbn": "9576794102",
+    "genre": "romance",
+    "publicationYear": 1993,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3103579-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Rachel Ray",
+    "author": "Anthony Trollope",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1863,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8244499-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Les Amities Particulaires",
+    "author": "Roger Peyrefitte",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1945,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6459670-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A woman of substance",
+    "author": "Barbara Taylor Bradford",
+    "isbn": "0061008079",
+    "genre": "romance",
+    "publicationYear": 1979,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13206767-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Simon the Coldheart (Beauvallet Dynasty #1)",
+    "author": "Georgette Heyer",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1925,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6920126-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Shadow and Bone",
+    "author": "Leigh Bardugo",
+    "isbn": "9786555352795",
+    "genre": "romance",
+    "publicationYear": 2012,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/13816048-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Carolina Moon",
+    "author": "Nora Roberts",
+    "isbn": "9785699461394",
+    "genre": "romance",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1818530-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Court of Thorns and Roses",
+    "author": "Sarah J. Maas",
+    "isbn": "9781635575552",
+    "genre": "romance",
+    "publicationYear": 2013,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8738585-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Harvester",
+    "author": "Gene Stratton-Porter",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4115711-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hidden Riches",
+    "author": "Nora Roberts",
+    "isbn": "9788379436255",
+    "genre": "romance",
+    "publicationYear": 1994,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3202659-M.jpg",
+    "description": null
+  },
+  {
+    "title": "44 Cranberry Point (Cedar Cove, Book 4)",
+    "author": "Debbie Macomber",
+    "isbn": "0778320731",
+    "genre": "romance",
+    "publicationYear": 2004,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/531899-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Ivy Tree",
+    "author": "Mary Stewart",
+    "isbn": "9785699248766",
+    "genre": "romance",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1875359-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Memorial de Aires (Classicos Da Literatura Brasileira)",
+    "author": "Machado de Assis, John Temple Graves",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2664649-M.jpg",
+    "description": null
+  },
+  {
+    "title": "At First Sight",
+    "author": "Nicholas Sparks",
+    "isbn": "8876849238",
+    "genre": "romance",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/497022-M.jpg",
+    "description": null
+  },
+  {
+    "title": "High Noon",
+    "author": "Nora Roberts",
+    "isbn": "9785699387465",
+    "genre": "romance",
+    "publicationYear": 2007,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5372465-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lipstick Jungle",
+    "author": "Candace Bushnell",
+    "isbn": "8936046240150",
+    "genre": "romance",
+    "publicationYear": 1753,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12726447-M.jpg",
+    "description": null
+  },
+  {
+    "title": "204 Rosewood Lane (Cedar Cove, Book 2)",
+    "author": "Debbie Macomber",
+    "isbn": "9782280812221",
+    "genre": "romance",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/771674-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Back on Blossom Street",
+    "author": "Debbie Macomber",
+    "isbn": "9780739481691",
+    "genre": "romance",
+    "publicationYear": 2007,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2815386-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Agony Column",
+    "author": "Earl Derr Biggers",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1916,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5735203-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Born in Ice",
+    "author": "Nora Roberts",
+    "isbn": "9788466306980",
+    "genre": "romance",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6975928-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Wuthering Heights / Agnes Grey",
+    "author": "Emily Brontë, Anne Brontë",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1870,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14836743-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Susannah's Garden",
+    "author": "Debbie Macomber, Laural Merlington",
+    "isbn": "0778324443",
+    "genre": "romance",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/531936-M.jpg",
+    "description": null
+  },
+  {
+    "title": "16 Lighthouse Road",
+    "author": "Debbie Macomber",
+    "isbn": "0373602960",
+    "genre": "romance",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4691614-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The divide",
+    "author": "Nicholas Evans",
+    "isbn": "9788376592619",
+    "genre": "romance",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14621188-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Bend sinister",
+    "author": "Vladimir Nabokov",
+    "isbn": null,
+    "genre": "romance",
+    "publicationYear": 1947,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/419952-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Novels (Emma / Lady Susan / Mansfield Park / Northanger Abbey / Persuasion / Pride and Prejudice / Sense and Sensibility)",
+    "author": "Jane Austen",
+    "isbn": "9780760700266",
+    "genre": "romance",
+    "publicationYear": 1966,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9277892-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Heaven and Earth",
+    "author": "Nora Roberts",
+    "isbn": "9783442355617",
+    "genre": "romance",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/319246-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Nonesuch",
+    "author": "Georgette Heyer",
+    "isbn": "0099436760",
+    "genre": "romance",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/221924-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Giant's bread",
+    "author": "Agatha Christie",
+    "isbn": "2234026083",
+    "genre": "romance",
+    "publicationYear": 1929,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6623710-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The deerslayer",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1841,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8237593-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mr. Standfast",
+    "author": "John Buchan",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1918,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6962564-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Pathfinder",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8980913-M.jpg",
+    "description": null
+  },
+  {
+    "title": "White Fang",
+    "author": "Jack London",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8236920-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Kidnapped",
+    "author": "Robert Louis Stevenson",
+    "isbn": "0709701314",
+    "genre": "thriller",
+    "publicationYear": 1886,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8267822-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A strange disappearance",
+    "author": "Anna Katharine Green, Anna Katharine Green, Cyanide Publishing, Anna Katherine Green, Anna Green",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1879,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12657405-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Evil Shepherd",
+    "author": "Edward Phillips Oppenheim",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1922,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648419-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Otto of the Silver Hand",
+    "author": "Howard Pyle, Howard Pyle",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1888,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7263483-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Tale of Three Lions",
+    "author": "H. Rider Haggard",
+    "isbn": "9781530384327",
+    "genre": "thriller",
+    "publicationYear": 2004,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2009339-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Beetle. A Mystery",
+    "author": "Richard Marsh",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1897,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/750958-M.jpg",
+    "description": null
+  },
+  {
+    "title": "An American Tragedy",
+    "author": "Theodore Dreiser",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1900,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12728401-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Lord of the Flies",
+    "author": "William Golding",
+    "isbn": "9787532766963",
+    "genre": "thriller",
+    "publicationYear": 1954,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8684447-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Four Just Men",
+    "author": "Edgar Wallace",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12947886-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Michel Strogoff",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1876,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10393209-M.jpg",
+    "description": null
+  },
+  {
+    "title": "In Secret",
+    "author": "Robert W. Chambers",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1919,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1844837-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Drums of Jeopardy",
+    "author": "Harold MacGrath",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/11351150-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Nightmare Abbey",
+    "author": "Thomas Love Peacock",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1818,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1956635-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Eye of Osiris",
+    "author": "R. Austin Freeman",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1911,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/7162423-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Carrie",
+    "author": "Stephen King",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1974,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9256043-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Robur le conquérant",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1886,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2821179-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Pillars of the Earth",
+    "author": "Ken Follett",
+    "isbn": "8804413476",
+    "genre": "thriller",
+    "publicationYear": 1989,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9269909-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Misery",
+    "author": "Stephen King",
+    "isbn": "9787532150779",
+    "genre": "thriller",
+    "publicationYear": 1978,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8259296-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Moonraker",
+    "author": "Ian Fleming",
+    "isbn": "9781727376333",
+    "genre": "thriller",
+    "publicationYear": 1955,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6593911-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Le Chancellor",
+    "author": "Jules Verne",
+    "isbn": "0665253389",
+    "genre": "thriller",
+    "publicationYear": 1875,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/3137735-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Storm Island",
+    "author": "Ken Follett",
+    "isbn": "9044924168",
+    "genre": "thriller",
+    "publicationYear": 1978,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4421774-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Time to Kill",
+    "author": "John Grisham",
+    "isbn": "9022981037",
+    "genre": "thriller",
+    "publicationYear": 1989,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8445673-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Thunderball",
+    "author": "Ian Fleming",
+    "isbn": "9788498724936",
+    "genre": "thriller",
+    "publicationYear": 1961,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/109571-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Haunted and the Haunters, Or, The House and the Brain",
+    "author": "Edward Bulwer Lytton, Baron Lytton",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2788688-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Eagle has Landed",
+    "author": "Henry Patterson",
+    "isbn": "0330246305",
+    "genre": "thriller",
+    "publicationYear": 1975,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/271801-M.jpg",
+    "description": null
+  },
+  {
+    "title": "War in heaven",
+    "author": "Charles Williams",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1930,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6718269-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Rainmaker",
+    "author": "John Grisham",
+    "isbn": "8804423013",
+    "genre": "thriller",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9322929-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Coffin for Dimitrios",
+    "author": "Eric Ambler",
+    "isbn": "8845915425",
+    "genre": "thriller",
+    "publicationYear": 1939,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/542607-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Eyes of the Dragon",
+    "author": "Stephen King",
+    "isbn": "9788378859048",
+    "genre": "thriller",
+    "publicationYear": 1959,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8524085-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Four Past Midnight",
+    "author": "Stephen King",
+    "isbn": "9789021012261",
+    "genre": "thriller",
+    "publicationYear": 1990,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8413143-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Saving Faith",
+    "author": "David Baldacci",
+    "isbn": "9788498725742",
+    "genre": "thriller",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8531993-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Christine",
+    "author": "Stephen King",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1983,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14655985-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Hunt for Red October",
+    "author": "Tom Clancy",
+    "isbn": "222602591X",
+    "genre": "thriller",
+    "publicationYear": 1984,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/683604-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Avenger",
+    "author": "Edward Phillips Oppenheim",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1908,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12649030-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jack Tier or the Florida Reef",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2756986-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Red Dragon",
+    "author": "Thomas Harris",
+    "isbn": "2744155535",
+    "genre": "thriller",
+    "publicationYear": 1981,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6997898-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Ante la bandera (Face au drapeau)",
+    "author": "Jules Verne",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1897,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5240626-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Lincoln Lawyer (Mickey Haller #1)",
+    "author": "Michael Connelly",
+    "isbn": "9788498726855",
+    "genre": "thriller",
+    "publicationYear": 1895,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/499937-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Tommyknockers",
+    "author": "Stephen King",
+    "isbn": "9785170835966",
+    "genre": "thriller",
+    "publicationYear": 1985,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6997458-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Malefactor",
+    "author": "Edward Phillips Oppenheim",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1906,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648597-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Woods",
+    "author": "Harlan Coben",
+    "isbn": "9782714442970",
+    "genre": "thriller",
+    "publicationYear": 1849,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4989400-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Jack & Jill",
+    "author": "James Patterson",
+    "isbn": "9783828906082",
+    "genre": "thriller",
+    "publicationYear": 1714,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/189682-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Rose Madder",
+    "author": "Stephen King",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8578049-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Visitor",
+    "author": "Lee Child",
+    "isbn": "0515130974",
+    "genre": "thriller",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14425212-M.jpg",
+    "description": null
+  },
+  {
+    "title": "From a Buick 8",
+    "author": "Stephen King",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 2002,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6502777-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Homeward Bound, Or, The Chase: A Tale of the Sea",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6008008-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Roses Are Red",
+    "author": "James Patterson",
+    "isbn": "9782266123228",
+    "genre": "thriller",
+    "publicationYear": 1752,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/286934-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Man from St. Petersburg",
+    "author": "Ken Follett",
+    "isbn": "2891492366",
+    "genre": "thriller",
+    "publicationYear": 1982,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6534570-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Last Man Standing",
+    "author": "David Baldacci",
+    "isbn": "9022991547",
+    "genre": "thriller",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9158779-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The King of Torts",
+    "author": "John Grisham",
+    "isbn": "9788376599700",
+    "genre": "thriller",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/6618007-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Great Secret",
+    "author": "Edward Phillips Oppenheim",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1907,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12649031-M.jpg",
+    "description": null
+  },
+  {
+    "title": "One Shot",
+    "author": "Lee Child",
+    "isbn": "9788850249138",
+    "genre": "thriller",
+    "publicationYear": 2005,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14424685-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The sea lions",
+    "author": "James Fenimore Cooper",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1800,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2949613-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Night of the Fox",
+    "author": "Henry Patterson",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1757,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2148380-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Stormbreaker",
+    "author": "Anthony Horowitz",
+    "isbn": "9782013971089",
+    "genre": "thriller",
+    "publicationYear": 2000,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5081706-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Black Dahlia",
+    "author": "James Ellroy",
+    "isbn": "9788498721973",
+    "genre": "thriller",
+    "publicationYear": 1987,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1474254-M.jpg",
+    "description": null
+  },
+  {
+    "title": "El Amo Del Juego/Masters of the Game",
+    "author": "Sidney Sheldon, Sidney Sheldon, sidney Sheldon, Sidney sheldon",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1905,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/4672-M.jpg",
+    "description": null
+  },
+  {
+    "title": "A Taste for Death",
+    "author": "P. D. James",
+    "isbn": "9789501510089",
+    "genre": "thriller",
+    "publicationYear": 1986,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2203594-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Point Blanc",
+    "author": "Anthony Horowitz",
+    "isbn": "9782012007307",
+    "genre": "thriller",
+    "publicationYear": 2001,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/259930-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Persuader",
+    "author": "Lee Child",
+    "isbn": "9788381258302",
+    "genre": "thriller",
+    "publicationYear": 2003,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14424684-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hold Tight",
+    "author": "Harlan Coben",
+    "isbn": "9783442468621",
+    "genre": "thriller",
+    "publicationYear": 2008,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8647964-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hannibal",
+    "author": "Thomas Harris",
+    "isbn": "9782702851166",
+    "genre": "thriller",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8384202-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Devil's Paw",
+    "author": "Edward Phillips Oppenheim",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1920,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/12648605-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Funeral in Berlin",
+    "author": "Len Deighton",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1743,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1364710-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Mr. Mercedes",
+    "author": "Stephen King, Stephen king, Ingah Mikhaʼeli",
+    "isbn": "9788960176751",
+    "genre": "thriller",
+    "publicationYear": 2013,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14653120-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Step on a Crack",
+    "author": "James Patterson, Michael Ledwidge",
+    "isbn": "9785170790098",
+    "genre": "thriller",
+    "publicationYear": 1658,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/187654-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Tripwire",
+    "author": "Lee Child",
+    "isbn": "9785699656417",
+    "genre": "thriller",
+    "publicationYear": 1999,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14424673-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Hour Game",
+    "author": "David Baldacci",
+    "isbn": "9022989194",
+    "genre": "thriller",
+    "publicationYear": 2004,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2271161-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Collectors",
+    "author": "David Baldacci",
+    "isbn": "9789022996621",
+    "genre": "thriller",
+    "publicationYear": 2006,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/8569272-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Winner",
+    "author": "David Baldacci",
+    "isbn": "9783785709283",
+    "genre": "thriller",
+    "publicationYear": 1997,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/9296951-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Black Friday",
+    "author": "James Patterson",
+    "isbn": "0006493149",
+    "genre": "thriller",
+    "publicationYear": 1986,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/1009980-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The enemy",
+    "author": "Lee Child",
+    "isbn": "9788381258340",
+    "genre": "thriller",
+    "publicationYear": 2004,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14424689-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Bad Luck and Trouble",
+    "author": "Lee Child",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1984,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/14424663-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Illustrious Prince",
+    "author": "Edward Phillips Oppenheim",
+    "isbn": null,
+    "genre": "thriller",
+    "publicationYear": 1910,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/5884954-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Kiss the Girls",
+    "author": "James Patterson",
+    "isbn": "902746460X",
+    "genre": "thriller",
+    "publicationYear": 1995,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/535208-M.jpg",
+    "description": null
+  },
+  {
+    "title": "Cathedral",
+    "author": "Nelson DeMille",
+    "isbn": "9783442067954",
+    "genre": "thriller",
+    "publicationYear": 1980,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/10411107-M.jpg",
+    "description": null
+  },
+  {
+    "title": "The Ipcress File",
+    "author": "Len Deighton",
+    "isbn": "9780008373702",
+    "genre": "thriller",
+    "publicationYear": 1962,
+    "coverImageUrl": "https://covers.openlibrary.org/b/id/2560439-M.jpg",
+    "description": null
+  }
+]
