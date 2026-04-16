@@ -76,7 +76,7 @@ function CartDropdown() {
           sideOffset={8}
           className="z-50 w-80 rounded-lg border border-border bg-popover p-0 shadow-md"
         >
-          {checkedOutBooks.length > 0 ? (
+          {checkedOutBooks.length > 0 && itemCount === 0 ? (
             <>
               <div className="border-b border-border px-4 py-3">
                 <h3 className="text-sm font-semibold text-foreground">
