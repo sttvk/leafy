@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { Loader2 } from "lucide-react"
+import { Loader2, ShoppingCart } from "lucide-react"
 import { fetchBook, type BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { cn } from "@/lib/utils"
@@ -35,7 +35,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="book-detail-flip-in max-h-[90vh] w-[95vw] max-w-3xl overflow-y-auto p-0 sm:p-0">
+      <DialogContent className="book-detail-flip-in max-h-[90vh] w-[95vw] max-w-4xl overflow-y-auto p-0 sm:p-0">
         {book == null ? null : isLoading || detail == null ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -107,15 +107,18 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
               )}
 
               {/* Action buttons */}
-              <div className="mt-auto flex items-center gap-3 pt-2">
+              <div className="mt-auto flex flex-col gap-3 pt-2">
                 {isAuthenticated && onBorrow && isAvailable && (
                   <Button
+                    size="lg"
+                    className="w-full text-base"
                     onClick={() => {
                       onBorrow()
                       onOpenChange(false)
                     }}
                   >
-                    Borrow
+                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    Add to Cart
                   </Button>
                 )}
                 {isLibrarian && onEdit && (

@@ -194,7 +194,6 @@ function CatalogPage() {
           <BookGrid
             books={filteredBooks}
             onEditBook={isLibrarian ? setEditingBook : undefined}
-            onBorrowBook={isAuthenticated ? handleBorrowBook : undefined}
             onSelectBook={setSelectedBook}
           />
         )}

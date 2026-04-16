@@ -197,5 +197,5 @@
 }
 
 .book-detail-flip-in[data-state="open"] {
-  animation: book-detail-flip-in 0.4s ease-out;
+  animation: book-detail-flip-in 0.8s ease-out;
 }

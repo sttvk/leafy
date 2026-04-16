@@ -1,4 +1,4 @@
-import { Pencil, ShoppingCart } from "lucide-react"
+import { Pencil } from "lucide-react"
 import type { BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { cn } from "@/lib/utils"
@@ -6,14 +6,13 @@ import { cn } from "@/lib/utils"
 interface BookCardProps {
   book: BookListDto
   onEdit?: () => void
-  onBorrow?: () => void
   onSelect?: () => void
 }
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
-function BookCard({ book, onEdit, onBorrow, onSelect }: BookCardProps) {
-  const { isAuthenticated, isLibrarian } = useAuth()
+function BookCard({ book, onEdit, onSelect }: BookCardProps) {
+  const { isLibrarian } = useAuth()
   const isAvailable = book.availableCopies > 0
 
   return (
@@ -87,20 +86,6 @@ function BookCard({ book, onEdit, onBorrow, onSelect }: BookCardProps) {
         </div>
       )}
 
-      {/* Borrow cart button — bottom right */}
-      {isAuthenticated && onBorrow && isAvailable && (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation()
-            onBorrow()
-          }}
-          className="absolute bottom-2 right-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md transition-transform hover:scale-110"
-          aria-label={`Borrow ${book.title}`}
-        >
-          <ShoppingCart className="h-4 w-4" />
-        </button>
-      )}
     </div>
   )
 }
