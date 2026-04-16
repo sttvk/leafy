@@ -130,7 +130,7 @@ function CatalogPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-14 z-30 bg-background mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {isLibrarian && (
             <Button onClick={() => setIsAddBookOpen(true)}>
