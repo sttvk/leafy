@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.AddLmsInfrastructure(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
 
 // Relax password policy for the seed account (dev-only seeder).
 // The API project keeps the stricter policy from DependencyInjection.cs.
