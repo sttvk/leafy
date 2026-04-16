@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import {
   createBook,
   fetchBook,
@@ -65,6 +65,7 @@ function buildFormStateFromDetail(detail: BookDetailDto): FormState {
 
 function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalProps) {
   const isEditMode = book != null
+  const queryClient = useQueryClient()
   const [form, setForm] = useState<FormState>({ ...INITIAL_FORM_STATE })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -138,6 +139,7 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
     try {
       if (isEditMode) {
         await updateBook(book.id, payload)
+        await queryClient.invalidateQueries({ queryKey: ["book", book.id] })
       } else {
         await createBook(payload)
       }
