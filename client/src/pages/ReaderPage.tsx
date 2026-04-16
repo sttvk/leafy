@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { fetchBook } from "@/api/books"
@@ -12,6 +12,8 @@ function ReaderPage() {
   const queryClient = useQueryClient()
   const [isReturning, setIsReturning] = useState(false)
   const [isReturned, setIsReturned] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const pageContentRef = useRef<HTMLDivElement>(null)
 
   const {
     data: checkouts,
@@ -38,14 +40,17 @@ function ReaderPage() {
       (c.status === "Active" || c.status === "Overdue")
   )
 
-  const pages = useMemo(
-    () =>
-      Array.from({ length: TOTAL_PAGES }, (_, i) => ({
-        number: i + 1,
-        paragraphs: generatePage(i + 1).split("\n\n"),
-      })),
-    []
+  const currentPageData = useMemo(
+    () => ({
+      number: currentPage,
+      paragraphs: generatePage(currentPage).split("\n\n"),
+    }),
+    [currentPage]
   )
+
+  useEffect(() => {
+    pageContentRef.current?.scrollTo(0, 0)
+  }, [currentPage])
 
   const isLoading = isCheckoutsLoading || isBookLoading
   const isError = isCheckoutsError || isBookError
@@ -64,6 +69,14 @@ function ReaderPage() {
       setIsReturning(false)
     }
   }, [activeCheckout, queryClient])
+
+  const handlePreviousPage = useCallback(() => {
+    setCurrentPage((prev) => Math.max(1, prev - 1))
+  }, [])
+
+  const handleNextPage = useCallback(() => {
+    setCurrentPage((prev) => Math.min(TOTAL_PAGES, prev + 1))
+  }, [])
 
   if (isLoading) {
     return (
@@ -110,69 +123,88 @@ function ReaderPage() {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-      <section className="mb-6 space-y-1">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+    <main className="flex h-[calc(100vh-4rem)] flex-col px-4 sm:px-6 lg:px-8">
+      <section className="flex shrink-0 items-center gap-3 border-b border-border py-3">
+        <h1 className="text-lg font-bold tracking-tight text-foreground">
           {book?.title}
         </h1>
-        <p className="text-lg text-muted-foreground">{book?.author}</p>
+        <span className="text-sm text-muted-foreground">{book?.author}</span>
         {book?.genre != null && book.genre !== "" && (
-          <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+          <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
             {book.genre}
           </span>
         )}
-      </section>
-
-      {isReturned && (
-        <div className="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-200">
-          Book returned successfully.
-        </div>
-      )}
-
-      <section
-        className={`rounded-lg border border-border bg-card p-8 shadow-sm ${
-          isReturned ? "pointer-events-none opacity-50" : ""
-        }`}
-      >
-        <div className="prose prose-lg max-w-none font-serif text-foreground">
-          {book?.description != null && book.description !== "" && (
-            <div className="mb-8 border-b border-border pb-8">
-              <p className="whitespace-pre-line leading-relaxed italic text-muted-foreground">
-                {book.description}
-              </p>
-            </div>
-          )}
-
-          {pages.map((page) => (
-            <div key={page.number}>
-              <div className="my-8 flex items-center gap-4">
-                <hr className="flex-1 border-border" />
-                <span className="text-xs font-medium tracking-wide text-muted-foreground">
-                  Page {page.number}
-                </span>
-                <hr className="flex-1 border-border" />
-              </div>
-              {page.paragraphs.map((paragraph, idx) => (
-                <p key={idx} className="mb-4 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {!isReturned && (
-        <div className="mt-6 flex justify-end">
+        {isReturned && (
+          <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-950 dark:text-green-200">
+            Returned
+          </span>
+        )}
+        {!isReturned && (
           <Button
             variant="destructive"
+            size="sm"
+            className="ml-auto"
             disabled={isReturning}
             onClick={handleReturn}
           >
             {isReturning ? "Returning..." : "Return Book"}
           </Button>
+        )}
+      </section>
+
+      <section
+        ref={pageContentRef}
+        className={`min-h-0 flex-1 overflow-y-auto rounded-lg border border-border bg-card p-8 shadow-sm ${
+          isReturned ? "pointer-events-none opacity-50" : ""
+        }`}
+      >
+        <div className="prose prose-lg mx-auto max-w-3xl font-serif text-foreground">
+          {currentPage === 1 &&
+            book?.description != null &&
+            book.description !== "" && (
+              <div className="mb-8 border-b border-border pb-8">
+                <p className="whitespace-pre-line leading-relaxed italic text-muted-foreground">
+                  {book.description}
+                </p>
+              </div>
+            )}
+
+          <div className="mb-6 flex items-center gap-4">
+            <hr className="flex-1 border-border" />
+            <span className="text-xs font-medium tracking-wide text-muted-foreground">
+              Page {currentPageData.number}
+            </span>
+            <hr className="flex-1 border-border" />
+          </div>
+          {currentPageData.paragraphs.map((paragraph, idx) => (
+            <p key={idx} className="mb-4 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
         </div>
-      )}
+      </section>
+
+      <nav className="flex shrink-0 items-center justify-between border-t border-border py-3">
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={currentPage <= 1}
+          onClick={handlePreviousPage}
+        >
+          Previous
+        </Button>
+        <span className="text-sm text-muted-foreground">
+          Page {currentPage} of {TOTAL_PAGES}
+        </span>
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={currentPage >= TOTAL_PAGES}
+          onClick={handleNextPage}
+        >
+          Next
+        </Button>
+      </nav>
     </main>
   )
 }
