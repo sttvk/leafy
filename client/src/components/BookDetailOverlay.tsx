@@ -35,7 +35,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="book-detail-flip-in max-h-[90vh] w-[95vw] max-w-4xl overflow-y-auto p-0 sm:p-0">
+      <DialogContent className="book-detail-flip-in max-h-[90vh] w-[95vw] max-w-5xl overflow-y-auto p-0 sm:p-0">
         {book == null ? null : isLoading || detail == null ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -48,18 +48,18 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
         ) : (
           <div className="flex flex-col sm:flex-row">
             {/* Left: cover image */}
-            <div className="relative flex-shrink-0 sm:w-64">
+            <div className="relative flex-shrink-0 sm:w-80 lg:w-96">
               <img
                 src={detail.coverImageUrl ?? PLACEHOLDER_COVER}
                 alt={`Cover of ${detail.title}`}
-                className="h-64 w-full object-cover sm:h-full sm:rounded-l-lg"
+                className="h-80 w-full object-cover sm:h-full sm:rounded-l-lg"
               />
             </div>
 
             {/* Right: details */}
             <div className="flex flex-1 flex-col gap-4 p-6">
               <DialogHeader className="space-y-2 text-left">
-                <DialogTitle className="text-xl font-bold leading-tight sm:text-2xl">
+                <DialogTitle className="text-xl font-bold leading-tight sm:text-3xl">
                   {detail.title}
                 </DialogTitle>
                 <DialogDescription className="text-sm text-muted-foreground">
@@ -101,7 +101,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
               {/* Description */}
               {detail.description && (
-                <div className="max-h-40 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
+                <div className="max-h-60 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
                   {detail.description}
                 </div>
               )}
