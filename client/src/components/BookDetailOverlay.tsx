@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query"
 import { Loader2, ShoppingCart } from "lucide-react"
 import { fetchBook, type BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -30,8 +29,6 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
     queryFn: () => fetchBook(book!.id),
     enabled: open && book != null,
   })
-
-  const isAvailable = book != null && book.availableCopies > 0
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -86,19 +83,6 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
                 </p>
               )}
 
-              {/* Availability indicator */}
-              <div className="flex items-center gap-2">
-                <span
-                  className={cn(
-                    "inline-block h-2.5 w-2.5 rounded-full",
-                    isAvailable ? "bg-green-500" : "bg-red-500"
-                  )}
-                />
-                <span className="text-sm text-foreground">
-                  {detail.availableCopies} of {detail.totalCopies} copies available
-                </span>
-              </div>
-
               {/* Description */}
               {detail.description && (
                 <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
@@ -108,7 +92,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
               {/* Action buttons */}
               <div className="mt-auto flex flex-col gap-3 pt-2">
-                {isAuthenticated && onBorrow && isAvailable && (
+                {isAuthenticated && onBorrow && (
                   <Button
                     size="lg"
                     className="w-full text-base"
