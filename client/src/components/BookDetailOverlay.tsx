@@ -32,7 +32,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="book-detail-flip-in h-[70vh] w-[95vw] max-w-5xl p-0 sm:p-0">
+      <DialogContent className="book-detail-flip-in h-[70vh] w-[95vw] max-w-5xl overflow-hidden p-0 sm:p-0">
         {book == null ? null : isLoading || detail == null ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -54,7 +54,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
             </div>
 
             {/* Right: details */}
-            <div className="flex h-full flex-1 flex-col gap-4 p-6">
+            <div className="flex h-full min-h-0 flex-1 flex-col gap-4 p-6">
               <DialogHeader className="space-y-2 text-left">
                 <DialogTitle className="text-xl font-bold leading-tight sm:text-3xl">
                   {detail.title}
