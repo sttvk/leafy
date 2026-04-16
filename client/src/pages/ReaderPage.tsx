@@ -123,7 +123,7 @@ function ReaderPage() {
   }
 
   return (
-    <main className="flex h-[calc(100vh-4rem)] flex-col px-4 sm:px-6 lg:px-8">
+    <main className="mx-auto flex h-[calc(100vh-4rem)] max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
       <section className="flex shrink-0 items-center gap-3 border-b border-border py-3">
         <h1 className="text-lg font-bold tracking-tight text-foreground">
           {book?.title}
