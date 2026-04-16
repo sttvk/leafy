@@ -35,23 +35,19 @@ function CartDropdown() {
       for (const item of succeededItems) {
         removeFromCart(item.id)
       }
-      setCheckedOutBooks(succeededItems)
+      setCheckedOutBooks((prev) => [...prev, ...succeededItems])
       window.alert(
         `${succeededItems.length} book(s) checked out. ${failedIds.length} failed — they may be unavailable.`
       )
     } else if (failedIds.length === items.length) {
       window.alert("Checkout failed for all items. Please try again.")
     } else {
-      setCheckedOutBooks([...items])
+      setCheckedOutBooks((prev) => [...prev, ...items])
       clearCart()
     }
 
     setIsCheckingOut(false)
   }, [items, removeFromCart, clearCart, queryClient])
-
-  const handleDone = useCallback(() => {
-    setCheckedOutBooks([])
-  }, [])
 
   return (
     <Popover.Root>
@@ -76,15 +72,67 @@ function CartDropdown() {
           sideOffset={8}
           className="z-50 w-80 rounded-lg border border-border bg-popover p-0 shadow-md"
         >
-          {checkedOutBooks.length > 0 && itemCount === 0 ? (
+          <div className="border-b border-border px-4 py-3">
+            <h3 className="text-sm font-semibold text-foreground">
+              My Cart ({itemCount})
+            </h3>
+          </div>
+
+          <div className="max-h-72 overflow-y-auto">
+            {itemCount === 0 && checkedOutBooks.length === 0 ? (
+              <div className="px-4 py-8 text-center">
+                <p className="text-sm text-muted-foreground">
+                  Your cart is empty
+                </p>
+              </div>
+            ) : itemCount > 0 ? (
+              <ul className="divide-y divide-border">
+                {items.map((item) => (
+                  <li key={item.id} className="flex items-start gap-3 px-4 py-3">
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-foreground">
+                        {item.title}
+                      </p>
+                      <p className="truncate text-xs text-muted-foreground">
+                        {item.author}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                      aria-label={`Remove ${item.title} from cart`}
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+
+          {itemCount > 0 && (
+            <div className="border-t border-border px-4 py-3">
+              <Button
+                size="sm"
+                className="w-full"
+                disabled={isCheckingOut}
+                onClick={handleCheckout}
+              >
+                {isCheckingOut ? "Processing..." : `Checkout (${itemCount})`}
+              </Button>
+            </div>
+          )}
+
+          {checkedOutBooks.length > 0 && (
             <>
-              <div className="border-b border-border px-4 py-3">
+              <div className="border-t border-border px-4 py-3">
                 <h3 className="text-sm font-semibold text-foreground">
-                  Checked Out ({checkedOutBooks.length})
+                  My Books ({checkedOutBooks.length})
                 </h3>
               </div>
 
-              <div className="max-h-72 overflow-y-auto">
+              <div className="max-h-48 overflow-y-auto">
                 <ul className="divide-y divide-border">
                   {checkedOutBooks.map((book) => (
                     <li key={book.id} className="flex items-center gap-3 px-4 py-3">
@@ -106,66 +154,6 @@ function CartDropdown() {
                   ))}
                 </ul>
               </div>
-
-              <div className="border-t border-border px-4 py-3">
-                <Button size="sm" variant="secondary" className="w-full" onClick={handleDone}>
-                  Done
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="border-b border-border px-4 py-3">
-                <h3 className="text-sm font-semibold text-foreground">
-                  My Cart ({itemCount})
-                </h3>
-              </div>
-
-              <div className="max-h-72 overflow-y-auto">
-                {itemCount === 0 ? (
-                  <div className="px-4 py-8 text-center">
-                    <p className="text-sm text-muted-foreground">
-                      Your cart is empty
-                    </p>
-                  </div>
-                ) : (
-                  <ul className="divide-y divide-border">
-                    {items.map((item) => (
-                      <li key={item.id} className="flex items-start gap-3 px-4 py-3">
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-medium text-foreground">
-                            {item.title}
-                          </p>
-                          <p className="truncate text-xs text-muted-foreground">
-                            {item.author}
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                          aria-label={`Remove ${item.title} from cart`}
-                          onClick={() => removeFromCart(item.id)}
-                        >
-                          <X className="h-4 w-4" />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {itemCount > 0 && (
-                <div className="border-t border-border px-4 py-3">
-                  <Button
-                    size="sm"
-                    className="w-full"
-                    disabled={isCheckingOut}
-                    onClick={handleCheckout}
-                  >
-                    {isCheckingOut ? "Processing..." : `Checkout (${itemCount})`}
-                  </Button>
-                </div>
-              )}
             </>
           )}
         </Popover.Content>
