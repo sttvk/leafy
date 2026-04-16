@@ -128,26 +128,10 @@ function CatalogPage() {
     [queryClient]
   )
 
-  const totalCount = data?.pages[0]?.totalCount ?? 0
-
-  const bookCountText = hasActiveFilters
-    ? `Showing ${filteredBooks.length} of ${totalCount} books`
-    : `${totalCount} books`
-
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Library Catalog
-            </h1>
-            {!isLoading && !isError && (
-              <p className="mt-1 text-sm text-muted-foreground">
-                {bookCountText}
-              </p>
-            )}
-          </div>
           {isLibrarian && (
             <Button onClick={() => setIsAddBookOpen(true)}>
               <Plus className="mr-1.5 h-4 w-4" />
