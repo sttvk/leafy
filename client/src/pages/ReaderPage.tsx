@@ -80,7 +80,7 @@ function ReaderPage() {
 
   if (isLoading) {
     return (
-      <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="animate-pulse space-y-4">
           <div className="h-8 w-1/3 rounded bg-muted" />
           <div className="h-4 w-1/4 rounded bg-muted" />
@@ -92,7 +92,7 @@ function ReaderPage() {
 
   if (isError) {
     return (
-      <main className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
         <p className="text-lg font-medium text-foreground">
           Something went wrong
         </p>
@@ -108,7 +108,7 @@ function ReaderPage() {
 
   if (activeCheckout == null && !isReturned) {
     return (
-      <main className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
         <p className="text-lg font-medium text-foreground">
           You don&apos;t have access to this book
         </p>
