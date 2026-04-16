@@ -32,7 +32,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="book-detail-flip-in h-[70vh] w-[95vw] max-w-5xl overflow-hidden p-0 sm:p-0">
+      <DialogContent className="book-detail-flip-in flex h-[70vh] w-[95vw] max-w-5xl flex-col gap-0 overflow-hidden p-0 sm:p-0">
         {book == null ? null : isLoading || detail == null ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
