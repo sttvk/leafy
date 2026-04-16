@@ -48,11 +48,11 @@ function BookDetailOverlay({ book, open, onOpenChange, onBorrow, onEdit }: BookD
         ) : (
           <div className="flex h-full flex-col sm:flex-row">
             {/* Left: cover image */}
-            <div className="relative flex-shrink-0 sm:w-80 lg:w-96">
+            <div className="relative flex-shrink-0 bg-neutral-900 sm:w-80 lg:w-96">
               <img
                 src={detail.coverImageUrl ?? PLACEHOLDER_COVER}
                 alt={`Cover of ${detail.title}`}
-                className="h-64 w-full object-cover object-top sm:h-full sm:max-h-[70vh] sm:rounded-l-lg"
+                className="h-64 w-full object-contain sm:h-full sm:max-h-[70vh] sm:rounded-l-lg"
               />
             </div>
 
