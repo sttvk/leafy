@@ -130,7 +130,7 @@ function CatalogPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {isLibrarian && (
             <Button onClick={() => setIsAddBookOpen(true)}>
@@ -141,7 +141,7 @@ function CatalogPage() {
         </div>
 
         {!isLoading && !isError && (
-          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <div className="mt-2 flex flex-wrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="All Genres" />
@@ -173,7 +173,7 @@ function CatalogPage() {
         )}
       </div>
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         {isLoading && <BookGridSkeleton />}
 
         {isError && (
