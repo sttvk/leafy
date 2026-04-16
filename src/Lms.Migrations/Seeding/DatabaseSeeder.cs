@@ -10,9 +10,6 @@ namespace Lms.Migrations.Seeding;
 public static class DatabaseSeeder
 {
     private const string BooksResourceName = "Lms.Migrations.SeedData.books.json";
-    private const int SeedRandomSeed = 42;
-    private const int MinCopies = 1;
-    private const int MaxCopiesExclusive = 6;
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -43,11 +40,10 @@ public static class DatabaseSeeder
         }
 
         var dtos = LoadBooksFromResource();
-        var rng = new Random(SeedRandomSeed);
         var addedAt = DateTime.UtcNow;
 
         var entities = dtos
-            .Select(dto => MapToEntity(dto, rng, addedAt))
+            .Select(dto => MapToEntity(dto, addedAt))
             .ToList();
 
         await db.Books.AddRangeAsync(entities, ct);
@@ -76,9 +72,8 @@ public static class DatabaseSeeder
         return dtos;
     }
 
-    private static Book MapToEntity(BookSeedDto dto, Random rng, DateTime addedAt)
+    private static Book MapToEntity(BookSeedDto dto, DateTime addedAt)
     {
-        var totalCopies = rng.Next(MinCopies, MaxCopiesExclusive);
         return new Book
         {
             Id = Guid.NewGuid(),
@@ -89,8 +84,6 @@ public static class DatabaseSeeder
             PublicationYear = dto.PublicationYear,
             CoverImageUrl = dto.CoverImageUrl,
             Description = dto.Description,
-            TotalCopies = totalCopies,
-            AvailableCopies = totalCopies,
             AddedAt = addedAt,
             IsDeleted = false,
         };
