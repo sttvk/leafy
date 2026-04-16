@@ -158,7 +158,7 @@ function ReaderPage() {
           isReturned ? "pointer-events-none opacity-50" : ""
         }`}
       >
-        <div className="prose prose-lg mx-auto max-w-none font-serif text-foreground">
+        <div className="prose prose-lg mx-auto max-w-prose font-serif text-foreground">
           {currentPage === 1 &&
             book?.description != null &&
             book.description !== "" && (
