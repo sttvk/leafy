@@ -22,8 +22,14 @@ var migrations = builder.AddProject<Projects.Lms_Migrations>("migrations")
 
 // API depends on migrations having COMPLETED, not just started. This is the
 // load-bearing wiring for invariant #1.
-builder.AddProject<Projects.Lms_Api>("api")
+var api = builder.AddProject<Projects.Lms_Api>("api")
     .WithReference(db)
     .WaitForCompletion(migrations);
+
+// Vite dev server for the React client. Waits for the API so the /api proxy
+// target is ready before the dev server starts accepting requests.
+builder.AddNpmApp("client", "../../client", "dev")
+    .WithHttpEndpoint(env: "PORT")
+    .WaitFor(api);
 
 builder.Build().Run();
