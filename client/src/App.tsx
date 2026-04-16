@@ -3,8 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 import { CatalogPage } from "@/pages/CatalogPage"
-import { LoginPage } from "@/pages/LoginPage"
-import { RegisterPage } from "@/pages/RegisterPage"
+import { AuthPage } from "@/pages/AuthPage"
 import { Button } from "@/components/ui/button"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
@@ -43,14 +42,9 @@ function NavHeader() {
                 </Button>
               </>
             ) : (
-              <>
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/login">Sign in</Link>
-                </Button>
-                <Button size="sm" asChild>
-                  <Link to="/register">Sign up</Link>
-                </Button>
-              </>
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/login">Sign in</Link>
+              </Button>
             )}
           </nav>
         )}
@@ -65,8 +59,7 @@ function AppRoutes() {
       <NavHeader />
       <Routes>
         <Route path="/" element={<CatalogPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<AuthPage />} />
       </Routes>
     </>
   )

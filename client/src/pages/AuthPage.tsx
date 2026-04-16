@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { GoogleLogin } from "@react-oauth/google"
 import type { CredentialResponse } from "@react-oauth/google"
 import { useAuth } from "@/contexts/AuthContext"
@@ -10,17 +10,19 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
-function LoginPage() {
-  const navigate = useNavigate()
-  const { login, googleLogin } = useAuth()
+const LOGIN_FAILURE_PATTERN = /invalid email or password/i
 
+function AuthPage() {
+  const navigate = useNavigate()
+  const { login, register, googleLogin } = useAuth()
+
+  const [displayName, setDisplayName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -34,10 +36,26 @@ function LoginPage() {
     try {
       await login(email, password)
       navigate("/", { replace: true })
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Login failed. Please try again."
-      setError(message)
+    } catch (loginError: unknown) {
+      const loginMessage =
+        loginError instanceof Error ? loginError.message : ""
+
+      if (!LOGIN_FAILURE_PATTERN.test(loginMessage)) {
+        setError(loginMessage || "Sign in failed. Please try again.")
+        setIsSubmitting(false)
+        return
+      }
+
+      try {
+        await register(email, password, displayName)
+        navigate("/", { replace: true })
+      } catch (registerError: unknown) {
+        const registerMessage =
+          registerError instanceof Error
+            ? registerError.message
+            : "Registration failed. Please try again."
+        setError(registerMessage)
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -72,8 +90,8 @@ function LoginPage() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Welcome back</CardTitle>
-          <CardDescription>Sign in to your account</CardDescription>
+          <CardTitle className="text-2xl">Sign in</CardTitle>
+          <CardDescription>Enter your credentials to continue</CardDescription>
         </CardHeader>
 
         <CardContent>
@@ -83,6 +101,19 @@ function LoginPage() {
                 {error}
               </div>
             )}
+
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="displayName">Display name</Label>
+              <Input
+                id="displayName"
+                type="text"
+                placeholder="Jane Doe"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                required
+                autoComplete="name"
+              />
+            </div>
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="email">Email</Label>
@@ -110,7 +141,7 @@ function LoginPage() {
             </div>
 
             <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Signing in..." : "Sign in"}
+              {isSubmitting ? "Please wait..." : "Continue"}
             </Button>
           </form>
 
@@ -138,21 +169,9 @@ function LoginPage() {
             </>
           )}
         </CardContent>
-
-        <CardFooter className="justify-center">
-          <p className="text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link
-              to="/register"
-              className="font-medium text-primary hover:underline"
-            >
-              Sign up
-            </Link>
-          </p>
-        </CardFooter>
       </Card>
     </div>
   )
 }
 
-export { LoginPage }
+export { AuthPage }
