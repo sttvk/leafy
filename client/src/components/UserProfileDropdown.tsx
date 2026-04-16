@@ -1,24 +1,44 @@
+import { useEffect, useRef, useState } from "react"
 import { User } from "lucide-react"
-import * as Popover from "@radix-ui/react-popover"
 import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
 
 function UserProfileDropdown() {
   const { user, logout } = useAuth()
+  const [isOpen, setIsOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
+  function handleLogout() {
+    setIsOpen(false)
+    logout()
+  }
 
   return (
-    <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="ghost" size="sm" aria-label="User menu">
-          <User className="h-5 w-5" />
-        </Button>
-      </Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content
-          sideOffset={8}
-          align="end"
-          className="z-50 w-64 rounded-md border bg-popover p-4 shadow-md"
-        >
+    <div ref={containerRef} className="relative">
+      <Button
+        variant="ghost"
+        size="sm"
+        aria-label="User menu"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <User className="h-5 w-5" />
+      </Button>
+      {isOpen && (
+        <div className="absolute top-full right-0 mt-2 z-50 w-64 rounded-md border bg-popover p-4 shadow-md">
           <div className="flex flex-col gap-2">
             <span className="text-sm font-bold text-foreground">
               {user?.displayName}
@@ -34,14 +54,14 @@ function UserProfileDropdown() {
               variant="destructive"
               size="sm"
               className="w-full"
-              onClick={logout}
+              onClick={handleLogout}
             >
               Logout
             </Button>
           </div>
-        </Popover.Content>
-      </Popover.Portal>
-    </Popover.Root>
+        </div>
+      )}
+    </div>
   )
 }
 
