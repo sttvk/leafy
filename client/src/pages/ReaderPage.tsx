@@ -124,8 +124,8 @@ function ReaderPage() {
   }
 
   return (
-    <PageLayout className="flex h-[calc(100vh-4rem)] flex-col py-0">
-      <section className="flex shrink-0 items-center gap-3 py-3">
+    <PageLayout className="flex h-[calc(100vh-4rem)] flex-col space-y-3 py-0">
+      <section className="flex shrink-0 items-center gap-3 py-0">
         <h1 className="text-lg font-bold tracking-tight text-foreground">
           {book?.title}
         </h1>
@@ -175,7 +175,7 @@ function ReaderPage() {
 
       <section
         ref={pageContentRef}
-        className={`mt-3 min-h-0 flex-1 overflow-y-auto bg-card p-8 ${
+        className={`min-h-0 flex-1 overflow-y-auto bg-card p-8 ${
           isReturned ? "pointer-events-none opacity-50" : ""
         }`}
       >
@@ -205,7 +205,7 @@ function ReaderPage() {
         </div>
       </section>
 
-      <nav className="flex shrink-0 items-center justify-between py-3">
+      <nav className="flex shrink-0 items-center justify-between">
         <Button
           variant="outline"
           size="sm"
