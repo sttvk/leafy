@@ -1,9 +1,8 @@
-import { useCallback, useState } from "react"
-import { useQueryClient } from "@tanstack/react-query"
+import { useCallback, useMemo, useState } from "react"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { ShoppingCart, X, BookOpen } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
-import type { BookListDto } from "@/api/books"
-import { checkoutBook } from "@/api/checkouts"
+import { checkoutBook, fetchMyCheckouts } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
 
@@ -11,7 +10,8 @@ function CartDropdown() {
   const queryClient = useQueryClient()
   const { items, removeFromCart, clearCart, itemCount } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
-  const [checkedOutBooks, setCheckedOutBooks] = useState<BookListDto[]>([])
+  const { data: myCheckouts } = useQuery({ queryKey: ["my-checkouts"], queryFn: fetchMyCheckouts })
+  const activeCheckouts = useMemo(() => (myCheckouts ?? []).filter(c => c.status === "Active" || c.status === "Overdue"), [myCheckouts])
 
   const handleCheckout = useCallback(async () => {
     if (items.length === 0) return
@@ -30,19 +30,18 @@ function CartDropdown() {
     const succeededItems = items.filter((item) => !failedIds.includes(item.id))
 
     await queryClient.invalidateQueries({ queryKey: ["books"] })
+    await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
 
     if (failedIds.length > 0 && failedIds.length < items.length) {
       for (const item of succeededItems) {
         removeFromCart(item.id)
       }
-      setCheckedOutBooks((prev) => [...prev, ...succeededItems])
       window.alert(
         `${succeededItems.length} book(s) checked out. ${failedIds.length} failed — they may be unavailable.`
       )
     } else if (failedIds.length === items.length) {
       window.alert("Checkout failed for all items. Please try again.")
     } else {
-      setCheckedOutBooks((prev) => [...prev, ...items])
       clearCart()
     }
 
@@ -79,7 +78,7 @@ function CartDropdown() {
           </div>
 
           <div className="max-h-72 overflow-y-auto">
-            {itemCount === 0 && checkedOutBooks.length === 0 ? (
+            {itemCount === 0 && activeCheckouts.length === 0 ? (
               <div className="px-4 py-8 text-center">
                 <p className="text-sm text-muted-foreground">
                   Your cart is empty
@@ -124,25 +123,28 @@ function CartDropdown() {
             </div>
           )}
 
-          {checkedOutBooks.length > 0 && (
+          {activeCheckouts.length > 0 && (
             <>
               <div className="border-t border-border px-4 py-3">
                 <h3 className="text-sm font-semibold text-foreground">
-                  My Books ({checkedOutBooks.length})
+                  My Books ({activeCheckouts.length})
                 </h3>
               </div>
 
               <div className="max-h-48 overflow-y-auto">
                 <ul className="divide-y divide-border">
-                  {checkedOutBooks.map((book) => (
-                    <li key={book.id} className="flex items-center gap-3 px-4 py-3">
+                  {activeCheckouts.map((checkout) => (
+                    <li key={checkout.id} className="flex items-center gap-3 px-4 py-3">
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-medium text-foreground">
-                          {book.title}
+                          {checkout.bookTitle}
+                        </p>
+                        <p className="truncate text-xs text-muted-foreground">
+                          {checkout.bookAuthor}
                         </p>
                       </div>
                       <a
-                        href={`/read/${book.id}`}
+                        href={`/read/${checkout.bookId}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-accent"
