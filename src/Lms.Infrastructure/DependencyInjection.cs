@@ -36,6 +36,7 @@ public static class InfrastructureServiceCollectionExtensions
                 options.Password.RequireNonAlphanumeric = false;
             })
             .AddEntityFrameworkStores<LmsDbContext>()
+            .AddSignInManager()
             .AddDefaultTokenProviders();
 
         services.AddScoped<IBookRepository, BookRepository>();

@@ -12,9 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddLmsInfrastructure(builder.Configuration);
 
-// SignInManager requires ASP.NET Core auth services, so register it here
-// rather than in Infrastructure (which is also consumed by the Migrations console app).
-builder.Services.AddScoped<SignInManager<User>>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<AuthService>();
