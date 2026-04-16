@@ -215,3 +215,11 @@
 .book-detail-flip-in[data-state="open"] {
   animation: book-detail-flip-in 0.8s ease-out;
 }
+
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
