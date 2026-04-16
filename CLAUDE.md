@@ -44,6 +44,20 @@ Before dispatching the implementation worker, dispatch a lightweight **clarifier
 
 If a worker hits an ambiguity mid-task it cannot resolve from the brief or rules, it halts, commits WIP, writes a structured `blocked.md` to its worktree, and returns `"BLOCKED: see .claude/blocked.md"`. The team lead reads it, asks the user, writes the answer to `<worktree>/.claude/answer.md`, then dispatches a continuation worker (via `/unblock <task-id>`) that resumes from the exact commit.
 
+### Review before commit (MANDATORY)
+
+**Workers must NOT run `git commit`.** They leave changes in the worktree's working tree and recommend a commit message in their report. The team lead:
+
+1. Reads the diff from the worktree (`git -C <worktree> diff`, `git -C <worktree> status --short`).
+2. Summarizes the key changes for the user (non-trivial behavior changes, invariant touch points, surprises).
+3. Waits for explicit user approval.
+4. Commits on the worker's behalf: `git -C <worktree> add -A && git -C <worktree> commit -m "..."` using the worker's recommended message (or an edited version).
+5. Merges to main.
+
+The only exception is the **WIP-on-halt carve-out**: if a worker is halting via the blocked protocol, it MAY run `git commit -am "wip: halting for clarification"` so the halt state is preserved in a named commit for inspection. That is the only case.
+
+This rule lives in `.claude/hooks/lib/dispatch-template.md` and must appear in every dispatch brief.
+
 ### When in doubt, ASK
 
 If a user request doesn't match a row in the routing table, **STOP** and ask:

@@ -57,6 +57,7 @@ You may READ any file in the repo for context. You may NOT edit anything outside
 
 - Report in ≤100 words, key facts only.
 - List files changed with a one-line what/why per file.
+- **Include a recommended commit message (subject + short body).** The team lead will use this to commit on your behalf after user review — see "Do NOT commit" section below.
 - Do NOT quote code back to the team lead.
 - If blocked, follow the blocked protocol below and return `BLOCKED: see .claude/blocked.md`.
 
@@ -69,7 +70,17 @@ You may READ any file in the repo for context. You may NOT edit anything outside
 
 ## Isolation
 
-You are working in a git worktree at `{{WORKTREE_PATH}}`. Make commits as you work. Do not rebase, do not push. The team lead will review the worktree directly before merging.
+You are working in a git worktree at `{{WORKTREE_PATH}}`. Do not rebase, do not push.
+
+## Do NOT commit — review-before-commit is mandatory
+
+**Write changes to the working tree and stop. Do not run `git commit` or `git add && git commit`.** The team lead reviews the diff with the user before any commit lands. When the user approves, the team lead will commit from the worktree on your behalf using the commit message you recommend.
+
+In your output contract, include:
+1. A one-line `git status --short` summary of the files you changed.
+2. **Your recommended commit message(s)** — subject line and a short body — following `.claude/rules/commit-messages.md`. If your work genuinely splits into multiple commits, recommend them in order.
+
+The only exception is the blocked protocol: if you are halting because you cannot proceed, DO run `git commit -am "wip: halting for clarification"` so the team lead can inspect the WIP state in a named commit. This is the WIP-commit-on-halt carve-out, not a general green-light to commit.
 
 ## Forbidden
 
@@ -78,3 +89,4 @@ You are working in a git worktree at `{{WORKTREE_PATH}}`. Make commits as you wo
 - Don't skip tests to make them "pass".
 - Don't add `.Database.Migrate()` to `src/Lms.Api/` (hook enforces — see invariant #1).
 - Don't quote code in your summary.
+- **Don't run `git commit`** outside the WIP-on-halt carve-out. Review-before-commit is mandatory.
