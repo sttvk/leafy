@@ -7,6 +7,8 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 import { CartProvider } from "@/contexts/CartContext"
 import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
+import { ReaderPage } from "@/pages/ReaderPage"
+import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { CartDropdown } from "@/components/CartDropdown"
 import { UserProfileDropdown } from "@/components/UserProfileDropdown"
 import { BookFormModal } from "@/components/BookFormModal"
@@ -105,6 +107,14 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<CatalogPage />} />
         <Route path="/login" element={<AuthPage />} />
+        <Route
+          path="/read/:bookId"
+          element={
+            <ProtectedRoute>
+              <ReaderPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   )
