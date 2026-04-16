@@ -175,7 +175,7 @@ function ReaderPage() {
 
       <section
         ref={pageContentRef}
-        className={`mt-3 min-h-0 flex-1 overflow-y-auto rounded-lg border border-border bg-card p-8 shadow-sm ${
+        className={`mt-3 min-h-0 flex-1 overflow-y-auto bg-card p-8 ${
           isReturned ? "pointer-events-none opacity-50" : ""
         }`}
       >
