@@ -9,6 +9,4 @@ public sealed record BookDto(
     string? Genre,
     string? Description,
     string? CoverImageUrl,
-    int TotalCopies,
-    int AvailableCopies,
     DateTime AddedAt);

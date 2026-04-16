@@ -72,7 +72,7 @@ public static class BooksEndpoints
         }
     }
 
-    private static async Task<Results<Ok<BookDto>, NotFound, ValidationProblem, Conflict<string>>> UpdateBookAsync(
+    private static async Task<Results<Ok<BookDto>, NotFound, ValidationProblem>> UpdateBookAsync(
         Guid id,
         UpdateBookRequest request,
         BookService bookService,
@@ -92,10 +92,6 @@ public static class BooksEndpoints
                 {
                     [ex.ParamName ?? "request"] = [ex.Message]
                 });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return TypedResults.Conflict(ex.Message);
         }
     }
 

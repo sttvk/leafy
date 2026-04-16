@@ -42,7 +42,6 @@ public sealed class BookService
         ValidateTitle(request.Title);
         ValidateAuthor(request.Author);
         ValidatePublicationYear(request.PublicationYear);
-        ValidateTotalCopies(request.TotalCopies);
 
         var book = new Book
         {
@@ -54,8 +53,6 @@ public sealed class BookService
             Genre = request.Genre?.Trim(),
             Description = request.Description?.Trim(),
             CoverImageUrl = request.CoverImageUrl?.Trim(),
-            TotalCopies = request.TotalCopies,
-            AvailableCopies = request.TotalCopies,
             AddedAt = DateTime.UtcNow,
             IsDeleted = false
         };
@@ -71,20 +68,11 @@ public sealed class BookService
         ValidateTitle(request.Title);
         ValidateAuthor(request.Author);
         ValidatePublicationYear(request.PublicationYear);
-        ValidateTotalCopies(request.TotalCopies);
 
         var existing = await _books.GetByIdAsync(id, ct);
         if (existing is null)
         {
             return null;
-        }
-
-        var checkedOut = existing.TotalCopies - existing.AvailableCopies;
-        if (request.TotalCopies < checkedOut)
-        {
-            throw new InvalidOperationException(
-                $"Cannot reduce total copies to {request.TotalCopies}; " +
-                $"{checkedOut} copies are currently checked out.");
         }
 
         var updated = new Book
@@ -97,8 +85,6 @@ public sealed class BookService
             Genre = request.Genre?.Trim(),
             Description = request.Description?.Trim(),
             CoverImageUrl = request.CoverImageUrl?.Trim(),
-            TotalCopies = request.TotalCopies,
-            AvailableCopies = existing.AvailableCopies + (request.TotalCopies - existing.TotalCopies),
             AddedAt = existing.AddedAt,
             IsDeleted = existing.IsDeleted
         };
@@ -131,8 +117,6 @@ public sealed class BookService
             book.Genre,
             book.Description,
             book.CoverImageUrl,
-            book.TotalCopies,
-            book.AvailableCopies,
             book.AddedAt);
 
     private static BookListDto ToListDto(Book book) =>
@@ -141,8 +125,6 @@ public sealed class BookService
             book.Title,
             book.Author,
             book.Genre,
-            book.AvailableCopies,
-            book.TotalCopies,
             book.CoverImageUrl);
 
     private static void ValidateTitle(string title)
@@ -174,14 +156,6 @@ public sealed class BookService
             throw new ArgumentException(
                 $"Publication year must be between {MinPublicationYear} and {maxYear}.",
                 nameof(year));
-        }
-    }
-
-    private static void ValidateTotalCopies(int totalCopies)
-    {
-        if (totalCopies < 1)
-        {
-            throw new ArgumentException("Total copies must be at least 1.", nameof(totalCopies));
         }
     }
 }

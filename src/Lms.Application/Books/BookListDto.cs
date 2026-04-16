@@ -5,6 +5,4 @@ public sealed record BookListDto(
     string Title,
     string Author,
     string? Genre,
-    int AvailableCopies,
-    int TotalCopies,
     string? CoverImageUrl);

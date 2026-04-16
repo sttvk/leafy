@@ -39,31 +39,21 @@ public sealed class CheckoutService
                 CheckoutFailureReason.LimitReached);
         }
 
-        var dueAt = DateTime.UtcNow.AddDays(LoanPeriodDays);
-        var success = await _checkouts.TryCheckoutAsync(bookId, userId, dueAt, ct);
-
-        if (!success)
+        var alreadyCheckedOut = await _checkouts.HasActiveCheckoutForBookAsync(bookId, userId, ct);
+        if (alreadyCheckedOut)
         {
-            return CheckoutResult.Failure(
-                "This book is currently unavailable.",
-                CheckoutFailureReason.BookUnavailable);
-        }
-
-        // Fetch the user's checkouts to find the one just created (most recent)
-        var checkoutsList = await _checkouts.ListByBorrowerAsync(userId, ct);
-        var checkout = checkoutsList.FirstOrDefault(c => c.BookId == bookId && c.ReturnedAt is null);
-
-        if (checkout is null)
-        {
-            _logger.LogError(
-                "checkout.post_create_lookup_failed book {BookId} user {UserId}",
+            _logger.LogInformation(
+                "checkout.duplicate book {BookId} user {UserId}",
                 bookId,
                 userId);
 
             return CheckoutResult.Failure(
-                "Checkout succeeded but could not retrieve details.",
-                CheckoutFailureReason.NotFound);
+                "You already have this book checked out.",
+                CheckoutFailureReason.AlreadyCheckedOut);
         }
+
+        var dueAt = DateTime.UtcNow.AddDays(LoanPeriodDays);
+        var checkout = await _checkouts.CreateCheckoutAsync(bookId, userId, dueAt, ct);
 
         var book = await _books.GetByIdAsync(bookId, ct);
         var dto = ToDto(checkout, book?.Title ?? "Unknown", book?.Author ?? "Unknown");

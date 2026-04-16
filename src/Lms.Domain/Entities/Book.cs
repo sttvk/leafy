@@ -10,8 +10,6 @@ public sealed class Book
     public string? Genre { get; set; }
     public string? Description { get; set; }
     public string? CoverImageUrl { get; set; }
-    public int TotalCopies { get; set; }
-    public int AvailableCopies { get; set; }
     public DateTime AddedAt { get; set; }
     public bool IsDeleted { get; set; }
 }

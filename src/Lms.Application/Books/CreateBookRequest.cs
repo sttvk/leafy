@@ -7,5 +7,4 @@ public sealed record CreateBookRequest(
     int? PublicationYear,
     string? Genre,
     string? Description,
-    string? CoverImageUrl,
-    int TotalCopies);
+    string? CoverImageUrl);

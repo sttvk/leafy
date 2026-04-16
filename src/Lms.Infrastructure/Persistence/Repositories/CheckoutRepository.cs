@@ -16,84 +16,64 @@ internal sealed class CheckoutRepository : ICheckoutRepository
         _logger = logger;
     }
 
-    // Invariant #3: atomic compare-and-set. A single UPDATE with a predicate
-    // on AvailableCopies > 0 is the only correct implementation. Do NOT
-    // replace with a read-then-write, a rowversion check, or app-side locking.
-    public async Task<bool> TryCheckoutAsync(
+    public async Task<Checkout> CreateCheckoutAsync(
         Guid bookId,
         Guid borrowerUserId,
         DateTime dueAt,
         CancellationToken ct)
     {
-        var strategy = _db.Database.CreateExecutionStrategy();
-        return await strategy.ExecuteAsync(async () =>
+        var checkout = new Checkout
         {
-            await using var tx = await _db.Database.BeginTransactionAsync(ct);
+            BookId = bookId,
+            BorrowerUserId = borrowerUserId,
+            DueAt = dueAt,
+        };
 
-            var rows = await _db.Database.ExecuteSqlInterpolatedAsync(
-                $"UPDATE Books SET AvailableCopies = AvailableCopies - 1 WHERE Id = {bookId} AND AvailableCopies > 0",
-                ct);
+        _db.Checkouts.Add(checkout);
+        await _db.SaveChangesAsync(ct);
 
-            if (rows == 0)
-            {
-                await tx.RollbackAsync(ct);
-                _logger.LogInformation(
-                    "checkout.denied book {BookId} user {UserId}",
-                    bookId,
-                    borrowerUserId);
-                return false;
-            }
+        _logger.LogInformation(
+            "checkout.success book {BookId} user {UserId}",
+            bookId,
+            borrowerUserId);
 
-            var checkout = new Checkout
-            {
-                BookId = bookId,
-                BorrowerUserId = borrowerUserId,
-                DueAt = dueAt,
-            };
-            _db.Checkouts.Add(checkout);
-            await _db.SaveChangesAsync(ct);
-            await tx.CommitAsync(ct);
-
-            _logger.LogInformation(
-                "checkout.success book {BookId} user {UserId}",
-                bookId,
-                borrowerUserId);
-            return true;
-        });
+        return checkout;
     }
 
     public async Task<bool> TryReturnAsync(Guid checkoutId, CancellationToken ct)
     {
-        var strategy = _db.Database.CreateExecutionStrategy();
-        return await strategy.ExecuteAsync(async () =>
+        var checkout = await _db.Checkouts
+            .AsTracking()
+            .FirstOrDefaultAsync(c => c.Id == checkoutId, ct);
+
+        if (checkout is null || checkout.ReturnedAt is not null)
         {
-            await using var tx = await _db.Database.BeginTransactionAsync(ct);
+            return false;
+        }
 
-            var checkout = await _db.Checkouts
-                .AsTracking()
-                .FirstOrDefaultAsync(c => c.Id == checkoutId, ct);
+        checkout.ReturnedAt = DateTime.UtcNow;
+        await _db.SaveChangesAsync(ct);
 
-            if (checkout is null || checkout.ReturnedAt is not null)
-            {
-                await tx.RollbackAsync(ct);
-                return false;
-            }
+        _logger.LogInformation(
+            "checkout.return checkout {CheckoutId} book {BookId}",
+            checkoutId,
+            checkout.BookId);
 
-            checkout.ReturnedAt = DateTime.UtcNow;
+        return true;
+    }
 
-            await _db.Database.ExecuteSqlInterpolatedAsync(
-                $"UPDATE Books SET AvailableCopies = AvailableCopies + 1 WHERE Id = {checkout.BookId}",
+    public async Task<bool> HasActiveCheckoutForBookAsync(
+        Guid bookId,
+        Guid borrowerUserId,
+        CancellationToken ct)
+    {
+        return await _db.Checkouts
+            .AsNoTracking()
+            .AnyAsync(
+                c => c.BookId == bookId
+                    && c.BorrowerUserId == borrowerUserId
+                    && c.ReturnedAt == null,
                 ct);
-
-            await _db.SaveChangesAsync(ct);
-            await tx.CommitAsync(ct);
-
-            _logger.LogInformation(
-                "checkout.return checkout {CheckoutId} book {BookId}",
-                checkoutId,
-                checkout.BookId);
-            return true;
-        });
     }
 
     public async Task<IReadOnlyList<Checkout>> ListByBorrowerAsync(

@@ -24,7 +24,7 @@ public sealed record CheckoutResult
 
 public enum CheckoutFailureReason
 {
-    BookUnavailable,
+    AlreadyCheckedOut,
     LimitReached,
     NotFound
 }

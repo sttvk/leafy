@@ -8,10 +8,7 @@ internal sealed class BookConfiguration : IEntityTypeConfiguration<Book>
 {
     public void Configure(EntityTypeBuilder<Book> builder)
     {
-        builder.ToTable("Books", t =>
-            t.HasCheckConstraint(
-                "CK_Books_Copies",
-                "AvailableCopies >= 0 AND AvailableCopies <= TotalCopies"));
+        builder.ToTable("Books");
 
         builder.HasKey(b => b.Id);
 
@@ -41,14 +38,6 @@ internal sealed class BookConfiguration : IEntityTypeConfiguration<Book>
 
         builder.Property(b => b.CoverImageUrl)
             .HasColumnType("nvarchar(1000)");
-
-        builder.Property(b => b.TotalCopies)
-            .HasColumnType("int")
-            .HasDefaultValue(1);
-
-        builder.Property(b => b.AvailableCopies)
-            .HasColumnType("int")
-            .HasDefaultValue(1);
 
         builder.Property(b => b.AddedAt)
             .HasColumnType("datetime2")
