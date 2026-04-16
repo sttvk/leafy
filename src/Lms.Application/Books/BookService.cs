@@ -1,3 +1,4 @@
+using System.Globalization;
 using Lms.Application.Common;
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
@@ -50,7 +51,7 @@ public sealed class BookService
             Author = request.Author.Trim(),
             Isbn = request.Isbn?.Trim(),
             PublicationYear = request.PublicationYear,
-            Genre = request.Genre?.Trim(),
+            Genre = NormalizeGenre(request.Genre),
             Description = request.Description?.Trim(),
             CoverImageUrl = request.CoverImageUrl?.Trim(),
             AddedAt = DateTime.UtcNow,
@@ -82,7 +83,7 @@ public sealed class BookService
             Author = request.Author.Trim(),
             Isbn = request.Isbn?.Trim(),
             PublicationYear = request.PublicationYear,
-            Genre = request.Genre?.Trim(),
+            Genre = NormalizeGenre(request.Genre),
             Description = request.Description?.Trim(),
             CoverImageUrl = request.CoverImageUrl?.Trim(),
             AddedAt = existing.AddedAt,
@@ -126,6 +127,16 @@ public sealed class BookService
             book.Author,
             book.Genre,
             book.CoverImageUrl);
+
+    private static string? NormalizeGenre(string? genre)
+    {
+        if (string.IsNullOrWhiteSpace(genre))
+        {
+            return genre?.Trim();
+        }
+
+        return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(genre.Trim().ToLowerInvariant());
+    }
 
     private static void ValidateTitle(string title)
     {
