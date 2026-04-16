@@ -1,9 +1,11 @@
 using Lms.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lms.Infrastructure.Persistence;
 
-public sealed class LmsDbContext : DbContext
+public sealed class LmsDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     public LmsDbContext(DbContextOptions<LmsDbContext> options)
         : base(options)
@@ -14,12 +16,13 @@ public sealed class LmsDbContext : DbContext
     }
 
     public DbSet<Book> Books => Set<Book>();
-    public DbSet<User> Users => Set<User>();
+    public new DbSet<User> Users => Set<User>();
     public DbSet<Checkout> Checkouts => Set<Checkout>();
     public DbSet<BookEmbedding> BookEmbeddings => Set<BookEmbedding>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(LmsDbContext).Assembly);
     }
 }

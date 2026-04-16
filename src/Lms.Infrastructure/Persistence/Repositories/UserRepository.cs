@@ -13,28 +13,13 @@ internal sealed class UserRepository : IUserRepository
         _db = db;
     }
 
-    public Task<User?> GetByExternalIdAsync(string externalId, CancellationToken ct)
+    public Task<User?> GetByIdAsync(Guid id, CancellationToken ct)
         => _db.Users
             .AsNoTracking()
-            .FirstOrDefaultAsync(u => u.ExternalId == externalId, ct);
+            .FirstOrDefaultAsync(u => u.Id == id, ct);
 
-    public async Task<User> UpsertAsync(User user, CancellationToken ct)
-    {
-        var existing = await _db.Users
-            .AsTracking()
-            .FirstOrDefaultAsync(u => u.ExternalId == user.ExternalId, ct);
-
-        if (existing is null)
-        {
-            _db.Users.Add(user);
-            await _db.SaveChangesAsync(ct);
-            return user;
-        }
-
-        existing.Email = user.Email;
-        existing.DisplayName = user.DisplayName;
-        existing.Role = user.Role;
-        await _db.SaveChangesAsync(ct);
-        return existing;
-    }
+    public Task<User?> GetByEmailAsync(string email, CancellationToken ct)
+        => _db.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Email == email, ct);
 }

@@ -1,6 +1,8 @@
+using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
 using Lms.Infrastructure.Persistence;
 using Lms.Infrastructure.Persistence.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +25,18 @@ public static class InfrastructureServiceCollectionExtensions
 
         services.AddDbContext<LmsDbContext>(options =>
             options.UseSqlServer(connectionString));
+
+        services.AddIdentityCore<User>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+            .AddEntityFrameworkStores<LmsDbContext>()
+            .AddDefaultTokenProviders();
 
         services.AddScoped<IBookRepository, BookRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
