@@ -1,19 +1,20 @@
-import { Button } from "@/components/ui/button"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { CatalogPage } from "@/pages/CatalogPage"
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      retry: 1,
+    },
+  },
+})
 
 function App() {
   return (
-    <div className="mx-auto max-w-5xl p-8 text-center">
-      <h1 className="text-3xl font-bold tracking-tight text-foreground">
-        Library Management System
-      </h1>
-      <p className="mt-4 text-muted-foreground">
-        Welcome to the LMS catalog.
-      </p>
-      <div className="mt-6 flex items-center justify-center gap-4">
-        <Button>Browse Catalog</Button>
-        <Button variant="outline">Sign In</Button>
-      </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <CatalogPage />
+    </QueryClientProvider>
   )
 }
 
