@@ -38,21 +38,21 @@
   --font-sans: Space Grotesk, ui-sans-serif, sans-serif, system-ui;
   --font-serif: Lora, serif;
   --font-mono: IBM Plex Mono, monospace;
-  --radius: 0.25rem;
-  --shadow-x: 2px;
-  --shadow-y: 3px;
-  --shadow-blur: 5px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.12;
+  --radius: 1rem;
+  --shadow-x: -50px;
+  --shadow-y: -50px;
+  --shadow-blur: 0px;
+  --shadow-spread: -50px;
+  --shadow-opacity: 0;
   --shadow-color: hsl(28 13% 20%);
-  --shadow-2xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-  --shadow-xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-  --shadow-sm: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-  --shadow: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-  --shadow-md: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 2px 4px -1px hsl(28 13% 20% / 0.12);
-  --shadow-lg: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 4px 6px -1px hsl(28 13% 20% / 0.12);
-  --shadow-xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 8px 10px -1px hsl(28 13% 20% / 0.12);
-  --shadow-2xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.30);
+  --shadow-2xs: -50px -50px 0px -50px hsl(28 13% 20% / 0.00);
+  --shadow-xs: -50px -50px 0px -50px hsl(28 13% 20% / 0.00);
+  --shadow-sm: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 1px 2px -51px hsl(28 13% 20% / 0.00);
+  --shadow: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 1px 2px -51px hsl(28 13% 20% / 0.00);
+  --shadow-md: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 2px 4px -51px hsl(28 13% 20% / 0.00);
+  --shadow-lg: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 4px 6px -51px hsl(28 13% 20% / 0.00);
+  --shadow-xl: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 8px 10px -51px hsl(28 13% 20% / 0.00);
+  --shadow-2xl: -50px -50px 0px -50px hsl(28 13% 20% / 0.00);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
@@ -93,21 +93,21 @@
   --font-sans: Space Grotesk, ui-sans-serif, sans-serif, system-ui;
   --font-serif: Lora, serif;
   --font-mono: IBM Plex Mono, monospace;
-  --radius: 0.25rem;
-  --shadow-x: 2px;
-  --shadow-y: 3px;
-  --shadow-blur: 5px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.12;
+  --radius: 1rem;
+  --shadow-x: -50px;
+  --shadow-y: -50px;
+  --shadow-blur: 0px;
+  --shadow-spread: -50px;
+  --shadow-opacity: 0;
   --shadow-color: hsl(28 13% 20%);
-  --shadow-2xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-  --shadow-xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-  --shadow-sm: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-  --shadow: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-  --shadow-md: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 2px 4px -1px hsl(28 13% 20% / 0.12);
-  --shadow-lg: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 4px 6px -1px hsl(28 13% 20% / 0.12);
-  --shadow-xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 8px 10px -1px hsl(28 13% 20% / 0.12);
-  --shadow-2xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.30);
+  --shadow-2xs: -50px -50px 0px -50px hsl(28 13% 20% / 0.00);
+  --shadow-xs: -50px -50px 0px -50px hsl(28 13% 20% / 0.00);
+  --shadow-sm: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 1px 2px -51px hsl(28 13% 20% / 0.00);
+  --shadow: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 1px 2px -51px hsl(28 13% 20% / 0.00);
+  --shadow-md: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 2px 4px -51px hsl(28 13% 20% / 0.00);
+  --shadow-lg: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 4px 6px -51px hsl(28 13% 20% / 0.00);
+  --shadow-xl: -50px -50px 0px -50px hsl(28 13% 20% / 0.00), -50px 8px 10px -51px hsl(28 13% 20% / 0.00);
+  --shadow-2xl: -50px -50px 0px -50px hsl(28 13% 20% / 0.00);
 }
 
 @theme inline {
@@ -161,13 +161,6 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-
-  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
-  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
-  --tracking-normal: var(--tracking-normal);
-  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
-  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
-  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 }
 
 @layer base {
@@ -190,9 +183,9 @@
     background-color: rgba(155, 155, 155, 0.5);
     border-radius: 3px;
   }
+
   body {
     @apply bg-background text-foreground;
-    letter-spacing: var(--tracking-normal);
   }
 }
 
