@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { Plus, X } from "lucide-react"
+import { X } from "lucide-react"
 import { fetchBooks, type BookListDto, type PagedResult } from "@/api/books"
 import { checkoutBook } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
@@ -21,7 +21,6 @@ import {
 function CatalogPage() {
   const { isAuthenticated, isLibrarian } = useAuth()
   const queryClient = useQueryClient()
-  const [isAddBookOpen, setIsAddBookOpen] = useState(false)
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
@@ -131,15 +130,6 @@ function CatalogPage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {isLibrarian && (
-            <Button onClick={() => setIsAddBookOpen(true)}>
-              <Plus className="mr-1.5 h-4 w-4" />
-              Add Book
-            </Button>
-          )}
-        </div>
-
         {!isLoading && !isError && (
           <div className="mt-0 flex flex-nowrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
@@ -224,23 +214,16 @@ function CatalogPage() {
       />
 
       {isLibrarian && (
-        <>
-          <BookFormModal
-            open={isAddBookOpen}
-            onOpenChange={setIsAddBookOpen}
-            onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
-          />
-          <BookFormModal
-            open={editingBook != null}
-            onOpenChange={(nextOpen) => {
-              if (!nextOpen) {
-                setEditingBook(null)
-              }
-            }}
-            onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
-            book={editingBook}
-          />
-        </>
+        <BookFormModal
+          open={editingBook != null}
+          onOpenChange={(nextOpen) => {
+            if (!nextOpen) {
+              setEditingBook(null)
+            }
+          }}
+          onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
+          book={editingBook}
+        />
       )}
     </div>
   )

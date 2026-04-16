@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
-import { LogIn, Sun, Moon, User as UserIcon } from "lucide-react"
+import { LogIn, Sun, Moon, Plus, User as UserIcon } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
 import { CartDropdown } from "@/components/CartDropdown"
+import { BookFormModal } from "@/components/BookFormModal"
 import { Button } from "@/components/ui/button"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
@@ -22,7 +23,9 @@ const queryClient = new QueryClient({
 })
 
 function NavHeader() {
-  const { isAuthenticated, isLoading, user, logout } = useAuth()
+  const { isAuthenticated, isLibrarian, isLoading, user, logout } = useAuth()
+  const queryClient = useQueryClient()
+  const [isAddBookOpen, setIsAddBookOpen] = useState(false)
   const [isDark, setIsDark] = useState(() => {
     return localStorage.getItem("lms_theme") === "dark"
   })
@@ -57,6 +60,19 @@ function NavHeader() {
             >
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
+            {isLibrarian && (
+              <>
+                <span className="text-border">|</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsAddBookOpen(true)}
+                  aria-label="Add book"
+                >
+                  <Plus className="h-5 w-5" />
+                </Button>
+              </>
+            )}
             {isAuthenticated ? (
               <>
                 <CartDropdown />
@@ -106,6 +122,11 @@ function NavHeader() {
           </nav>
         )}
       </div>
+      <BookFormModal
+        open={isAddBookOpen}
+        onOpenChange={setIsAddBookOpen}
+        onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
+      />
     </header>
   )
 }
