@@ -1,7 +1,7 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { useCallback, useMemo, useState } from "react"
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Plus, X } from "lucide-react"
-import { fetchBooks, type BookListDto } from "@/api/books"
+import { fetchBooks, type BookListDto, type PagedResult } from "@/api/books"
 import { checkoutBook } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/components/BookGrid"
@@ -27,15 +27,52 @@ function CatalogPage() {
   const [genreFilter, setGenreFilter] = useState<string>("all")
   const [authorSearch, setAuthorSearch] = useState("")
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const sentinelRef = useRef<HTMLDivElement>(null)
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ["books"],
-    queryFn: fetchBooks,
+    queryFn: ({ pageParam }) => fetchBooks(pageParam),
+    initialPageParam: 1,
+    getNextPageParam: (
+      lastPage: PagedResult<BookListDto>,
+      allPages: readonly PagedResult<BookListDto>[]
+    ) => {
+      const totalFetched = allPages.reduce((sum, p) => sum + p.items.length, 0)
+      return totalFetched < lastPage.totalCount ? allPages.length + 1 : undefined
+    },
   })
+
+  useEffect(() => {
+    if (!sentinelRef.current || !hasNextPage) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage()
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(sentinelRef.current)
+    return () => observer.disconnect()
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
 
   const allBooks = useMemo(() => {
     if (!data) return []
-    return data.items.filter(
-      (book) => book.coverImageUrl !== null && book.coverImageUrl !== ""
+    return data.pages.flatMap((page) =>
+      page.items.filter(
+        (book) => book.coverImageUrl !== null && book.coverImageUrl !== ""
+      )
     )
   }, [data])
 
@@ -91,9 +128,11 @@ function CatalogPage() {
     [queryClient]
   )
 
+  const totalCount = data?.pages[0]?.totalCount ?? 0
+
   const bookCountText = hasActiveFilters
-    ? `${filteredBooks.length} of ${allBooks.length} books`
-    : `${allBooks.length} books`
+    ? `Showing ${filteredBooks.length} of ${totalCount} books`
+    : `${totalCount} books`
 
   return (
     <div className="min-h-screen bg-background">
@@ -168,11 +207,15 @@ function CatalogPage() {
         )}
 
         {!isLoading && !isError && (
-          <BookGrid
-            books={filteredBooks}
-            onEditBook={isLibrarian ? setEditingBook : undefined}
-            onSelectBook={setSelectedBook}
-          />
+          <>
+            <BookGrid
+              books={filteredBooks}
+              onEditBook={isLibrarian ? setEditingBook : undefined}
+              onSelectBook={setSelectedBook}
+            />
+            <div ref={sentinelRef} className="h-10" />
+            {isFetchingNextPage && <BookGridSkeleton count={6} />}
+          </>
         )}
       </main>
 

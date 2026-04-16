@@ -39,11 +39,11 @@ export interface PagedResult<T> {
   pageSize: number
 }
 
-const ALL_BOOKS_PAGE_SIZE = 750
+export const PAGE_SIZE = 25
 
-export function fetchBooks(): Promise<PagedResult<BookListDto>> {
+export function fetchBooks(page: number = 1, pageSize: number = PAGE_SIZE): Promise<PagedResult<BookListDto>> {
   return apiClient.get<PagedResult<BookListDto>>(
-    `/api/books?page=1&pageSize=${ALL_BOOKS_PAGE_SIZE}`
+    `/api/books?page=${page}&pageSize=${pageSize}`
   )
 }
 

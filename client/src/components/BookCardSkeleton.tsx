@@ -14,12 +14,16 @@ function BookCardSkeleton() {
   )
 }
 
-const SKELETON_COUNT = 18
+const DEFAULT_SKELETON_COUNT = 18
 
-function BookGridSkeleton() {
+interface BookGridSkeletonProps {
+  count?: number
+}
+
+function BookGridSkeleton({ count = DEFAULT_SKELETON_COUNT }: BookGridSkeletonProps) {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6">
-      {Array.from({ length: SKELETON_COUNT }, (_, i) => (
+      {Array.from({ length: count }, (_, i) => (
         <BookCardSkeleton key={i} />
       ))}
     </div>
