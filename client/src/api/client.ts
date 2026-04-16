@@ -20,8 +20,10 @@ async function request<T>(
   options?: ApiClientOptions
 ): Promise<T> {
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
     ...options?.headers,
+  }
+  if (body !== undefined) {
+    headers["Content-Type"] = "application/json"
   }
 
   const token = getToken()
