@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import { toast } from "sonner"
 import { MESSAGES } from "@/lib/messages"
 import { deleteBook, fetchBook, fetchBookDescription, type BookListDto } from "@/api/books"
-import { fetchMyCheckouts } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
@@ -45,16 +44,6 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
   const [isDeleting, setIsDeleting] = useState(false)
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
   const [displayedText, setDisplayedText] = useState("")
-
-  const { data: myCheckouts } = useQuery({
-    queryKey: ["my-checkouts"],
-    queryFn: fetchMyCheckouts,
-    enabled: isAuthenticated,
-  })
-
-  const isAlreadyCheckedOut = myCheckouts?.some(
-    (c) => c.bookId === book?.id && (c.status === "Active" || c.status === "Overdue")
-  ) ?? false
 
   const isAlreadyInCart = book != null && isInCart(book.id)
 
@@ -191,7 +180,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     <Link to="/login" className="font-medium text-primary hover:underline">{MESSAGES.checkout.loginToRead}</Link>
                   </p>
                 )}
-                {isAuthenticated && book != null && isAlreadyCheckedOut && (
+                {isAuthenticated && detail != null && !detail.canRent && (
                   <Button
                     size="lg"
                     className="w-full text-base"
@@ -201,13 +190,13 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     {MESSAGES.checkout.alreadyReading}
                   </Button>
                 )}
-                {isAuthenticated && book != null && !isAlreadyCheckedOut && (
+                {isAuthenticated && detail != null && detail.canRent && (
                   <Button
                     size="lg"
                     className="w-full text-base"
                     disabled={isAlreadyInCart}
                     onClick={() => {
-                      addToCart(book)
+                      addToCart(book!)
                     }}
                   >
                     {isAlreadyInCart ? (

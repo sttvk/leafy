@@ -18,6 +18,7 @@ export interface BookDetailDto {
   description: string | null
   coverImageUrl: string | null
   addedAt: string
+  canRent: boolean
 }
 
 export interface CreateBookRequest {

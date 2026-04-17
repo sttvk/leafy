@@ -9,4 +9,5 @@ public sealed record BookDto(
     string? Genre,
     string? Description,
     string? CoverImageUrl,
-    DateTime AddedAt);
+    DateTime AddedAt,
+    bool CanRent);

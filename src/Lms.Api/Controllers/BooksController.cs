@@ -58,7 +58,8 @@ public sealed class BooksController : ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<BookDto>> GetBook(Guid id, CancellationToken ct)
     {
-        var book = await _bookService.GetByIdAsync(id, ct);
+        var userId = User.ExtractUserId();
+        var book = await _bookService.GetByIdAsync(id, userId, ct);
         return book is not null
             ? Ok(book)
             : NotFound();
@@ -141,7 +142,7 @@ public sealed class BooksController : ControllerBase
         {
             entry.AbsoluteExpirationRelativeToNow = DescriptionCacheDuration;
 
-            var book = await _bookService.GetByIdAsync(id, ct);
+            var book = await _bookService.GetByIdAsync(id, null, ct);
             if (book is null)
             {
                 return null;

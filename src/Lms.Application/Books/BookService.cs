@@ -33,10 +33,22 @@ public sealed class BookService
         _logger = logger;
     }
 
-    public async Task<BookDto?> GetByIdAsync(Guid id, CancellationToken ct)
+    public async Task<BookDto?> GetByIdAsync(Guid id, Guid? userId, CancellationToken ct)
     {
         var book = await _books.GetByIdAsync(id, ct);
-        return book is null ? null : ToDto(book);
+        if (book is null)
+        {
+            return null;
+        }
+
+        var canRent = false;
+        if (userId is not null)
+        {
+            var hasActive = await _checkouts.HasActiveCheckoutForBookAsync(id, userId.Value, ct);
+            canRent = !hasActive;
+        }
+
+        return ToDto(book, canRent);
     }
 
     public async Task<BookPageResponse?> GetBookPageAsync(
@@ -147,7 +159,7 @@ public sealed class BookService
         return true;
     }
 
-    private static BookDto ToDto(Book book) =>
+    private static BookDto ToDto(Book book, bool canRent = false) =>
         new(
             book.Id,
             book.Title,
@@ -157,7 +169,8 @@ public sealed class BookService
             book.Genre,
             book.Description,
             book.CoverImageUrl,
-            book.AddedAt);
+            book.AddedAt,
+            canRent);
 
     private static BookListDto ToListDto(Book book) =>
         new(
