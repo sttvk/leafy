@@ -29,7 +29,54 @@ function AuthPage() {
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
   const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  function validateLogin(): Record<string, string> {
+    const errors: Record<string, string> = {}
+
+    if (!email.trim()) {
+      errors.email = "Email is required"
+    } else if (!EMAIL_REGEX.test(email.trim())) {
+      errors.email = "Please enter a valid email address"
+    }
+
+    if (!password) {
+      errors.password = "Password is required"
+    }
+
+    return errors
+  }
+
+  function validateRegister(): Record<string, string> {
+    const errors: Record<string, string> = {}
+
+    if (!fullName.trim() || fullName.trim().length < 2) {
+      errors.fullName = "Full name must be at least 2 characters"
+    }
+
+    if (!email.trim()) {
+      errors.email = "Email is required"
+    } else if (!EMAIL_REGEX.test(email.trim())) {
+      errors.email = "Please enter a valid email address"
+    }
+
+    if (!password) {
+      errors.password = "Password is required"
+    } else if (password.length < 8) {
+      errors.password = "Password must be at least 8 characters"
+    } else if (!/[A-Z]/.test(password)) {
+      errors.password = "Password must contain an uppercase letter"
+    } else if (!/[a-z]/.test(password)) {
+      errors.password = "Password must contain a lowercase letter"
+    } else if (!/\d/.test(password)) {
+      errors.password = "Password must contain a number"
+    }
+
+    return errors
+  }
 
   function handleTabSwitch(tab: AuthTab): void {
     setActiveTab(tab)
@@ -37,11 +84,19 @@ function AuthPage() {
     setPassword("")
     setFullName("")
     setError(null)
+    setFieldErrors({})
   }
 
   async function handleLoginSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
     setError(null)
+
+    const errors = validateLogin()
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      return
+    }
+    setFieldErrors({})
     setIsSubmitting(true)
 
     try {
@@ -61,6 +116,13 @@ function AuthPage() {
   async function handleRegisterSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
     setError(null)
+
+    const errors = validateRegister()
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      return
+    }
+    setFieldErrors({})
     setIsSubmitting(true)
 
     try {
@@ -163,9 +225,12 @@ function AuthPage() {
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
                   autoComplete="email"
+                  error={!!fieldErrors.email}
                 />
+                {fieldErrors.email && (
+                  <p className="text-xs text-destructive">{fieldErrors.email}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -175,9 +240,12 @@ function AuthPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                   autoComplete="current-password"
+                  error={!!fieldErrors.password}
                 />
+                {fieldErrors.password && (
+                  <p className="text-xs text-destructive">{fieldErrors.password}</p>
+                )}
               </div>
 
               <Button type="submit" disabled={isSubmitting} className="w-full">
@@ -194,9 +262,12 @@ function AuthPage() {
                   placeholder="Jane Doe"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  required
                   autoComplete="name"
+                  error={!!fieldErrors.fullName}
                 />
+                {fieldErrors.fullName && (
+                  <p className="text-xs text-destructive">{fieldErrors.fullName}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -207,9 +278,12 @@ function AuthPage() {
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
                   autoComplete="email"
+                  error={!!fieldErrors.email}
                 />
+                {fieldErrors.email && (
+                  <p className="text-xs text-destructive">{fieldErrors.email}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -219,9 +293,12 @@ function AuthPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                   autoComplete="new-password"
+                  error={!!fieldErrors.password}
                 />
+                {fieldErrors.password && (
+                  <p className="text-xs text-destructive">{fieldErrors.password}</p>
+                )}
               </div>
 
               <Button type="submit" disabled={isSubmitting} className="w-full">

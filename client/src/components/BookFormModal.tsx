@@ -67,6 +67,7 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
   const [form, setForm] = useState<FormState>({ ...INITIAL_FORM_STATE })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
   const { data: bookDetail, isLoading: isLoadingDetail } = useQuery({
     queryKey: ["book", book?.id],
@@ -87,6 +88,7 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
   function resetForm(): void {
     setForm({ ...INITIAL_FORM_STATE })
     setErrorMessage(null)
+    setFieldErrors({})
   }
 
   function handleOpenChange(nextOpen: boolean): void {
@@ -96,25 +98,52 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
     onOpenChange(nextOpen)
   }
 
+  function validateBookForm(): Record<string, string> {
+    const errors: Record<string, string> = {}
+    const currentYear = new Date().getFullYear()
+
+    if (!form.title.trim()) {
+      errors.title = "Title is required"
+    }
+
+    if (!form.author.trim()) {
+      errors.author = "Author is required"
+    }
+
+    if (form.publicationYear.trim()) {
+      const year = Number(form.publicationYear)
+      if (!Number.isInteger(year) || year < 1000 || year > currentYear) {
+        errors.publicationYear = "Enter a valid year"
+      }
+    }
+
+    if (form.coverImageUrl.trim()) {
+      const url = form.coverImageUrl.trim()
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        errors.coverImageUrl = "Enter a valid URL"
+      }
+    }
+
+    return errors
+  }
+
   async function handleSubmit(event: FormEvent): Promise<void> {
     event.preventDefault()
     setErrorMessage(null)
 
-    const trimmedTitle = form.title.trim()
-    const trimmedAuthor = form.author.trim()
-
-    if (!trimmedTitle || !trimmedAuthor) {
-      setErrorMessage("Title and Author are required.")
+    const errors = validateBookForm()
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
       return
     }
+    setFieldErrors({})
+
+    const trimmedTitle = form.title.trim()
+    const trimmedAuthor = form.author.trim()
 
     const parsedYear = form.publicationYear.trim()
       ? Number(form.publicationYear)
       : undefined
-    if (parsedYear !== undefined && (!Number.isInteger(parsedYear) || parsedYear < 0)) {
-      setErrorMessage("Publication Year must be a valid year.")
-      return
-    }
 
     const payload: CreateBookRequest = {
       title: trimmedTitle,
@@ -186,9 +215,12 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 value={form.title}
                 onChange={(e) => updateField("title", e.target.value)}
                 placeholder="e.g. The Great Gatsby"
-                required
                 disabled={isFormDisabled}
+                error={!!fieldErrors.title}
               />
+              {fieldErrors.title && (
+                <p className="text-xs text-destructive">{fieldErrors.title}</p>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -200,9 +232,12 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 value={form.author}
                 onChange={(e) => updateField("author", e.target.value)}
                 placeholder="e.g. F. Scott Fitzgerald"
-                required
                 disabled={isFormDisabled}
+                error={!!fieldErrors.author}
               />
+              {fieldErrors.author && (
+                <p className="text-xs text-destructive">{fieldErrors.author}</p>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -226,7 +261,11 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                   onChange={(e) => updateField("publicationYear", e.target.value)}
                   placeholder="e.g. 1925"
                   disabled={isFormDisabled}
+                  error={!!fieldErrors.publicationYear}
                 />
+                {fieldErrors.publicationYear && (
+                  <p className="text-xs text-destructive">{fieldErrors.publicationYear}</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -261,7 +300,11 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 onChange={(e) => updateField("coverImageUrl", e.target.value)}
                 placeholder="https://..."
                 disabled={isFormDisabled}
+                error={!!fieldErrors.coverImageUrl}
               />
+              {fieldErrors.coverImageUrl && (
+                <p className="text-xs text-destructive">{fieldErrors.coverImageUrl}</p>
+              )}
             </div>
 
             <DialogFooter>
