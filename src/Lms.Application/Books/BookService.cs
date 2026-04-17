@@ -1,7 +1,9 @@
 using System.Globalization;
 using Lms.Application.Common;
+using Lms.Application.Search;
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace Lms.Application.Books;
 
@@ -12,12 +14,20 @@ public sealed class BookService
     private const int DefaultPage = 1;
     private const int DefaultPageSize = 20;
     private const int MaxPageSize = 100;
+    private const string EmbeddingModel = "text-embedding-3-small";
 
     private readonly IBookRepository _books;
+    private readonly IEmbeddingService _embeddingService;
+    private readonly ILogger<BookService> _logger;
 
-    public BookService(IBookRepository books)
+    public BookService(
+        IBookRepository books,
+        IEmbeddingService embeddingService,
+        ILogger<BookService> logger)
     {
         _books = books;
+        _embeddingService = embeddingService;
+        _logger = logger;
     }
 
     public async Task<BookDto?> GetByIdAsync(Guid id, CancellationToken ct)
@@ -60,6 +70,8 @@ public sealed class BookService
 
         await _books.AddAsync(book, ct);
 
+        await TryGenerateEmbeddingAsync(book, ct);
+
         return ToDto(book);
     }
 
@@ -91,6 +103,8 @@ public sealed class BookService
         };
 
         await _books.UpdateAsync(updated, ct);
+
+        await TryGenerateEmbeddingAsync(updated, ct);
 
         return ToDto(updated);
     }
@@ -168,5 +182,33 @@ public sealed class BookService
                 $"Publication year must be between {MinPublicationYear} and {maxYear}.",
                 nameof(year));
         }
+    }
+
+    private async Task TryGenerateEmbeddingAsync(Book book, CancellationToken ct)
+    {
+        var searchableText = BuildSearchableText(book);
+        if (string.IsNullOrWhiteSpace(searchableText))
+        {
+            return;
+        }
+
+        try
+        {
+            var vector = await _embeddingService.GenerateEmbeddingAsync(searchableText, ct);
+            await _books.UpsertEmbeddingAsync(book.Id, vector, EmbeddingModel, vector.Length, ct);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(
+                ex,
+                "Failed to generate embedding for book {BookId}, continuing without embedding",
+                book.Id);
+        }
+    }
+
+    private static string BuildSearchableText(Book book)
+    {
+        var parts = new[] { book.Title, book.Author, book.Genre, book.Description };
+        return string.Join(" ", parts.Where(p => !string.IsNullOrWhiteSpace(p)));
     }
 }

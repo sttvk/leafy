@@ -1,4 +1,6 @@
+using Lms.Application.Search;
 using Lms.Domain.Entities;
+using Lms.Domain.Repositories;
 using Lms.Infrastructure;
 using Lms.Infrastructure.Persistence;
 using Lms.Migrations.Seeding;
@@ -47,6 +49,7 @@ try
 
     await DatabaseSeeder.SeedAsync(db, builder.Configuration, logger, CancellationToken.None);
     await SeedLibrarianAsync(scope.ServiceProvider, logger);
+    await SeedEmbeddingsAsync(scope.ServiceProvider, logger, CancellationToken.None);
     return 0;
 }
 catch (Exception ex)
@@ -90,6 +93,88 @@ static async Task SeedLibrarianAsync(IServiceProvider services, ILogger logger)
         var errors = string.Join("; ", result.Errors.Select(e => e.Description));
         logger.LogWarning("Failed to seed librarian account: {Errors}", errors);
     }
+}
+
+static async Task SeedEmbeddingsAsync(
+    IServiceProvider services, ILogger logger, CancellationToken ct)
+{
+    const int batchSize = 10;
+    const int delayBetweenBatchesMs = 500;
+    const string modelName = "text-embedding-3-small";
+
+    var configuration = services.GetRequiredService<Microsoft.Extensions.Configuration.IConfiguration>();
+    var apiKey = configuration["OpenAI:ApiKey"];
+    if (string.IsNullOrEmpty(apiKey))
+    {
+        logger.LogInformation("OpenAI:ApiKey not configured, skipping embedding seed.");
+        return;
+    }
+
+    var db = services.GetRequiredService<LmsDbContext>();
+    var embeddingService = services.GetRequiredService<IEmbeddingService>();
+    var bookRepo = services.GetRequiredService<IBookRepository>();
+
+    // Find books without embeddings
+    var existingEmbeddingBookIds = await db.BookEmbeddings
+        .Select(e => e.BookId)
+        .ToListAsync(ct);
+    var existingSet = existingEmbeddingBookIds.ToHashSet();
+
+    var booksWithoutEmbeddings = await db.Books
+        .AsNoTracking()
+        .Where(b => !existingSet.Contains(b.Id))
+        .ToListAsync(ct);
+
+    if (booksWithoutEmbeddings.Count == 0)
+    {
+        logger.LogInformation("All books already have embeddings, skipping embedding seed.");
+        return;
+    }
+
+    logger.LogInformation(
+        "Generating embeddings for {Count} books...", booksWithoutEmbeddings.Count);
+
+    var processed = 0;
+    foreach (var batch in booksWithoutEmbeddings.Chunk(batchSize))
+    {
+        foreach (var book in batch)
+        {
+            var searchableText = string.Join(" ",
+                new[] { book.Title, book.Author, book.Genre, book.Description }
+                    .Where(p => !string.IsNullOrWhiteSpace(p)));
+
+            if (string.IsNullOrWhiteSpace(searchableText))
+            {
+                processed++;
+                continue;
+            }
+
+            try
+            {
+                var vector = await embeddingService.GenerateEmbeddingAsync(searchableText, ct);
+                await bookRepo.UpsertEmbeddingAsync(book.Id, vector, modelName, vector.Length, ct);
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(
+                    ex, "Failed to generate embedding for book {BookId} ({Title}), skipping",
+                    book.Id, book.Title);
+            }
+
+            processed++;
+        }
+
+        logger.LogInformation(
+            "Generating embeddings: {Processed}/{Total}...",
+            processed, booksWithoutEmbeddings.Count);
+
+        if (processed < booksWithoutEmbeddings.Count)
+        {
+            await Task.Delay(delayBetweenBatchesMs, ct);
+        }
+    }
+
+    logger.LogInformation("Embedding seed complete: {Processed} books processed.", processed);
 }
 
 // Marker type so ILogger<Program> resolves against this assembly.

@@ -1,5 +1,6 @@
 using Lms.Application.Books;
 using Lms.Application.Common;
+using Lms.Application.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,27 @@ namespace Lms.Api.Controllers;
 public sealed class BooksController : ControllerBase
 {
     private readonly BookService _bookService;
+    private readonly SearchService _searchService;
 
-    public BooksController(BookService bookService)
+    public BooksController(BookService bookService, SearchService searchService)
     {
         _bookService = bookService;
+        _searchService = searchService;
+    }
+
+    [HttpGet("search")]
+    public async Task<ActionResult<IReadOnlyList<BookSearchResult>>> SearchBooks(
+        [FromQuery] string q,
+        [FromQuery] int limit = 25,
+        CancellationToken ct = default)
+    {
+        if (string.IsNullOrWhiteSpace(q))
+        {
+            return BadRequest("Query parameter 'q' is required.");
+        }
+
+        var results = await _searchService.SearchAsync(q, limit, ct);
+        return Ok(results);
     }
 
     [HttpGet]

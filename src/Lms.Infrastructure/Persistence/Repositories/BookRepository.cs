@@ -53,4 +53,86 @@ internal sealed class BookRepository : IBookRepository
                 ct);
         _ = rows;
     }
+
+    public async Task<IReadOnlyList<Book>> KeywordSearchAsync(
+        string query, int limit, CancellationToken ct)
+    {
+        var pattern = $"%{query}%";
+
+        // Order by relevance: title match first, then author, then everything else.
+        var results = await _db.Books
+            .AsNoTracking()
+            .Where(b =>
+                EF.Functions.Like(b.Title, pattern) ||
+                EF.Functions.Like(b.Author, pattern) ||
+                (b.Genre != null && EF.Functions.Like(b.Genre, pattern)) ||
+                (b.Description != null && EF.Functions.Like(b.Description, pattern)) ||
+                (b.Isbn != null && EF.Functions.Like(b.Isbn, pattern)))
+            .OrderBy(b => EF.Functions.Like(b.Title, pattern) ? 0 : 1)
+            .ThenBy(b => EF.Functions.Like(b.Author, pattern) ? 0 : 1)
+            .ThenBy(b => b.Title)
+            .Take(limit)
+            .ToListAsync(ct);
+
+        return results;
+    }
+
+    public async Task<IReadOnlyList<(Guid BookId, float[] Vector)>> GetAllEmbeddingsAsync(
+        CancellationToken ct)
+    {
+        var embeddings = await _db.BookEmbeddings
+            .AsNoTracking()
+            .Select(e => new { e.BookId, e.Vector })
+            .ToListAsync(ct);
+
+        return embeddings
+            .Select(e => (e.BookId, Vector: BytesToFloats(e.Vector)))
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public async Task UpsertEmbeddingAsync(
+        Guid bookId, float[] vector, string modelName, int dimensions, CancellationToken ct)
+    {
+        var bytes = FloatsToBytes(vector);
+
+        var existing = await _db.BookEmbeddings
+            .AsTracking()
+            .FirstOrDefaultAsync(e => e.BookId == bookId, ct);
+
+        if (existing is not null)
+        {
+            existing.Vector = bytes;
+            existing.ModelName = modelName;
+            existing.Dimensions = dimensions;
+            existing.CreatedAt = DateTime.UtcNow;
+        }
+        else
+        {
+            _db.BookEmbeddings.Add(new BookEmbedding
+            {
+                BookId = bookId,
+                Vector = bytes,
+                ModelName = modelName,
+                Dimensions = dimensions,
+                CreatedAt = DateTime.UtcNow,
+            });
+        }
+
+        await _db.SaveChangesAsync(ct);
+    }
+
+    private static float[] BytesToFloats(byte[] bytes)
+    {
+        var floats = new float[bytes.Length / sizeof(float)];
+        Buffer.BlockCopy(bytes, 0, floats, 0, bytes.Length);
+        return floats;
+    }
+
+    private static byte[] FloatsToBytes(float[] floats)
+    {
+        var bytes = new byte[floats.Length * sizeof(float)];
+        Buffer.BlockCopy(floats, 0, bytes, 0, bytes.Length);
+        return bytes;
+    }
 }

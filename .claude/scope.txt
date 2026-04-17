@@ -1,3 +1,12 @@
-src/Lms.Api/Controllers/**
-src/Lms.Api/Endpoints/**
+src/Lms.Application/Search/**
+src/Lms.Infrastructure/Services/**
+src/Lms.Infrastructure/DependencyInjection.cs
+src/Lms.Infrastructure/Persistence/Repositories/BookRepository.cs
+src/Lms.Domain/Repositories/IBookRepository.cs
+src/Lms.Application/Books/BookService.cs
+src/Lms.Api/Controllers/BooksController.cs
+src/Lms.Migrations/Program.cs
+Directory.Packages.props
+src/Lms.Api/Lms.Api.csproj
+src/Lms.Infrastructure/Lms.Infrastructure.csproj
 src/Lms.Api/Program.cs

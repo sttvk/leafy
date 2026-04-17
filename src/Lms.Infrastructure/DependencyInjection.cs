@@ -1,7 +1,9 @@
+using Lms.Application.Search;
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
 using Lms.Infrastructure.Persistence;
 using Lms.Infrastructure.Persistence.Repositories;
+using Lms.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -42,6 +44,9 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IBookRepository, BookRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICheckoutRepository, CheckoutRepository>();
+
+        services.AddHttpClient<OpenAiEmbeddingService>();
+        services.AddScoped<IEmbeddingService, OpenAiEmbeddingService>();
 
         return services;
     }

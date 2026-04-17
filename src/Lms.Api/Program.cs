@@ -2,6 +2,7 @@ using System.Text;
 using Lms.Application.Auth;
 using Lms.Application.Books;
 using Lms.Application.Checkouts;
+using Lms.Application.Search;
 using Lms.Domain.Entities;
 using Lms.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,6 +16,7 @@ builder.Services.AddLmsInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<SearchService>();
 builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddSingleton<JwtTokenGenerator>();
