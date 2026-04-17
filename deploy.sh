@@ -5,10 +5,10 @@
 #
 # Required environment variables (set before running):
 #   SQL_ADMIN_PASSWORD
-#   GOOGLE_CLIENT_ID
+#   VITE_GOOGLE_CLIENT_ID
 #   GOOGLE_CLIENT_SECRET
 #   STRIPE_SECRET_KEY
-#   STRIPE_PUB_KEY
+#   VITE_STRIPE_PUBLISHABLE_KEY
 #   GEMINI_API_KEY
 #
 # Or create a .env file (gitignored) with these values.
@@ -31,10 +31,10 @@ fi
 # Validate required secrets
 MISSING=()
 [ -z "${SQL_ADMIN_PASSWORD:-}" ] && MISSING+=("SQL_ADMIN_PASSWORD")
-[ -z "${GOOGLE_CLIENT_ID:-}" ] && MISSING+=("GOOGLE_CLIENT_ID")
+[ -z "${VITE_GOOGLE_CLIENT_ID:-}" ] && MISSING+=("VITE_GOOGLE_CLIENT_ID")
 [ -z "${GOOGLE_CLIENT_SECRET:-}" ] && MISSING+=("GOOGLE_CLIENT_SECRET")
 [ -z "${STRIPE_SECRET_KEY:-}" ] && MISSING+=("STRIPE_SECRET_KEY")
-[ -z "${STRIPE_PUB_KEY:-}" ] && MISSING+=("STRIPE_PUB_KEY")
+[ -z "${VITE_STRIPE_PUBLISHABLE_KEY:-}" ] && MISSING+=("VITE_STRIPE_PUBLISHABLE_KEY")
 [ -z "${GEMINI_API_KEY:-}" ] && MISSING+=("GEMINI_API_KEY")
 
 if [ ${#MISSING[@]} -gt 0 ]; then
@@ -47,10 +47,10 @@ if [ ${#MISSING[@]} -gt 0 ]; then
   echo ""
   echo "  cat > .env << 'EOF'"
   echo "  SQL_ADMIN_PASSWORD=YourStr0ngPass!"
-  echo "  GOOGLE_CLIENT_ID=your-google-client-id"
+  echo "  VITE_GOOGLE_CLIENT_ID=your-google-client-id"
   echo "  GOOGLE_CLIENT_SECRET=your-google-secret"
   echo "  STRIPE_SECRET_KEY=sk_test_..."
-  echo "  STRIPE_PUB_KEY=pk_test_..."
+  echo "  VITE_STRIPE_PUBLISHABLE_KEY=pk_test_..."
   echo "  GEMINI_API_KEY=AIza..."
   echo "  EOF"
   exit 1
@@ -94,7 +94,7 @@ cat > "$PARAMS_FILE" << EOF
   "sqlAdminLogin":{"value":"$SQL_ADMIN_LOGIN"},
   "sqlAdminPassword":{"value":"$SQL_ADMIN_PASSWORD"},
   "jwtKey":{"value":"$JWT_KEY"},
-  "googleClientId":{"value":"$GOOGLE_CLIENT_ID"},
+  "googleClientId":{"value":"$VITE_GOOGLE_CLIENT_ID"},
   "googleClientSecret":{"value":"$GOOGLE_CLIENT_SECRET"},
   "stripeSecretKey":{"value":"$STRIPE_SECRET_KEY"},
   "geminiApiKey":{"value":"$GEMINI_API_KEY"}
@@ -135,7 +135,7 @@ SQL_CONNECTION="Server=tcp:${SQL_FQDN},1433;Database=${SQL_DB};User ID=${SQL_ADM
 echo ""
 echo "[4/6] Building application..."
 echo "  Building React client..."
-(cd client && npm ci --silent && VITE_GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" VITE_STRIPE_PUBLISHABLE_KEY="$STRIPE_PUB_KEY" npm run build)
+(cd client && npm ci --silent && VITE_GOOGLE_CLIENT_ID="$VITE_GOOGLE_CLIENT_ID" VITE_STRIPE_PUBLISHABLE_KEY="$VITE_STRIPE_PUBLISHABLE_KEY" npm run build)
 
 rm -rf src/Lms.Api/wwwroot
 cp -r client/dist src/Lms.Api/wwwroot
