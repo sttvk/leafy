@@ -171,8 +171,8 @@
   }
 
   *::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
 
   *::-webkit-scrollbar-track {
@@ -195,6 +195,7 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-y: scroll;
   }
 
   .icon-btn {
