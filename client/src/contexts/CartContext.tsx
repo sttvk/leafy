@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react"
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react"
 import type { ReactNode } from "react"
 import type { BookListDto } from "@/api/books"
 
@@ -28,7 +28,14 @@ interface CartProviderProps {
 }
 
 function CartProvider({ children }: CartProviderProps) {
-  const [items, setItems] = useState<readonly BookListDto[]>([])
+  const [items, setItems] = useState<readonly BookListDto[]>(() => {
+    const saved = localStorage.getItem("lms_cart")
+    return saved ? JSON.parse(saved) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem("lms_cart", JSON.stringify(items))
+  }, [items])
 
   const addToCart = useCallback((book: BookListDto) => {
     setItems((prev) => {
@@ -44,6 +51,7 @@ function CartProvider({ children }: CartProviderProps) {
 
   const clearCart = useCallback(() => {
     setItems([])
+    localStorage.removeItem("lms_cart")
   }, [])
 
   const isInCart = useCallback(

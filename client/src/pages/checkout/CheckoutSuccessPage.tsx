@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { BookOpen } from "lucide-react"
 import { type CheckoutDto, verifyCheckoutSession } from "@/api/checkouts"
+import { useCart } from "@/contexts/CartContext"
 import { PageLayout } from "@/components/PageLayout"
 import { Button } from "@/components/ui/button"
 
@@ -11,6 +12,7 @@ type VerifyState =
   | { status: "error"; message: string }
 
 function CheckoutSuccessPage() {
+  const { clearCart } = useCart()
   const [state, setState] = useState<VerifyState>({ status: "loading" })
 
   useEffect(() => {
@@ -28,6 +30,7 @@ function CheckoutSuccessPage() {
         const checkouts = await verifyCheckoutSession(id)
         if (!cancelled) {
           setState({ status: "success", checkouts })
+          clearCart()
         }
       } catch {
         if (!cancelled) {
