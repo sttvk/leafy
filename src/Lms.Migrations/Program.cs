@@ -57,8 +57,8 @@ catch (Exception ex)
 
 static async Task SeedLibrarianAsync(IServiceProvider services, ILogger logger)
 {
-    const string adminEmail = "admin@lms.com";
-    const string adminPassword = "admin@123";
+    const string adminEmail = "admin@leafy.com";
+    const string adminPassword = "Admin@123";
     const string adminDisplayName = "Admin";
 
     var userManager = services.GetRequiredService<UserManager<User>>();
