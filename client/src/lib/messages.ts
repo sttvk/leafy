@@ -41,7 +41,7 @@ export const MESSAGES = {
   },
 
   returns: {
-    success: "Book returned.",
+    success: "Book returned successfully.",
     failed: "Could not return the book. Please try again.",
     confirmReturn: "Are you sure you want to return this book? You will lose access to it.",
     confirmReturnEarly: "Are you sure you want to return this book? This return qualifies toward a free book credit!",
