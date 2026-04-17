@@ -169,8 +169,8 @@ function AuthPage() {
 
   return (
     <PageLayout className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center">
-      <div className="flex w-full max-w-md flex-row items-start">
-        <Link to="/" className="icon-btn mr-4" aria-label="Back to catalog">
+      <div className="flex w-full max-w-md flex-col">
+        <Link to="/" className="icon-btn mb-4 self-start" aria-label="Back to catalog">
           <ArrowLeft className="h-4 w-4" />
         </Link>
         <Card className="w-full p-2">
