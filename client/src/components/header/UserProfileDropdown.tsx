@@ -24,7 +24,6 @@ function UserProfileDropdown() {
 
   function handleLogout() {
     setIsOpen(false)
-    localStorage.setItem("lms_show_logout_toast", "true")
     logout()
   }
 
