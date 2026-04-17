@@ -8,6 +8,7 @@ import { AuthPage } from "@/pages/auth/AuthPage"
 import { ReaderPage } from "@/pages/reader/ReaderPage"
 import { CheckoutSuccessPage } from "@/pages/checkout/CheckoutSuccessPage"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
+import { Header } from "@/components/header/Header"
 import { Toaster } from "@/components/ui/toaster"
 
 
@@ -24,7 +25,9 @@ const queryClient = new QueryClient({
 
 function AppRoutes() {
   return (
-    <Routes>
+    <>
+      <Header />
+      <Routes>
       <Route path="/" element={<CatalogPage />} />
       <Route path="/login" element={<AuthPage />} />
       <Route
@@ -44,6 +47,7 @@ function AppRoutes() {
         }
       />
     </Routes>
+    </>
   )
 }
 
