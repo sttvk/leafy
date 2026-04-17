@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 import { BookOpen, Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -39,6 +39,7 @@ const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 const TYPEWRITER_INTERVAL_MS = 30
 
 function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookDetailOverlayProps) {
+  const queryClient = useQueryClient()
   const { isAuthenticated, isLibrarian } = useAuth()
   const { addToCart, isInCart } = useCart()
   const [isDeleting, setIsDeleting] = useState(false)
@@ -53,6 +54,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
     setIsDeleting(true)
     try {
       await deleteBook(book.id)
+      await queryClient.invalidateQueries({ queryKey: ["books"] })
       onDelete?.()
       toast.success(MESSAGES.books.deleteSuccess)
       onOpenChange(false)
