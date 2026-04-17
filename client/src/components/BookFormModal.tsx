@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { toast } from "sonner"
 import {
   createBook,
   fetchBook,
@@ -130,12 +131,15 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
       if (isEditMode) {
         await updateBook(book.id, payload)
         await queryClient.invalidateQueries({ queryKey: ["book", book.id] })
+        toast.success("Book updated successfully")
       } else {
         await createBook(payload)
+        toast.success("Book added successfully")
       }
       onSuccess()
       handleOpenChange(false)
     } catch (error: unknown) {
+      toast.error(isEditMode ? "Failed to update book" : "Failed to add book")
       const message =
         error instanceof Error
           ? error.message

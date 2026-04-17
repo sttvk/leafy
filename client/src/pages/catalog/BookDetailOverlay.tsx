@@ -52,6 +52,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
     try {
       await deleteBook(book.id)
       onDelete?.()
+      toast.success("Book deleted successfully")
       onOpenChange(false)
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "Failed to delete book"
