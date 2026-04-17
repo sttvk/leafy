@@ -1,16 +1,13 @@
-import { useCallback, useMemo, useState } from "react"
-import { useQuery } from "@tanstack/react-query"
-import { ShoppingCart, X, BookOpen } from "lucide-react"
+import { useCallback, useState } from "react"
+import { ShoppingCart, X } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
-import { createCheckoutSession, fetchMyCheckouts } from "@/api/checkouts"
+import { createCheckoutSession } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
 
 function CartDropdown() {
   const { items, removeFromCart, clearCart, itemCount } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
-  const { data: myCheckouts } = useQuery({ queryKey: ["my-checkouts"], queryFn: fetchMyCheckouts })
-  const activeCheckouts = useMemo(() => (myCheckouts ?? []).filter(c => c.status === "Active" || c.status === "Overdue"), [myCheckouts])
 
   const handleCheckout = useCallback(async () => {
     if (items.length === 0) return
@@ -59,13 +56,13 @@ function CartDropdown() {
           </div>
 
           <div className="max-h-72 overflow-y-auto">
-            {itemCount === 0 && activeCheckouts.length === 0 ? (
+            {itemCount === 0 ? (
               <div className="px-4 py-8 text-center">
                 <p className="text-sm text-muted-foreground">
                   Your cart is empty
                 </p>
               </div>
-            ) : itemCount > 0 ? (
+            ) : (
               <ul className="divide-y divide-border">
                 {items.map((item) => (
                   <li key={item.id} className="flex items-start gap-3 px-4 py-3">
@@ -88,7 +85,7 @@ function CartDropdown() {
                   </li>
                 ))}
               </ul>
-            ) : null}
+            )}
           </div>
 
           {itemCount > 0 && (
@@ -104,41 +101,6 @@ function CartDropdown() {
             </div>
           )}
 
-          {activeCheckouts.length > 0 && (
-            <>
-              <div className="border-t border-border px-4 py-3">
-                <h3 className="text-sm font-semibold text-foreground">
-                  My Books ({activeCheckouts.length})
-                </h3>
-              </div>
-
-              <div className="max-h-48 overflow-y-auto">
-                <ul className="divide-y divide-border">
-                  {activeCheckouts.map((checkout) => (
-                    <li key={checkout.id} className="flex items-center gap-3 px-4 py-3">
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium text-foreground">
-                          {checkout.bookTitle}
-                        </p>
-                        <p className="truncate text-xs text-muted-foreground">
-                          {checkout.bookAuthor}
-                        </p>
-                      </div>
-                      <a
-                        href={`/read/${checkout.bookId}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-accent"
-                      >
-                        <BookOpen className="h-3 w-3" />
-                        Read
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </>
-          )}
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

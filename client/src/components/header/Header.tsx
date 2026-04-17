@@ -4,6 +4,7 @@ import { useQueryClient } from "@tanstack/react-query"
 import { LogIn, Sun, Moon, Plus } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
 import { CartDropdown } from "@/components/header/CartDropdown"
+import { MyBooksDropdown } from "@/components/header/MyBooksDropdown"
 import { UserProfileDropdown } from "@/components/header/UserProfileDropdown"
 import { BookFormModal } from "@/components/BookFormModal"
 
@@ -61,6 +62,7 @@ function Header() {
             {isAuthenticated ? (
               <>
                 <CartDropdown />
+                <MyBooksDropdown />
                 <UserProfileDropdown />
               </>
             ) : (
