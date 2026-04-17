@@ -1,4 +1,4 @@
-src/Lms.Api/Endpoints/StripeEndpoints.cs
-src/Lms.Api/Program.cs
-Directory.Packages.props
-src/Lms.Api/Lms.Api.csproj
+client/src/components/header/CartDropdown.tsx
+client/src/api/checkouts.ts
+client/src/pages/checkout/CheckoutSuccessPage.tsx
+client/src/App.tsx
