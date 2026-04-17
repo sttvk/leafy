@@ -97,7 +97,7 @@ function CartDropdown() {
                 disabled={isCheckingOut}
                 onClick={handleCheckout}
               >
-                {isCheckingOut ? "Processing..." : `Checkout (${itemCount})`}
+                {isCheckingOut ? "Processing..." : `Checkout · $${(itemCount * 1.99).toFixed(2)}`}
               </Button>
             </div>
           )}
