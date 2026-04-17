@@ -41,10 +41,10 @@ export const MESSAGES = {
   },
 
   returns: {
-    success: "Book returned successfully! Early returns earn credits toward a free rental.",
+    success: "Book returned.",
     failed: "Could not return the book. Please try again.",
     confirmReturn: "Are you sure you want to return this book? You will lose access to it.",
-    confirmReturnEarly: "Are you sure you want to return this book? Since this is within 7 days, this return qualifies toward a free book credit!",
+    confirmReturnEarly: "Are you sure you want to return this book? This return qualifies toward a free book credit!",
   },
 } as const
 
