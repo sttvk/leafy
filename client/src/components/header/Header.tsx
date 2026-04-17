@@ -78,7 +78,7 @@ function Header() {
       <BookFormModal
         open={isAddBookOpen}
         onOpenChange={setIsAddBookOpen}
-        onSuccess={() => queryClient.refetchQueries({ queryKey: ["books"] })}
+        onSuccess={() => queryClient.removeQueries({ queryKey: ["books"] })}
       />
     </header>
   )

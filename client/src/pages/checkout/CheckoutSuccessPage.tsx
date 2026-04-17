@@ -27,7 +27,7 @@ function CheckoutSuccessPage() {
     if (data) {
       clearCart()
       queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
-      queryClient.refetchQueries({ queryKey: ["books"] })
+      queryClient.removeQueries({ queryKey: ["books"] })
       toast.success(MESSAGES.checkout.paymentSuccess)
     }
   }, [data])

@@ -167,6 +167,8 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
       if (isEditMode) {
         await updateBook(book.id, payload)
         await queryClient.invalidateQueries({ queryKey: ["book", book.id] })
+        queryClient.removeQueries({ queryKey: ["book-detail", book.id] })
+        queryClient.removeQueries({ queryKey: ["book-description", book.id] })
         toast.success(MESSAGES.books.updateSuccess)
       } else {
         await createBook(payload)
