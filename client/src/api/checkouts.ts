@@ -8,7 +8,7 @@ export interface CheckoutDto {
   checkedOutAt: string
   dueAt: string
   returnedAt: string | null
-  status: string
+  status: "Active" | "Overdue" | "Returned"
 }
 
 export function returnBook(checkoutId: string): Promise<CheckoutDto> {

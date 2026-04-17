@@ -171,7 +171,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     <span className="animate-pulse">▍</span>
                   </>
                 ) : (
-                  fullText ?? detail.description
+                  fullText
                 )}
               </div>
 

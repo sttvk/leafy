@@ -30,8 +30,14 @@ interface CartProviderProps {
 
 function loadCart(userId: string | undefined): readonly BookListDto[] {
   if (!userId) return []
-  const saved = localStorage.getItem(`${CART_KEY_PREFIX}${userId}`)
-  return saved ? JSON.parse(saved) : []
+  const key = `${CART_KEY_PREFIX}${userId}`
+  try {
+    const saved = localStorage.getItem(key)
+    return saved ? JSON.parse(saved) : []
+  } catch {
+    localStorage.removeItem(key)
+    return []
+  }
 }
 
 function CartProvider({ children }: CartProviderProps) {

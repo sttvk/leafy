@@ -122,11 +122,7 @@ function CatalogPage() {
 
   const allBooks = useMemo(() => {
     if (!data) return []
-    return data.pages.flatMap((page) =>
-      page.items.filter(
-        (book) => book.coverImageUrl !== null && book.coverImageUrl !== ""
-      )
-    )
+    return data.pages.flatMap((page) => page.items)
   }, [data])
 
   const searchBooksAsListDto: readonly BookListDto[] = useMemo(() => {
@@ -168,7 +164,7 @@ function CatalogPage() {
       <PageLayout className="space-y-3">
         <div className="flex flex-nowrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px]" aria-label="Filter by genre">
                 <SelectValue placeholder="All Genres" />
               </SelectTrigger>
               <SelectContent>

@@ -332,7 +332,17 @@ function AuthPage() {
                   </svg>
                   Continue with Google
                 </Button>
-                <div className="absolute inset-0 cursor-pointer opacity-0">
+                <div
+                  className="absolute inset-0 cursor-pointer opacity-0"
+                  aria-label="Continue with Google"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.currentTarget.querySelector<HTMLElement>("[role='button'], button, div")?.click()
+                    }
+                  }}
+                >
                   <GoogleLogin
                     onSuccess={handleGoogleSuccess}
                     onError={() => setError(MESSAGES.auth.googleFailed)}
