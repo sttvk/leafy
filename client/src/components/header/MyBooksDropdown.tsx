@@ -80,8 +80,8 @@ function MyBooksDropdown() {
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
               {earlyReturns >= CONSTANTS.freeRentalThreshold
-                ? "\uD83C\uDF89 You have a free rental!"
-                : `\uD83C\uDF81 ${earlyReturns}/${CONSTANTS.freeRentalThreshold} early returns toward a free rental`}
+                ? "\u2728 You have a free rental!"
+                : `\uD83D\uDCDA ${earlyReturns}/${CONSTANTS.freeRentalThreshold} early returns toward a free rental`}
             </p>
           </div>
 

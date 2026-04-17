@@ -41,7 +41,7 @@ export const MESSAGES = {
   },
 
   returns: {
-    success: "Book returned successfully.",
+    success: "Book returned successfully! Early returns earn credits toward a free rental.",
     failed: "Could not return the book. Please try again.",
     confirmReturn: "Are you sure you want to return this book? You will lose access to it.",
   },
