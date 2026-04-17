@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { BookOpen } from "lucide-react"
 import { useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
+import { MESSAGES } from "@/lib/messages"
 import { type CheckoutDto, verifyCheckoutSession } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { PageLayout } from "@/components/PageLayout"
@@ -36,12 +37,12 @@ function CheckoutSuccessPage() {
           clearCart()
           queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
           queryClient.invalidateQueries({ queryKey: ["books"] })
-          toast.success("Payment successful! Your books are ready to read.")
+          toast.success(MESSAGES.checkout.paymentSuccess)
         }
       } catch {
         if (!cancelled) {
           setState({ status: "error", message: "Verification failed. Please contact support." })
-          toast.error("Payment verification failed")
+          toast.error(MESSAGES.checkout.paymentFailed)
         }
       }
     }

@@ -1,8 +1,9 @@
-client/src/components/ui/toaster.tsx
-client/src/App.tsx
-client/src/pages/catalog/BookDetailOverlay.tsx
-client/src/pages/reader/ReaderPage.tsx
+client/src/lib/messages.ts
+client/src/lib/validation.ts
+client/src/pages/auth/AuthPage.tsx
+client/src/components/BookFormModal.tsx
 client/src/components/header/CartDropdown.tsx
 client/src/components/header/MyBooksDropdown.tsx
-client/package.json
-client/package-lock.json
+client/src/pages/catalog/BookDetailOverlay.tsx
+client/src/pages/reader/ReaderPage.tsx
+client/src/pages/checkout/CheckoutSuccessPage.tsx

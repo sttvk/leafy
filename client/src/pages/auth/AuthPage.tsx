@@ -21,6 +21,7 @@ import {
   validatePassword,
   validateRequired,
 } from "@/lib/validation"
+import { MESSAGES } from "@/lib/messages"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
@@ -94,12 +95,12 @@ function AuthPage() {
     try {
       await login(email, password)
       navigate("/", { replace: true })
-      toast.success("Logged in successfully")
+      toast.success(MESSAGES.auth.loginSuccess)
     } catch (err: unknown) {
       const message =
-        err instanceof Error ? err.message : "Login failed. Please try again."
+        err instanceof Error ? err.message : MESSAGES.auth.loginFailed
       setError(message)
-      toast.error("Login failed")
+      toast.error(MESSAGES.auth.loginFailed)
     } finally {
       setIsSubmitting(false)
     }
@@ -124,14 +125,14 @@ function AuthPage() {
     try {
       await register(email, password, fullName)
       navigate("/", { replace: true })
-      toast.success("Account created successfully")
+      toast.success(MESSAGES.auth.registerSuccess)
     } catch (err: unknown) {
       const message =
         err instanceof Error
           ? err.message
-          : "Registration failed. Please try again."
+          : MESSAGES.auth.registerFailed
       setError(message)
-      toast.error("Registration failed")
+      toast.error(MESSAGES.auth.registerFailed)
     } finally {
       setIsSubmitting(false)
     }
@@ -155,9 +156,9 @@ function AuthPage() {
       const message =
         err instanceof Error
           ? err.message
-          : "Google sign-in failed. Please try again."
+          : MESSAGES.auth.googleFailed
       setError(message)
-      toast.error("Google login failed")
+      toast.error(MESSAGES.auth.googleFailed)
     } finally {
       setIsSubmitting(false)
     }
@@ -329,7 +330,7 @@ function AuthPage() {
                 <div className="absolute inset-0 cursor-pointer opacity-0">
                   <GoogleLogin
                     onSuccess={handleGoogleSuccess}
-                    onError={() => setError("Google sign-in failed. Please try again.")}
+                    onError={() => setError(MESSAGES.auth.googleFailed)}
                     size="large"
                     width="400"
                   />

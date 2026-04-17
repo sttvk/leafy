@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
+import { MESSAGES } from "@/lib/messages"
 import { fetchBook } from "@/api/books"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
@@ -67,9 +68,9 @@ function ReaderPage() {
       await returnBook(activeCheckout.id)
       setIsReturned(true)
       await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
-      toast.success("Book returned successfully")
+      toast.success(MESSAGES.returns.success)
     } catch {
-      toast.error("Failed to return the book. Please try again.")
+      toast.error(MESSAGES.returns.failed)
     } finally {
       setIsReturning(false)
     }

@@ -2,6 +2,7 @@ import { useCallback, useState } from "react"
 import { ShoppingCart, X } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
 import { toast } from "sonner"
+import { MESSAGES } from "@/lib/messages"
 import { createCheckoutSession } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
@@ -22,7 +23,7 @@ function CartDropdown() {
       clearCart()
       window.location.href = response.sessionUrl
     } catch {
-      toast.error("Failed to start checkout. Please try again.")
+      toast.error(MESSAGES.checkout.checkoutFailed)
       setIsCheckingOut(false)
     }
   }, [items, clearCart])

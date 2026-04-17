@@ -26,6 +26,7 @@ import {
   validateUrl,
   validateYear,
 } from "@/lib/validation"
+import { MESSAGES } from "@/lib/messages"
 
 interface BookFormModalProps {
   open: boolean
@@ -166,15 +167,15 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
       if (isEditMode) {
         await updateBook(book.id, payload)
         await queryClient.invalidateQueries({ queryKey: ["book", book.id] })
-        toast.success("Book updated successfully")
+        toast.success(MESSAGES.books.updateSuccess)
       } else {
         await createBook(payload)
-        toast.success("Book added successfully")
+        toast.success(MESSAGES.books.addSuccess)
       }
       onSuccess()
       handleOpenChange(false)
     } catch (error: unknown) {
-      toast.error(isEditMode ? "Failed to update book" : "Failed to add book")
+      toast.error(isEditMode ? MESSAGES.books.updateFailed : MESSAGES.books.addFailed)
       const message =
         error instanceof Error
           ? error.message

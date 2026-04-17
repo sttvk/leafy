@@ -3,6 +3,7 @@ import { useState } from "react"
 import { BookOpen, Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
 import { toast } from "sonner"
+import { MESSAGES } from "@/lib/messages"
 import { deleteBook, fetchBook, type BookListDto } from "@/api/books"
 import { fetchMyCheckouts } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
@@ -45,14 +46,14 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
 
   async function handleDelete(): Promise<void> {
     if (book == null) return
-    const confirmed = window.confirm("Are you sure you want to delete this book?")
+    const confirmed = window.confirm(MESSAGES.books.deleteConfirm)
     if (!confirmed) return
 
     setIsDeleting(true)
     try {
       await deleteBook(book.id)
       onDelete?.()
-      toast.success("Book deleted successfully")
+      toast.success(MESSAGES.books.deleteSuccess)
       onOpenChange(false)
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "Failed to delete book"
@@ -130,7 +131,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
               <div className="mt-auto flex flex-col gap-3 pt-2">
                 {!isAuthenticated && (
                   <p className="text-center text-sm text-muted-foreground">
-                    <Link to="/login" className="font-medium text-primary hover:underline">Login to read this book</Link>
+                    <Link to="/login" className="font-medium text-primary hover:underline">{MESSAGES.checkout.loginToRead}</Link>
                   </p>
                 )}
                 {isAuthenticated && book != null && isAlreadyCheckedOut && (
@@ -140,7 +141,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     disabled
                   >
                     <BookOpen className="mr-2 h-5 w-5" />
-                    Already Reading
+                    {MESSAGES.checkout.alreadyReading}
                   </Button>
                 )}
                 {isAuthenticated && book != null && !isAlreadyCheckedOut && (
@@ -155,12 +156,12 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     {isAlreadyInCart ? (
                       <>
                         <Check className="mr-2 h-5 w-5" />
-                        Added to Cart &middot; $1.99/14 days
+                        {MESSAGES.checkout.addedToCart}
                       </>
                     ) : (
                       <>
                         <ShoppingCart className="mr-2 h-5 w-5" />
-                        Add to Cart &middot; $1.99/14 days
+                        {MESSAGES.checkout.addToCart}
                       </>
                     )}
                   </Button>
