@@ -63,7 +63,7 @@ function NavHeader() {
                   onClick={() => setIsAddBookOpen(true)}
                   aria-label="Add book"
                 >
-                  <Plus className="h-5 w-5" />
+                  <Plus className="h-4 w-4" />
                 </button>
                 <span className="text-border">|</span>
               </>
@@ -74,7 +74,7 @@ function NavHeader() {
               onClick={() => setIsDark((prev) => !prev)}
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun fill="currentColor" className="h-5 w-5 text-amber-500" /> : <Moon fill="currentColor" className="h-5 w-5 text-[#dbd0ba]" />}
+              {isDark ? <Sun fill="currentColor" className="h-4 w-4 text-amber-500" /> : <Moon fill="currentColor" className="h-4 w-4 text-[#dbd0ba]" />}
             </button>
             {isAuthenticated ? (
               <>
@@ -83,7 +83,7 @@ function NavHeader() {
               </>
             ) : (
               <Link to="/login" aria-label="Login" className="icon-btn">
-                <LogIn className="h-5 w-5" />
+                <LogIn className="h-4 w-4" />
               </Link>
             )}
           </nav>

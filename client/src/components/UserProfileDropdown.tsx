@@ -35,7 +35,7 @@ function UserProfileDropdown() {
         aria-label="User menu"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <User className="h-5 w-5" />
+        <User className="h-4 w-4" />
       </button>
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 z-50 w-64 rounded-md border bg-popover p-4 shadow-md">
