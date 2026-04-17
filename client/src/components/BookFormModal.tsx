@@ -174,6 +174,7 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
         await createBook(payload)
         toast.success(MESSAGES.books.addSuccess)
       }
+      await queryClient.invalidateQueries({ queryKey: ["books"] })
       onSuccess()
       handleOpenChange(false)
     } catch (error: unknown) {
