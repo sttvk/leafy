@@ -10,7 +10,6 @@ namespace Lms.Api.Endpoints;
 public static class StripeEndpoints
 {
     private const int RentalPriceInCents = 199;
-    private const int MaxActiveCheckouts = 3;
 
     public static RouteGroupBuilder MapStripeEndpoints(this WebApplication app)
     {
@@ -45,13 +44,6 @@ public static class StripeEndpoints
         if (request.BookIds is null || request.BookIds.Count == 0)
         {
             return TypedResults.BadRequest("At least one book ID is required.");
-        }
-
-        var activeCount = await checkoutRepository.CountActiveByBorrowerAsync(userId.Value, ct);
-        if (activeCount + request.BookIds.Count > MaxActiveCheckouts)
-        {
-            return TypedResults.Conflict(
-                $"Cannot checkout {request.BookIds.Count} book(s). You have {activeCount} active checkout(s) and the limit is {MaxActiveCheckouts}.");
         }
 
         foreach (var bookId in request.BookIds)

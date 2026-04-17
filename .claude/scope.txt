@@ -1,4 +1,5 @@
-client/src/components/header/CartDropdown.tsx
-client/src/api/checkouts.ts
-client/src/pages/checkout/CheckoutSuccessPage.tsx
-client/src/App.tsx
+client/src/components/BookDetailOverlay.tsx
+client/src/contexts/CartContext.tsx
+client/src/pages/catalog/BookDetailOverlay.tsx
+src/Lms.Application/Checkouts/CheckoutService.cs
+src/Lms.Api/Endpoints/StripeEndpoints.cs

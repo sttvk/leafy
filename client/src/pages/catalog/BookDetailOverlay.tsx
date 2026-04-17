@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
-import { Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
+import { BookOpen, Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
 import { deleteBook, fetchBook, type BookListDto } from "@/api/books"
+import { fetchMyCheckouts } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
@@ -28,6 +29,16 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
   const { isAuthenticated, isLibrarian } = useAuth()
   const { addToCart, isInCart } = useCart()
   const [isDeleting, setIsDeleting] = useState(false)
+
+  const { data: myCheckouts } = useQuery({
+    queryKey: ["my-checkouts"],
+    queryFn: fetchMyCheckouts,
+    enabled: isAuthenticated,
+  })
+
+  const isAlreadyCheckedOut = myCheckouts?.some(
+    (c) => c.bookId === book?.id && (c.status === "Active" || c.status === "Overdue")
+  ) ?? false
 
   const isAlreadyInCart = book != null && isInCart(book.id)
 
@@ -120,7 +131,17 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     <Link to="/login" className="font-medium text-primary hover:underline">Login</Link> to read this book
                   </p>
                 )}
-                {isAuthenticated && book != null && (
+                {isAuthenticated && book != null && isAlreadyCheckedOut && (
+                  <Button
+                    size="lg"
+                    className="w-full text-base"
+                    disabled
+                  >
+                    <BookOpen className="mr-2 h-5 w-5" />
+                    Already Reading
+                  </Button>
+                )}
+                {isAuthenticated && book != null && !isAlreadyCheckedOut && (
                   <Button
                     size="lg"
                     className="w-full text-base"

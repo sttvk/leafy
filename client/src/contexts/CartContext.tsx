@@ -2,8 +2,6 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { ReactNode } from "react"
 import type { BookListDto } from "@/api/books"
 
-const MAX_CART_ITEMS = 3
-
 interface CartContextValue {
   items: readonly BookListDto[]
   addToCart: (book: BookListDto) => void
@@ -39,7 +37,6 @@ function CartProvider({ children }: CartProviderProps) {
 
   const addToCart = useCallback((book: BookListDto) => {
     setItems((prev) => {
-      if (prev.length >= MAX_CART_ITEMS) return prev
       if (prev.some((item) => item.id === book.id)) return prev
       return [...prev, book]
     })
@@ -74,4 +71,4 @@ function CartProvider({ children }: CartProviderProps) {
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
-export { CartProvider, useCart, MAX_CART_ITEMS }
+export { CartProvider, useCart }

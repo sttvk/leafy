@@ -7,7 +7,6 @@ namespace Lms.Application.Checkouts;
 public sealed class CheckoutService
 {
     private const int LoanPeriodDays = 14;
-    private const int MaxActiveCheckouts = 3;
 
     private readonly ICheckoutRepository _checkouts;
     private readonly IBookRepository _books;
@@ -26,19 +25,6 @@ public sealed class CheckoutService
     public async Task<CheckoutResult> CheckoutAsync(
         Guid bookId, Guid userId, CancellationToken ct)
     {
-        var activeCount = await _checkouts.CountActiveByBorrowerAsync(userId, ct);
-        if (activeCount >= MaxActiveCheckouts)
-        {
-            _logger.LogInformation(
-                "checkout.limit_reached user {UserId} active {ActiveCount}",
-                userId,
-                activeCount);
-
-            return CheckoutResult.Failure(
-                "You already have 3 books checked out. Return a book before borrowing another.",
-                CheckoutFailureReason.LimitReached);
-        }
-
         var alreadyCheckedOut = await _checkouts.HasActiveCheckoutForBookAsync(bookId, userId, ct);
         if (alreadyCheckedOut)
         {
