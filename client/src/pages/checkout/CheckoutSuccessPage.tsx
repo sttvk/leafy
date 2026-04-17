@@ -41,6 +41,7 @@ function CheckoutSuccessPage() {
       } catch {
         if (!cancelled) {
           setState({ status: "error", message: "Verification failed. Please contact support." })
+          toast.error("Payment verification failed")
         }
       }
     }

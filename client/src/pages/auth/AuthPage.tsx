@@ -52,6 +52,7 @@ function AuthPage() {
       const message =
         err instanceof Error ? err.message : "Login failed. Please try again."
       setError(message)
+      toast.error("Login failed")
     } finally {
       setIsSubmitting(false)
     }
@@ -72,6 +73,7 @@ function AuthPage() {
           ? err.message
           : "Registration failed. Please try again."
       setError(message)
+      toast.error("Registration failed")
     } finally {
       setIsSubmitting(false)
     }
@@ -97,6 +99,7 @@ function AuthPage() {
           ? err.message
           : "Google sign-in failed. Please try again."
       setError(message)
+      toast.error("Google login failed")
     } finally {
       setIsSubmitting(false)
     }
