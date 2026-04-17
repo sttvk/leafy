@@ -83,6 +83,16 @@ export function searchBooks(query: string, limit: number = 25): Promise<SearchRe
   )
 }
 
+export interface BookPageResponse {
+  pageNumber: number
+  totalPages: number
+  content: string
+}
+
+export function fetchBookPage(bookId: string, page: number): Promise<BookPageResponse> {
+  return apiClient.get<BookPageResponse>(`/api/books/${bookId}/content?page=${page}`)
+}
+
 export interface BookDescriptionResponse {
   description: string
 }

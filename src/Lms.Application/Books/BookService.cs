@@ -17,15 +17,18 @@ public sealed class BookService
     private const string EmbeddingModel = "text-embedding-3-small";
 
     private readonly IBookRepository _books;
+    private readonly ICheckoutRepository _checkouts;
     private readonly IEmbeddingService _embeddingService;
     private readonly ILogger<BookService> _logger;
 
     public BookService(
         IBookRepository books,
+        ICheckoutRepository checkouts,
         IEmbeddingService embeddingService,
         ILogger<BookService> logger)
     {
         _books = books;
+        _checkouts = checkouts;
         _embeddingService = embeddingService;
         _logger = logger;
     }
@@ -34,6 +37,22 @@ public sealed class BookService
     {
         var book = await _books.GetByIdAsync(id, ct);
         return book is null ? null : ToDto(book);
+    }
+
+    public async Task<BookPageResponse?> GetBookPageAsync(
+        Guid bookId, Guid userId, int page, CancellationToken ct)
+    {
+        var hasCheckout = await _checkouts.HasActiveCheckoutForBookAsync(bookId, userId, ct);
+        if (!hasCheckout)
+        {
+            return null;
+        }
+
+        var totalPages = LoremGenerator.GetTotalPages();
+        var clampedPage = Math.Clamp(page, 1, totalPages);
+        var content = LoremGenerator.GeneratePage(clampedPage);
+
+        return new BookPageResponse(clampedPage, totalPages, content);
     }
 
     public async Task<PagedResult<BookListDto>> ListAsync(

@@ -1,16 +1,15 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { MESSAGES } from "@/lib/messages"
-import { fetchBook } from "@/api/books"
+import { fetchBook, fetchBookPage } from "@/api/books"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
 import { Button } from "@/components/ui/button"
 import { PageLayout } from "@/components/PageLayout"
 import { daysRemaining } from "@/lib/dates"
-import { generatePage, TOTAL_PAGES } from "@/lib/lorem"
 
 function ReaderPage() {
   const { bookId } = useParams<{ bookId: string }>()
@@ -45,13 +44,15 @@ function ReaderPage() {
       (c.status === "Active" || c.status === "Overdue")
   )
 
-  const currentPageData = useMemo(
-    () => ({
-      number: currentPage,
-      paragraphs: generatePage(currentPage).split("\n\n"),
-    }),
-    [currentPage]
-  )
+  const {
+    data: pageData,
+    isLoading: isPageLoading,
+    isError: isPageError,
+  } = useQuery({
+    queryKey: ["book-content", bookId, currentPage],
+    queryFn: () => fetchBookPage(bookId!, currentPage),
+    enabled: bookId != null && activeCheckout != null && !isReturned,
+  })
 
   useEffect(() => {
     pageContentRef.current?.scrollTo(0, 0)
@@ -59,6 +60,9 @@ function ReaderPage() {
 
   const isLoading = isCheckoutsLoading || isBookLoading
   const isError = isCheckoutsError || isBookError
+
+  const totalPages = pageData?.totalPages ?? 300
+  const paragraphs = pageData?.content.split("\n\n") ?? []
 
   const handleReturn = useCallback(async () => {
     if (activeCheckout == null) return
@@ -81,8 +85,8 @@ function ReaderPage() {
   }, [])
 
   const handleNextPage = useCallback(() => {
-    setCurrentPage((prev) => Math.min(TOTAL_PAGES, prev + 1))
-  }, [])
+    setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+  }, [totalPages])
 
   if (isLoading) {
     return (
@@ -202,15 +206,28 @@ function ReaderPage() {
           <div className="mb-6 flex items-center gap-4">
             <hr className="flex-1 border-border" />
             <span className="text-xs font-medium tracking-wide text-muted-foreground">
-              Page {currentPageData.number}
+              Page {currentPage}
             </span>
             <hr className="flex-1 border-border" />
           </div>
-          {currentPageData.paragraphs.map((paragraph, idx) => (
-            <p key={idx} className="mb-4 leading-relaxed">
-              {paragraph}
+          {isPageLoading ? (
+            <div className="animate-pulse space-y-4">
+              <div className="h-4 w-full rounded bg-muted" />
+              <div className="h-4 w-5/6 rounded bg-muted" />
+              <div className="h-4 w-4/6 rounded bg-muted" />
+              <div className="h-4 w-full rounded bg-muted" />
+            </div>
+          ) : isPageError ? (
+            <p className="text-sm text-destructive">
+              Access denied. You may no longer have an active checkout for this book.
             </p>
-          ))}
+          ) : (
+            paragraphs.map((paragraph, idx) => (
+              <p key={idx} className="mb-4 leading-relaxed">
+                {paragraph}
+              </p>
+            ))
+          )}
         </div>
       </section>
 
@@ -224,12 +241,12 @@ function ReaderPage() {
           Previous
         </Button>
         <span className="text-sm text-muted-foreground">
-          Page {currentPage} of {TOTAL_PAGES}
+          Page {currentPage} of {totalPages}
         </span>
         <Button
           variant="outline"
           size="sm"
-          disabled={currentPage >= TOTAL_PAGES}
+          disabled={currentPage >= totalPages}
           onClick={handleNextPage}
         >
           Next

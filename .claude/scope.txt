@@ -1,7 +1,7 @@
 src/Lms.Api/Controllers/BooksController.cs
-src/Lms.Application/Search/SearchService.cs
-src/Lms.Application/Search/BookSearchResult.cs
-src/Lms.Application/Books/ITextGenerationService.cs
-src/Lms.Infrastructure/Services/GeminiTextGenerationService.cs
+src/Lms.Application/Books/BookService.cs
+src/Lms.Application/Books/BookPageResponse.cs
+src/Lms.Application/Books/LoremGenerator.cs
 client/src/api/books.ts
-client/src/pages/catalog/CatalogPage.tsx
+client/src/pages/reader/ReaderPage.tsx
+client/src/lib/lorem.ts

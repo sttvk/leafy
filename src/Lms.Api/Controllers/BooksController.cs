@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Security.Claims;
 using Lms.Application.Books;
 using Lms.Application.Common;
 using Lms.Application.Search;
@@ -108,6 +109,26 @@ public sealed class BooksController : ControllerBase
         return deleted
             ? NoContent()
             : NotFound();
+    }
+
+    [HttpGet("{id:guid}/content")]
+    [Authorize]
+    public async Task<ActionResult<BookPageResponse>> GetBookContentAsync(
+        Guid id, [FromQuery] int page = 1, CancellationToken ct = default)
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier)
+            ?? User.FindFirstValue("sub");
+
+        if (userIdClaim is null || !Guid.TryParse(userIdClaim, out var userId))
+        {
+            return Unauthorized();
+        }
+
+        var result = await _bookService.GetBookPageAsync(id, userId, page, ct);
+
+        return result is not null
+            ? Ok(result)
+            : Forbid();
     }
 
     [HttpGet("{id:guid}/description")]
