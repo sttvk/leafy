@@ -1,5 +1,8 @@
-client/src/components/BookDetailOverlay.tsx
-client/src/contexts/CartContext.tsx
+client/src/components/ui/toaster.tsx
+client/src/App.tsx
 client/src/pages/catalog/BookDetailOverlay.tsx
-src/Lms.Application/Checkouts/CheckoutService.cs
-src/Lms.Api/Endpoints/StripeEndpoints.cs
+client/src/pages/reader/ReaderPage.tsx
+client/src/components/header/CartDropdown.tsx
+client/src/components/header/MyBooksDropdown.tsx
+client/package.json
+client/package-lock.json

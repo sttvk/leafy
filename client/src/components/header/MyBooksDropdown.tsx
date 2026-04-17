@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { BookOpen } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
+import { toast } from "sonner"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import { Button } from "@/components/ui/button"
 
@@ -30,8 +31,9 @@ function MyBooksDropdown() {
     try {
       await returnBook(checkoutId)
       await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
+      toast.success("Book returned successfully")
     } catch {
-      window.alert("Failed to return book. Please try again.")
+      toast.error("Failed to return book. Please try again.")
     }
   }
 

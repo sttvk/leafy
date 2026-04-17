@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { toast } from "sonner"
 import { fetchBook } from "@/api/books"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
@@ -64,8 +65,9 @@ function ReaderPage() {
       await returnBook(activeCheckout.id)
       setIsReturned(true)
       await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
+      toast.success("Book returned successfully")
     } catch {
-      window.alert("Failed to return the book. Please try again.")
+      toast.error("Failed to return the book. Please try again.")
     } finally {
       setIsReturning(false)
     }

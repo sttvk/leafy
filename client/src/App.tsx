@@ -8,6 +8,7 @@ import { AuthPage } from "@/pages/auth/AuthPage"
 import { ReaderPage } from "@/pages/reader/ReaderPage"
 import { CheckoutSuccessPage } from "@/pages/checkout/CheckoutSuccessPage"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
+import { Toaster } from "@/components/ui/toaster"
 
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
@@ -54,6 +55,7 @@ function AppShell() {
           <BrowserRouter>
             <AppRoutes />
           </BrowserRouter>
+          <Toaster />
         </CartProvider>
       </AuthProvider>
     </QueryClientProvider>

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { BookOpen, Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
+import { toast } from "sonner"
 import { deleteBook, fetchBook, type BookListDto } from "@/api/books"
 import { fetchMyCheckouts } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
@@ -54,7 +55,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
       onOpenChange(false)
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "Failed to delete book"
-      window.alert(message)
+      toast.error(message)
     } finally {
       setIsDeleting(false)
     }
