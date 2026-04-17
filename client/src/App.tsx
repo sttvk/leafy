@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react"
-import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
-import { LogIn, Sun, Moon, Plus } from "lucide-react"
-import { AuthProvider, useAuth } from "@/contexts/AuthContext"
+import { AuthProvider } from "@/contexts/AuthContext"
 import { CartProvider } from "@/contexts/CartContext"
 import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
 import { ReaderPage } from "@/pages/ReaderPage"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
-import { CartDropdown } from "@/components/CartDropdown"
-import { UserProfileDropdown } from "@/components/UserProfileDropdown"
-import { BookFormModal } from "@/components/BookFormModal"
+import { NavHeader } from "@/components/NavHeader"
 
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
@@ -24,79 +20,6 @@ const queryClient = new QueryClient({
     },
   },
 })
-
-function NavHeader() {
-  const { isAuthenticated, isLibrarian, isLoading } = useAuth()
-  const queryClient = useQueryClient()
-  const [isAddBookOpen, setIsAddBookOpen] = useState(false)
-  const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("lms_theme") === "dark"
-  })
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("lms_theme", "dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("lms_theme", "light")
-    }
-  }, [isDark])
-
-  return (
-    <header className="sticky top-0 z-40 bg-background">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link
-          to="/"
-          className="text-2xl font-bold tracking-tight text-foreground"
-        >
-          Leafy
-        </Link>
-
-        {!isLoading && (
-          <nav className="flex items-center gap-2">
-            {isLibrarian && (
-              <>
-                <button
-                  type="button"
-                  className="icon-btn"
-                  onClick={() => setIsAddBookOpen(true)}
-                  aria-label="Add book"
-                >
-                  <Plus className="h-4 w-4" />
-                </button>
-                <span className="text-border">|</span>
-              </>
-            )}
-            <button
-              type="button"
-              className="icon-btn"
-              onClick={() => setIsDark((prev) => !prev)}
-              aria-label="Toggle theme"
-            >
-              {isDark ? <Sun fill="currentColor" className="h-4 w-4 text-amber-500" /> : <Moon fill="currentColor" className="h-4 w-4 text-[#dbd0ba]" />}
-            </button>
-            {isAuthenticated ? (
-              <>
-                <CartDropdown />
-                <UserProfileDropdown />
-              </>
-            ) : (
-              <Link to="/login" aria-label="Login" className="icon-btn">
-                <LogIn className="h-4 w-4" />
-              </Link>
-            )}
-          </nav>
-        )}
-      </div>
-      <BookFormModal
-        open={isAddBookOpen}
-        onOpenChange={setIsAddBookOpen}
-        onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
-      />
-    </header>
-  )
-}
 
 function AppRoutes() {
   return (
