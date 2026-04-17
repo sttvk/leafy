@@ -11,10 +11,6 @@ export interface CheckoutDto {
   status: string
 }
 
-export function checkoutBook(bookId: string): Promise<CheckoutDto> {
-  return apiClient.post<CheckoutDto>(`/api/books/${bookId}/checkout`)
-}
-
 export function returnBook(checkoutId: string): Promise<CheckoutDto> {
   return apiClient.post<CheckoutDto>(`/api/checkouts/${checkoutId}/return`)
 }

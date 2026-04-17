@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Lms.ServiceDefaults\Lms.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Lms.Infrastructure\Lms.Infrastructure.csproj" />
   </ItemGroup>
 

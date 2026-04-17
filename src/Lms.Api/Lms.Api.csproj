@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lms.Infrastructure\Lms.Infrastructure.csproj" />
-    <ProjectReference Include="..\Lms.ServiceDefaults\Lms.ServiceDefaults.csproj" />
   </ItemGroup>
 
   <ItemGroup>

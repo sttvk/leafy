@@ -11,8 +11,3 @@ export interface AuthResponse {
   displayName: string
   role: string
 }
-
-export interface ApiError {
-  message: string
-  errors?: Record<string, string[]>
-}

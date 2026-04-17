@@ -6,6 +6,5 @@
     <Project Path="src/Lms.Domain/Lms.Domain.csproj" />
     <Project Path="src/Lms.Infrastructure/Lms.Infrastructure.csproj" />
     <Project Path="src/Lms.Migrations/Lms.Migrations.csproj" />
-    <Project Path="src/Lms.ServiceDefaults/Lms.ServiceDefaults.csproj" />
   </Folder>
 </Solution>
