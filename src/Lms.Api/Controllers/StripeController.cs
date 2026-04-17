@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Lms.Application.Checkouts;
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
@@ -43,7 +42,7 @@ public sealed class StripeController : ControllerBase
         CreateSessionRequest request,
         CancellationToken ct)
     {
-        var userId = ExtractUserId();
+        var userId = User.ExtractUserId();
         if (userId is null)
         {
             return Unauthorized();
@@ -147,7 +146,7 @@ public sealed class StripeController : ControllerBase
         VerifySessionRequest request,
         CancellationToken ct)
     {
-        var userId = ExtractUserId();
+        var userId = User.ExtractUserId();
         if (userId is null)
         {
             return Unauthorized();
@@ -211,19 +210,6 @@ public sealed class StripeController : ControllerBase
 
         IReadOnlyList<CheckoutDto> readOnlyCheckouts = checkouts.AsReadOnly();
         return Ok(readOnlyCheckouts);
-    }
-
-    private Guid? ExtractUserId()
-    {
-        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier)
-            ?? User.FindFirstValue("sub");
-
-        if (userIdClaim is null || !Guid.TryParse(userIdClaim, out var userId))
-        {
-            return null;
-        }
-
-        return userId;
     }
 }
 

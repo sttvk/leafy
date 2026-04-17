@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Lms.Application.Checkouts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +19,7 @@ public sealed class CheckoutsController : ControllerBase
     [Authorize]
     public async Task<ActionResult<CheckoutDto>> Checkout(Guid id, CancellationToken ct)
     {
-        var userId = ExtractUserId();
+        var userId = User.ExtractUserId();
         if (userId is null)
         {
             return Unauthorized();
@@ -40,7 +39,7 @@ public sealed class CheckoutsController : ControllerBase
     [Authorize]
     public async Task<ActionResult<CheckoutDto>> Return(Guid id, CancellationToken ct)
     {
-        var userId = ExtractUserId();
+        var userId = User.ExtractUserId();
         if (userId is null)
         {
             return Unauthorized();
@@ -62,7 +61,7 @@ public sealed class CheckoutsController : ControllerBase
     [Authorize]
     public async Task<ActionResult<IReadOnlyList<CheckoutDto>>> GetMyCheckouts(CancellationToken ct)
     {
-        var userId = ExtractUserId();
+        var userId = User.ExtractUserId();
         if (userId is null)
         {
             return Unauthorized();
@@ -78,18 +77,5 @@ public sealed class CheckoutsController : ControllerBase
     {
         var checkouts = await _checkoutService.GetAllActiveCheckoutsAsync(ct);
         return Ok(checkouts);
-    }
-
-    private Guid? ExtractUserId()
-    {
-        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier)
-            ?? User.FindFirstValue("sub");
-
-        if (userIdClaim is null || !Guid.TryParse(userIdClaim, out var userId))
-        {
-            return null;
-        }
-
-        return userId;
     }
 }

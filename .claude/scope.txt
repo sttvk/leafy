@@ -1,1 +1,6 @@
-src/Lms.Infrastructure/Persistence/Migrations/**
+src/Lms.Api/Controllers/StripeController.cs
+src/Lms.Api/Controllers/BooksController.cs
+src/Lms.Api/Controllers/CheckoutsController.cs
+src/Lms.Api/Controllers/ControllerExtensions.cs
+src/Lms.Domain/Repositories/IUserRepository.cs
+src/Lms.Infrastructure/Persistence/Repositories/UserRepository.cs

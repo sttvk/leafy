@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Lms.Application.Books;
 using Lms.Application.Common;
 using Lms.Application.Search;
@@ -119,15 +118,13 @@ public sealed class BooksController : ControllerBase
     public async Task<ActionResult<BookPageResponse>> GetBookContentAsync(
         Guid id, [FromQuery] int page = 1, CancellationToken ct = default)
     {
-        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier)
-            ?? User.FindFirstValue("sub");
-
-        if (userIdClaim is null || !Guid.TryParse(userIdClaim, out var userId))
+        var userId = User.ExtractUserId();
+        if (userId is null)
         {
             return Unauthorized();
         }
 
-        var result = await _bookService.GetBookPageAsync(id, userId, page, ct);
+        var result = await _bookService.GetBookPageAsync(id, userId.Value, page, ct);
 
         return result is not null
             ? Ok(result)
@@ -135,6 +132,7 @@ public sealed class BooksController : ControllerBase
     }
 
     [HttpGet("{id:guid}/description")]
+    [Authorize]
     public async Task<ActionResult<BookDescriptionResponse>> GetGeneratedDescriptionAsync(
         Guid id, CancellationToken ct)
     {
