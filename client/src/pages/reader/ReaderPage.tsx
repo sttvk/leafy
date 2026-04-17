@@ -71,6 +71,9 @@ function ReaderPage() {
   const handleReturn = useCallback(async () => {
     if (activeCheckout == null) return
 
+    const confirmed = window.confirm("Are you sure you want to return this book? You will lose access to it.")
+    if (!confirmed) return
+
     setIsReturning(true)
     try {
       await returnBook(activeCheckout.id)

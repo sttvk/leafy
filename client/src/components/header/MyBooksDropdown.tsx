@@ -25,6 +25,9 @@ function MyBooksDropdown() {
   )
 
   const handleReturn = async (checkoutId: string) => {
+    const confirmed = window.confirm("Are you sure you want to return this book? You will lose access to it.")
+    if (!confirmed) return
+
     try {
       await returnBook(checkoutId)
       await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
