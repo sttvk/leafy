@@ -39,10 +39,14 @@ function ReaderPage() {
   })
 
   const activeCheckout: CheckoutDto | undefined = checkouts?.find(
-    (c) =>
-      c.bookId === bookId &&
-      (c.status === "Active" || c.status === "Overdue")
+    (c) => c.bookId === bookId && c.status === "Active"
   )
+
+  const hasOverdueCheckout: boolean =
+    activeCheckout == null &&
+    checkouts?.some(
+      (c) => c.bookId === bookId && c.status === "Overdue"
+    ) === true
 
   const {
     data: pageData,
@@ -119,12 +123,25 @@ function ReaderPage() {
   if (activeCheckout == null && !isReturned) {
     return (
       <PageLayout className="py-24 text-center">
-        <p className="text-lg font-medium text-foreground">
-          You don&apos;t have access to this book
-        </p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          You need to check it out first.
-        </p>
+        {hasOverdueCheckout ? (
+          <>
+            <p className="text-lg font-medium text-foreground">
+              Your rental has expired
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Your rental has expired. Rent again to continue reading.
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="text-lg font-medium text-foreground">
+              You don&apos;t have access to this book
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              You need to check it out first.
+            </p>
+          </>
+        )}
         <Button asChild className="mt-6">
           <Link to="/">Back to catalog</Link>
         </Button>

@@ -42,8 +42,16 @@ public sealed class BookService
     public async Task<BookPageResponse?> GetBookPageAsync(
         Guid bookId, Guid userId, int page, CancellationToken ct)
     {
-        var hasCheckout = await _checkouts.HasActiveCheckoutForBookAsync(bookId, userId, ct);
-        if (!hasCheckout)
+        var borrowerCheckouts = await _checkouts.ListByBorrowerAsync(userId, ct);
+        var activeCheckout = borrowerCheckouts
+            .FirstOrDefault(c => c.BookId == bookId && c.ReturnedAt is null);
+
+        if (activeCheckout is null)
+        {
+            return null;
+        }
+
+        if (activeCheckout.DueAt < DateTime.UtcNow)
         {
             return null;
         }
