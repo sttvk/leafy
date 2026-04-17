@@ -100,9 +100,10 @@ static async Task SeedLibrarianAsync(IServiceProvider services, ILogger logger)
 static async Task SeedEmbeddingsAsync(
     IServiceProvider services, ILogger logger, CancellationToken ct)
 {
-    const int batchSize = 100;
-    const int delayBetweenBatchesMs = 1000;
+    const int delayBetweenRequestsMs = 100;
     const int maxRetries = 3;
+    const int retryBackoffMs = 2000;
+    const int progressIntervalBooks = 50;
     const string modelName = "text-embedding-004";
 
     var configuration = services.GetRequiredService<IConfiguration>();
@@ -138,79 +139,69 @@ static async Task SeedEmbeddingsAsync(
         "Generating embeddings for {Count} books...", booksWithoutEmbeddings.Count);
 
     var processed = 0;
-    foreach (var batch in booksWithoutEmbeddings.Chunk(batchSize))
+    var succeeded = 0;
+    var total = booksWithoutEmbeddings.Count;
+
+    foreach (var book in booksWithoutEmbeddings)
     {
-        // Build searchable texts for this batch, tracking which books have content
-        var booksWithText = batch
-            .Select(book =>
-            {
-                var searchableText = string.Join(" ",
-                    new[] { book.Title, book.Author, book.Genre, book.Description }
-                        .Where(p => !string.IsNullOrWhiteSpace(p)));
-                return (Book: book, Text: searchableText);
-            })
-            .Where(pair => !string.IsNullOrWhiteSpace(pair.Text))
-            .ToList();
+        var searchableText = string.Join(" ",
+            new[] { book.Title, book.Author, book.Genre, book.Description }
+                .Where(p => !string.IsNullOrWhiteSpace(p)));
 
-        var skipped = batch.Length - booksWithText.Count;
-        processed += skipped;
+        processed++;
 
-        if (booksWithText.Count == 0)
+        if (string.IsNullOrWhiteSpace(searchableText))
         {
             continue;
         }
 
-        var texts = booksWithText.Select(pair => pair.Text).ToList();
-
-        // Retry with exponential backoff on 429
-        IReadOnlyList<float[]>? vectors = null;
+        // Retry on 429 with fixed backoff
+        float[]? vector = null;
         for (int attempt = 0; attempt < maxRetries; attempt++)
         {
             try
             {
-                vectors = await embeddingService.GenerateEmbeddingsBatchAsync(texts, ct);
+                vector = await embeddingService.GenerateEmbeddingAsync(searchableText, ct);
                 break;
             }
             catch (HttpRequestException ex) when (ex.Message.Contains("429"))
             {
-                var backoffMs = 4000 * (1 << attempt); // 4s, 8s, 16s
                 logger.LogWarning(
-                    "Rate limited on batch of {Count} books, retry {Attempt}/{Max} after {Backoff}ms",
-                    booksWithText.Count, attempt + 1, maxRetries, backoffMs);
-                await Task.Delay(backoffMs, ct);
+                    "Rate limited on book {BookId}, retry {Attempt}/{Max} after {Backoff}ms",
+                    book.Id, attempt + 1, maxRetries, retryBackoffMs);
+                await Task.Delay(retryBackoffMs, ct);
             }
             catch (Exception ex)
             {
                 logger.LogWarning(ex,
-                    "Failed to generate embeddings for batch of {Count} books, skipping batch",
-                    booksWithText.Count);
+                    "Failed to generate embedding for book {BookId}, skipping",
+                    book.Id);
                 break;
             }
         }
 
-        if (vectors is not null)
+        if (vector is not null)
         {
-            for (int i = 0; i < booksWithText.Count; i++)
-            {
-                var book = booksWithText[i].Book;
-                var vector = vectors[i];
-                await bookRepo.UpsertEmbeddingAsync(book.Id, vector, modelName, vector.Length, ct);
-            }
+            await bookRepo.UpsertEmbeddingAsync(book.Id, vector, modelName, vector.Length, ct);
+            succeeded++;
         }
 
-        processed += booksWithText.Count;
-
-        logger.LogInformation(
-            "Generating embeddings: {Processed}/{Total}...",
-            processed, booksWithoutEmbeddings.Count);
-
-        if (processed < booksWithoutEmbeddings.Count)
+        if (processed % progressIntervalBooks == 0)
         {
-            await Task.Delay(delayBetweenBatchesMs, ct);
+            logger.LogInformation(
+                "Embedding progress: {Processed}/{Total} processed, {Succeeded} succeeded",
+                processed, total, succeeded);
+        }
+
+        if (processed < total)
+        {
+            await Task.Delay(delayBetweenRequestsMs, ct);
         }
     }
 
-    logger.LogInformation("Embedding seed complete: {Processed} books processed.", processed);
+    logger.LogInformation(
+        "Embedding seed complete: {Processed} processed, {Succeeded} succeeded out of {Total}",
+        processed, succeeded, total);
 }
 
 // Marker type so ILogger<Program> resolves against this assembly.
