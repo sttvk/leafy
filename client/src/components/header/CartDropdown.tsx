@@ -3,7 +3,7 @@ import { ShoppingCart, X } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
 import { useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
-import { MESSAGES } from "@/lib/messages"
+import { CONSTANTS, MESSAGES } from "@/lib/messages"
 import { createCheckoutSession } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
@@ -111,7 +111,7 @@ function CartDropdown() {
                 disabled={isCheckingOut}
                 onClick={handleCheckout}
               >
-                {isCheckingOut ? "Processing..." : `Checkout · $${(itemCount * 1.99).toFixed(2)}`}
+                {isCheckingOut ? "Processing..." : `Checkout · $${(itemCount * CONSTANTS.rentalPricePerBook).toFixed(2)}`}
               </Button>
             </div>
           )}

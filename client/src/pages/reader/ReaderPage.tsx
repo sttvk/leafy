@@ -34,7 +34,7 @@ function ReaderPage() {
     isError: isBookError,
   } = useQuery({
     queryKey: ["book", bookId],
-    queryFn: () => fetchBook(bookId!),
+    queryFn: () => fetchBook(bookId ?? ""),
     enabled: bookId != null,
   })
 
@@ -54,7 +54,7 @@ function ReaderPage() {
     isError: isPageError,
   } = useQuery({
     queryKey: ["book-content", bookId, currentPage],
-    queryFn: () => fetchBookPage(bookId!, currentPage),
+    queryFn: () => fetchBookPage(bookId ?? "", currentPage),
     enabled: bookId != null && activeCheckout != null && !isReturned,
   })
 
@@ -70,7 +70,7 @@ function ReaderPage() {
   const handleReturn = useCallback(async () => {
     if (activeCheckout == null) return
 
-    const confirmed = window.confirm("Are you sure you want to return this book? You will lose access to it.")
+    const confirmed = window.confirm(MESSAGES.returns.confirmReturn)
     if (!confirmed) return
 
     setIsReturning(true)

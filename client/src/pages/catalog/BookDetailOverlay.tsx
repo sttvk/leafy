@@ -68,13 +68,13 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
 
   const { data: detail, isLoading } = useQuery({
     queryKey: ["book-detail", book?.id],
-    queryFn: () => fetchBook(book!.id),
+    queryFn: () => fetchBook(book?.id ?? ""),
     enabled: open && book != null,
   })
 
   const { data: aiDescription, isLoading: isDescriptionLoading } = useQuery({
     queryKey: ["book-description", book?.id],
-    queryFn: () => fetchBookDescription(book!.id),
+    queryFn: () => fetchBookDescription(book?.id ?? ""),
     enabled: open && book != null,
   })
 

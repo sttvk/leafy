@@ -1,6 +1,8 @@
-src/Lms.Api/Controllers/StripeController.cs
-src/Lms.Api/Controllers/BooksController.cs
-src/Lms.Api/Controllers/CheckoutsController.cs
-src/Lms.Api/Controllers/ControllerExtensions.cs
-src/Lms.Domain/Repositories/IUserRepository.cs
-src/Lms.Infrastructure/Persistence/Repositories/UserRepository.cs
+client/src/types/auth.ts
+client/src/pages/catalog/BookDetailOverlay.tsx
+client/src/pages/reader/ReaderPage.tsx
+client/src/components/header/MyBooksDropdown.tsx
+client/src/components/header/CartDropdown.tsx
+client/src/pages/checkout/CheckoutSuccessPage.tsx
+client/src/api/checkouts.ts
+client/src/lib/messages.ts

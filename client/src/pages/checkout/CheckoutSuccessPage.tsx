@@ -52,7 +52,7 @@ function CheckoutSuccessPage() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [clearCart, queryClient])
 
   return (
     <PageLayout>

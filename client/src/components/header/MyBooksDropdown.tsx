@@ -25,7 +25,7 @@ function MyBooksDropdown() {
   )
 
   const handleReturn = async (checkoutId: string) => {
-    const confirmed = window.confirm("Are you sure you want to return this book? You will lose access to it.")
+    const confirmed = window.confirm(MESSAGES.returns.confirmReturn)
     if (!confirmed) return
 
     try {

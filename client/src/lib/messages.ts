@@ -43,5 +43,13 @@ export const MESSAGES = {
   returns: {
     success: "Book returned successfully.",
     failed: "Could not return the book. Please try again.",
+    confirmReturn: "Are you sure you want to return this book? You will lose access to it.",
   },
+} as const
+
+export const CONSTANTS = {
+  rentalPricePerBook: 1.99,
+  rentalDays: 14,
+  earlyReturnDays: 7,
+  freeRentalThreshold: 5,
 } as const
