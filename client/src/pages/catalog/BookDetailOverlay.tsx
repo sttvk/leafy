@@ -153,12 +153,12 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                     {isAlreadyInCart ? (
                       <>
                         <Check className="mr-2 h-5 w-5" />
-                        Added to Cart
+                        Added to Cart &middot; $1.99/14 days
                       </>
                     ) : (
                       <>
                         <ShoppingCart className="mr-2 h-5 w-5" />
-                        Add to Cart
+                        Add to Cart &middot; $1.99/14 days
                       </>
                     )}
                   </Button>
