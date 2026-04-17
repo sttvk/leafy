@@ -1,0 +1,64 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---- Build React client ----
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install client dependencies
+        run: npm ci
+        working-directory: client
+
+      - name: Build client
+        run: npm run build
+        working-directory: client
+        env:
+          VITE_GOOGLE_CLIENT_ID: ${{ vars.VITE_GOOGLE_CLIENT_ID }}
+
+      # ---- Copy client build into API wwwroot ----
+      - name: Copy client dist to wwwroot
+        run: |
+          rm -rf src/Lms.Api/wwwroot
+          cp -r client/dist src/Lms.Api/wwwroot
+
+      # ---- Build and publish .NET API ----
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-
+
+      - name: Publish API
+        run: dotnet publish src/Lms.Api -c Release -o ./publish
+
+      # ---- Run migrations against Azure SQL ----
+      - name: Run database migrations
+        run: dotnet run --project src/Lms.Migrations
+        env:
+          ConnectionStrings__LmsDatabase: ${{ secrets.AZURE_SQL_CONNECTION }}
+
+      # ---- Deploy to Azure App Service ----
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: leafy-api
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./publish
