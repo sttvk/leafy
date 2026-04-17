@@ -188,6 +188,10 @@ function CatalogPage() {
               }
             : undefined
         }
+        onDelete={() => {
+          queryClient.invalidateQueries({ queryKey: ["books"] })
+          setSelectedBook(null)
+        }}
       />
 
       <BookFormModal

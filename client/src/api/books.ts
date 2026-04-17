@@ -58,3 +58,7 @@ export function createBook(data: CreateBookRequest): Promise<BookDetailDto> {
 export function updateBook(id: string, data: UpdateBookRequest): Promise<BookDetailDto> {
   return apiClient.put<BookDetailDto>(`/api/books/${id}`, data)
 }
+
+export function deleteBook(id: string): Promise<void> {
+  return apiClient.delete<void>(`/api/books/${id}`)
+}

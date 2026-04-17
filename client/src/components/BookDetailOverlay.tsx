@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
-import { Check, Loader2, ShoppingCart } from "lucide-react"
+import { useState } from "react"
+import { Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
-import { fetchBook, type BookListDto } from "@/api/books"
+import { deleteBook, fetchBook, type BookListDto } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
@@ -18,15 +19,35 @@ interface BookDetailOverlayProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   onEdit?: () => void
+  onDelete?: () => void
 }
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
-function BookDetailOverlay({ book, open, onOpenChange, onEdit }: BookDetailOverlayProps) {
+function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookDetailOverlayProps) {
   const { isAuthenticated, isLibrarian } = useAuth()
   const { addToCart, isInCart } = useCart()
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const isAlreadyInCart = book != null && isInCart(book.id)
+
+  async function handleDelete(): Promise<void> {
+    if (book == null) return
+    const confirmed = window.confirm("Are you sure you want to delete this book?")
+    if (!confirmed) return
+
+    setIsDeleting(true)
+    try {
+      await deleteBook(book.id)
+      onDelete?.()
+      onOpenChange(false)
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to delete book"
+      window.alert(message)
+    } finally {
+      setIsDeleting(false)
+    }
+  }
 
   const { data: detail, isLoading } = useQuery({
     queryKey: ["book-detail", book?.id],
@@ -130,6 +151,21 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit }: BookDetailOverl
                     }}
                   >
                     Edit
+                  </Button>
+                )}
+                {isLibrarian && (
+                  <Button
+                    variant="destructive"
+                    className="w-full"
+                    disabled={isDeleting}
+                    onClick={handleDelete}
+                  >
+                    {isDeleting ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      <Trash2 className="mr-2 h-4 w-4" />
+                    )}
+                    Delete Book
                   </Button>
                 )}
               </div>
