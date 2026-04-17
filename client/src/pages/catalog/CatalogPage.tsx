@@ -29,6 +29,7 @@ function CatalogPage() {
   const [genreFilter, setGenreFilter] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [activeSearch, setActiveSearch] = useState("")
+  const [searchKey, setSearchKey] = useState(0)
   const [summaryDisplayText, setSummaryDisplayText] = useState("")
   const [isSummaryComplete, setIsSummaryComplete] = useState(false)
 
@@ -38,6 +39,7 @@ function CatalogPage() {
 
   function handleTriggerSearch(): void {
     setActiveSearch(searchQuery)
+    setSearchKey((k) => k + 1)
   }
 
   const {
@@ -64,7 +66,7 @@ function CatalogPage() {
   })
 
   const { data: searchData, isLoading: isSearching } = useQuery<SearchResponse>({
-    queryKey: ["book-search", activeSearch],
+    queryKey: ["book-search", activeSearch, searchKey],
     queryFn: () => searchBooks(activeSearch),
     enabled: isSearchMode,
   })
