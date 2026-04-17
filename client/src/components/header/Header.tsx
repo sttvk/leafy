@@ -32,7 +32,7 @@ function Header() {
         <Link
           to="/"
           className="text-2xl font-bold tracking-tight text-foreground"
-          style={{ fontFamily: "Pacifico, cursive" }}
+          style={{ fontFamily: "Playfair Display, serif" }}
         >
           Leafy
         </Link>
