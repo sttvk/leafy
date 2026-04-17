@@ -101,7 +101,7 @@ static async Task SeedEmbeddingsAsync(
     IServiceProvider services, ILogger logger, CancellationToken ct)
 {
     const int batchSize = 10;
-    const int delayBetweenBatchesMs = 500;
+    const int delayBetweenBatchesMs = 1000;
     const string modelName = "text-embedding-3-small";
 
     var configuration = services.GetRequiredService<IConfiguration>();
@@ -151,17 +151,28 @@ static async Task SeedEmbeddingsAsync(
                 continue;
             }
 
-            try
+            const int maxRetries = 3;
+            bool succeeded = false;
+            for (int attempt = 0; attempt < maxRetries && !succeeded; attempt++)
             {
-                var vector = await embeddingService.GenerateEmbeddingAsync(searchableText, ct);
-                await bookRepo.UpsertEmbeddingAsync(book.Id, vector, modelName, vector.Length, ct);
+                try
+                {
+                    var vector = await embeddingService.GenerateEmbeddingAsync(searchableText, ct);
+                    await bookRepo.UpsertEmbeddingAsync(book.Id, vector, modelName, vector.Length, ct);
+                    succeeded = true;
+                }
+                catch (HttpRequestException ex) when (ex.Message.Contains("429"))
+                {
+                    logger.LogWarning("Rate limited on book {BookId}, retry {Attempt}/{Max}", book.Id, attempt + 1, maxRetries);
+                    await Task.Delay(2000, ct);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogWarning(ex, "Failed to generate embedding for book {BookId} ({Title}), skipping", book.Id, book.Title);
+                    break;
+                }
             }
-            catch (Exception ex)
-            {
-                logger.LogWarning(
-                    ex, "Failed to generate embedding for book {BookId} ({Title}), skipping",
-                    book.Id, book.Title);
-            }
+            await Task.Delay(200, ct);
 
             processed++;
         }
