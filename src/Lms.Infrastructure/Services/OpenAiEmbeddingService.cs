@@ -29,6 +29,7 @@ internal sealed class OpenAiEmbeddingService : IEmbeddingService
         _logger = logger;
 
         var apiKey = configuration["OpenAI:ApiKey"]
+            ?? Environment.GetEnvironmentVariable("OPENAI_API_KEY")
             ?? throw new InvalidOperationException("Missing OpenAI:ApiKey configuration.");
 
         _httpClient.BaseAddress = new Uri(Endpoint);

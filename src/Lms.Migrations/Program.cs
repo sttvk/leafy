@@ -7,11 +7,13 @@ using Lms.Migrations.Seeding;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 var builder = Host.CreateApplicationBuilder(args);
+builder.Configuration.AddUserSecrets<Program>(optional: true);
 
 builder.Services.AddLmsInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
@@ -102,8 +104,8 @@ static async Task SeedEmbeddingsAsync(
     const int delayBetweenBatchesMs = 500;
     const string modelName = "text-embedding-3-small";
 
-    var configuration = services.GetRequiredService<Microsoft.Extensions.Configuration.IConfiguration>();
-    var apiKey = configuration["OpenAI:ApiKey"];
+    var configuration = services.GetRequiredService<IConfiguration>();
+    var apiKey = configuration["OpenAI:ApiKey"] ?? Environment.GetEnvironmentVariable("OPENAI_API_KEY");
     if (string.IsNullOrEmpty(apiKey))
     {
         logger.LogInformation("OpenAI:ApiKey not configured, skipping embedding seed.");
