@@ -1,8 +1,3 @@
-client/src/components/ui/alert-dialog.tsx
-client/src/pages/catalog/BookDetailOverlay.tsx
-client/src/pages/reader/ReaderPage.tsx
-client/src/components/header/MyBooksDropdown.tsx
-client/src/components/header/UserProfileDropdown.tsx
-client/src/contexts/AuthContext.tsx
-client/package.json
-client/package-lock.json
+src/Lms.Api/Controllers/StripeController.cs
+client/src/components/header/CartDropdown.tsx
+client/src/api/checkouts.ts

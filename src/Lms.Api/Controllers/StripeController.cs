@@ -64,8 +64,13 @@ public sealed class StripeController : ControllerBase
         }
 
         var user = await _userManager.FindByIdAsync(userId.Value.ToString());
-        if (user is not null && user.EarlyReturns >= EarlyReturnsForFreeRental)
+        var hasFreeCredit = user is not null && user.EarlyReturns >= EarlyReturnsForFreeRental;
+        var paidCount = hasFreeCredit ? request.BookIds.Count - 1 : request.BookIds.Count;
+        var freeBookCount = hasFreeCredit ? 1 : 0;
+
+        if (paidCount <= 0)
         {
+            // Fully free: single book with free credit
             var freeCheckouts = new List<CheckoutDto>();
             foreach (var bookId in request.BookIds)
             {
@@ -84,7 +89,7 @@ public sealed class StripeController : ControllerBase
                 }
             }
 
-            user.EarlyReturns -= EarlyReturnsForFreeRental;
+            user!.EarlyReturns -= EarlyReturnsForFreeRental;
             await _userManager.UpdateAsync(user);
 
             _logger.LogInformation(
@@ -93,13 +98,19 @@ public sealed class StripeController : ControllerBase
                 freeCheckouts.Count,
                 user.EarlyReturns);
 
-            return Ok(new CreateSessionResponse(null, true, freeCheckouts.AsReadOnly()));
+            return Ok(new CreateSessionResponse(null, true, freeBookCount, freeCheckouts.AsReadOnly()));
         }
 
+        // Build line items for paid books only (skip the first book when free credit applies)
         var lineItems = new List<SessionLineItemOptions>();
-        foreach (var bookId in request.BookIds)
+        for (var i = 0; i < request.BookIds.Count; i++)
         {
-            var book = await _bookRepository.GetByIdAsync(bookId, ct);
+            if (hasFreeCredit && i == 0)
+            {
+                continue;
+            }
+
+            var book = await _bookRepository.GetByIdAsync(request.BookIds[i], ct);
             var title = book?.Title ?? "Unknown Book";
 
             lineItems.Add(new SessionLineItemOptions
@@ -117,6 +128,17 @@ public sealed class StripeController : ControllerBase
             });
         }
 
+        var metadata = new Dictionary<string, string>
+        {
+            ["userId"] = userId.Value.ToString(),
+            ["bookIds"] = string.Join(",", request.BookIds),
+        };
+
+        if (hasFreeCredit)
+        {
+            metadata["freeBookId"] = request.BookIds[0].ToString();
+        }
+
         var options = new SessionCreateOptions
         {
             PaymentMethodTypes = new List<string> { "card" },
@@ -124,22 +146,19 @@ public sealed class StripeController : ControllerBase
             Mode = "payment",
             SuccessUrl = request.SuccessUrl + "?session_id={CHECKOUT_SESSION_ID}",
             CancelUrl = request.CancelUrl,
-            Metadata = new Dictionary<string, string>
-            {
-                ["userId"] = userId.Value.ToString(),
-                ["bookIds"] = string.Join(",", request.BookIds),
-            },
+            Metadata = metadata,
         };
 
         var service = new SessionService();
         var session = await service.CreateAsync(options, cancellationToken: ct);
 
         _logger.LogInformation(
-            "stripe.session_created user {UserId} books {BookCount}",
+            "stripe.session_created user {UserId} books {BookCount} free {FreeBookCount}",
             userId.Value,
-            request.BookIds.Count);
+            request.BookIds.Count,
+            freeBookCount);
 
-        return Ok(new CreateSessionResponse(session.Url, false, null));
+        return Ok(new CreateSessionResponse(session.Url, false, freeBookCount, null));
     }
 
     [HttpPost("verify-session")]
@@ -204,6 +223,24 @@ public sealed class StripeController : ControllerBase
             }
         }
 
+        // Deduct free credit if a free book was included in this session
+        if (session.Metadata.TryGetValue("freeBookId", out var freeBookIdStr)
+            && !string.IsNullOrWhiteSpace(freeBookIdStr))
+        {
+            var user = await _userManager.FindByIdAsync(userId.Value.ToString());
+            if (user is not null && user.EarlyReturns >= EarlyReturnsForFreeRental)
+            {
+                user.EarlyReturns -= EarlyReturnsForFreeRental;
+                await _userManager.UpdateAsync(user);
+
+                _logger.LogInformation(
+                    "free_rental.applied_with_paid user {UserId} free_book {FreeBookId} remaining_credits {RemainingCredits}",
+                    userId.Value,
+                    freeBookIdStr,
+                    user.EarlyReturns);
+            }
+        }
+
         _logger.LogInformation(
             "stripe.session_verified user {UserId} checkouts {CheckoutCount}",
             userId.Value,
@@ -222,6 +259,7 @@ public sealed record CreateSessionRequest(
 public sealed record CreateSessionResponse(
     string? SessionUrl,
     bool IsFree,
+    int FreeBookCount,
     IReadOnlyList<CheckoutDto>? Checkouts);
 
 public sealed record VerifySessionRequest(string SessionId);

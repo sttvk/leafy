@@ -22,6 +22,7 @@ export function fetchMyCheckouts(): Promise<CheckoutDto[]> {
 interface CreateSessionResponse {
   sessionUrl: string | null
   isFree: boolean
+  freeBookCount: number
   checkouts: CheckoutDto[] | null
 }
 

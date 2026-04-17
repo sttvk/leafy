@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { ShoppingCart, X } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
 import { useQueryClient } from "@tanstack/react-query"
@@ -6,12 +6,26 @@ import { toast } from "sonner"
 import { CONSTANTS, MESSAGES } from "@/lib/messages"
 import { createCheckoutSession } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
+import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
 
 function CartDropdown() {
   const { items, removeFromCart, clearCart, itemCount } = useCart()
+  const { user } = useAuth()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
   const queryClient = useQueryClient()
+
+  const hasFreeCredit = (user?.earlyReturns ?? 0) >= CONSTANTS.freeRentalThreshold
+
+  const checkoutLabel = useMemo(() => {
+    if (itemCount === 0) return "Checkout"
+    if (hasFreeCredit && itemCount === 1) return "Checkout \u00b7 Free!"
+    if (hasFreeCredit && itemCount > 1) {
+      const paidTotal = ((itemCount - 1) * CONSTANTS.rentalPricePerBook).toFixed(2)
+      return `Checkout \u00b7 $${paidTotal} (1 book free!)`
+    }
+    return `Checkout \u00b7 $${(itemCount * CONSTANTS.rentalPricePerBook).toFixed(2)}`
+  }, [itemCount, hasFreeCredit])
 
   const handleCheckout = useCallback(async () => {
     if (items.length === 0) return
@@ -111,7 +125,7 @@ function CartDropdown() {
                 disabled={isCheckingOut}
                 onClick={handleCheckout}
               >
-                {isCheckingOut ? "Processing..." : `Checkout · $${(itemCount * CONSTANTS.rentalPricePerBook).toFixed(2)}`}
+                {isCheckingOut ? "Processing..." : checkoutLabel}
               </Button>
             </div>
           )}
