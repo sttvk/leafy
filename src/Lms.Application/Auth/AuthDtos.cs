@@ -22,4 +22,5 @@ public sealed record UserProfileDto(
     Guid Id,
     string Email,
     string DisplayName,
-    string Role);
+    string Role,
+    int EarlyReturns);

@@ -20,7 +20,9 @@ export function fetchMyCheckouts(): Promise<CheckoutDto[]> {
 }
 
 interface CreateSessionResponse {
-  sessionUrl: string
+  sessionUrl: string | null
+  isFree: boolean
+  checkouts: CheckoutDto[] | null
 }
 
 export function createCheckoutSession(

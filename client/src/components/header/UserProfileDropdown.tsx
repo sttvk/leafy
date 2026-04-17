@@ -51,6 +51,15 @@ function UserProfileDropdown() {
             <span className="text-xs text-muted-foreground">
               {user?.email}
             </span>
+            {user && user.earlyReturns >= 5 ? (
+              <div className="mt-1 rounded-md bg-green-50 px-2 py-1.5 text-xs font-medium text-green-700 dark:bg-green-950 dark:text-green-300">
+                You have a free rental!
+              </div>
+            ) : (
+              <p className="mt-1 text-xs text-muted-foreground">
+                {user?.earlyReturns ?? 0}/5 early returns toward a free rental
+              </p>
+            )}
             <div className="my-1 border-t" />
             <Button
               variant="destructive"

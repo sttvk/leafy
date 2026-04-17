@@ -197,7 +197,8 @@ public sealed class AuthService
             user.Id,
             user.Email ?? string.Empty,
             user.DisplayName,
-            user.Role.ToString());
+            user.Role.ToString(),
+            user.EarlyReturns);
     }
 }
 

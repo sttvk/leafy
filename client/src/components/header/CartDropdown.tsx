@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react"
 import { ShoppingCart, X } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
+import { useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { MESSAGES } from "@/lib/messages"
 import { createCheckoutSession } from "@/api/checkouts"
@@ -10,6 +11,7 @@ import { Button } from "@/components/ui/button"
 function CartDropdown() {
   const { items, removeFromCart, clearCart, itemCount } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
+  const queryClient = useQueryClient()
 
   const handleCheckout = useCallback(async () => {
     if (items.length === 0) return
@@ -21,12 +23,23 @@ function CartDropdown() {
       const cancelUrl = window.location.origin
       const response = await createCheckoutSession(bookIds, successUrl, cancelUrl)
       clearCart()
-      window.location.href = response.sessionUrl
+
+      if (response.isFree) {
+        toast.success("Free rental applied!")
+        queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
+        queryClient.invalidateQueries({ queryKey: ["books"] })
+        setIsCheckingOut(false)
+        return
+      }
+
+      if (response.sessionUrl) {
+        window.location.href = response.sessionUrl
+      }
     } catch {
       toast.error(MESSAGES.checkout.checkoutFailed)
       setIsCheckingOut(false)
     }
-  }, [items, clearCart])
+  }, [items, clearCart, queryClient])
 
   return (
     <Popover.Root>

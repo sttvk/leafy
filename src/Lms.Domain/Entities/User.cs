@@ -7,4 +7,5 @@ public class User : IdentityUser<Guid>
     public string DisplayName { get; set; } = string.Empty;
     public UserRole Role { get; set; }
     public DateTime CreatedAt { get; set; }
+    public int EarlyReturns { get; set; }
 }

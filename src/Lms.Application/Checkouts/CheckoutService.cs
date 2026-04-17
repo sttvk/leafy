@@ -1,5 +1,6 @@
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 
 namespace Lms.Application.Checkouts;
@@ -7,18 +8,22 @@ namespace Lms.Application.Checkouts;
 public sealed class CheckoutService
 {
     private const int LoanPeriodDays = 14;
+    private const int EarlyReturnDays = 7;
 
     private readonly ICheckoutRepository _checkouts;
     private readonly IBookRepository _books;
+    private readonly UserManager<User> _userManager;
     private readonly ILogger<CheckoutService> _logger;
 
     public CheckoutService(
         ICheckoutRepository checkouts,
         IBookRepository books,
+        UserManager<User> userManager,
         ILogger<CheckoutService> logger)
     {
         _checkouts = checkouts;
         _books = books;
+        _userManager = userManager;
         _logger = logger;
     }
 
@@ -74,6 +79,23 @@ public sealed class CheckoutService
             return CheckoutResult.Failure(
                 "Checkout not found.",
                 CheckoutFailureReason.NotFound);
+        }
+
+        var isEarlyReturn = (DateTime.UtcNow - checkout.CheckedOutAt).TotalDays < EarlyReturnDays;
+        if (isEarlyReturn)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user is not null)
+            {
+                user.EarlyReturns += 1;
+                await _userManager.UpdateAsync(user);
+
+                _logger.LogInformation(
+                    "early_return book {BookId} user {UserId} total {EarlyReturns}",
+                    checkout.BookId,
+                    userId,
+                    user.EarlyReturns);
+            }
         }
 
         var book = await _books.GetByIdAsync(checkout.BookId, ct);

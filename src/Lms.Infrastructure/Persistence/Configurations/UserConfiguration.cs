@@ -26,6 +26,9 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
             .HasColumnType("datetime2")
             .HasDefaultValueSql("SYSUTCDATETIME()");
 
+        builder.Property(u => u.EarlyReturns)
+            .HasDefaultValue(0);
+
         builder.HasIndex(u => u.Email).IsUnique().HasFilter(null);
     }
 }

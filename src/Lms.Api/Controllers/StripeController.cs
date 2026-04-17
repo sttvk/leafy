@@ -1,7 +1,9 @@
 using System.Security.Claims;
 using Lms.Application.Checkouts;
+using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Checkout;
@@ -14,11 +16,13 @@ namespace Lms.Api.Controllers;
 public sealed class StripeController : ControllerBase
 {
     private const int RentalPriceInCents = 199;
+    private const int EarlyReturnsForFreeRental = 5;
 
     private readonly IConfiguration _configuration;
     private readonly Lms.Application.Checkouts.CheckoutService _checkoutService;
     private readonly IBookRepository _bookRepository;
     private readonly ICheckoutRepository _checkoutRepository;
+    private readonly UserManager<User> _userManager;
     private readonly ILogger<StripeController> _logger;
 
     public StripeController(
@@ -26,12 +30,14 @@ public sealed class StripeController : ControllerBase
         Lms.Application.Checkouts.CheckoutService checkoutService,
         IBookRepository bookRepository,
         ICheckoutRepository checkoutRepository,
+        UserManager<User> userManager,
         ILogger<StripeController> logger)
     {
         _configuration = configuration;
         _checkoutService = checkoutService;
         _bookRepository = bookRepository;
         _checkoutRepository = checkoutRepository;
+        _userManager = userManager;
         _logger = logger;
     }
 
@@ -58,6 +64,39 @@ public sealed class StripeController : ControllerBase
             {
                 return Conflict($"You already have book {bookId} checked out.");
             }
+        }
+
+        var user = await _userManager.FindByIdAsync(userId.Value.ToString());
+        if (user is not null && user.EarlyReturns >= EarlyReturnsForFreeRental)
+        {
+            var freeCheckouts = new List<CheckoutDto>();
+            foreach (var bookId in request.BookIds)
+            {
+                var result = await _checkoutService.CheckoutAsync(bookId, userId.Value, ct);
+                if (result.IsSuccess && result.Checkout is not null)
+                {
+                    freeCheckouts.Add(result.Checkout);
+                }
+                else
+                {
+                    _logger.LogWarning(
+                        "free_rental.checkout_failed book {BookId} user {UserId} error {Error}",
+                        bookId,
+                        userId.Value,
+                        result.Error);
+                }
+            }
+
+            user.EarlyReturns -= EarlyReturnsForFreeRental;
+            await _userManager.UpdateAsync(user);
+
+            _logger.LogInformation(
+                "free_rental.applied user {UserId} books {BookCount} remaining_credits {RemainingCredits}",
+                userId.Value,
+                freeCheckouts.Count,
+                user.EarlyReturns);
+
+            return Ok(new CreateSessionResponse(null, true, freeCheckouts.AsReadOnly()));
         }
 
         var lineItems = new List<SessionLineItemOptions>();
@@ -105,7 +144,7 @@ public sealed class StripeController : ControllerBase
             userId.Value,
             request.BookIds.Count);
 
-        return Ok(new CreateSessionResponse(session.Url));
+        return Ok(new CreateSessionResponse(session.Url, false, null));
     }
 
     [HttpPost("verify-session")]
@@ -200,6 +239,9 @@ public sealed record CreateSessionRequest(
     string SuccessUrl,
     string CancelUrl);
 
-public sealed record CreateSessionResponse(string SessionUrl);
+public sealed record CreateSessionResponse(
+    string? SessionUrl,
+    bool IsFree,
+    IReadOnlyList<CheckoutDto>? Checkouts);
 
 public sealed record VerifySessionRequest(string SessionId);
