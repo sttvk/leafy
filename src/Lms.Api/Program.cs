@@ -53,10 +53,15 @@ var stripeKey = app.Configuration["Stripe:SecretKey"];
 if (!string.IsNullOrEmpty(stripeKey))
     Stripe.StripeConfiguration.ApiKey = stripeKey;
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
 
