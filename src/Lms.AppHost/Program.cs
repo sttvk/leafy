@@ -29,7 +29,7 @@ var api = builder.AddProject<Projects.Lms_Api>("api")
 // Vite dev server for the React client. Waits for the API so the /api proxy
 // target is ready before the dev server starts accepting requests.
 builder.AddNpmApp("client", "../../client", "dev")
-    .WithHttpEndpoint(env: "PORT")
+    .WithHttpEndpoint(port: 5173, env: "PORT")
     .WaitFor(api);
 
 builder.Build().Run();
