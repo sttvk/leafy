@@ -128,7 +128,7 @@ rm -f "$PARAMS_FILE"
 # Get outputs
 SQL_FQDN=$(az deployment group show --resource-group "$RESOURCE_GROUP" --name main --query "properties.outputs.sqlServerFqdn.value" -o tsv 2>/dev/null || echo "${APP_NAME}-sql.database.windows.net")
 SQL_DB=$(az deployment group show --resource-group "$RESOURCE_GROUP" --name main --query "properties.outputs.sqlDatabaseName.value" -o tsv 2>/dev/null || echo "${APP_NAME}-db")
-APP_HOSTNAME=$(az deployment group show --resource-group "$RESOURCE_GROUP" --name main --query "properties.outputs.appServiceHostname.value" -o tsv 2>/dev/null || echo "${APP_NAME}-api.azurewebsites.net")
+APP_HOSTNAME=$(az deployment group show --resource-group "$RESOURCE_GROUP" --name main --query "properties.outputs.appServiceHostname.value" -o tsv 2>/dev/null || echo "${APP_NAME}.azurewebsites.net")
 SQL_CONNECTION="Server=tcp:${SQL_FQDN},1433;Database=${SQL_DB};User ID=${SQL_ADMIN_LOGIN};Password=${SQL_ADMIN_PASSWORD};Encrypt=true;TrustServerCertificate=false;"
 
 # Step 4: Build the app
@@ -152,7 +152,7 @@ ConnectionStrings__LmsDatabase="$SQL_CONNECTION" Gemini__ApiKey="$GEMINI_API_KEY
 echo ""
 echo "[6/6] Deploying to App Service..."
 (cd publish && zip -r -q ../deploy.zip .)
-az webapp deploy --resource-group "$RESOURCE_GROUP" --name "${APP_NAME}-api" --src-path deploy.zip --type zip --async true 2>/dev/null
+az webapp deploy --resource-group "$RESOURCE_GROUP" --name "${APP_NAME}" --src-path deploy.zip --type zip --async true 2>/dev/null
 rm -f deploy.zip
 
 echo ""

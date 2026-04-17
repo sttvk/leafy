@@ -59,7 +59,7 @@ resource plan 'Microsoft.Web/serverfarms@2023-12-01' = {
 // ---------------------------------------------------------------------------
 
 resource app 'Microsoft.Web/sites@2023-12-01' = {
-  name: '${appName}-api'
+  name: '${appName}'
   location: location
   properties: {
     serverFarmId: plan.id
