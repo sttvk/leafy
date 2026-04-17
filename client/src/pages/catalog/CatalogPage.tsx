@@ -163,11 +163,6 @@ function CatalogPage() {
     setActiveSearch("")
   }
 
-  function handleClearSearch(): void {
-    setSearchQuery("")
-    setActiveSearch("")
-  }
-
   return (
     <div className="min-h-screen bg-background">
       <PageLayout className="space-y-3">
@@ -186,28 +181,17 @@ function CatalogPage() {
               </SelectContent>
             </Select>
 
-            <div className="relative flex-1 min-w-[200px]">
-              <Input
-                placeholder="Search books..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleTriggerSearch()
-                  }
-                }}
-                className="pr-8"
-              />
-              {searchQuery !== "" && (
-                <button
-                  type="button"
-                  onClick={handleClearSearch}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              )}
-            </div>
+            <Input
+              placeholder="Search with AI"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleTriggerSearch()
+                }
+              }}
+              className="flex-1 min-w-[200px]"
+            />
 
             <Button
               variant="outline"
