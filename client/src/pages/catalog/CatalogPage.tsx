@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query"
-import { useEffect, useMemo, useRef, useState } from "react"
-import { Loader2, X } from "lucide-react"
+import { useMemo, useEffect, useRef, useState } from "react"
+import { Loader2, Search, X } from "lucide-react"
 import { fetchBooks, searchBooks, type BookListDto, type PagedResult } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/pages/catalog/BookGrid"
@@ -18,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-const SEARCH_DEBOUNCE_MS = 300
 const MIN_SEARCH_LENGTH = 2
 
 function CatalogPage() {
@@ -28,16 +27,15 @@ function CatalogPage() {
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState("")
-  const [debouncedQuery, setDebouncedQuery] = useState("")
+  const [activeSearch, setActiveSearch] = useState("")
 
   const sentinelRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedQuery(searchQuery), SEARCH_DEBOUNCE_MS)
-    return () => clearTimeout(timer)
-  }, [searchQuery])
+  const isSearchMode = activeSearch.length >= MIN_SEARCH_LENGTH
 
-  const isSearchMode = debouncedQuery.length >= MIN_SEARCH_LENGTH
+  function handleTriggerSearch(): void {
+    setActiveSearch(searchQuery)
+  }
 
   const {
     data,
@@ -63,8 +61,8 @@ function CatalogPage() {
   })
 
   const { data: searchResults, isLoading: isSearching } = useQuery({
-    queryKey: ["book-search", debouncedQuery],
-    queryFn: () => searchBooks(debouncedQuery),
+    queryKey: ["book-search", activeSearch],
+    queryFn: () => searchBooks(activeSearch),
     enabled: isSearchMode,
   })
 
@@ -124,10 +122,12 @@ function CatalogPage() {
   function handleClearFilters(): void {
     setGenreFilter("all")
     setSearchQuery("")
+    setActiveSearch("")
   }
 
   function handleClearSearch(): void {
     setSearchQuery("")
+    setActiveSearch("")
   }
 
   return (
@@ -154,6 +154,11 @@ function CatalogPage() {
                 placeholder="Search books..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleTriggerSearch()
+                  }
+                }}
                 className="pr-8"
               />
               {searchQuery !== "" && (
@@ -166,6 +171,15 @@ function CatalogPage() {
                 </button>
               )}
             </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleTriggerSearch}
+              aria-label="Search"
+            >
+              <Search className="h-4 w-4" />
+            </Button>
 
             {isSearchMode && isSearching && (
               <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
@@ -204,7 +218,7 @@ function CatalogPage() {
                   No books found
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  No results for &ldquo;{debouncedQuery}&rdquo;
+                  No results for &ldquo;{activeSearch}&rdquo;
                 </p>
               </div>
             )}
