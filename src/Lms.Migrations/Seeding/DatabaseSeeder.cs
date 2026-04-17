@@ -36,20 +36,42 @@ public static class DatabaseSeeder
             logger.LogInformation(
                 "seed skipped (books already present, count={Count})",
                 existing);
-            return;
+        }
+        else
+        {
+            var dtos = LoadBooksFromResource();
+            var addedAt = DateTime.UtcNow;
+
+            var entities = dtos
+                .Select(dto => MapToEntity(dto, addedAt))
+                .ToList();
+
+            await db.Books.AddRangeAsync(entities, ct);
+            await db.SaveChangesAsync(ct);
+
+            logger.LogInformation("seed applied: {Count} books", entities.Count);
         }
 
-        var dtos = LoadBooksFromResource();
-        var addedAt = DateTime.UtcNow;
+        await RemoveBooksWithoutCoversAsync(db, logger, ct);
+    }
 
-        var entities = dtos
-            .Select(dto => MapToEntity(dto, addedAt))
-            .ToList();
+    private static async Task RemoveBooksWithoutCoversAsync(
+        LmsDbContext db,
+        ILogger logger,
+        CancellationToken ct)
+    {
+        var booksWithoutCovers = await db.Books
+            .Where(b => b.CoverImageUrl == null || b.CoverImageUrl == "")
+            .ToListAsync(ct);
 
-        await db.Books.AddRangeAsync(entities, ct);
-        await db.SaveChangesAsync(ct);
-
-        logger.LogInformation("seed applied: {Count} books", entities.Count);
+        if (booksWithoutCovers.Count > 0)
+        {
+            db.Books.RemoveRange(booksWithoutCovers);
+            await db.SaveChangesAsync(ct);
+            logger.LogInformation(
+                "removed {Count} books without cover images",
+                booksWithoutCovers.Count);
+        }
     }
 
     private static List<BookSeedDto> LoadBooksFromResource()
