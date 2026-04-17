@@ -5,12 +5,7 @@ import * as Popover from "@radix-ui/react-popover"
 import { toast } from "sonner"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import { Button } from "@/components/ui/button"
-
-const MS_PER_DAY = 1000 * 60 * 60 * 24
-
-function computeDaysRemaining(dueAt: string): number {
-  return Math.ceil((new Date(dueAt).getTime() - Date.now()) / MS_PER_DAY)
-}
+import { daysRemaining } from "@/lib/dates"
 
 function MyBooksDropdown() {
   const queryClient = useQueryClient()
@@ -76,8 +71,7 @@ function MyBooksDropdown() {
             ) : (
               <ul className="divide-y divide-border">
                 {activeCheckouts.map((checkout) => {
-                  const daysRemaining = computeDaysRemaining(checkout.dueAt)
-                  const isOverdue = daysRemaining <= 0
+                  const days = daysRemaining(checkout.dueAt)
 
                   return (
                     <li
@@ -91,13 +85,17 @@ function MyBooksDropdown() {
                         <p className="truncate text-xs text-muted-foreground">
                           {checkout.bookAuthor}
                         </p>
-                        {isOverdue ? (
+                        {days < 0 ? (
                           <p className="text-xs font-medium text-destructive">
                             Overdue
                           </p>
+                        ) : days === 0 ? (
+                          <p className="text-xs font-medium text-warning">
+                            Due today
+                          </p>
                         ) : (
                           <p className="text-xs text-muted-foreground">
-                            {daysRemaining} {daysRemaining === 1 ? "day" : "days"} left
+                            {days} {days === 1 ? "day" : "days"} left
                           </p>
                         )}
                       </div>

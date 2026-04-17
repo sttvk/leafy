@@ -7,6 +7,7 @@ import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
 import { Button } from "@/components/ui/button"
 import { PageLayout } from "@/components/PageLayout"
+import { daysRemaining } from "@/lib/dates"
 import { generatePage, TOTAL_PAGES } from "@/lib/lorem"
 
 function ReaderPage() {
@@ -138,16 +139,17 @@ function ReaderPage() {
           </span>
         )}
         {activeCheckout != null && !isReturned && (() => {
-          const days = Math.ceil(
-            (new Date(activeCheckout.dueAt).getTime() - Date.now()) /
-              (1000 * 60 * 60 * 24)
-          )
+          const days = daysRemaining(activeCheckout.dueAt)
           return (
             <>
               <span className="text-muted-foreground">|</span>
               {days > 0 ? (
                 <span className="text-sm text-muted-foreground">
                   {days} {days === 1 ? "day" : "days"} remaining
+                </span>
+              ) : days === 0 ? (
+                <span className="text-sm font-medium text-warning">
+                  Due today
                 </span>
               ) : (
                 <span className="text-sm font-medium text-destructive">
