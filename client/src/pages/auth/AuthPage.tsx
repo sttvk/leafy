@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { GoogleLogin } from "@react-oauth/google"
 import type { CredentialResponse } from "@react-oauth/google"
+import { toast } from "sonner"
 import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -46,6 +47,7 @@ function AuthPage() {
     try {
       await login(email, password)
       navigate("/", { replace: true })
+      toast.success("Logged in successfully")
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "Login failed. Please try again."
@@ -63,6 +65,7 @@ function AuthPage() {
     try {
       await register(email, password, fullName)
       navigate("/", { replace: true })
+      toast.success("Account created successfully")
     } catch (err: unknown) {
       const message =
         err instanceof Error

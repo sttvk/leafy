@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { User } from "lucide-react"
+import { toast } from "sonner"
 import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
 
@@ -25,6 +26,7 @@ function UserProfileDropdown() {
   function handleLogout() {
     setIsOpen(false)
     logout()
+    toast.success("Logged out successfully")
   }
 
   return (
