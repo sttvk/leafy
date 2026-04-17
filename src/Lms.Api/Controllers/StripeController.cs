@@ -18,7 +18,6 @@ public sealed class StripeController : ControllerBase
     private const int RentalPriceInCents = 199;
     private const int EarlyReturnsForFreeRental = 5;
 
-    private readonly IConfiguration _configuration;
     private readonly Lms.Application.Checkouts.CheckoutService _checkoutService;
     private readonly IBookRepository _bookRepository;
     private readonly ICheckoutRepository _checkoutRepository;
@@ -26,14 +25,12 @@ public sealed class StripeController : ControllerBase
     private readonly ILogger<StripeController> _logger;
 
     public StripeController(
-        IConfiguration configuration,
         Lms.Application.Checkouts.CheckoutService checkoutService,
         IBookRepository bookRepository,
         ICheckoutRepository checkoutRepository,
         UserManager<User> userManager,
         ILogger<StripeController> logger)
     {
-        _configuration = configuration;
         _checkoutService = checkoutService;
         _bookRepository = bookRepository;
         _checkoutRepository = checkoutRepository;
@@ -120,8 +117,6 @@ public sealed class StripeController : ControllerBase
             });
         }
 
-        StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
-
         var options = new SessionCreateOptions
         {
             PaymentMethodTypes = new List<string> { "card" },
@@ -162,8 +157,6 @@ public sealed class StripeController : ControllerBase
         {
             return BadRequest("Session ID is required.");
         }
-
-        StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
 
         var service = new SessionService();
         var session = await service.GetAsync(request.SessionId, cancellationToken: ct);

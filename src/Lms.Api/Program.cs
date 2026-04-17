@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddLmsInfrastructure(builder.Configuration);
 
+builder.Services.AddMemoryCache();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<BookService>();
@@ -47,6 +48,10 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+var stripeKey = app.Configuration["Stripe:SecretKey"];
+if (!string.IsNullOrEmpty(stripeKey))
+    Stripe.StripeConfiguration.ApiKey = stripeKey;
 
 app.UseAuthentication();
 app.UseAuthorization();

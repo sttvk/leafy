@@ -10,9 +10,11 @@ public interface ICheckoutRepository
 
     Task<bool> HasActiveCheckoutForBookAsync(Guid bookId, Guid borrowerUserId, CancellationToken ct);
 
-    Task<IReadOnlyList<Checkout>> ListByBorrowerAsync(Guid borrowerUserId, CancellationToken ct);
+    Task<Checkout?> GetByIdAndBorrowerAsync(Guid checkoutId, Guid borrowerUserId, CancellationToken ct);
 
-    Task<int> CountActiveByBorrowerAsync(Guid borrowerUserId, CancellationToken ct);
+    Task<Checkout?> GetActiveCheckoutForBookAsync(Guid bookId, Guid borrowerUserId, CancellationToken ct);
+
+    Task<IReadOnlyList<Checkout>> ListByBorrowerAsync(Guid borrowerUserId, CancellationToken ct);
 
     Task<IReadOnlyList<Checkout>> ListActiveAsync(CancellationToken ct);
 }

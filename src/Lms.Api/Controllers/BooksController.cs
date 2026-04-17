@@ -1,10 +1,10 @@
-using System.Collections.Concurrent;
 using System.Security.Claims;
 using Lms.Application.Books;
 using Lms.Application.Common;
 using Lms.Application.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Lms.Api.Controllers;
 
@@ -12,20 +12,23 @@ namespace Lms.Api.Controllers;
 [Route("api/books")]
 public sealed class BooksController : ControllerBase
 {
-    private static readonly ConcurrentDictionary<Guid, string> DescriptionCache = new();
+    private static readonly TimeSpan DescriptionCacheDuration = TimeSpan.FromHours(1);
 
     private readonly BookService _bookService;
     private readonly SearchService _searchService;
     private readonly ITextGenerationService _textGenerationService;
+    private readonly IMemoryCache _cache;
 
     public BooksController(
         BookService bookService,
         SearchService searchService,
-        ITextGenerationService textGenerationService)
+        ITextGenerationService textGenerationService,
+        IMemoryCache cache)
     {
         _bookService = bookService;
         _searchService = searchService;
         _textGenerationService = textGenerationService;
+        _cache = cache;
     }
 
     [HttpGet("search")]
@@ -135,22 +138,23 @@ public sealed class BooksController : ControllerBase
     public async Task<ActionResult<BookDescriptionResponse>> GetGeneratedDescriptionAsync(
         Guid id, CancellationToken ct)
     {
-        if (DescriptionCache.TryGetValue(id, out var cached))
+        var cacheKey = $"book-description-{id}";
+        var description = await _cache.GetOrCreateAsync(cacheKey, async entry =>
         {
-            return Ok(new BookDescriptionResponse(cached));
-        }
+            entry.AbsoluteExpirationRelativeToNow = DescriptionCacheDuration;
 
-        var book = await _bookService.GetByIdAsync(id, ct);
-        if (book is null)
-        {
-            return NotFound();
-        }
+            var book = await _bookService.GetByIdAsync(id, ct);
+            if (book is null)
+            {
+                return null;
+            }
 
-        var description = await _textGenerationService.GenerateBookDescriptionAsync(
-            book.Title, book.Author, book.Genre, ct);
+            return await _textGenerationService.GenerateBookDescriptionAsync(
+                book.Title, book.Author, book.Genre, ct);
+        });
 
-        DescriptionCache.TryAdd(id, description);
-
-        return Ok(new BookDescriptionResponse(description));
+        return description is not null
+            ? Ok(new BookDescriptionResponse(description))
+            : NotFound();
     }
 }

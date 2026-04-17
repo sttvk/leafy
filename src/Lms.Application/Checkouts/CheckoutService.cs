@@ -55,9 +55,7 @@ public sealed class CheckoutService
     public async Task<CheckoutResult> ReturnAsync(
         Guid checkoutId, Guid userId, CancellationToken ct)
     {
-        // Verify the checkout belongs to the user by checking their checkouts
-        var userCheckouts = await _checkouts.ListByBorrowerAsync(userId, ct);
-        var checkout = userCheckouts.FirstOrDefault(c => c.Id == checkoutId);
+        var checkout = await _checkouts.GetByIdAndBorrowerAsync(checkoutId, userId, ct);
 
         if (checkout is null)
         {
@@ -132,17 +130,9 @@ public sealed class CheckoutService
     private async Task<IReadOnlyList<CheckoutDto>> EnrichWithBookDataAsync(
         IReadOnlyList<Checkout> checkouts, CancellationToken ct)
     {
-        var bookIds = checkouts.Select(c => c.BookId).Distinct().ToList();
-        var bookLookup = new Dictionary<Guid, Book>();
-
-        foreach (var bookId in bookIds)
-        {
-            var book = await _books.GetByIdAsync(bookId, ct);
-            if (book is not null)
-            {
-                bookLookup[bookId] = book;
-            }
-        }
+        var bookIds = checkouts.Select(c => c.BookId).Distinct();
+        var books = await _books.GetByIdsAsync(bookIds, ct);
+        var bookLookup = books.ToDictionary(b => b.Id);
 
         return checkouts
             .Select(c =>

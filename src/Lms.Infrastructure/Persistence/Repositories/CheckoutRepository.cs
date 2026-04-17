@@ -76,6 +76,32 @@ internal sealed class CheckoutRepository : ICheckoutRepository
                 ct);
     }
 
+    public async Task<Checkout?> GetByIdAndBorrowerAsync(
+        Guid checkoutId,
+        Guid borrowerUserId,
+        CancellationToken ct)
+    {
+        return await _db.Checkouts
+            .AsNoTracking()
+            .FirstOrDefaultAsync(
+                c => c.Id == checkoutId && c.BorrowerUserId == borrowerUserId,
+                ct);
+    }
+
+    public async Task<Checkout?> GetActiveCheckoutForBookAsync(
+        Guid bookId,
+        Guid borrowerUserId,
+        CancellationToken ct)
+    {
+        return await _db.Checkouts
+            .AsNoTracking()
+            .FirstOrDefaultAsync(
+                c => c.BookId == bookId
+                    && c.BorrowerUserId == borrowerUserId
+                    && c.ReturnedAt == null,
+                ct);
+    }
+
     public async Task<IReadOnlyList<Checkout>> ListByBorrowerAsync(
         Guid borrowerUserId,
         CancellationToken ct)
@@ -85,15 +111,6 @@ internal sealed class CheckoutRepository : ICheckoutRepository
             .Where(c => c.BorrowerUserId == borrowerUserId)
             .OrderByDescending(c => c.CheckedOutAt)
             .ToListAsync(ct);
-    }
-
-    public async Task<int> CountActiveByBorrowerAsync(
-        Guid borrowerUserId,
-        CancellationToken ct)
-    {
-        return await _db.Checkouts
-            .AsNoTracking()
-            .CountAsync(c => c.BorrowerUserId == borrowerUserId && c.ReturnedAt == null, ct);
     }
 
     public async Task<IReadOnlyList<Checkout>> ListActiveAsync(CancellationToken ct)

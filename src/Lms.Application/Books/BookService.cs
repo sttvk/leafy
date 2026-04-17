@@ -14,7 +14,7 @@ public sealed class BookService
     private const int DefaultPage = 1;
     private const int DefaultPageSize = 20;
     private const int MaxPageSize = 100;
-    private const string EmbeddingModel = "text-embedding-3-small";
+    private const string EmbeddingModel = "gemini-embedding-001";
 
     private readonly IBookRepository _books;
     private readonly ICheckoutRepository _checkouts;
@@ -42,9 +42,7 @@ public sealed class BookService
     public async Task<BookPageResponse?> GetBookPageAsync(
         Guid bookId, Guid userId, int page, CancellationToken ct)
     {
-        var borrowerCheckouts = await _checkouts.ListByBorrowerAsync(userId, ct);
-        var activeCheckout = borrowerCheckouts
-            .FirstOrDefault(c => c.BookId == bookId && c.ReturnedAt is null);
+        var activeCheckout = await _checkouts.GetActiveCheckoutForBookAsync(bookId, userId, ct);
 
         if (activeCheckout is null)
         {

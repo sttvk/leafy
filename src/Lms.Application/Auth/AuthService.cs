@@ -91,7 +91,7 @@ public sealed class AuthService
         }
 
         var signInResult = await _signInManager.CheckPasswordSignInAsync(
-            user, request.Password, lockoutOnFailure: false);
+            user, request.Password, lockoutOnFailure: true);
 
         if (!signInResult.Succeeded)
         {

@@ -43,7 +43,6 @@ public static class InfrastructureServiceCollectionExtensions
             .AddDefaultTokenProviders();
 
         services.AddScoped<IBookRepository, BookRepository>();
-        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICheckoutRepository, CheckoutRepository>();
 
         services.AddHttpClient<GeminiEmbeddingService>();
