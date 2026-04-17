@@ -1,136 +1,147 @@
-# Database Schema
+# Database Schema — Leafy
 
-## Overview
+Azure SQL (Free tier) / SQL Server 2025 (local). Managed by EF Core with code-first migrations.
 
-This doc describes the database for the library management app. The app runs on SQL Server: a local container started by Aspire during development, and the Azure SQL Database Free offering in production. Data access is EF Core with the SqlServer provider.
+## Entity Relationship Diagram
 
-There are four tables: Books, Users, Checkouts, and BookEmbeddings.
+```
+┌──────────────────────────┐       ┌──────────────────────────┐
+│          Users           │       │          Books           │
+├──────────────────────────┤       ├──────────────────────────┤
+│ Id           GUID    PK  │       │ Id           GUID    PK  │
+│ UserName     NVARCHAR    │       │ Title        NVARCHAR    │
+│ Email        NVARCHAR    │       │ Author       NVARCHAR    │
+│ PasswordHash NVARCHAR    │       │ Isbn         VARCHAR(20) │
+│ DisplayName  NVARCHAR    │       │ PublicationYear INT      │
+│ Role         TINYINT     │       │ Genre        NVARCHAR    │
+│ EarlyReturns INT         │       │ Description  NVARCHAR(MAX)│
+│ CreatedAt    DATETIME2   │       │ CoverImageUrl NVARCHAR   │
+│ EmailConfirmed BIT       │       │ AddedAt      DATETIME2   │
+│ SecurityStamp NVARCHAR   │       │ IsDeleted    BIT         │
+│ ...Identity columns...   │       └─────────────┬────────────┘
+└─────────────┬────────────┘                     │
+              │                                  │
+              │ BorrowerUserId                   │ BookId
+              │                                  │
+              ▼                                  ▼
+┌──────────────────────────────────────────────────┐
+│                   Checkouts                       │
+├──────────────────────────────────────────────────┤
+│ Id              GUID        PK                    │
+│ BookId          GUID        FK → Books.Id         │
+│ BorrowerUserId  GUID        FK → Users.Id         │
+│ CheckedOutAt    DATETIME2   DEFAULT SYSUTCDATETIME │
+│ DueAt           DATETIME2                          │
+│ ReturnedAt      DATETIME2   NULLABLE               │
+└──────────────────────────────────────────────────┘
 
-Books have a simple copy counter instead of a separate copies table, because per-copy tracking isn't needed for a demo. BookEmbeddings powers semantic search and is populated from Azure OpenAI's `text-embedding-3-small` model. Everything else is owned by the local database — Open Library is only called to look up book metadata when adding a new book.
+┌──────────────────────────────────────────────────┐
+│                BookEmbeddings                     │
+├──────────────────────────────────────────────────┤
+│ BookId          GUID        PK, FK → Books.Id     │
+│ Vector          VARBINARY(MAX)                     │
+│ Dimensions      INT                                │
+│ ModelName       NVARCHAR                           │
+│ CreatedAt       DATETIME2                          │
+└──────────────────────────────────────────────────┘
 
-## How the Tables Relate
-
-- One **Book** has many **Checkouts** (through `Checkouts.BookId`)
-- One **User** has many **Checkouts** (through `Checkouts.BorrowerUserId`)
-- One **Book** has zero or one **BookEmbedding** (`BookEmbeddings.BookId` is both PK and FK to `Books`)
-- A **Checkout** is the only place Books and Users meet
-
-That's the whole relationship graph. No other foreign keys.
+           ASP.NET Core Identity Tables
+┌────────────────────┐  ┌────────────────────────┐
+│   AspNetRoles      │  │  AspNetUserRoles       │
+│   AspNetRoleClaims │  │  AspNetUserClaims      │
+│                    │  │  AspNetUserLogins      │
+│                    │  │  AspNetUserTokens      │
+└────────────────────┘  └────────────────────────┘
+```
 
 ## Tables
 
 ### Books
 
-```sql
-CREATE TABLE Books (
-    Id               UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(),
-    Title            NVARCHAR(500)    NOT NULL,
-    Author           NVARCHAR(300)    NOT NULL,
-    Isbn             VARCHAR(20)      NULL,
-    PublicationYear  INT              NULL,
-    Genre            NVARCHAR(100)    NULL,
-    Description      NVARCHAR(MAX)    NULL,
-    CoverImageUrl    NVARCHAR(1000)   NULL,
-    TotalCopies      INT              NOT NULL DEFAULT 1,
-    AvailableCopies  INT              NOT NULL DEFAULT 1,
-    AddedAt          DATETIME2        NOT NULL DEFAULT SYSUTCDATETIME(),
-    IsDeleted        BIT              NOT NULL DEFAULT 0,
-    CONSTRAINT CK_Books_Copies CHECK (AvailableCopies >= 0 AND AvailableCopies <= TotalCopies)
-);
+Digital books in the library catalog.
 
-CREATE INDEX IX_Books_Title  ON Books(Title);
-CREATE INDEX IX_Books_Author ON Books(Author);
-```
-
-The CHECK constraint on `AvailableCopies` is our safety net — even if two checkout requests race, the database won't let us lend out more copies than we have.
-
-Covers FR-1.*, FR-2.3, FR-3.*
+| Column | Type | Constraints | Notes |
+|--------|------|-------------|-------|
+| Id | UNIQUEIDENTIFIER | PK, DEFAULT NEWID() | |
+| Title | NVARCHAR(256) | NOT NULL | |
+| Author | NVARCHAR(256) | NOT NULL | |
+| Isbn | VARCHAR(20) | NULLABLE | ASCII-only |
+| PublicationYear | INT | NULLABLE | |
+| Genre | NVARCHAR(100) | NULLABLE | Title Case normalized on save |
+| Description | NVARCHAR(MAX) | NULLABLE | |
+| CoverImageUrl | NVARCHAR(2048) | NULLABLE | |
+| AddedAt | DATETIME2 | NOT NULL, DEFAULT SYSUTCDATETIME() | UTC |
+| IsDeleted | BIT | NOT NULL, DEFAULT 0 | Soft delete, global query filter |
 
 ### Users
 
-```sql
-CREATE TABLE Users (
-    Id           UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(),
-    ExternalId   NVARCHAR(200)    NOT NULL UNIQUE,
-    Email        NVARCHAR(320)    NOT NULL UNIQUE,
-    DisplayName  NVARCHAR(200)    NOT NULL,
-    Role         TINYINT          NOT NULL DEFAULT 0,  -- 0 = Member, 1 = Librarian
-    CreatedAt    DATETIME2        NOT NULL DEFAULT SYSUTCDATETIME()
-);
-```
+Extends ASP.NET Core Identity's `IdentityUser<Guid>`.
 
-We never store passwords — SSO handles that. `ExternalId` is the stable subject claim from the SSO provider (Entra or Google).
-
-Covers FR-6.1, FR-6.2
+| Column | Type | Constraints | Notes |
+|--------|------|-------------|-------|
+| Id | UNIQUEIDENTIFIER | PK, DEFAULT NEWID() | |
+| Email | NVARCHAR(256) | NOT NULL, UNIQUE | |
+| DisplayName | NVARCHAR(256) | NOT NULL | |
+| Role | TINYINT | NOT NULL, DEFAULT 0 | 0 = Member, 1 = Librarian |
+| EarlyReturns | INT | NOT NULL, DEFAULT 0 | 5 credits = 1 free rental |
+| CreatedAt | DATETIME2 | NOT NULL | UTC |
+| + standard Identity columns | | | PasswordHash, SecurityStamp, etc. |
 
 ### Checkouts
 
-```sql
-CREATE TABLE Checkouts (
-    Id              UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(),
-    BookId          UNIQUEIDENTIFIER NOT NULL,
-    BorrowerUserId  UNIQUEIDENTIFIER NOT NULL,
-    CheckedOutAt    DATETIME2        NOT NULL DEFAULT SYSUTCDATETIME(),
-    DueAt           DATETIME2        NOT NULL,
-    ReturnedAt     DATETIME2        NULL,
-    CONSTRAINT FK_Checkouts_Books FOREIGN KEY (BookId)         REFERENCES Books(Id),
-    CONSTRAINT FK_Checkouts_Users FOREIGN KEY (BorrowerUserId) REFERENCES Users(Id)
-);
+Book rental records. Status is **computed, never stored** (invariant #4).
 
-CREATE INDEX IX_Checkouts_Borrower ON Checkouts(BorrowerUserId, CheckedOutAt DESC);
-```
+| Column | Type | Constraints | Notes |
+|--------|------|-------------|-------|
+| Id | UNIQUEIDENTIFIER | PK, DEFAULT NEWID() | |
+| BookId | UNIQUEIDENTIFIER | NOT NULL, FK → Books.Id | |
+| BorrowerUserId | UNIQUEIDENTIFIER | NOT NULL, FK → Users.Id | |
+| CheckedOutAt | DATETIME2 | NOT NULL, DEFAULT SYSUTCDATETIME() | UTC |
+| DueAt | DATETIME2 | NOT NULL | CheckedOutAt + 14 days |
+| ReturnedAt | DATETIME2 | NULLABLE | NULL = active, SET = returned |
 
-`ReturnedAt IS NULL` means the book is still out. The index on `(BorrowerUserId, CheckedOutAt DESC)` makes the "My Checkouts" page fast.
-
-Covers FR-2.*, FR-4.1, FR-6.3
+**Computed status:**
+- `ReturnedAt IS NULL AND DueAt > NOW` → **Active**
+- `ReturnedAt IS NULL AND DueAt <= NOW` → **Overdue** (content access denied)
+- `ReturnedAt IS NOT NULL` → **Returned**
 
 ### BookEmbeddings
 
-```sql
-CREATE TABLE BookEmbeddings (
-    BookId      UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-    Vector      VARBINARY(MAX)   NOT NULL,
-    Dimensions  INT              NOT NULL,
-    ModelName   NVARCHAR(100)    NOT NULL,
-    CreatedAt   DATETIME2        NOT NULL DEFAULT SYSUTCDATETIME(),
-    CONSTRAINT FK_BookEmbeddings_Books FOREIGN KEY (BookId) REFERENCES Books(Id) ON DELETE CASCADE
-);
-```
+Vector embeddings for semantic search.
 
-The `Vector` column holds the raw bytes of the float array returned by Azure OpenAI — for `text-embedding-3-small` that's 1536 floats, or 6144 bytes. `Dimensions` and `ModelName` are stored explicitly so that if the embedding model ever changes, the code can detect a mismatch and re-embed instead of comparing incompatible vectors. Cosine similarity is computed in memory at query time, since scanning ~100 rows is trivially fast and avoids any extra infrastructure.
+| Column | Type | Constraints | Notes |
+|--------|------|-------------|-------|
+| BookId | UNIQUEIDENTIFIER | PK, FK → Books.Id | One embedding per book |
+| Vector | VARBINARY(MAX) | NOT NULL | 768 floats × 4 bytes = ~3KB |
+| Dimensions | INT | NOT NULL | 768 for gemini-embedding-001 |
+| ModelName | NVARCHAR(100) | NOT NULL | "gemini-embedding-001" |
+| CreatedAt | DATETIME2 | NOT NULL | Regenerated on book edit |
 
-Covers FR-7.1
+## Indexes
 
-## How Checkout and Return Work
-
-Checkout is an **atomic compare-and-set** (invariant #3), not a read-then-write transaction. A single `UPDATE Books SET AvailableCopies = AvailableCopies - 1 WHERE Id = @id AND AvailableCopies > 0` runs inside `ICheckoutRepository.TryCheckoutAsync` (in `Lms.Infrastructure`); if zero rows are affected the book is unavailable and the application service returns HTTP 409. On success the same repository method inserts the `Checkouts` row. The `CK_Books_Copies` CHECK constraint is the backstop if anything else ever races, not the primary mechanism. Return is the mirror: set `ReturnedAt` to now and increment `AvailableCopies`. Status (Active, Returned, Overdue) is never stored — it's computed at query time: `ReturnedAt IS NOT NULL` → Returned, `DueAt < now` → Overdue, else Active. Invariant #4 forbids adding a stored status column.
-
-## Search
-
-With around 100 books in the demo, we use plain LIKE queries across Title, Author, and Description. No full-text search, no extra indexes beyond what EF gives us. Good enough for the scale.
-
-## Seed Data
-
-- About 10 genres seeded as plain strings (used by the genre filter dropdown)
-- About 50-100 books pulled from Open Library (title, author, cover URL, description)
-- Two demo users for local dev: one Librarian, one Member
-- A handful of historical checkouts so the dashboard looks alive
+| Index | Table | Columns | Purpose |
+|-------|-------|---------|---------|
+| IX_Checkouts_Borrower | Checkouts | (BorrowerUserId, CheckedOutAt DESC) | My Checkouts query |
 
 ## Migrations
 
-Schema changes are EF Core migrations, generated with `dotnet ef migrations add`. A dedicated `Lms.Migrations` console project applies them as a one-shot step before the API starts. Locally, Aspire orchestrates this with `WaitForCompletion` so the API doesn't boot until migrations finish. In CI, the GitHub Actions workflow runs the same console project against Azure SQL before the API is deployed. Migrations do not run at API startup.
+| Migration | Description |
+|-----------|-------------|
+| InitialCreate | Books, Checkouts, BookEmbeddings tables |
+| AddIdentity | ASP.NET Identity tables + User custom columns |
+| RemoveBookCopies | Drop TotalCopies, AvailableCopies (digital library) |
+| AddEarlyReturns | Add EarlyReturns column to Users |
 
-## Things We Deliberately Left Out
+## Seed Data
 
-- Audit log table — out of scope for the demo
-- Separate BookCopies table — the counter on Books is enough
-- Optimistic concurrency tokens on Books — the CHECK constraint covers the only race that matters
-- Genre lookup table — plain strings are fine for ten values
-- pgvector / Azure AI Search — in-memory cosine similarity is faster than a network round-trip at 100 books; flagged as the production upgrade path
-- Dedicated vector database (Pinecone, Qdrant, etc) — same reasoning
+- **750 books** with covers, genres, descriptions
+- **1 admin account** (`admin@leafy.com` / `Admin@123`, Librarian role)
+- **Embeddings** generated via Gemini API on first run
 
-## Open Questions
+## Conventions
 
-- Should BookEmbeddings be re-generated on every Book edit, or only when Title, Author, or Description change?
-- Should Azure OpenAI cold start be hidden with a skeleton UI on the first search of the day?
-- Should the seed script pre-compute embeddings so first-run has full search, or generate them lazily?
+- All PKs: `UNIQUEIDENTIFIER DEFAULT NEWID()`
+- All timestamps: `DATETIME2` in UTC
+- All user-visible strings: `NVARCHAR` (except ISBN)
+- Soft delete on Books with EF global query filter
+- No stored procedures, triggers, or views
