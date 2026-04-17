@@ -1,5 +1,5 @@
-import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query"
-import { useMemo, useEffect, useRef, useState } from "react"
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import { useCallback, useMemo, useEffect, useRef, useState } from "react"
 import { Loader2, Search, X } from "lucide-react"
 import { fetchBooks, searchBooks, type BookListDto, type PagedResult, type SearchResponse } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
@@ -22,7 +22,8 @@ const MIN_SEARCH_LENGTH = 2
 
 function CatalogPage() {
   const { isLibrarian } = useAuth()
-  const queryClient = useQueryClient()
+  const [refreshKey, setRefreshKey] = useState(0)
+  const refreshBooks = useCallback(() => setRefreshKey((k) => k + 1), [])
   const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
@@ -49,7 +50,7 @@ function CatalogPage() {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["books"],
+    queryKey: ["books", refreshKey],
     queryFn: ({ pageParam }) => fetchBooks(pageParam),
     initialPageParam: 1,
     getNextPageParam: (
@@ -279,7 +280,7 @@ function CatalogPage() {
         }
         onDelete={() => {
           setSelectedBook(null)
-          void queryClient.invalidateQueries({ queryKey: ["books"] })
+          refreshBooks()
         }}
       />
 
@@ -288,9 +289,7 @@ function CatalogPage() {
         onOpenChange={(open) => {
           if (!open) setEditingBook(null)
         }}
-        onSuccess={() => {
-          void queryClient.invalidateQueries({ queryKey: ["books"] })
-        }}
+        onSuccess={refreshBooks}
         book={editingBook}
       />
     </div>
