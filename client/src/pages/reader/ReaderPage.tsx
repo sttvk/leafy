@@ -65,7 +65,6 @@ function ReaderPage() {
   const isLoading = isCheckoutsLoading || isBookLoading
   const isError = isCheckoutsError || isBookError
 
-  const totalPages = pageData?.totalPages ?? 300
   const paragraphs = pageData?.content.split("\n\n") ?? []
 
   const handleReturn = useCallback(async () => {
@@ -92,8 +91,9 @@ function ReaderPage() {
   }, [])
 
   const handleNextPage = useCallback(() => {
-    setCurrentPage((prev) => Math.min(totalPages, prev + 1))
-  }, [totalPages])
+    if (pageData == null) return
+    setCurrentPage((prev) => Math.min(pageData.totalPages, prev + 1))
+  }, [pageData])
 
   if (isLoading) {
     return (
@@ -251,27 +251,29 @@ function ReaderPage() {
         </div>
       </section>
 
-      <nav className="flex flex-wrap shrink-0 items-center justify-between">
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={currentPage <= 1}
-          onClick={handlePreviousPage}
-        >
-          Previous
-        </Button>
-        <span className="text-sm text-muted-foreground">
-          Page {currentPage} of {totalPages}
-        </span>
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={currentPage >= totalPages}
-          onClick={handleNextPage}
-        >
-          Next
-        </Button>
-      </nav>
+      {pageData != null && (
+        <nav className="flex flex-wrap shrink-0 items-center justify-between">
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={currentPage <= 1}
+            onClick={handlePreviousPage}
+          >
+            Previous
+          </Button>
+          <span className="text-sm text-muted-foreground">
+            Page {currentPage} of {pageData.totalPages}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={currentPage >= pageData.totalPages}
+            onClick={handleNextPage}
+          >
+            Next
+          </Button>
+        </nav>
+      )}
     </PageLayout>
   )
 }

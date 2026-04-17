@@ -4,7 +4,7 @@ function getToken(): string | null {
   return localStorage.getItem(TOKEN_KEY)
 }
 
-function clearTokenAndRedirect(): void {
+function clearToken(): void {
   localStorage.removeItem(TOKEN_KEY)
 }
 
@@ -37,7 +37,7 @@ async function request<T>(
   })
 
   if (response.status === 401) {
-    clearTokenAndRedirect()
+    clearToken()
     throw new Error("Unauthorized")
   }
 
