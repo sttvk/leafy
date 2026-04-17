@@ -40,14 +40,16 @@ function UserProfileDropdown() {
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 z-50 w-64 rounded-md border bg-popover p-4 shadow-md">
           <div className="flex flex-col gap-2">
-            <span className="text-sm font-bold text-foreground">
-              {user?.displayName}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold text-foreground">
+                {user?.displayName}
+              </span>
+              <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                {user?.role}
+              </span>
+            </div>
             <span className="text-xs text-muted-foreground">
               {user?.email}
-            </span>
-            <span className="w-fit rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
-              {user?.role}
             </span>
             <div className="my-1 border-t" />
             <Button
