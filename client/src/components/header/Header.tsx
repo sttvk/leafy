@@ -66,8 +66,9 @@ function Header() {
                 <UserProfileDropdown />
               </>
             ) : (
-              <Link to="/login" aria-label="Login" className="icon-btn">
+              <Link to="/login" aria-label="Login" className="icon-btn gap-1.5">
                 <LogIn className="h-4 w-4" />
+                <span className="text-sm">Login</span>
               </Link>
             )}
           </nav>
