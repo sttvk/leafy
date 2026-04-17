@@ -27,6 +27,7 @@ function BookCard({ book, onSelect }: BookCardProps) {
         src={book.coverImageUrl ?? PLACEHOLDER_COVER}
         alt={`Cover of ${book.title}`}
         loading="lazy"
+        onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_COVER }}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
       />
 

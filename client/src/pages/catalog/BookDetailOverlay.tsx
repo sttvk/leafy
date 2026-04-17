@@ -70,10 +70,11 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
     enabled: open && book != null,
   })
 
-  const { data: aiDescription, isLoading: isDescriptionLoading } = useQuery({
+  const { data: aiDescription, isLoading: isDescriptionLoading, isError: isDescriptionError } = useQuery({
     queryKey: ["book-description", book?.id],
     queryFn: () => fetchBookDescription(book?.id ?? ""),
     enabled: open && book != null,
+    retry: false,
   })
 
   // Reset typewriter when modal closes or book changes
@@ -125,6 +126,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
               <img
                 src={detail.coverImageUrl ?? PLACEHOLDER_COVER}
                 alt={`Cover of ${detail.title}`}
+                onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_COVER }}
                 className="h-48 w-full object-cover sm:h-full sm:max-h-[70vh]"
               />
             </div>
@@ -161,7 +163,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
 
               {/* Description */}
               <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
-                {isDescriptionLoading ? (
+                {isDescriptionLoading && !isDescriptionError ? (
                   <p className="text-sm text-muted-foreground italic">✨ Generating AI description<span className="animate-pulse"> ▍</span></p>
                 ) : isTypewriting ? (
                   <>
