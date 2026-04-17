@@ -489,5 +489,4 @@ $RECYCLE.BIN/
 # Vite build output
 client/dist/
 
-# Deploy secrets
-.env.deploy
+# Deploy secrets (covered by .env pattern above)

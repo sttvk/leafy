@@ -11,7 +11,7 @@
 #   STRIPE_PUB_KEY
 #   GEMINI_API_KEY
 #
-# Or create a .env.deploy file (gitignored) with these values.
+# Or create a .env file (gitignored) with these values.
 # ============================================================================
 set -euo pipefail
 
@@ -20,11 +20,11 @@ RESOURCE_GROUP="rg-${APP_NAME}-prod"
 SQL_ADMIN_LOGIN="leafyadmin"
 REGIONS=("centralus" "westus2" "eastus2" "northeurope" "westeurope" "southeastasia")
 
-# Load from .env.deploy if it exists
-if [ -f .env.deploy ]; then
-  echo "Loading secrets from .env.deploy..."
+# Load from .env if it exists
+if [ -f .env ]; then
+  echo "Loading secrets from .env..."
   set -a
-  source .env.deploy
+  source .env
   set +a
 fi
 
@@ -43,9 +43,9 @@ if [ ${#MISSING[@]} -gt 0 ]; then
     echo "  - $VAR"
   done
   echo ""
-  echo "Set them via environment variables or create a .env.deploy file:"
+  echo "Set them via environment variables or create a .env file:"
   echo ""
-  echo "  cat > .env.deploy << 'EOF'"
+  echo "  cat > .env << 'EOF'"
   echo "  SQL_ADMIN_PASSWORD=YourStr0ngPass!"
   echo "  GOOGLE_CLIENT_ID=your-google-client-id"
   echo "  GOOGLE_CLIENT_SECRET=your-google-secret"
