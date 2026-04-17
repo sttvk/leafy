@@ -1,11 +1,1 @@
-client/src/api/client.ts
-client/src/api/checkouts.ts
-client/src/contexts/CartContext.tsx
-client/src/contexts/AuthContext.tsx
-client/src/pages/auth/AuthPage.tsx
-client/src/pages/catalog/CatalogPage.tsx
-client/src/pages/catalog/BookDetailOverlay.tsx
-client/src/pages/reader/ReaderPage.tsx
-client/src/components/header/Header.tsx
-client/src/components/header/UserProfileDropdown.tsx
-client/src/App.tsx
+src/Lms.Infrastructure/Persistence/Migrations/**
