@@ -12,7 +12,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const errorMessage = typeof error === "string" ? error : null
 
     return (
-      <div>
+      <div className="contents">
         <input
           type={type}
           data-slot="input"
