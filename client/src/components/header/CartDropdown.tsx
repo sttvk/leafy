@@ -1,13 +1,12 @@
 import { useCallback, useMemo, useState } from "react"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { ShoppingCart, X, BookOpen } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
-import { checkoutBook, fetchMyCheckouts } from "@/api/checkouts"
+import { createCheckoutSession, fetchMyCheckouts } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
 
 function CartDropdown() {
-  const queryClient = useQueryClient()
   const { items, removeFromCart, clearCart, itemCount } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
   const { data: myCheckouts } = useQuery({ queryKey: ["my-checkouts"], queryFn: fetchMyCheckouts })
@@ -17,36 +16,18 @@ function CartDropdown() {
     if (items.length === 0) return
 
     setIsCheckingOut(true)
-    const failedIds: string[] = []
-
-    for (const item of items) {
-      try {
-        await checkoutBook(item.id)
-      } catch {
-        failedIds.push(item.id)
-      }
-    }
-
-    const succeededItems = items.filter((item) => !failedIds.includes(item.id))
-
-    await queryClient.invalidateQueries({ queryKey: ["books"] })
-    await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
-
-    if (failedIds.length > 0 && failedIds.length < items.length) {
-      for (const item of succeededItems) {
-        removeFromCart(item.id)
-      }
-      window.alert(
-        `${succeededItems.length} book(s) checked out. ${failedIds.length} failed — they may be unavailable.`
-      )
-    } else if (failedIds.length === items.length) {
-      window.alert("Checkout failed for all items. Please try again.")
-    } else {
+    try {
+      const bookIds = items.map((item) => item.id)
+      const successUrl = `${window.location.origin}/checkout/success`
+      const cancelUrl = window.location.origin
+      const response = await createCheckoutSession(bookIds, successUrl, cancelUrl)
       clearCart()
+      window.location.href = response.sessionUrl
+    } catch {
+      window.alert("Failed to start checkout. Please try again.")
+      setIsCheckingOut(false)
     }
-
-    setIsCheckingOut(false)
-  }, [items, removeFromCart, clearCart, queryClient])
+  }, [items, clearCart])
 
   return (
     <Popover.Root>

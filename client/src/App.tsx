@@ -6,6 +6,7 @@ import { CartProvider } from "@/contexts/CartContext"
 import { CatalogPage } from "@/pages/catalog/CatalogPage"
 import { AuthPage } from "@/pages/auth/AuthPage"
 import { ReaderPage } from "@/pages/reader/ReaderPage"
+import { CheckoutSuccessPage } from "@/pages/checkout/CheckoutSuccessPage"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
 
 
@@ -25,6 +26,14 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<CatalogPage />} />
       <Route path="/login" element={<AuthPage />} />
+      <Route
+        path="/checkout/success"
+        element={
+          <ProtectedRoute>
+            <CheckoutSuccessPage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/read/:bookId"
         element={

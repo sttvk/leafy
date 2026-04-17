@@ -1,3 +1,4 @@
-client/src/components/**
-client/src/pages/**
+client/src/components/header/CartDropdown.tsx
+client/src/api/checkouts.ts
+client/src/pages/checkout/CheckoutSuccessPage.tsx
 client/src/App.tsx
