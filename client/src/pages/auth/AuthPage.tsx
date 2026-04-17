@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { GoogleLogin } from "@react-oauth/google"
 import type { CredentialResponse } from "@react-oauth/google"
 import { toast } from "sonner"
@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { PageLayout } from "@/components/PageLayout"
+import { ArrowLeft } from "lucide-react"
 import {
   validateEmail,
   validateFullName,
@@ -168,7 +169,11 @@ function AuthPage() {
 
   return (
     <PageLayout className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center">
-        <Card className="w-full max-w-md p-2">
+      <div className="flex w-full max-w-md flex-col">
+        <Link to="/" className="icon-btn mb-4 self-start" aria-label="Back to catalog">
+          <ArrowLeft className="h-4 w-4" />
+        </Link>
+        <Card className="w-full p-2">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">
             {isLoginTab ? "Login" : "Create Account"}
@@ -340,6 +345,7 @@ function AuthPage() {
           )}
         </CardContent>
         </Card>
+      </div>
     </PageLayout>
   )
 }
