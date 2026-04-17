@@ -66,8 +66,48 @@ internal sealed class OpenAiEmbeddingService : IEmbeddingService
         return result.Data[0].Embedding;
     }
 
+    public async Task<IReadOnlyList<float[]>> GenerateEmbeddingsBatchAsync(
+        IReadOnlyList<string> texts, CancellationToken ct)
+    {
+        if (texts is null || texts.Count == 0)
+        {
+            throw new ArgumentException("Texts must not be empty.", nameof(texts));
+        }
+
+        var request = new BatchEmbeddingRequest(texts, ModelName);
+
+        using var response = await _httpClient.PostAsJsonAsync(
+            Endpoint, request, JsonOptions, ct);
+
+        response.EnsureSuccessStatusCode();
+
+        var result = await response.Content.ReadFromJsonAsync<EmbeddingResponse>(JsonOptions, ct);
+
+        if (result?.Data is null || result.Data.Count != texts.Count)
+        {
+            throw new InvalidOperationException(
+                $"OpenAI returned {result?.Data?.Count ?? 0} embeddings for {texts.Count} inputs.");
+        }
+
+        var ordered = result.Data
+            .OrderBy(d => d.Index)
+            .Select(d => d.Embedding)
+            .ToArray();
+
+        _logger.LogDebug(
+            "Generated {Count} embeddings with {Dimensions} dimensions each",
+            ordered.Length,
+            ordered[0].Length);
+
+        return ordered;
+    }
+
     private sealed record EmbeddingRequest(
         [property: JsonPropertyName("input")] string Input,
+        [property: JsonPropertyName("model")] string Model);
+
+    private sealed record BatchEmbeddingRequest(
+        [property: JsonPropertyName("input")] IReadOnlyList<string> Input,
         [property: JsonPropertyName("model")] string Model);
 
     private sealed class EmbeddingResponse
@@ -80,5 +120,8 @@ internal sealed class OpenAiEmbeddingService : IEmbeddingService
     {
         [JsonPropertyName("embedding")]
         public float[] Embedding { get; init; } = [];
+
+        [JsonPropertyName("index")]
+        public int Index { get; init; }
     }
 }
