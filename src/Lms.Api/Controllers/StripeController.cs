@@ -70,7 +70,15 @@ public sealed class StripeController : ControllerBase
 
         if (paidCount <= 0)
         {
-            // Fully free: single book with free credit
+            // Deduct credits first — fail fast if the user no longer qualifies
+            user!.EarlyReturns -= EarlyReturnsForFreeRental;
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                return Conflict("Failed to redeem free-rental credits. Please try again.");
+            }
+
+            // Credits are committed; now create checkouts
             var freeCheckouts = new List<CheckoutDto>();
             foreach (var bookId in request.BookIds)
             {
@@ -89,8 +97,18 @@ public sealed class StripeController : ControllerBase
                 }
             }
 
-            user!.EarlyReturns -= EarlyReturnsForFreeRental;
-            await _userManager.UpdateAsync(user);
+            // If no checkouts succeeded, refund the credits
+            if (freeCheckouts.Count == 0)
+            {
+                user.EarlyReturns += EarlyReturnsForFreeRental;
+                await _userManager.UpdateAsync(user);
+
+                _logger.LogWarning(
+                    "free_rental.refunded_credits user {UserId} reason no_successful_checkouts",
+                    userId.Value);
+
+                return Conflict("No books could be checked out. Credits have been refunded.");
+            }
 
             _logger.LogInformation(
                 "free_rental.applied user {UserId} books {BookCount} remaining_credits {RemainingCredits}",
@@ -205,9 +223,58 @@ public sealed class StripeController : ControllerBase
             .Select(id => id!.Value)
             .ToList();
 
+        // Deduct free credit BEFORE creating checkouts to prevent race conditions
+        Guid? freeBookId = null;
+        var creditsDeducted = false;
+        if (session.Metadata.TryGetValue("freeBookId", out var freeBookIdStr)
+            && Guid.TryParse(freeBookIdStr, out var parsedFreeBookId))
+        {
+            freeBookId = parsedFreeBookId;
+            var user = await _userManager.FindByIdAsync(userId.Value.ToString());
+            if (user is not null && user.EarlyReturns >= EarlyReturnsForFreeRental)
+            {
+                user.EarlyReturns -= EarlyReturnsForFreeRental;
+                var updateResult = await _userManager.UpdateAsync(user);
+                creditsDeducted = updateResult.Succeeded;
+
+                if (creditsDeducted)
+                {
+                    _logger.LogInformation(
+                        "free_rental.applied_with_paid user {UserId} free_book {FreeBookId} remaining_credits {RemainingCredits}",
+                        userId.Value,
+                        freeBookIdStr,
+                        user.EarlyReturns);
+                }
+                else
+                {
+                    _logger.LogWarning(
+                        "free_rental.credit_deduction_failed user {UserId} free_book {FreeBookId}",
+                        userId.Value,
+                        freeBookIdStr);
+                }
+            }
+            else
+            {
+                _logger.LogWarning(
+                    "free_rental.insufficient_credits user {UserId} free_book {FreeBookId}",
+                    userId.Value,
+                    freeBookIdStr);
+            }
+        }
+
         var checkouts = new List<CheckoutDto>();
         foreach (var bookId in bookIds)
         {
+            // Skip the free book if credit deduction failed
+            if (freeBookId.HasValue && bookId == freeBookId.Value && !creditsDeducted)
+            {
+                _logger.LogWarning(
+                    "stripe.skipping_free_book book {BookId} user {UserId} reason credits_not_deducted",
+                    bookId,
+                    userId.Value);
+                continue;
+            }
+
             var result = await _checkoutService.CheckoutAsync(bookId, userId.Value, ct);
             if (result.IsSuccess && result.Checkout is not null)
             {
@@ -220,24 +287,6 @@ public sealed class StripeController : ControllerBase
                     bookId,
                     userId.Value,
                     result.Error);
-            }
-        }
-
-        // Deduct free credit if a free book was included in this session
-        if (session.Metadata.TryGetValue("freeBookId", out var freeBookIdStr)
-            && !string.IsNullOrWhiteSpace(freeBookIdStr))
-        {
-            var user = await _userManager.FindByIdAsync(userId.Value.ToString());
-            if (user is not null && user.EarlyReturns >= EarlyReturnsForFreeRental)
-            {
-                user.EarlyReturns -= EarlyReturnsForFreeRental;
-                await _userManager.UpdateAsync(user);
-
-                _logger.LogInformation(
-                    "free_rental.applied_with_paid user {UserId} free_book {FreeBookId} remaining_credits {RemainingCredits}",
-                    userId.Value,
-                    freeBookIdStr,
-                    user.EarlyReturns);
             }
         }
 
