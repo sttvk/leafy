@@ -27,6 +27,7 @@ jobs:
         working-directory: client
         env:
           VITE_GOOGLE_CLIENT_ID: ${{ vars.VITE_GOOGLE_CLIENT_ID }}
+          VITE_STRIPE_PUBLISHABLE_KEY: ${{ vars.VITE_STRIPE_PUBLISHABLE_KEY }}
 
       # ---- Copy client build into API wwwroot ----
       - name: Copy client dist to wwwroot
@@ -54,6 +55,7 @@ jobs:
         run: dotnet run --project src/Lms.Migrations
         env:
           ConnectionStrings__LmsDatabase: ${{ secrets.AZURE_SQL_CONNECTION }}
+          Gemini__ApiKey: ${{ secrets.GEMINI_API_KEY }}
 
       # ---- Deploy to Azure App Service ----
       - name: Deploy to Azure
