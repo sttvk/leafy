@@ -64,6 +64,31 @@ internal sealed class GeminiTextGenerationService : ITextGenerationService
         return text;
     }
 
+    public async Task<string> GenerateTextAsync(string prompt, CancellationToken ct)
+    {
+        var request = new GenerateContentRequest(
+            [new Content([new TextPart(prompt)])]);
+
+        var url = $"{BaseUrl}/models/{ModelName}:generateContent?key={_apiKey}";
+
+        using var response = await _httpClient.PostAsJsonAsync(url, request, ct);
+
+        response.EnsureSuccessStatusCode();
+
+        var result = await response.Content.ReadFromJsonAsync<GenerateContentResponse>(ct);
+
+        var text = result?.Candidates?.FirstOrDefault()?.Content?.Parts?.FirstOrDefault()?.Text;
+
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            throw new InvalidOperationException("Gemini returned an empty text generation response.");
+        }
+
+        _logger.LogDebug("Generated text response, length {Length}", text.Length);
+
+        return text;
+    }
+
     // Request DTOs
     private sealed record TextPart(
         [property: JsonPropertyName("text")] string Text);

@@ -7,3 +7,7 @@ public sealed record BookSearchResult(
     string? Genre,
     string? CoverImageUrl,
     double Score);
+
+public sealed record SearchResponse(
+    IReadOnlyList<BookSearchResult> Results,
+    string? Summary);

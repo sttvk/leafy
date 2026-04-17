@@ -72,8 +72,13 @@ export interface BookSearchResult {
   score: number
 }
 
-export function searchBooks(query: string, limit: number = 25): Promise<BookSearchResult[]> {
-  return apiClient.get<BookSearchResult[]>(
+export interface SearchResponse {
+  results: BookSearchResult[]
+  summary: string | null
+}
+
+export function searchBooks(query: string, limit: number = 25): Promise<SearchResponse> {
+  return apiClient.get<SearchResponse>(
     `/api/books/search?q=${encodeURIComponent(query)}&limit=${limit}`
   )
 }

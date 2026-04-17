@@ -1,7 +1,7 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useMemo, useEffect, useRef, useState } from "react"
 import { Loader2, Search, X } from "lucide-react"
-import { fetchBooks, searchBooks, type BookListDto, type PagedResult } from "@/api/books"
+import { fetchBooks, searchBooks, type BookListDto, type PagedResult, type SearchResponse } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/pages/catalog/BookGrid"
 import { BookGridSkeleton } from "@/pages/catalog/BookCardSkeleton"
@@ -60,7 +60,7 @@ function CatalogPage() {
     enabled: !isSearchMode,
   })
 
-  const { data: searchResults, isLoading: isSearching } = useQuery({
+  const { data: searchData, isLoading: isSearching } = useQuery<SearchResponse>({
     queryKey: ["book-search", activeSearch],
     queryFn: () => searchBooks(activeSearch),
     enabled: isSearchMode,
@@ -92,9 +92,9 @@ function CatalogPage() {
   }, [data])
 
   const searchBooksAsListDto: readonly BookListDto[] = useMemo(() => {
-    if (!searchResults) return []
-    return searchResults.map(({ score: _score, ...book }) => book)
-  }, [searchResults])
+    if (!searchData) return []
+    return searchData.results.map(({ score: _score, ...book }) => book)
+  }, [searchData])
 
   const genres = useMemo(() => {
     const source = isSearchMode ? searchBooksAsListDto : allBooks
@@ -221,6 +221,12 @@ function CatalogPage() {
                   No results for &ldquo;{activeSearch}&rdquo;
                 </p>
               </div>
+            )}
+
+            {isSearchMode && searchData?.summary != null && (
+              <p className="mb-3 text-sm text-muted-foreground italic">
+                {"✨ "}{searchData.summary}
+              </p>
             )}
 
             {displayBooks.length > 0 && (

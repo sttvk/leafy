@@ -1,3 +1,4 @@
+using Lms.Application.Books;
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
 using Microsoft.Extensions.Logging;
@@ -11,24 +12,27 @@ public sealed class SearchService
 
     private readonly IBookRepository _bookRepo;
     private readonly IEmbeddingService _embeddingService;
+    private readonly ITextGenerationService _textGenerationService;
     private readonly ILogger<SearchService> _logger;
 
     public SearchService(
         IBookRepository bookRepo,
         IEmbeddingService embeddingService,
+        ITextGenerationService textGenerationService,
         ILogger<SearchService> logger)
     {
         _bookRepo = bookRepo;
         _embeddingService = embeddingService;
+        _textGenerationService = textGenerationService;
         _logger = logger;
     }
 
-    public async Task<IReadOnlyList<BookSearchResult>> SearchAsync(
+    public async Task<SearchResponse> SearchAsync(
         string query, int limit, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(query))
         {
-            return Array.Empty<BookSearchResult>();
+            return new SearchResponse(Array.Empty<BookSearchResult>(), null);
         }
 
         var clampedLimit = Math.Clamp(limit, 1, DefaultLimit);
@@ -51,7 +55,36 @@ public sealed class SearchService
         }
 
         // 3. Reciprocal Rank Fusion
-        return await FuseResultsAsync(keywordBooks, semanticRanked, clampedLimit, _bookRepo, ct);
+        var results = await FuseResultsAsync(keywordBooks, semanticRanked, clampedLimit, _bookRepo, ct);
+
+        // 4. Generate AI summary (non-blocking — null on failure)
+        var summary = await GenerateSearchSummaryAsync(query, results.Count, ct);
+
+        return new SearchResponse(results, summary);
+    }
+
+    private async Task<string?> GenerateSearchSummaryAsync(
+        string query, int resultCount, CancellationToken ct)
+    {
+        if (resultCount == 0)
+        {
+            return null;
+        }
+
+        try
+        {
+            var prompt =
+                $"The user searched for '{query}' in a book library. We found {resultCount} results. " +
+                "In one sentence (under 30 words), describe what kinds of books match this search. " +
+                "Be helpful and conversational. Do not list book titles.";
+
+            return await _textGenerationService.GenerateTextAsync(prompt, ct);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to generate search summary for query {Query}", query);
+            return null;
+        }
     }
 
     private static IReadOnlyList<(Guid BookId, double Similarity)> RankBySimilarity(
