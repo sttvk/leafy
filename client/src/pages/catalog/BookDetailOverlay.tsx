@@ -110,7 +110,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="book-detail-flip-in flex h-[70vh] w-[95vw] max-w-5xl flex-col gap-0 overflow-hidden p-0 sm:p-0">
+      <DialogContent className="book-detail-flip-in flex h-[90vh] sm:h-[70vh] w-[95vw] max-w-5xl flex-col gap-0 overflow-hidden overflow-y-auto p-0 sm:p-0">
         {book == null ? null : isLoading || detail == null ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -121,18 +121,18 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
             </DialogHeader>
           </div>
         ) : (
-          <div className="flex h-full flex-col sm:flex-row">
+          <div className="flex h-full flex-col overflow-y-auto sm:flex-row sm:overflow-hidden">
             {/* Left: cover image */}
             <div className="relative flex-shrink-0 overflow-hidden sm:w-80 sm:rounded-l-lg lg:w-96">
               <img
                 src={detail.coverImageUrl ?? PLACEHOLDER_COVER}
                 alt={`Cover of ${detail.title}`}
-                className="h-64 w-full object-cover sm:h-full sm:max-h-[70vh]"
+                className="h-48 w-full object-cover sm:h-full sm:max-h-[70vh]"
               />
             </div>
 
             {/* Right: details */}
-            <div className="flex min-h-0 flex-1 flex-col gap-4 p-8">
+            <div className="flex min-h-0 flex-1 flex-col gap-4 p-4 sm:p-8">
               <DialogHeader className="space-y-2 text-left">
                 <DialogTitle className="text-xl font-bold leading-tight sm:text-3xl">
                   {detail.title}
