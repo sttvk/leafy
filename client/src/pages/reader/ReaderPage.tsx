@@ -130,16 +130,16 @@ function ReaderPage() {
 
   return (
     <PageLayout className="flex h-[calc(100vh-4rem)] flex-col space-y-3 py-0">
-      <section className="flex shrink-0 items-center gap-3 py-0">
+      <section className="flex shrink-0 flex-wrap items-center gap-2 sm:gap-3 py-0">
         <Link to="/" className="icon-btn" aria-label="Back to catalog">
           <ArrowLeft className="h-4 w-4" />
         </Link>
-        <h1 className="text-lg font-bold tracking-tight text-foreground">
+        <h1 className="truncate text-base sm:text-lg font-bold tracking-tight text-foreground">
           {book?.title}
         </h1>
-        <span className="text-sm text-muted-foreground">{book?.author}</span>
+        <span className="hidden sm:inline text-sm text-muted-foreground">{book?.author}</span>
         {book?.genre != null && book.genre !== "" && (
-          <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
+          <span className="hidden sm:inline-block rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
             {book.genre}
           </span>
         )}
@@ -147,17 +147,17 @@ function ReaderPage() {
           const days = daysRemaining(activeCheckout.dueAt)
           return (
             <>
-              <span className="text-muted-foreground">|</span>
+              <span className="hidden sm:inline text-muted-foreground">|</span>
               {days > 0 ? (
-                <span className="text-sm text-muted-foreground">
+                <span className="hidden sm:inline text-sm text-muted-foreground">
                   {days} {days === 1 ? "day" : "days"} remaining
                 </span>
               ) : days === 0 ? (
-                <span className="text-sm font-medium text-warning">
+                <span className="hidden sm:inline text-sm font-medium text-warning">
                   Due today
                 </span>
               ) : (
-                <span className="text-sm font-medium text-destructive">
+                <span className="hidden sm:inline text-sm font-medium text-destructive">
                   Overdue
                 </span>
               )}
@@ -184,11 +184,11 @@ function ReaderPage() {
 
       <section
         ref={pageContentRef}
-        className={`min-h-0 flex-1 overflow-y-auto bg-card p-8 ${
+        className={`min-h-0 flex-1 overflow-y-auto bg-card p-4 sm:p-8 ${
           isReturned ? "pointer-events-none opacity-50" : ""
         }`}
       >
-        <div className="prose prose-lg mx-auto max-w-prose font-serif text-foreground">
+        <div className="prose prose-lg mx-auto max-w-none sm:max-w-prose font-serif text-foreground">
           {currentPage === 1 &&
             book?.description != null &&
             book.description !== "" && (
@@ -214,7 +214,7 @@ function ReaderPage() {
         </div>
       </section>
 
-      <nav className="flex shrink-0 items-center justify-between">
+      <nav className="flex flex-wrap shrink-0 items-center justify-between">
         <Button
           variant="outline"
           size="sm"
