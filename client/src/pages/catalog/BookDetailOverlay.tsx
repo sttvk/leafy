@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BookOpen, Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
 import { toast } from "sonner"
@@ -27,10 +27,13 @@ interface BookDetailOverlayProps {
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
+const TYPEWRITER_INTERVAL_MS = 30
+
 function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookDetailOverlayProps) {
   const { isAuthenticated, isLibrarian } = useAuth()
   const { addToCart, isInCart } = useCart()
   const [isDeleting, setIsDeleting] = useState(false)
+  const [displayedText, setDisplayedText] = useState("")
 
   const { data: myCheckouts } = useQuery({
     queryKey: ["my-checkouts"],
@@ -74,6 +77,36 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
     queryFn: () => fetchBookDescription(book!.id),
     enabled: open && book != null,
   })
+
+  // Reset typewriter when modal closes or book changes
+  useEffect(() => {
+    setDisplayedText("")
+  }, [book?.id, open])
+
+  // Typewriter effect: add one word at a time when AI description arrives
+  useEffect(() => {
+    const fullText = aiDescription?.description
+    if (fullText == null) return
+
+    const words = fullText.split(" ")
+    let wordIndex = 0
+    setDisplayedText("")
+
+    const intervalId = setInterval(() => {
+      wordIndex += 1
+      if (wordIndex >= words.length) {
+        setDisplayedText(fullText)
+        clearInterval(intervalId)
+      } else {
+        setDisplayedText(words.slice(0, wordIndex).join(" "))
+      }
+    }, TYPEWRITER_INTERVAL_MS)
+
+    return () => clearInterval(intervalId)
+  }, [aiDescription?.description])
+
+  const fullText = aiDescription?.description ?? detail?.description
+  const isTypewriting = aiDescription?.description != null && displayedText.length > 0 && displayedText !== aiDescription.description
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -131,12 +164,14 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
               {/* Description */}
               <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
                 {isDescriptionLoading ? (
-                  <div className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    <span>Generating description...</span>
-                  </div>
+                  <span className="animate-pulse">▍</span>
+                ) : isTypewriting ? (
+                  <>
+                    {displayedText}
+                    <span className="animate-pulse">▍</span>
+                  </>
                 ) : (
-                  aiDescription?.description ?? detail.description
+                  fullText ?? detail.description
                 )}
               </div>
 
