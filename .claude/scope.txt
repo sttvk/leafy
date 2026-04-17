@@ -1,9 +1,3 @@
-src/Lms.Infrastructure/Class1.cs
-src/Lms.ServiceDefaults/**
-src/Lms.Api/Lms.Api.csproj
-src/Lms.Migrations/Lms.Migrations.csproj
-src/Lms.AppHost/Lms.AppHost.csproj
-Lms.slnx
-client/src/api/checkouts.ts
-client/src/types/auth.ts
-client/src/components/ui/badge.tsx
+src/Lms.Api/Controllers/**
+src/Lms.Api/Endpoints/**
+src/Lms.Api/Program.cs

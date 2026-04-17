@@ -1,5 +1,4 @@
 using System.Text;
-using Lms.Api.Endpoints;
 using Lms.Application.Auth;
 using Lms.Application.Books;
 using Lms.Application.Checkouts;
@@ -43,15 +42,14 @@ builder.Services
 
 builder.Services.AddAuthorization();
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapBooksEndpoints();
-app.MapCheckoutsEndpoints();
-app.MapAuthEndpoints();
-app.MapStripeEndpoints();
+app.MapControllers();
 
 app.Run();
 
