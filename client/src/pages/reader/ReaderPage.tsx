@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
+import { ArrowLeft } from "lucide-react"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { fetchBook } from "@/api/books"
@@ -129,6 +130,9 @@ function ReaderPage() {
   return (
     <PageLayout className="flex h-[calc(100vh-4rem)] flex-col space-y-3 py-0">
       <section className="flex shrink-0 items-center gap-3 py-0">
+        <Link to="/" className="icon-btn" aria-label="Back to catalog">
+          <ArrowLeft className="h-4 w-4" />
+        </Link>
         <h1 className="text-lg font-bold tracking-tight text-foreground">
           {book?.title}
         </h1>
