@@ -41,7 +41,7 @@ function CartDropdown() {
       if (response.isFree) {
         toast.success("Free rental applied!")
         queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
-        queryClient.resetQueries({ queryKey: ["books"] })
+        queryClient.refetchQueries({ queryKey: ["books"] })
         setIsCheckingOut(false)
         return
       }
