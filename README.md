@@ -1,19 +1,23 @@
 # Leafy — Digital Book Rental Platform
 
-A full-stack digital library where users browse, rent, and read books online. Features AI-powered semantic search, Stripe payments, and a Netflix-style catalog UI.
+A full-stack digital library where users browse, rent, and read books online.
 
 **Live:** [leafy.azurewebsites.net](https://leafy.azurewebsites.net)
 
 ## Features
 
-- **Book Catalog** — Netflix-style card grid with infinite scroll, genre filtering, and AI-powered search
-- **Semantic Search** — Natural language queries like "thrillers set in Paris" using Gemini embeddings + keyword search with Reciprocal Rank Fusion
+- **Book Catalog** - Card grid with Add, Edit and Delete options for the Librarian account.
+- **Rental System** - Users can checkin/checkout books (Rent/Return system using Stripe payments).
+- **Catalog Filtering** - Filter based on Genre.
+
+## Bonus Features
+
+- **Semantic Search** — Natural language queries using Gemini embeddings + keyword search with Reciprocal Rank Fusion
+- **Google OAuth** — Sign in with Google alongside email/password auth
 - **AI Descriptions** — Each book gets a Gemini-generated description with typewriter animation
-- **Stripe Payments** — $1.99/book for 14-day rental, cart system with checkout flow
-- **Book Reader** — Server-gated paginated reader with 300 pages per book
 - **Early Return Credits** — Return within 7 days to earn credits; 5 credits = 1 free rental
 - **Role-Based Access** — Librarian (CRUD catalog) and Member (browse, rent, read)
-- **Google OAuth** — Sign in with Google alongside email/password auth
+- **Book Reader** — Server-gated paginated reader with 300 pages per book
 - **Dark Mode** — Theme toggle with warm parchment aesthetic
 
 ## Tech Stack
@@ -165,7 +169,3 @@ See [DEPLOYMENT.md](.claude/docs/DEPLOYMENT.md) for full deployment guide.
 | GET | `/api/checkouts/mine` | Yes | User's checkouts |
 | POST | `/api/checkout/create-session` | Yes | Create Stripe session |
 | POST | `/api/checkout/verify-session` | Yes | Verify payment |
-
-## License
-
-MIT

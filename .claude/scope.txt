@@ -1,4 +1,0 @@
-client/src/components/BookFormModal.tsx
-client/src/pages/catalog/BookDetailOverlay.tsx
-client/src/pages/catalog/CatalogPage.tsx
-client/src/components/header/Header.tsx

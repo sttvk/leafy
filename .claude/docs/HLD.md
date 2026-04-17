@@ -2,7 +2,7 @@
 
 ## Architecture Overview
 
-Leafy is a digital book rental platform with AI-powered search, Stripe payments, and role-based access. Single deployment on Azure App Service (free tier).
+Leafy is a digital book rental platform with AI-powered search, Stripe payments, and role-based access. 
 
 ## System Architecture Diagram
 
@@ -127,18 +127,6 @@ Librarian → Login → Add/Edit/Delete Books
 | CI/CD | GitHub Actions |
 | IaC | Bicep |
 | Local Dev | .NET Aspire |
-
-## Key Design Decisions
-
-| Decision | Rationale |
-|----------|-----------|
-| Single App Service hosts API + React | Free tier budget constraint (one F1 instance) |
-| In-memory vector search (no vector DB) | ~750 books × 768 dims = 2.3MB — instant cosine similarity |
-| JWT with no refresh tokens | 8h expiry, re-login after — acceptable for demo |
-| Stripe inline pricing (no pre-created products) | Dynamic catalog, products created per-session |
-| Content served via authenticated API | Server-gated reading prevents unauthorized access |
-| Early return credit system | Incentivizes returns, 5 credits = 1 free rental |
-| Gemini over OpenAI | 1,500 RPM free tier vs 3 RPM on OpenAI free |
 
 ## External Integrations
 
