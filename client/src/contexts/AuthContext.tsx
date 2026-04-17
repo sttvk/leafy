@@ -84,7 +84,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY)
-    setUser(null)
+    window.location.href = "/"
   }, [])
 
   const isAuthenticated = user !== null
