@@ -17,6 +17,26 @@ param sqlAdminPassword string
 @description('Application name prefix used for all resource names.')
 param appName string = 'leafy'
 
+@secure()
+@description('JWT signing key for authentication.')
+param jwtKey string
+
+@secure()
+@description('Google OAuth client ID.')
+param googleClientId string
+
+@secure()
+@description('Google OAuth client secret.')
+param googleClientSecret string
+
+@secure()
+@description('Stripe secret API key.')
+param stripeSecretKey string
+
+@secure()
+@description('Gemini API key.')
+param geminiApiKey string
+
 // ---------------------------------------------------------------------------
 // App Service Plan — F1 Free, Linux
 // ---------------------------------------------------------------------------
@@ -46,6 +66,15 @@ resource app 'Microsoft.Web/sites@2023-12-01' = {
     siteConfig: {
       linuxFxVersion: 'DOTNETCORE|10.0'
       alwaysOn: false // F1 does not support alwaysOn
+      appSettings: [
+        { name: 'Authentication__Jwt__Key', value: jwtKey }
+        { name: 'Authentication__Google__ClientId', value: googleClientId }
+        { name: 'Authentication__Google__ClientSecret', value: googleClientSecret }
+        { name: 'Stripe__SecretKey', value: stripeSecretKey }
+        { name: 'Gemini__ApiKey', value: geminiApiKey }
+        { name: 'ConnectionStrings__LmsDatabase', value: 'Server=tcp:${sqlServer.properties.fullyQualifiedDomainName},1433;Database=${sqlDb.name};User ID=${sqlAdminLogin};Password=${sqlAdminPassword};Encrypt=true;TrustServerCertificate=false;' }
+        { name: 'APPLICATIONINSIGHTS_CONNECTION_STRING', value: appInsights.properties.ConnectionString }
+      ]
     }
   }
 }
