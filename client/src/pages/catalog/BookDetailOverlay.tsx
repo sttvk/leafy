@@ -10,6 +10,16 @@ import { useAuth } from "@/contexts/AuthContext"
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -33,6 +43,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
   const { isAuthenticated, isLibrarian } = useAuth()
   const { addToCart, isInCart } = useCart()
   const [isDeleting, setIsDeleting] = useState(false)
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
   const [displayedText, setDisplayedText] = useState("")
 
   const { data: myCheckouts } = useQuery({
@@ -49,8 +60,6 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
 
   async function handleDelete(): Promise<void> {
     if (book == null) return
-    const confirmed = window.confirm(MESSAGES.books.deleteConfirm)
-    if (!confirmed) return
 
     setIsDeleting(true)
     try {
@@ -226,19 +235,40 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
                   </Button>
                 )}
                 {isLibrarian && (
-                  <Button
-                    variant="destructive"
-                    className="w-full"
-                    disabled={isDeleting}
-                    onClick={handleDelete}
-                  >
-                    {isDeleting ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      <Trash2 className="mr-2 h-4 w-4" />
-                    )}
-                    Delete Book
-                  </Button>
+                  <>
+                    <Button
+                      variant="destructive"
+                      className="w-full"
+                      disabled={isDeleting}
+                      onClick={() => setIsDeleteDialogOpen(true)}
+                    >
+                      {isDeleting ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      ) : (
+                        <Trash2 className="mr-2 h-4 w-4" />
+                      )}
+                      Delete Book
+                    </Button>
+                    <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Delete Book</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            {MESSAGES.books.deleteConfirm}
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                            onClick={handleDelete}
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </>
                 )}
               </div>
             </div>

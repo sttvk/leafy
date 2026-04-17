@@ -7,15 +7,28 @@ import { MESSAGES } from "@/lib/messages"
 import { fetchBook, fetchBookPage } from "@/api/books"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
 import type { CheckoutDto } from "@/api/checkouts"
+import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { PageLayout } from "@/components/PageLayout"
 import { daysRemaining } from "@/lib/dates"
 
 function ReaderPage() {
   const { bookId } = useParams<{ bookId: string }>()
   const queryClient = useQueryClient()
+  const { refreshUser } = useAuth()
   const [isReturning, setIsReturning] = useState(false)
   const [isReturned, setIsReturned] = useState(false)
+  const [isReturnDialogOpen, setIsReturnDialogOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const pageContentRef = useRef<HTMLDivElement>(null)
 
@@ -70,21 +83,19 @@ function ReaderPage() {
   const handleReturn = useCallback(async () => {
     if (activeCheckout == null) return
 
-    const confirmed = window.confirm(MESSAGES.returns.confirmReturn)
-    if (!confirmed) return
-
     setIsReturning(true)
     try {
       await returnBook(activeCheckout.id)
       setIsReturned(true)
       await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
+      await refreshUser()
       toast.success(MESSAGES.returns.success)
     } catch {
       toast.error(MESSAGES.returns.failed)
     } finally {
       setIsReturning(false)
     }
-  }, [activeCheckout, queryClient])
+  }, [activeCheckout, queryClient, refreshUser])
 
   const handlePreviousPage = useCallback(() => {
     setCurrentPage((prev) => Math.max(1, prev - 1))
@@ -194,15 +205,33 @@ function ReaderPage() {
           </span>
         )}
         {!isReturned && (
-          <Button
-            variant="destructive"
-            size="sm"
-            className="ml-auto"
-            disabled={isReturning}
-            onClick={handleReturn}
-          >
-            {isReturning ? "Returning..." : "Return Book"}
-          </Button>
+          <>
+            <Button
+              variant="destructive"
+              size="sm"
+              className="ml-auto"
+              disabled={isReturning}
+              onClick={() => setIsReturnDialogOpen(true)}
+            >
+              {isReturning ? "Returning..." : "Return Book"}
+            </Button>
+            <AlertDialog open={isReturnDialogOpen} onOpenChange={setIsReturnDialogOpen}>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Return Book</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    {MESSAGES.returns.confirmReturn}
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleReturn}>
+                    Return
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </>
         )}
       </section>
 

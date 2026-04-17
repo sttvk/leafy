@@ -1,16 +1,29 @@
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { BookOpen } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
 import { toast } from "sonner"
-import { MESSAGES } from "@/lib/messages"
+import { MESSAGES, CONSTANTS } from "@/lib/messages"
 import { fetchMyCheckouts, returnBook } from "@/api/checkouts"
+import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { daysRemaining } from "@/lib/dates"
 
 function MyBooksDropdown() {
   const queryClient = useQueryClient()
+  const { user, refreshUser } = useAuth()
+  const [returningCheckoutId, setReturningCheckoutId] = useState<string | null>(null)
   const { data: myCheckouts } = useQuery({
     queryKey: ["my-checkouts"],
     queryFn: fetchMyCheckouts,
@@ -24,13 +37,13 @@ function MyBooksDropdown() {
     [myCheckouts]
   )
 
-  const handleReturn = async (checkoutId: string) => {
-    const confirmed = window.confirm(MESSAGES.returns.confirmReturn)
-    if (!confirmed) return
+  const earlyReturns = user?.earlyReturns ?? 0
 
+  const handleReturn = async (checkoutId: string) => {
     try {
       await returnBook(checkoutId)
       await queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
+      await refreshUser()
       toast.success(MESSAGES.returns.success)
     } catch {
       toast.error(MESSAGES.returns.failed)
@@ -38,6 +51,7 @@ function MyBooksDropdown() {
   }
 
   return (
+    <>
     <Popover.Root>
       <Popover.Trigger asChild>
         <button
@@ -64,6 +78,11 @@ function MyBooksDropdown() {
             <h3 className="text-sm font-semibold text-foreground">
               My Books ({activeCheckouts.length})
             </h3>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {earlyReturns >= CONSTANTS.freeRentalThreshold
+                ? "\uD83C\uDF89 You have a free rental!"
+                : `\uD83C\uDF81 ${earlyReturns}/${CONSTANTS.freeRentalThreshold} early returns toward a free rental`}
+            </p>
           </div>
 
           <div className="max-h-72 overflow-y-auto">
@@ -115,7 +134,7 @@ function MyBooksDropdown() {
                         size="sm"
                         variant="outline"
                         className="h-7 shrink-0 px-2 text-xs"
-                        onClick={() => handleReturn(checkout.id)}
+                        onClick={() => setReturningCheckoutId(checkout.id)}
                       >
                         Return
                       </Button>
@@ -128,6 +147,36 @@ function MyBooksDropdown() {
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
+
+      <AlertDialog
+        open={returningCheckoutId !== null}
+        onOpenChange={(open) => {
+          if (!open) setReturningCheckoutId(null)
+        }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Return Book</AlertDialogTitle>
+            <AlertDialogDescription>
+              {MESSAGES.returns.confirmReturn}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                if (returningCheckoutId !== null) {
+                  handleReturn(returningCheckoutId)
+                  setReturningCheckoutId(null)
+                }
+              }}
+            >
+              Return
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   )
 }
 

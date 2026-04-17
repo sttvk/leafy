@@ -1,8 +1,8 @@
-client/src/types/auth.ts
+client/src/components/ui/alert-dialog.tsx
 client/src/pages/catalog/BookDetailOverlay.tsx
 client/src/pages/reader/ReaderPage.tsx
 client/src/components/header/MyBooksDropdown.tsx
-client/src/components/header/CartDropdown.tsx
-client/src/pages/checkout/CheckoutSuccessPage.tsx
-client/src/api/checkouts.ts
-client/src/lib/messages.ts
+client/src/components/header/UserProfileDropdown.tsx
+client/src/contexts/AuthContext.tsx
+client/package.json
+client/package-lock.json

@@ -29,6 +29,7 @@ interface AuthContextValue {
   ) => Promise<void>
   googleLogin: (idToken: string) => Promise<void>
   logout: () => void
+  refreshUser: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -88,6 +89,11 @@ function AuthProvider({ children }: AuthProviderProps) {
     setUser(profile)
   }, [])
 
+  const refreshUser = useCallback(async () => {
+    const profile = await authApi.getProfile()
+    setUser(profile)
+  }, [])
+
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY)
     setUser(null)
@@ -109,8 +115,9 @@ function AuthProvider({ children }: AuthProviderProps) {
       register,
       googleLogin: handleGoogleLogin,
       logout,
+      refreshUser,
     }),
-    [user, isAuthenticated, isLibrarian, isLoading, login, register, handleGoogleLogin, logout]
+    [user, isAuthenticated, isLibrarian, isLoading, login, register, handleGoogleLogin, logout, refreshUser]
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
