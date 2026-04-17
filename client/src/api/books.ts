@@ -77,3 +77,11 @@ export function searchBooks(query: string, limit: number = 25): Promise<BookSear
     `/api/books/search?q=${encodeURIComponent(query)}&limit=${limit}`
   )
 }
+
+export interface BookDescriptionResponse {
+  description: string
+}
+
+export function fetchBookDescription(id: string): Promise<BookDescriptionResponse> {
+  return apiClient.get<BookDescriptionResponse>(`/api/books/${id}/description`)
+}

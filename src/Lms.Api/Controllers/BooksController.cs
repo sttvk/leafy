@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using Lms.Application.Books;
 using Lms.Application.Common;
 using Lms.Application.Search;
@@ -10,13 +11,20 @@ namespace Lms.Api.Controllers;
 [Route("api/books")]
 public sealed class BooksController : ControllerBase
 {
+    private static readonly ConcurrentDictionary<Guid, string> DescriptionCache = new();
+
     private readonly BookService _bookService;
     private readonly SearchService _searchService;
+    private readonly ITextGenerationService _textGenerationService;
 
-    public BooksController(BookService bookService, SearchService searchService)
+    public BooksController(
+        BookService bookService,
+        SearchService searchService,
+        ITextGenerationService textGenerationService)
     {
         _bookService = bookService;
         _searchService = searchService;
+        _textGenerationService = textGenerationService;
     }
 
     [HttpGet("search")]
@@ -100,5 +108,28 @@ public sealed class BooksController : ControllerBase
         return deleted
             ? NoContent()
             : NotFound();
+    }
+
+    [HttpGet("{id:guid}/description")]
+    public async Task<ActionResult<BookDescriptionResponse>> GetGeneratedDescriptionAsync(
+        Guid id, CancellationToken ct)
+    {
+        if (DescriptionCache.TryGetValue(id, out var cached))
+        {
+            return Ok(new BookDescriptionResponse(cached));
+        }
+
+        var book = await _bookService.GetByIdAsync(id, ct);
+        if (book is null)
+        {
+            return NotFound();
+        }
+
+        var description = await _textGenerationService.GenerateBookDescriptionAsync(
+            book.Title, book.Author, book.Genre, ct);
+
+        DescriptionCache.TryAdd(id, description);
+
+        return Ok(new BookDescriptionResponse(description));
     }
 }

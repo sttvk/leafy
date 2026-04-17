@@ -1,4 +1,10 @@
-src/Lms.Infrastructure/Services/OpenAiEmbeddingService.cs
+src/Lms.Application/Books/BookService.cs
+src/Lms.Application/Books/BookDescriptionResponse.cs
+src/Lms.Application/Books/ITextGenerationService.cs
+src/Lms.Api/Controllers/BooksController.cs
 src/Lms.Infrastructure/Services/GeminiEmbeddingService.cs
+src/Lms.Infrastructure/Services/GeminiTextGenerationService.cs
 src/Lms.Infrastructure/DependencyInjection.cs
-src/Lms.Migrations/Program.cs
+src/Lms.Application/Search/IEmbeddingService.cs
+client/src/api/books.ts
+client/src/pages/catalog/BookDetailOverlay.tsx

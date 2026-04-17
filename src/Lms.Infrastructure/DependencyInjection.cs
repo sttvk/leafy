@@ -1,3 +1,4 @@
+using Lms.Application.Books;
 using Lms.Application.Search;
 using Lms.Domain.Entities;
 using Lms.Domain.Repositories;
@@ -47,6 +48,9 @@ public static class InfrastructureServiceCollectionExtensions
 
         services.AddHttpClient<GeminiEmbeddingService>();
         services.AddScoped<IEmbeddingService, GeminiEmbeddingService>();
+
+        services.AddHttpClient<GeminiTextGenerationService>();
+        services.AddScoped<ITextGenerationService, GeminiTextGenerationService>();
 
         return services;
     }

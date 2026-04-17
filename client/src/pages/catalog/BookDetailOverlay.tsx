@@ -4,7 +4,7 @@ import { BookOpen, Check, Loader2, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router-dom"
 import { toast } from "sonner"
 import { MESSAGES } from "@/lib/messages"
-import { deleteBook, fetchBook, type BookListDto } from "@/api/books"
+import { deleteBook, fetchBook, fetchBookDescription, type BookListDto } from "@/api/books"
 import { fetchMyCheckouts } from "@/api/checkouts"
 import { useAuth } from "@/contexts/AuthContext"
 import { useCart } from "@/contexts/CartContext"
@@ -69,6 +69,12 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
     enabled: open && book != null,
   })
 
+  const { data: aiDescription, isLoading: isDescriptionLoading } = useQuery({
+    queryKey: ["book-description", book?.id],
+    queryFn: () => fetchBookDescription(book!.id),
+    enabled: open && book != null,
+  })
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="book-detail-flip-in flex h-[70vh] w-[95vw] max-w-5xl flex-col gap-0 overflow-hidden p-0 sm:p-0">
@@ -124,7 +130,14 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
 
               {/* Description */}
               <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
-                {detail.description}
+                {isDescriptionLoading ? (
+                  <div className="flex items-center gap-2">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Generating description...</span>
+                  </div>
+                ) : (
+                  aiDescription?.description ?? detail.description
+                )}
               </div>
 
               {/* Action buttons */}
