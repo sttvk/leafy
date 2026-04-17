@@ -220,7 +220,10 @@ function ReaderPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Return Book</AlertDialogTitle>
                   <AlertDialogDescription>
-                    {MESSAGES.returns.confirmReturn}
+                    {activeCheckout != null &&
+                    Date.now() - new Date(activeCheckout.checkedOutAt).getTime() < 7 * 24 * 60 * 60 * 1000
+                      ? MESSAGES.returns.confirmReturnEarly
+                      : MESSAGES.returns.confirmReturn}
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>

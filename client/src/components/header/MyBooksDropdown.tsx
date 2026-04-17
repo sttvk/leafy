@@ -158,7 +158,15 @@ function MyBooksDropdown() {
           <AlertDialogHeader>
             <AlertDialogTitle>Return Book</AlertDialogTitle>
             <AlertDialogDescription>
-              {MESSAGES.returns.confirmReturn}
+              {(() => {
+                const checkout = activeCheckouts.find((c) => c.id === returningCheckoutId)
+                const isEarly =
+                  checkout != null &&
+                  Date.now() - new Date(checkout.checkedOutAt).getTime() < 7 * 24 * 60 * 60 * 1000
+                return isEarly
+                  ? MESSAGES.returns.confirmReturnEarly
+                  : MESSAGES.returns.confirmReturn
+              })()}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
