@@ -480,3 +480,11 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Aspire/agent worktrees
+.worktrees/
+.claude/worktrees/
+.claude/scratch/
+
+# Vite build output
+client/dist/

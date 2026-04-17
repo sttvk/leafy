@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\Lms.Infrastructure\Lms.Infrastructure.csproj" />
@@ -19,6 +19,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
+    <UserSecretsId>d416c08e-c1b1-4c7e-b1f6-f08a913001e6</UserSecretsId>
   </PropertyGroup>
 
 </Project>
