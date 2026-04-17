@@ -1,4 +1,5 @@
 import { useMemo } from "react"
+import { Link } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { BookOpen } from "lucide-react"
 import * as Popover from "@radix-ui/react-popover"
@@ -100,15 +101,13 @@ function MyBooksDropdown() {
                           </p>
                         )}
                       </div>
-                      <a
-                        href={`/read/${checkout.bookId}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to={`/read/${checkout.bookId}`}
                         className="inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-accent"
                       >
                         <BookOpen className="h-3 w-3" />
                         Read
-                      </a>
+                      </Link>
                       <Button
                         size="sm"
                         variant="outline"
