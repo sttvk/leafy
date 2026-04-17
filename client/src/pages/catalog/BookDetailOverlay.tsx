@@ -164,7 +164,7 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
               {/* Description */}
               <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
                 {isDescriptionLoading ? (
-                  <span className="animate-pulse">▍</span>
+                  <p className="text-sm text-muted-foreground italic">✨ Generating AI description<span className="animate-pulse"> ▍</span></p>
                 ) : isTypewriting ? (
                   <>
                     {displayedText}
