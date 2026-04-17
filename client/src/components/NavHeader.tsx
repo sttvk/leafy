@@ -7,7 +7,7 @@ import { CartDropdown } from "@/components/CartDropdown"
 import { UserProfileDropdown } from "@/components/UserProfileDropdown"
 import { BookFormModal } from "@/components/BookFormModal"
 
-function NavHeader() {
+function Header() {
   const { isAuthenticated, isLibrarian, isLoading } = useAuth()
   const queryClient = useQueryClient()
   const [isAddBookOpen, setIsAddBookOpen] = useState(false)
@@ -80,4 +80,4 @@ function NavHeader() {
   )
 }
 
-export { NavHeader }
+export { Header }

@@ -7,7 +7,7 @@ import { CatalogPage } from "@/pages/CatalogPage"
 import { AuthPage } from "@/pages/AuthPage"
 import { ReaderPage } from "@/pages/ReaderPage"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
-import { NavHeader } from "@/components/NavHeader"
+import { Header } from "@/components/NavHeader"
 
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
@@ -24,7 +24,7 @@ const queryClient = new QueryClient({
 function AppRoutes() {
   return (
     <>
-      <NavHeader />
+      <Header />
       <Routes>
         <Route path="/" element={<CatalogPage />} />
         <Route path="/login" element={<AuthPage />} />
