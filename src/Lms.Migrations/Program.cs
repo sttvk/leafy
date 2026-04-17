@@ -100,16 +100,16 @@ static async Task SeedLibrarianAsync(IServiceProvider services, ILogger logger)
 static async Task SeedEmbeddingsAsync(
     IServiceProvider services, ILogger logger, CancellationToken ct)
 {
-    const int batchSize = 50;
-    const int delayBetweenBatchesMs = 3000;
+    const int batchSize = 100;
+    const int delayBetweenBatchesMs = 1000;
     const int maxRetries = 3;
-    const string modelName = "text-embedding-3-small";
+    const string modelName = "text-embedding-004";
 
     var configuration = services.GetRequiredService<IConfiguration>();
-    var apiKey = configuration["OpenAI:ApiKey"] ?? Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+    var apiKey = configuration["Gemini:ApiKey"] ?? Environment.GetEnvironmentVariable("GEMINI_API_KEY");
     if (string.IsNullOrEmpty(apiKey))
     {
-        logger.LogInformation("OpenAI:ApiKey not configured, skipping embedding seed.");
+        logger.LogInformation("Gemini:ApiKey not configured, skipping embedding seed.");
         return;
     }
 

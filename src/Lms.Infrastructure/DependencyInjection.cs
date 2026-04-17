@@ -45,8 +45,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICheckoutRepository, CheckoutRepository>();
 
-        services.AddHttpClient<OpenAiEmbeddingService>();
-        services.AddScoped<IEmbeddingService, OpenAiEmbeddingService>();
+        services.AddHttpClient<GeminiEmbeddingService>();
+        services.AddScoped<IEmbeddingService, GeminiEmbeddingService>();
 
         return services;
     }
