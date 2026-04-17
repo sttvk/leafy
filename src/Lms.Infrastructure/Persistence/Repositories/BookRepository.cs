@@ -16,6 +16,20 @@ internal sealed class BookRepository : IBookRepository
     public Task<Book?> GetByIdAsync(Guid id, CancellationToken ct)
         => _db.Books.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id, ct);
 
+    public async Task<IReadOnlyList<Book>> GetByIdsAsync(IEnumerable<Guid> ids, CancellationToken ct)
+    {
+        var idList = ids.ToList();
+        if (idList.Count == 0)
+        {
+            return Array.Empty<Book>();
+        }
+
+        return await _db.Books
+            .AsNoTracking()
+            .Where(b => idList.Contains(b.Id))
+            .ToListAsync(ct);
+    }
+
     public async Task<IReadOnlyList<Book>> ListAsync(CancellationToken ct)
         => await _db.Books.AsNoTracking().OrderBy(b => b.Title).ToListAsync(ct);
 

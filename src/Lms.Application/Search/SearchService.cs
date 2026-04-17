@@ -51,7 +51,7 @@ public sealed class SearchService
         }
 
         // 3. Reciprocal Rank Fusion
-        return FuseResults(keywordBooks, semanticRanked, clampedLimit);
+        return await FuseResultsAsync(keywordBooks, semanticRanked, clampedLimit, _bookRepo, ct);
     }
 
     private static IReadOnlyList<(Guid BookId, double Similarity)> RankBySimilarity(
@@ -67,10 +67,12 @@ public sealed class SearchService
             .AsReadOnly();
     }
 
-    private static IReadOnlyList<BookSearchResult> FuseResults(
+    private static async Task<IReadOnlyList<BookSearchResult>> FuseResultsAsync(
         IReadOnlyList<Book> keywordBooks,
         IReadOnlyList<(Guid BookId, double Similarity)> semanticRanked,
-        int limit)
+        int limit,
+        IBookRepository bookRepo,
+        CancellationToken ct)
     {
         var scores = new Dictionary<Guid, double>();
         var metadata = new Dictionary<Guid, Book>();
@@ -90,6 +92,17 @@ public sealed class SearchService
             var item = semanticRanked[rank];
             var rrfScore = 1.0 / (RrfK + rank + 1);
             scores[item.BookId] = scores.GetValueOrDefault(item.BookId) + rrfScore;
+        }
+
+        // Fetch metadata for semantic-only results missing from the keyword set
+        var missingIds = scores.Keys.Where(id => !metadata.ContainsKey(id)).ToList();
+        if (missingIds.Count > 0)
+        {
+            var missingBooks = await bookRepo.GetByIdsAsync(missingIds, ct);
+            foreach (var book in missingBooks)
+            {
+                metadata[book.Id] = book;
+            }
         }
 
         return scores

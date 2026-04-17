@@ -12,6 +12,12 @@ public interface IBookRepository
     Task DeleteAsync(Guid id, CancellationToken ct);
 
     /// <summary>
+    /// Fetch multiple books by their IDs in a single round-trip.
+    /// Used to hydrate metadata for semantic-only search results.
+    /// </summary>
+    Task<IReadOnlyList<Book>> GetByIdsAsync(IEnumerable<Guid> ids, CancellationToken ct);
+
+    /// <summary>
     /// Keyword search using SQL LIKE on title, author, genre, description, and ISBN.
     /// Results are ordered by relevance: title matches first, then author, then others.
     /// </summary>
