@@ -28,6 +28,8 @@ function CatalogPage() {
   const [genreFilter, setGenreFilter] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [activeSearch, setActiveSearch] = useState("")
+  const [summaryDisplayText, setSummaryDisplayText] = useState("")
+  const [isSummaryComplete, setIsSummaryComplete] = useState(false)
 
   const sentinelRef = useRef<HTMLDivElement>(null)
 
@@ -82,6 +84,42 @@ function CatalogPage() {
     return () => observer.disconnect()
   }, [hasNextPage, isFetchingNextPage, fetchNextPage, isSearchMode])
 
+  const summaryRef = useRef(searchData?.summary ?? "")
+
+  useEffect(() => {
+    const summary = searchData?.summary ?? ""
+    summaryRef.current = summary
+
+    if (!summary) {
+      setSummaryDisplayText("")
+      setIsSummaryComplete(false)
+      return
+    }
+
+    const words = summary.split(" ")
+    let index = 0
+    setSummaryDisplayText("")
+    setIsSummaryComplete(false)
+
+    const interval = setInterval(() => {
+      index += 1
+      if (index >= words.length) {
+        setSummaryDisplayText(summaryRef.current)
+        setIsSummaryComplete(true)
+        clearInterval(interval)
+      } else {
+        setSummaryDisplayText(words.slice(0, index).join(" "))
+      }
+    }, 30)
+
+    return () => clearInterval(interval)
+  }, [searchData?.summary])
+
+  useEffect(() => {
+    setSummaryDisplayText("")
+    setIsSummaryComplete(false)
+  }, [activeSearch])
+
   const allBooks = useMemo(() => {
     if (!data) return []
     return data.pages.flatMap((page) =>
@@ -133,8 +171,7 @@ function CatalogPage() {
   return (
     <div className="min-h-screen bg-background">
       <PageLayout className="space-y-3">
-        {!isPageLoading && !isPageError && (
-          <div className="flex flex-nowrap items-center gap-3">
+        <div className="flex flex-nowrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="All Genres" />
@@ -191,8 +228,7 @@ function CatalogPage() {
                 Clear
               </Button>
             )}
-          </div>
-        )}
+        </div>
 
         {isPageLoading && <BookGridSkeleton />}
 
@@ -225,7 +261,7 @@ function CatalogPage() {
 
             {isSearchMode && searchData?.summary != null && (
               <p className="mb-3 text-sm text-muted-foreground italic">
-                {"✨ "}{searchData.summary}
+                {"✨ "}{summaryDisplayText}{!isSummaryComplete && <span className="animate-pulse">▍</span>}
               </p>
             )}
 
