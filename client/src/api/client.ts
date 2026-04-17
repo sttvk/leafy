@@ -51,7 +51,20 @@ async function request<T>(
       typeof (errorBody as Record<string, unknown>).message === "string"
         ? (errorBody as Record<string, string>).message
         : `Request failed: ${response.status} ${response.statusText}`
-    throw Object.assign(new Error(message), { status: response.status, body: errorBody })
+
+    const validationErrors =
+      errorBody !== null &&
+      typeof errorBody === "object" &&
+      "errors" in errorBody &&
+      typeof (errorBody as Record<string, unknown>).errors === "object"
+        ? (errorBody as Record<string, unknown>).errors as Record<string, string[]>
+        : undefined
+
+    throw Object.assign(new Error(message), {
+      status: response.status,
+      body: errorBody,
+      validationErrors,
+    })
   }
 
   if (response.status === 204) {

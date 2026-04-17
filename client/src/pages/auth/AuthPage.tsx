@@ -15,6 +15,12 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { PageLayout } from "@/components/PageLayout"
+import {
+  validateEmail,
+  validateFullName,
+  validatePassword,
+  validateRequired,
+} from "@/lib/validation"
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
 
@@ -29,53 +35,36 @@ function AuthPage() {
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
   const [error, setError] = useState<string | null>(null)
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
 
-  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-  function validateLogin(): Record<string, string> {
-    const errors: Record<string, string> = {}
-
-    if (!email.trim()) {
-      errors.email = "Email is required"
-    } else if (!EMAIL_REGEX.test(email.trim())) {
-      errors.email = "Please enter a valid email address"
-    }
-
-    if (!password) {
-      errors.password = "Password is required"
-    }
-
-    return errors
+  function markTouched(field: string): void {
+    setTouched((prev) => (prev[field] ? prev : { ...prev, [field]: true }))
   }
 
-  function validateRegister(): Record<string, string> {
-    const errors: Record<string, string> = {}
+  function markAllTouched(fields: readonly string[]): void {
+    setTouched((prev) => {
+      const next: Record<string, boolean> = { ...prev }
+      for (const f of fields) {
+        next[f] = true
+      }
+      return next
+    })
+  }
 
-    if (!fullName.trim() || fullName.trim().length < 2) {
-      errors.fullName = "Full name must be at least 2 characters"
-    }
+  const loginErrors = {
+    email: touched.email ? validateEmail(email) : null,
+    password: touched.password ? validateRequired(password, "Password") : null,
+  }
 
-    if (!email.trim()) {
-      errors.email = "Email is required"
-    } else if (!EMAIL_REGEX.test(email.trim())) {
-      errors.email = "Please enter a valid email address"
-    }
+  const registerErrors = {
+    fullName: touched.fullName ? validateFullName(fullName) : null,
+    email: touched.email ? validateEmail(email) : null,
+    password: touched.password ? validatePassword(password) : null,
+  }
 
-    if (!password) {
-      errors.password = "Password is required"
-    } else if (password.length < 8) {
-      errors.password = "Password must be at least 8 characters"
-    } else if (!/[A-Z]/.test(password)) {
-      errors.password = "Password must contain an uppercase letter"
-    } else if (!/[a-z]/.test(password)) {
-      errors.password = "Password must contain a lowercase letter"
-    } else if (!/\d/.test(password)) {
-      errors.password = "Password must contain a number"
-    }
-
-    return errors
+  function hasErrors(errors: Record<string, string | null>): boolean {
+    return Object.values(errors).some((e) => e !== null)
   }
 
   function handleTabSwitch(tab: AuthTab): void {
@@ -84,19 +73,22 @@ function AuthPage() {
     setPassword("")
     setFullName("")
     setError(null)
-    setFieldErrors({})
+    setTouched({})
   }
 
   async function handleLoginSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
     setError(null)
 
-    const errors = validateLogin()
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors)
-      return
+    const fields = ["email", "password"] as const
+    markAllTouched(fields)
+
+    const errors = {
+      email: validateEmail(email),
+      password: validateRequired(password, "Password"),
     }
-    setFieldErrors({})
+    if (hasErrors(errors)) return
+
     setIsSubmitting(true)
 
     try {
@@ -117,12 +109,16 @@ function AuthPage() {
     e.preventDefault()
     setError(null)
 
-    const errors = validateRegister()
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors)
-      return
+    const fields = ["fullName", "email", "password"] as const
+    markAllTouched(fields)
+
+    const errors = {
+      fullName: validateFullName(fullName),
+      email: validateEmail(email),
+      password: validatePassword(password),
     }
-    setFieldErrors({})
+    if (hasErrors(errors)) return
+
     setIsSubmitting(true)
 
     try {
@@ -224,13 +220,13 @@ function AuthPage() {
                   type="email"
                   placeholder="you@example.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    markTouched("email")
+                  }}
                   autoComplete="email"
-                  error={!!fieldErrors.email}
+                  error={loginErrors.email ?? undefined}
                 />
-                {fieldErrors.email && (
-                  <p className="text-xs text-destructive">{fieldErrors.email}</p>
-                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -239,13 +235,13 @@ function AuthPage() {
                   id="login-password"
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                    markTouched("password")
+                  }}
                   autoComplete="current-password"
-                  error={!!fieldErrors.password}
+                  error={loginErrors.password ?? undefined}
                 />
-                {fieldErrors.password && (
-                  <p className="text-xs text-destructive">{fieldErrors.password}</p>
-                )}
               </div>
 
               <Button type="submit" disabled={isSubmitting} className="w-full">
@@ -261,13 +257,13 @@ function AuthPage() {
                   type="text"
                   placeholder="Jane Doe"
                   value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  onChange={(e) => {
+                    setFullName(e.target.value)
+                    markTouched("fullName")
+                  }}
                   autoComplete="name"
-                  error={!!fieldErrors.fullName}
+                  error={registerErrors.fullName ?? undefined}
                 />
-                {fieldErrors.fullName && (
-                  <p className="text-xs text-destructive">{fieldErrors.fullName}</p>
-                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -277,13 +273,13 @@ function AuthPage() {
                   type="email"
                   placeholder="you@example.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    markTouched("email")
+                  }}
                   autoComplete="email"
-                  error={!!fieldErrors.email}
+                  error={registerErrors.email ?? undefined}
                 />
-                {fieldErrors.email && (
-                  <p className="text-xs text-destructive">{fieldErrors.email}</p>
-                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -292,13 +288,13 @@ function AuthPage() {
                   id="register-password"
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                    markTouched("password")
+                  }}
                   autoComplete="new-password"
-                  error={!!fieldErrors.password}
+                  error={registerErrors.password ?? undefined}
                 />
-                {fieldErrors.password && (
-                  <p className="text-xs text-destructive">{fieldErrors.password}</p>
-                )}
               </div>
 
               <Button type="submit" disabled={isSubmitting} className="w-full">

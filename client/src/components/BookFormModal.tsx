@@ -21,6 +21,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import {
+  validateRequired,
+  validateUrl,
+  validateYear,
+} from "@/lib/validation"
 
 interface BookFormModalProps {
   open: boolean
@@ -67,7 +72,7 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
   const [form, setForm] = useState<FormState>({ ...INITIAL_FORM_STATE })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
 
   const { data: bookDetail, isLoading: isLoadingDetail } = useQuery({
     queryKey: ["book", book?.id],
@@ -83,12 +88,38 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
 
   function updateField(field: keyof FormState, value: string): void {
     setForm((prev) => ({ ...prev, [field]: value }))
+    markTouched(field)
+  }
+
+  function markTouched(field: string): void {
+    setTouched((prev) => (prev[field] ? prev : { ...prev, [field]: true }))
+  }
+
+  function markAllTouched(fields: readonly string[]): void {
+    setTouched((prev) => {
+      const next: Record<string, boolean> = { ...prev }
+      for (const f of fields) {
+        next[f] = true
+      }
+      return next
+    })
+  }
+
+  const errors = {
+    title: touched.title ? validateRequired(form.title, "Title") : null,
+    author: touched.author ? validateRequired(form.author, "Author") : null,
+    publicationYear: touched.publicationYear ? validateYear(form.publicationYear) : null,
+    coverImageUrl: touched.coverImageUrl ? validateUrl(form.coverImageUrl) : null,
+  }
+
+  function hasErrors(errs: Record<string, string | null>): boolean {
+    return Object.values(errs).some((e) => e !== null)
   }
 
   function resetForm(): void {
     setForm({ ...INITIAL_FORM_STATE })
     setErrorMessage(null)
-    setFieldErrors({})
+    setTouched({})
   }
 
   function handleOpenChange(nextOpen: boolean): void {
@@ -98,45 +129,20 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
     onOpenChange(nextOpen)
   }
 
-  function validateBookForm(): Record<string, string> {
-    const errors: Record<string, string> = {}
-    const currentYear = new Date().getFullYear()
-
-    if (!form.title.trim()) {
-      errors.title = "Title is required"
-    }
-
-    if (!form.author.trim()) {
-      errors.author = "Author is required"
-    }
-
-    if (form.publicationYear.trim()) {
-      const year = Number(form.publicationYear)
-      if (!Number.isInteger(year) || year < 1000 || year > currentYear) {
-        errors.publicationYear = "Enter a valid year"
-      }
-    }
-
-    if (form.coverImageUrl.trim()) {
-      const url = form.coverImageUrl.trim()
-      if (!url.startsWith("http://") && !url.startsWith("https://")) {
-        errors.coverImageUrl = "Enter a valid URL"
-      }
-    }
-
-    return errors
-  }
-
   async function handleSubmit(event: FormEvent): Promise<void> {
     event.preventDefault()
     setErrorMessage(null)
 
-    const errors = validateBookForm()
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors)
-      return
+    const allFields = ["title", "author", "publicationYear", "coverImageUrl"] as const
+    markAllTouched(allFields)
+
+    const submitErrors = {
+      title: validateRequired(form.title, "Title"),
+      author: validateRequired(form.author, "Author"),
+      publicationYear: validateYear(form.publicationYear),
+      coverImageUrl: validateUrl(form.coverImageUrl),
     }
-    setFieldErrors({})
+    if (hasErrors(submitErrors)) return
 
     const trimmedTitle = form.title.trim()
     const trimmedAuthor = form.author.trim()
@@ -216,11 +222,8 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 onChange={(e) => updateField("title", e.target.value)}
                 placeholder="e.g. The Great Gatsby"
                 disabled={isFormDisabled}
-                error={!!fieldErrors.title}
+                error={errors.title ?? undefined}
               />
-              {fieldErrors.title && (
-                <p className="text-xs text-destructive">{fieldErrors.title}</p>
-              )}
             </div>
 
             <div className="space-y-2">
@@ -233,11 +236,8 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 onChange={(e) => updateField("author", e.target.value)}
                 placeholder="e.g. F. Scott Fitzgerald"
                 disabled={isFormDisabled}
-                error={!!fieldErrors.author}
+                error={errors.author ?? undefined}
               />
-              {fieldErrors.author && (
-                <p className="text-xs text-destructive">{fieldErrors.author}</p>
-              )}
             </div>
 
             <div className="space-y-2">
@@ -261,11 +261,8 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                   onChange={(e) => updateField("publicationYear", e.target.value)}
                   placeholder="e.g. 1925"
                   disabled={isFormDisabled}
-                  error={!!fieldErrors.publicationYear}
+                  error={errors.publicationYear ?? undefined}
                 />
-                {fieldErrors.publicationYear && (
-                  <p className="text-xs text-destructive">{fieldErrors.publicationYear}</p>
-                )}
               </div>
 
               <div className="space-y-2">
@@ -300,11 +297,8 @@ function BookFormModal({ open, onOpenChange, onSuccess, book }: BookFormModalPro
                 onChange={(e) => updateField("coverImageUrl", e.target.value)}
                 placeholder="https://..."
                 disabled={isFormDisabled}
-                error={!!fieldErrors.coverImageUrl}
+                error={errors.coverImageUrl ?? undefined}
               />
-              {fieldErrors.coverImageUrl && (
-                <p className="text-xs text-destructive">{fieldErrors.coverImageUrl}</p>
-              )}
             </div>
 
             <DialogFooter>
