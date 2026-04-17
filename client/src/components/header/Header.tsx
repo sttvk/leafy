@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useQueryClient } from "@tanstack/react-query"
 import { LogIn, Sun, Moon, Plus } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
 import { CartDropdown } from "@/components/header/CartDropdown"
@@ -10,7 +9,6 @@ import { BookFormModal } from "@/components/BookFormModal"
 
 function Header() {
   const { isAuthenticated, isLibrarian, isLoading } = useAuth()
-  const queryClient = useQueryClient()
   const [isAddBookOpen, setIsAddBookOpen] = useState(false)
   const [isDark, setIsDark] = useState(() => {
     return localStorage.getItem("lms_theme") === "dark"
@@ -78,9 +76,7 @@ function Header() {
       <BookFormModal
         open={isAddBookOpen}
         onOpenChange={setIsAddBookOpen}
-        onSuccess={() => {
-          void queryClient.invalidateQueries({ queryKey: ["books"] })
-        }}
+        onSuccess={() => {}}
       />
     </header>
   )

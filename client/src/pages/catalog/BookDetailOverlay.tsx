@@ -31,14 +31,13 @@ interface BookDetailOverlayProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   onEdit?: () => void
-  onDelete?: () => void
 }
 
 const PLACEHOLDER_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300' fill='%23e5e7eb'%3E%3Crect width='200' height='300'/%3E%3C/svg%3E"
 
 const TYPEWRITER_INTERVAL_MS = 30
 
-function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookDetailOverlayProps) {
+function BookDetailOverlay({ book, open, onOpenChange, onEdit }: BookDetailOverlayProps) {
   const { isAuthenticated, isLibrarian } = useAuth()
   const { addToCart, isInCart } = useCart()
   const [isDeleting, setIsDeleting] = useState(false)
@@ -53,9 +52,8 @@ function BookDetailOverlay({ book, open, onOpenChange, onEdit, onDelete }: BookD
     setIsDeleting(true)
     try {
       await deleteBook(book.id)
-      onDelete?.()
       toast.success(MESSAGES.books.deleteSuccess)
-      onOpenChange(false)
+      window.location.reload()
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "Failed to delete book"
       toast.error(message)
