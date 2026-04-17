@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { BookOpen } from "lucide-react"
+import { useQueryClient } from "@tanstack/react-query"
 import { type CheckoutDto, verifyCheckoutSession } from "@/api/checkouts"
 import { useCart } from "@/contexts/CartContext"
 import { PageLayout } from "@/components/PageLayout"
@@ -13,6 +14,7 @@ type VerifyState =
 
 function CheckoutSuccessPage() {
   const { clearCart } = useCart()
+  const queryClient = useQueryClient()
   const [state, setState] = useState<VerifyState>({ status: "loading" })
 
   useEffect(() => {
@@ -31,6 +33,8 @@ function CheckoutSuccessPage() {
         if (!cancelled) {
           setState({ status: "success", checkouts })
           clearCart()
+          queryClient.invalidateQueries({ queryKey: ["my-checkouts"] })
+          queryClient.invalidateQueries({ queryKey: ["books"] })
         }
       } catch {
         if (!cancelled) {
