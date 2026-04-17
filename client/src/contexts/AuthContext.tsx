@@ -7,8 +7,12 @@ import {
   useState,
 } from "react"
 import type { ReactNode } from "react"
+import { useNavigate } from "react-router-dom"
+import { useQueryClient } from "@tanstack/react-query"
+import { toast } from "sonner"
 import type { AuthUser } from "@/types/auth"
 import * as authApi from "@/api/auth"
+import { MESSAGES } from "@/lib/messages"
 
 const TOKEN_KEY = "lms_token"
 
@@ -36,6 +40,8 @@ interface AuthProviderProps {
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
+  const queryClient = useQueryClient()
 
   useEffect(() => {
     const token = localStorage.getItem(TOKEN_KEY)
@@ -84,8 +90,11 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY)
-    window.location.href = "/"
-  }, [])
+    setUser(null)
+    queryClient.clear()
+    toast.success(MESSAGES.auth.logoutSuccess)
+    navigate("/")
+  }, [navigate, queryClient])
 
   const isAuthenticated = user !== null
   const isLibrarian = user?.role === "Librarian"

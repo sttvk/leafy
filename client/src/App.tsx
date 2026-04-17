@@ -1,8 +1,6 @@
-import { useEffect } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
-import { toast } from "sonner"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { CartProvider } from "@/contexts/CartContext"
 import { CatalogPage } from "@/pages/catalog/CatalogPage"
@@ -50,23 +48,16 @@ function AppRoutes() {
 }
 
 function AppShell() {
-  useEffect(() => {
-    if (localStorage.getItem("lms_show_logout_toast") === "true") {
-      toast.success("Logged out successfully")
-      localStorage.removeItem("lms_show_logout_toast")
-    }
-  }, [])
-
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <CartProvider>
-          <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
+          <CartProvider>
             <AppRoutes />
-          </BrowserRouter>
-          <Toaster />
-        </CartProvider>
-      </AuthProvider>
+            <Toaster />
+          </CartProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   )
 }

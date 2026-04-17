@@ -6,7 +6,6 @@ function getToken(): string | null {
 
 function clearTokenAndRedirect(): void {
   localStorage.removeItem(TOKEN_KEY)
-  window.location.href = "/login"
 }
 
 interface ApiClientOptions {
