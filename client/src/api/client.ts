@@ -43,13 +43,21 @@ async function request<T>(
 
   if (!response.ok) {
     const errorBody: unknown = await response.json().catch(() => null)
-    const message =
-      errorBody !== null &&
-      typeof errorBody === "object" &&
-      "message" in errorBody &&
-      typeof (errorBody as Record<string, unknown>).message === "string"
-        ? (errorBody as Record<string, string>).message
-        : `Request failed: ${response.status} ${response.statusText}`
+    let message = "Something went wrong. Please try again."
+
+    if (typeof errorBody === "string") {
+      message = errorBody
+    } else if (errorBody !== null && typeof errorBody === "object") {
+      const obj = errorBody as Record<string, unknown>
+      if (obj.errors && typeof obj.errors === "object") {
+        const firstField = Object.values(obj.errors as Record<string, string[]>)[0]
+        if (firstField?.[0]) message = firstField[0]
+      } else if (typeof obj.title === "string") {
+        message = obj.title
+      } else if (typeof obj.message === "string") {
+        message = obj.message
+      }
+    }
 
     const validationErrors =
       errorBody !== null &&
