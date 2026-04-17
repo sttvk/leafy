@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { CartProvider } from "@/contexts/CartContext"
-import { CatalogPage } from "@/pages/CatalogPage"
-import { AuthPage } from "@/pages/AuthPage"
-import { ReaderPage } from "@/pages/ReaderPage"
+import { CatalogPage } from "@/pages/catalog/CatalogPage"
+import { AuthPage } from "@/pages/auth/AuthPage"
+import { ReaderPage } from "@/pages/reader/ReaderPage"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
 
 

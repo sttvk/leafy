@@ -1,5 +1,5 @@
 import type { BookListDto } from "@/api/books"
-import { BookCard } from "@/components/BookCard"
+import { BookCard } from "@/pages/catalog/BookCard"
 
 interface BookGridProps {
   books: readonly BookListDto[]

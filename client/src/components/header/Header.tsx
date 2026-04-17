@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import { useQueryClient } from "@tanstack/react-query"
 import { LogIn, Sun, Moon, Plus } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
-import { CartDropdown } from "@/components/CartDropdown"
-import { UserProfileDropdown } from "@/components/UserProfileDropdown"
+import { CartDropdown } from "@/components/header/CartDropdown"
+import { UserProfileDropdown } from "@/components/header/UserProfileDropdown"
 import { BookFormModal } from "@/components/BookFormModal"
 
 function Header() {
