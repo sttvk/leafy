@@ -1,5 +1,4 @@
-src/Lms.Api/Controllers/BooksController.cs
-src/Lms.Application/Books/BookDto.cs
-src/Lms.Application/Books/BookService.cs
-client/src/api/books.ts
-client/src/pages/catalog/BookDetailOverlay.tsx
+client/src/pages/catalog/CatalogPage.tsx
+client/src/components/header/Header.tsx
+client/src/components/header/CartDropdown.tsx
+client/src/pages/checkout/CheckoutSuccessPage.tsx

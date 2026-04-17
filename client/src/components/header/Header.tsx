@@ -78,7 +78,7 @@ function Header() {
       <BookFormModal
         open={isAddBookOpen}
         onOpenChange={setIsAddBookOpen}
-        onSuccess={() => queryClient.invalidateQueries({ queryKey: ["books"] })}
+        onSuccess={() => queryClient.resetQueries({ queryKey: ["books"] })}
       />
     </header>
   )

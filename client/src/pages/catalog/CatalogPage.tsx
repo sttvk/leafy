@@ -278,7 +278,7 @@ function CatalogPage() {
             : undefined
         }
         onDelete={() => {
-          queryClient.invalidateQueries({ queryKey: ["books"] })
+          queryClient.resetQueries({ queryKey: ["books"] })
           setSelectedBook(null)
         }}
       />
@@ -289,7 +289,7 @@ function CatalogPage() {
           if (!open) setEditingBook(null)
         }}
         onSuccess={() =>
-          queryClient.invalidateQueries({ queryKey: ["books"] })
+          queryClient.resetQueries({ queryKey: ["books"] })
         }
         book={editingBook}
       />
