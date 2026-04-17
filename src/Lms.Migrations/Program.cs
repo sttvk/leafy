@@ -104,7 +104,7 @@ static async Task SeedEmbeddingsAsync(
     const int maxRetries = 3;
     const int retryBackoffMs = 2000;
     const int progressIntervalBooks = 50;
-    const string modelName = "text-embedding-004";
+    const string modelName = "gemini-embedding-001";
 
     var configuration = services.GetRequiredService<IConfiguration>();
     var apiKey = configuration["Gemini:ApiKey"] ?? Environment.GetEnvironmentVariable("GEMINI_API_KEY");

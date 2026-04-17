@@ -9,7 +9,7 @@ namespace Lms.Infrastructure.Services;
 
 internal sealed class GeminiEmbeddingService : IEmbeddingService
 {
-    private const string ModelName = "models/text-embedding-004";
+    private const string ModelName = "models/gemini-embedding-001";
     private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta";
 
     private static readonly JsonSerializerOptions JsonOptions = new()
@@ -45,7 +45,7 @@ internal sealed class GeminiEmbeddingService : IEmbeddingService
             ModelName,
             new ContentPayload([new TextPart(text)]));
 
-        var url = $"{BaseUrl}/models/text-embedding-004:embedContent?key={_apiKey}";
+        var url = $"{BaseUrl}/models/gemini-embedding-001:embedContent?key={_apiKey}";
 
         using var response = await _httpClient.PostAsJsonAsync(url, request, JsonOptions, ct);
 
@@ -82,7 +82,7 @@ internal sealed class GeminiEmbeddingService : IEmbeddingService
 
         var batchRequest = new BatchEmbedContentsRequest(requests);
 
-        var url = $"{BaseUrl}/models/text-embedding-004:batchEmbedContents?key={_apiKey}";
+        var url = $"{BaseUrl}/models/gemini-embedding-001:batchEmbedContents?key={_apiKey}";
 
         using var response = await _httpClient.PostAsJsonAsync(url, batchRequest, JsonOptions, ct);
 
