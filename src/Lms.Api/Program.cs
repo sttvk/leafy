@@ -51,6 +51,7 @@ app.UseAuthorization();
 app.MapBooksEndpoints();
 app.MapCheckoutsEndpoints();
 app.MapAuthEndpoints();
+app.MapStripeEndpoints();
 
 app.Run();
 

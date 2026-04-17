@@ -1,3 +1,4 @@
-client/src/components/**
-client/src/pages/**
-client/src/App.tsx
+src/Lms.Api/Endpoints/StripeEndpoints.cs
+src/Lms.Api/Program.cs
+Directory.Packages.props
+src/Lms.Api/Lms.Api.csproj

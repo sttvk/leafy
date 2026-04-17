@@ -19,6 +19,7 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.6" />
     <PackageVersion Include="Microsoft.Extensions.Identity.Stores" Version="10.0.6" />
     <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="8.17.0" />
+    <PackageVersion Include="Stripe.net" Version="51.0.0" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.17.0" />
   </ItemGroup>
 </Project>
