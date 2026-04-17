@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { BookOpen } from "lucide-react"
 import { useQueryClient } from "@tanstack/react-query"
@@ -18,6 +18,7 @@ function CheckoutSuccessPage() {
   const { clearCart } = useCart()
   const queryClient = useQueryClient()
   const [state, setState] = useState<VerifyState>({ status: "loading" })
+  const verifiedRef = useRef(false)
 
   useEffect(() => {
     const sessionId = new URLSearchParams(window.location.search).get("session_id")
@@ -30,6 +31,9 @@ function CheckoutSuccessPage() {
     let cancelled = false
 
     async function verify(id: string): Promise<void> {
+      if (verifiedRef.current) return
+      verifiedRef.current = true
+
       try {
         const checkouts = await verifyCheckoutSession(id)
         if (!cancelled) {
@@ -52,7 +56,7 @@ function CheckoutSuccessPage() {
     return () => {
       cancelled = true
     }
-  }, [clearCart, queryClient])
+  }, [])
 
   return (
     <PageLayout>
