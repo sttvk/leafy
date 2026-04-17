@@ -1,7 +1,7 @@
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query"
+import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useMemo, useRef, useState } from "react"
-import { X } from "lucide-react"
-import { fetchBooks, type BookListDto, type PagedResult } from "@/api/books"
+import { Loader2, X } from "lucide-react"
+import { fetchBooks, searchBooks, type BookListDto, type PagedResult } from "@/api/books"
 import { useAuth } from "@/contexts/AuthContext"
 import { BookGrid } from "@/pages/catalog/BookGrid"
 import { BookGridSkeleton } from "@/pages/catalog/BookCardSkeleton"
@@ -18,15 +18,26 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+const SEARCH_DEBOUNCE_MS = 300
+const MIN_SEARCH_LENGTH = 2
+
 function CatalogPage() {
   const { isLibrarian } = useAuth()
   const queryClient = useQueryClient()
   const [selectedBook, setSelectedBook] = useState<BookListDto | null>(null)
   const [editingBook, setEditingBook] = useState<BookListDto | null>(null)
   const [genreFilter, setGenreFilter] = useState<string>("all")
-  const [authorSearch, setAuthorSearch] = useState("")
+  const [searchQuery, setSearchQuery] = useState("")
+  const [debouncedQuery, setDebouncedQuery] = useState("")
 
   const sentinelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(searchQuery), SEARCH_DEBOUNCE_MS)
+    return () => clearTimeout(timer)
+  }, [searchQuery])
+
+  const isSearchMode = debouncedQuery.length >= MIN_SEARCH_LENGTH
 
   const {
     data,
@@ -48,10 +59,17 @@ function CatalogPage() {
       const totalFetched = allPages.reduce((sum, p) => sum + p.items.length, 0)
       return totalFetched < lastPage.totalCount ? allPages.length + 1 : undefined
     },
+    enabled: !isSearchMode,
+  })
+
+  const { data: searchResults, isLoading: isSearching } = useQuery({
+    queryKey: ["book-search", debouncedQuery],
+    queryFn: () => searchBooks(debouncedQuery),
+    enabled: isSearchMode,
   })
 
   useEffect(() => {
-    if (!sentinelRef.current || !hasNextPage) return
+    if (!sentinelRef.current || !hasNextPage || isSearchMode) return
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,7 +82,7 @@ function CatalogPage() {
 
     observer.observe(sentinelRef.current)
     return () => observer.disconnect()
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage, isSearchMode])
 
   const allBooks = useMemo(() => {
     if (!data) return []
@@ -75,45 +93,47 @@ function CatalogPage() {
     )
   }, [data])
 
+  const searchBooksAsListDto: readonly BookListDto[] = useMemo(() => {
+    if (!searchResults) return []
+    return searchResults.map(({ score: _score, ...book }) => book)
+  }, [searchResults])
+
   const genres = useMemo(() => {
+    const source = isSearchMode ? searchBooksAsListDto : allBooks
     const uniqueGenres = new Set(
-      allBooks
+      source
         .map((book) => book.genre)
         .filter((genre): genre is string => genre !== null && genre !== "")
     )
     return Array.from(uniqueGenres).sort()
-  }, [allBooks])
+  }, [allBooks, searchBooksAsListDto, isSearchMode])
 
-  const hasActiveFilters =
-    genreFilter !== "all" ||
-    authorSearch !== ""
+  const displayBooks = useMemo(() => {
+    const source = isSearchMode ? searchBooksAsListDto : allBooks
 
-  const filteredBooks = useMemo(() => {
-    let result = allBooks
+    if (genreFilter === "all") return source
 
-    if (genreFilter !== "all") {
-      result = result.filter((book) => book.genre === genreFilter)
-    }
+    return source.filter((book) => book.genre === genreFilter)
+  }, [allBooks, searchBooksAsListDto, isSearchMode, genreFilter])
 
-    if (authorSearch !== "") {
-      const search = authorSearch.toLowerCase()
-      result = result.filter((book) =>
-        book.author.toLowerCase().includes(search)
-      )
-    }
+  const hasActiveFilters = genreFilter !== "all" || searchQuery !== ""
 
-    return result
-  }, [allBooks, genreFilter, authorSearch])
+  const isPageLoading = isSearchMode ? isSearching : isLoading
+  const isPageError = !isSearchMode && isError
 
   function handleClearFilters(): void {
     setGenreFilter("all")
-    setAuthorSearch("")
+    setSearchQuery("")
+  }
+
+  function handleClearSearch(): void {
+    setSearchQuery("")
   }
 
   return (
     <div className="min-h-screen bg-background">
       <PageLayout className="space-y-3">
-        {!isLoading && !isError && (
+        {!isPageLoading && !isPageError && (
           <div className="flex flex-nowrap items-center gap-3">
             <Select value={genreFilter} onValueChange={setGenreFilter}>
               <SelectTrigger className="w-[180px]">
@@ -129,12 +149,27 @@ function CatalogPage() {
               </SelectContent>
             </Select>
 
-            <Input
-              placeholder="Search by author..."
-              value={authorSearch}
-              onChange={(e) => setAuthorSearch(e.target.value)}
-              className="flex-1 min-w-[200px]"
-            />
+            <div className="relative flex-1 min-w-[200px]">
+              <Input
+                placeholder="Search books..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pr-8"
+              />
+              {searchQuery !== "" && (
+                <button
+                  type="button"
+                  onClick={handleClearSearch}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+
+            {isSearchMode && isSearching && (
+              <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+            )}
 
             {hasActiveFilters && (
               <Button variant="ghost" size="sm" onClick={handleClearFilters}>
@@ -145,9 +180,9 @@ function CatalogPage() {
           </div>
         )}
 
-        {isLoading && <BookGridSkeleton />}
+        {isPageLoading && <BookGridSkeleton />}
 
-        {isError && (
+        {isPageError && (
           <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
             <p className="text-lg font-medium text-foreground">
               Something went wrong
@@ -161,14 +196,32 @@ function CatalogPage() {
           </div>
         )}
 
-        {!isLoading && !isError && (
+        {!isPageLoading && !isPageError && (
           <div>
-            <BookGrid
-              books={filteredBooks}
-              onSelectBook={setSelectedBook}
-            />
-            <div ref={sentinelRef} className="h-10" />
-            {isFetchingNextPage && <BookGridSkeleton count={6} />}
+            {isSearchMode && displayBooks.length === 0 && !isSearching && (
+              <div className="flex flex-col items-center justify-center gap-2 py-24 text-center">
+                <p className="text-lg font-medium text-foreground">
+                  No books found
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  No results for &ldquo;{debouncedQuery}&rdquo;
+                </p>
+              </div>
+            )}
+
+            {displayBooks.length > 0 && (
+              <BookGrid
+                books={displayBooks}
+                onSelectBook={setSelectedBook}
+              />
+            )}
+
+            {!isSearchMode && (
+              <>
+                <div ref={sentinelRef} className="h-10" />
+                {isFetchingNextPage && <BookGridSkeleton count={6} />}
+              </>
+            )}
           </div>
         )}
       </PageLayout>

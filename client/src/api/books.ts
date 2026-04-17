@@ -62,3 +62,18 @@ export function updateBook(id: string, data: UpdateBookRequest): Promise<BookDet
 export function deleteBook(id: string): Promise<void> {
   return apiClient.delete<void>(`/api/books/${id}`)
 }
+
+export interface BookSearchResult {
+  id: string
+  title: string
+  author: string
+  genre: string | null
+  coverImageUrl: string | null
+  score: number
+}
+
+export function searchBooks(query: string, limit: number = 25): Promise<BookSearchResult[]> {
+  return apiClient.get<BookSearchResult[]>(
+    `/api/books/search?q=${encodeURIComponent(query)}&limit=${limit}`
+  )
+}
