@@ -4,6 +4,10 @@ A full-stack digital library where users browse, rent, and read books online.
 
 **Live:** [leafy.azurewebsites.net](https://leafy.azurewebsites.net)
 
+**Admin credentials:** `admin@leafy.com` / `Admin@123` (use these to add, edit, and delete books)
+
+**Test payment card:** `4242 4242 4242 4242` | Expiry: any future date | CVC: any 3 digits
+
 ## Features
 
 - **Book Catalog** - Card grid with Add, Edit and Delete options for the Librarian account.
