@@ -1,0 +1,14 @@
+# Sibling to deploy.yml; kept separate because its 5-min cron cadence is independent of deploys (single-workflow principle has a legitimate exception for decoupled cadences — see .claude/rules/github-actions-patterns.md).
+name: Keep Warm
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /api/health
+        run: curl -fsS --max-time 30 https://leafy.azurewebsites.net/api/health
