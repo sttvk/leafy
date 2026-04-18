@@ -14,8 +14,10 @@ HOOKS_DIR=$(dirname "${BASH_SOURCE[0]}")
 # Worker detection: inside a worktree, or an explicit scope file is present.
 case "$(pwd)" in
   *.wt-*) exit 0 ;;
+  */.claude/worktrees/*) exit 0 ;;
 esac
 [[ -f "./.claude/scope.txt" ]] && exit 0
+[[ "${CLAUDE_WORKER:-}" == "1" ]] && exit 0
 
 INPUT=$(cat)
 FILE_PATH=$(printf '%s' "$INPUT" | python3 "$HOOKS_DIR/lib/extract.py" file_path 2>/dev/null || true)
