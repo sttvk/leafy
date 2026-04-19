@@ -10,5 +10,19 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping /api/health
-        run: curl -fsS --max-time 30 https://leafy.azurewebsites.net/api/health | grep -q '"status":"healthy"'
+      - name: Ping /api/health with retry
+        # Retry up to 3 times with 10s backoff to tolerate cold starts
+        # (Azure SQL Free auto-pauses; F1 App Service scales-to-zero). The
+        # first attempt after idle can time out or return 503 degraded while
+        # the SQL probe warms up. Only `"status":"healthy"` counts as success.
+        # See .claude/rules/aspire.md: "do not treat a single timeout as fatal".
+        run: |
+          for i in 1 2 3; do
+            body=$(curl -sS --max-time 30 https://leafy.azurewebsites.net/api/health || true)
+            echo "attempt $i: $body"
+            if echo "$body" | grep -q '"status":"healthy"'; then
+              exit 0
+            fi
+            [ $i -lt 3 ] && sleep 10
+          done
+          exit 1
